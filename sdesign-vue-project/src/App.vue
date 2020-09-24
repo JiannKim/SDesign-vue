@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AH />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AH from './components/AH.vue';
+import VueRouter from 'vue-router'
+
+// const LogoImg = { template: '<img class="app-logo" src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png" alt="s-Design-Logo" >'}
+
+// const routes = { path: '/logo-img'}
+
+const router = new VueRouter({
+  // routes
+})
 
 export default {
-  name: 'App',
+  el: '#app',
   components: {
-    HelloWorld
-  }
+    AH,
+  },
+  router,
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    margin: 0;
+    padding: 0;
+    /* background: #282828; */
+    color: #202020;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 </style>
