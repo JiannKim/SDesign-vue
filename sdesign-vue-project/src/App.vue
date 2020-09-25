@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <AH />
+    <!-- <AH /> -->
+    <AppHeader />
   </div>
 </template>
 
 <script>
-import AH from './components/AH.vue';
+// import AH from './components/AH.vue'
+import AppHeader from './components/AppHeader.vue'
 import VueRouter from 'vue-router'
-
-// const LogoImg = { template: '<img class="app-logo" src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png" alt="s-Design-Logo" >'}
 
 // const routes = { path: '/logo-img'}
 
@@ -19,7 +19,8 @@ const router = new VueRouter({
 export default {
   el: '#app',
   components: {
-    AH,
+    // AH,
+    AppHeader,
   },
   router,
 }

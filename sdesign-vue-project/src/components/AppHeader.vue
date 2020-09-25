@@ -1,30 +1,28 @@
 <template>
     <div>
-      <header class="App-header">
-        <div class="Tab-wrapper">
-          <nav id="menuToggle">
-            <input type="checkbox" />
+      <header id="app-header-wrapper">
+        <!-- <div class="Tab-wrapper"> -->
+          <!-- <nav id="menuToggle">
+            <input type="checkbox" /> -->
             
             <!-- 햄버거 메뉴 버튼을 만드는 스펜태그 가운데 스펜은
             보이지 않게 한다. -->
-            <span></span>
-            {/* 가운데스펜 없는척 */}
+            <!-- <span></span> -->
+            <!-- {/* 가운데스펜 없는척 */}
             <span id="hiddenSpan"></span>
-            <span></span>
+            <span></span> -->
             
             <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
-            <ul id="menu">
+            <!-- <ul id="menu">
               <a href="#"><li>Pricing</li></a>
               <a href="#"><li>FAQ</li></a>
               <a href="#"><li>SFXHD</li></a>
               <a href="#"><li>Sign in</li></a>
               <a href="#"><li>Join</li></a>
             </ul>
-          </nav>
-          <a href="/">
-            <img class="App-logo" src="https://i.ibb.co/FVRcqBh/s-Design-Logo.png" alt="s-Design-Logo" />
-          </a>
-          <div id="searchToggle">
+          </nav> -->
+          
+          <!-- <div id="searchToggle">
             <input type="checkbox" class="search-bnt" />
             <BsSearch class="Tab-icon-BeSearch" />
             <div id="search">
@@ -34,16 +32,19 @@
               <input type="text" placeholder="Search for sound effects" />
             </div>
           </div>
-        </div>
-        <div class="search-input">
-          <img class="search-icon" src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
+        </div> -->
+        <a href="/">
+            <img class="app-header-logo" src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png" alt="s-Design-Logo" />
+        </a>
+        <div class="app-header-search-box">
+          <img class="header-search-icon" src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
           <input type="text" placeholder="Search for sound effects" />
         </div>
-          <ul class="App-menu">
-            <a href="/" target="blank" class="header-menu"><li>Pricing</li></a>
-            <a href="/" target="blank" class="header-menu"><li>FAQ</li></a>
-            <a href="/" target="blank" class="header-menu"><li>SFXHD</li></a>
-            <a href="/" target="blank" class="header-menu"><li>Sign in/Join</li></a>
+          <ul class="app-header-menu-lists">
+            <a href="/" target="blank" class="header-menu-list"><li>Pricing</li></a>
+            <a href="/" target="blank" class="header-menu-list"><li>FAQ</li></a>
+            <a href="/" target="blank" class="header-menu-list"><li>SFXHD</li></a>
+            <a href="/" target="blank" class="header-menu-list"><li>Sign in/Join</li></a>
           </ul>
       </header>
     </div>
@@ -56,9 +57,12 @@ export default {
 </script>
 
 <style>
-  /* 
-  // 헤더 박스 스타일
-  .App-header {
+  * {
+    transition: all 0.3s cubic-bezier(.38, .88, .38, .88);      
+  }
+
+  /* 헤더 박스 스타일 */
+ #app-header-wrapper {
     background-color: #fff;
     min-height: 60px;
     width: 100%;
@@ -70,14 +74,17 @@ export default {
     justify-content: space-between;
     font-size: 2rem;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 2;
-  } */
-
-  .App-menu {
+  }
+  /* ul-li */
+  .app-header-menu-lists {
     display: flex;
     margin-right: 150px;
+    width: 440px;
   }
-  .header-menu {
+  .header-menu-list {
     color: #313131;
     text-decoration: none;
     font-size: 16px;
@@ -85,43 +92,43 @@ export default {
     margin-left: 50px;
     list-style: none;
   }
-  
-  .App-logo {
-    width: 110px;
+  /* header logo */
+  .app-header-logo {
+    width: 50px;
     margin: 0 30px 0 147px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .search-input {
+  .app-header-search-box {
     width: 743px;
     height: 43px;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #f3f3f3;
     position: relative;
     display: flex;
     transition: width 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
   }
-  .search-icon {
+  .header-search-icon {
     position: absolute;
     left: 19px;
     top: 13px;
   }
   
-  .search-input input {
+  .app-header-search-box input {
     border: none;
     background-color: #f3f3f3;
     font-size: 17px;
-    width: 670px;
+    /* width: 670px; */
+    width: 100%;
     align-items: center;
     margin-left: 45px;
-  }
-  
-  .search-input > input:focus {
+    margin: 0 5px 0 45px;
     outline: none;
   }
-
+  
+/* Tab 영역 */
   .Tab-icon-BeSearch {
     all: unset;
     display: none;
@@ -129,25 +136,24 @@ export default {
     color: #313131;
   }
 
-  /* media Quary */
-   
+/* media Quary */   
 @media (max-width: 1600px){
-  .App-header {width: 100%;}
-  .search-input {
+  .app-header-wrapper {width: 100%;}
+  .app-header-search-box {
     width: 40%;
    transition: width 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
 
   }
 }
 @media (max-width: 1500px){
-  .search-input {width: 41%;}
-  .App-logo {margin-left: 50px;}
-  .App-menu {margin-right: 50px;}
+  .app-header-search-box {width: 41%;}
+  .app-header-logo {margin-left: 50px;}
+  .app-header-menu-lists {margin-right: 50px;}
 }
 @media (max-width: 1250px){
-  .App-logo {margin-left: 30px;}
-  .search-input {width: 38%;}
-  .App-menu {margin-right: 30px; padding: 0;}
+  .app-header-logo {margin-left: 30px;}
+  .app-header-search-box {width: 38%;}
+  .app-header-menu-lists {margin-right: 30px; padding: 0;}
 }
 /* 태블릿 */
 @media (max-width: 1020px) {
@@ -157,16 +163,16 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   margin: 0 30px 0 30px;
-   transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
+    margin: 0 30px 0 30px;
+    transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
   }
-  .search-input {display: none;}
+  .app-header-search-box {display: none;}
   .Tab-icon-BeSearch, .Tab-app-menu {
     display: flex;
     justify-content: center;
     margin: 5px;
   }
-  .App-menu {display: none;}
+  .app-header-menu-lists {display: none;}
   #menuToggle {display: block !important;}
   #searchToggle {display: block !important;}
 }
@@ -174,6 +180,6 @@ export default {
 }
 /* 모바일 */
 @media (max-width: 440px){
-  .App-header {width: 100%;}
+  .app-header-wrapper {width: 100%;}
 }
 </style>
