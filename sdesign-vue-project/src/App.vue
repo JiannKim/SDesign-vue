@@ -1,12 +1,10 @@
 <template>
   <div id="app">
-    <!-- <AH /> -->
     <AppHeader />
   </div>
 </template>
 
 <script>
-// import AH from './components/AH.vue'
 import AppHeader from './components/AppHeader.vue'
 import VueRouter from 'vue-router'
 
@@ -17,9 +15,8 @@ const router = new VueRouter({
 })
 
 export default {
-  el: '#app',
+  name: 'app',
   components: {
-    // AH,
     AppHeader,
   },
   router,

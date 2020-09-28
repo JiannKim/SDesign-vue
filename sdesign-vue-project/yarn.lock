@@ -861,6 +861,37 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-common-types@^0.2.30":
+  version "0.2.30"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.30.tgz#2f1cc5b46bd76723be41d0013a8450c9ba92b777"
+  integrity sha512-TsRwpTuKwFNiPhk1UfKgw7zNPeV5RhNp2Uw3pws+9gDAkPGKrtjR1y2lI3SYn7+YzyfuNknflpBA1LRKjt7hMg==
+
+"@fortawesome/fontawesome-svg-core@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.30.tgz#f56dc6791861fe5d1af04fb8abddb94658c576db"
+  integrity sha512-E3sAXATKCSVnT17HYmZjjbcmwihrNOCkoU7dVMlasrcwiJAHxSKeZ+4WN5O+ElgO/FaYgJmASl8p9N7/B/RttA==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.30"
+
+"@fortawesome/free-regular-svg-icons@^5.14.0":
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.14.0.tgz#ca513ac7699625af42938744297ac483361da043"
+  integrity sha512-6LCFvjGSMPoUQbn3NVlgiG4CY5iIY8fOm+to/D6QS/GvdqhDt+xZklQeERdCvVRbnFa1ITc1rJHPRXqkX5wztQ==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.30"
+
+"@fortawesome/free-solid-svg-icons@^5.14.0":
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.14.0.tgz#970453f5e8c4915ad57856c3a0252ac63f6fec18"
+  integrity sha512-M933RDM8cecaKMWDSk3FRYdnzWGW7kBBlGNGfvqLVwcwhUPNj9gcw+xZMrqBdRqxnSXdl3zWzTCNNGEtFUq67Q==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.30"
+
+"@fortawesome/vue-fontawesome@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-2.0.0.tgz#63da3e459147cebb0a8d58eed81d6071db9f5973"
+  integrity sha512-N3VKw7KzRfOm8hShUVldpinlm13HpvLBQgT63QS+aCrIRLwjoEUXY5Rcmttbfb6HkzZaeqjLqd/aZCQ53UjQpg==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -7034,6 +7065,16 @@ selfsigned@^1.10.7:
   dependencies:
     node-forge "^0.10.0"
 
+semantic-ui-icon@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/semantic-ui-icon/-/semantic-ui-icon-2.3.3.tgz#b0beb7e4b541a13eb49a8039626723ab5393b95c"
+  integrity sha512-TuO265ICYGoNPs0rjanqDlrx8hfcpl4MMv92OUwFCbDwee4nGj8+Dv+i1RvkPPr0gO565G/0EKs8vF4wwhMMBw==
+
+semantic-ui-vue@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/semantic-ui-vue/-/semantic-ui-vue-0.11.0.tgz#b114c1ed7fc06bfc6bd27c8919e112ce6e45d08e"
+  integrity sha512-wQE7zn7TIOPbLzbUp5hhIzivEkV6qk/i+Vc/BCQCQH7thF7UWqsEAcWWrlskwMTD48uoqGGUHIEN+kxsy0W3mA==
+
 "semver@2 || 3 || 4 || 5", semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -8123,6 +8164,11 @@ vue-loader@^15.9.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-router@^3.4.3:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.4.tgz#ad0c27f6353107ed527afa3afc5da69ce3ea3841"
+  integrity sha512-qFfwwLvxUYq+iDJ0UoE8HMnuZEDtIDA+p573brVMb7NZr0t1vhMeMWDTvgF2b8MqAFOc77bNOTSSwYcR4pCZlg==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"

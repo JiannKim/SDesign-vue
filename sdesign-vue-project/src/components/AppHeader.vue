@@ -1,39 +1,9 @@
 <template>
-    <div>
+    <div id="header-wrapper">
       <header id="app-header-wrapper">
-        <!-- <div class="Tab-wrapper"> -->
-          <!-- <nav id="menuToggle">
-            <input type="checkbox" /> -->
-            
-            <!-- 햄버거 메뉴 버튼을 만드는 스펜태그 가운데 스펜은
-            보이지 않게 한다. -->
-            <!-- <span></span> -->
-            <!-- {/* 가운데스펜 없는척 */}
-            <span id="hiddenSpan"></span>
-            <span></span> -->
-            
-            <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
-            <!-- <ul id="menu">
-              <a href="#"><li>Pricing</li></a>
-              <a href="#"><li>FAQ</li></a>
-              <a href="#"><li>SFXHD</li></a>
-              <a href="#"><li>Sign in</li></a>
-              <a href="#"><li>Join</li></a>
-            </ul>
-          </nav> -->
-          
-          <!-- <div id="searchToggle">
-            <input type="checkbox" class="search-bnt" />
-            <BsSearch class="Tab-icon-BeSearch" />
-            <div id="search">
-              <span>
-                <img src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
-              </span>
-              <input type="text" placeholder="Search for sound effects" />
-            </div>
-          </div>
-        </div> -->
-        <a href="/">
+        
+      <AppSidebarTabMenu />
+        <a class="app-header-logo-link" href="/">
             <img class="app-header-logo" src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png" alt="s-Design-Logo" />
         </a>
         <div class="app-header-search-box">
@@ -47,12 +17,19 @@
             <a href="/" target="blank" class="header-menu-list"><li>Sign in/Join</li></a>
           </ul>
       </header>
+      <AppHeaderSearchTab />
     </div>
 </template>
 
 <script>
-export default {
+import AppSidebarTabMenu from './AppSidebarTabMenu.vue'
+import AppHeaderSearchTab from './AppHeaderSearchTab.vue'
 
+export default {
+  components: {
+    AppSidebarTabMenu,
+    AppHeaderSearchTab
+  }
 }
 </script>
 
@@ -62,7 +39,7 @@ export default {
   }
 
   /* 헤더 박스 스타일 */
- #app-header-wrapper {
+  #app-header-wrapper {
     background-color: #fff;
     min-height: 60px;
     width: 100%;
@@ -128,58 +105,68 @@ export default {
     outline: none;
   }
   
-/* Tab 영역 */
-  .Tab-icon-BeSearch {
-    all: unset;
-    display: none;
-    cursor: pointer;
-    color: #313131;
+
+ /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
+
+
+  /* media Quary */   
+  @media (max-width: 1600px){
+    .app-header-wrapper {width: 100%;}
+    .app-header-search-box {
+      width: 40%;
+    transition: width 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
+
+    }
+  }
+  @media (max-width: 1500px){
+    .app-header-search-box {width: 41%;}
+    .app-header-logo {margin-left: 50px;}
+    .app-header-menu-lists {margin-right: 50px;}
+  }
+  @media (max-width: 1250px){
+    .app-header-logo { margin-left: 30px; }
+    .app-header-search-box { width: 38%; }
+    .app-header-menu-lists { 
+      margin-right: 30px; 
+      padding: 0;
+      }
+  }
+  /* 태블릿 */
+  @media (max-width: 1020px) {
+    .app-header-wrapper {
+      width: 100%; 
+      display: flex; 
+      justify-content: center;
+      }
+    .app-header-logo-link {
+      width: 110px;
+      margin: 0 auto;
+      }
+    .app-header-search-box { display: none; }
+    .app-header-menu-lists { display: none; }
+    /* .Tab-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 30px 0 30px;
+      transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
+    } */
+    /* .Tab-icon-BeSearch, .Tab-app-menu {
+      display: flex;
+      justify-content: center;
+      margin: 5px;
+    } */
+    /* #menuToggle {display: block !important;}
+    #searchToggle {display: block !important;} */
+  }
+  @media (max-width: 750px){
+  }
+  @media (max-width: 599px){
   }
 
-/* media Quary */   
-@media (max-width: 1600px){
-  .app-header-wrapper {width: 100%;}
-  .app-header-search-box {
-    width: 40%;
-   transition: width 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
-
+  /* 모바일 */
+  @media (max-width: 440px){
+    .app-header-wrapper {width: 100%;}
   }
-}
-@media (max-width: 1500px){
-  .app-header-search-box {width: 41%;}
-  .app-header-logo {margin-left: 50px;}
-  .app-header-menu-lists {margin-right: 50px;}
-}
-@media (max-width: 1250px){
-  .app-header-logo {margin-left: 30px;}
-  .app-header-search-box {width: 38%;}
-  .app-header-menu-lists {margin-right: 30px; padding: 0;}
-}
-/* 태블릿 */
-@media (max-width: 1020px) {
-  /* .App-header {width: 100%; display: flex; justify-content: center;} */
-  .Tab-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 30px 0 30px;
-    transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
-  }
-  .app-header-search-box {display: none;}
-  .Tab-icon-BeSearch, .Tab-app-menu {
-    display: flex;
-    justify-content: center;
-    margin: 5px;
-  }
-  .app-header-menu-lists {display: none;}
-  #menuToggle {display: block !important;}
-  #searchToggle {display: block !important;}
-}
-@media (max-width: 750px){
-}
-/* 모바일 */
-@media (max-width: 440px){
-  .app-header-wrapper {width: 100%;}
-}
 </style>
