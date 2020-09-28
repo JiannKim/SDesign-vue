@@ -2,8 +2,7 @@
   <!-- 검색 토글 -->
   <div id="side-tab-search-wrapper">
     <input type="checkbox" class="tab-search-button" />
-    <font-awesome-icon :icon="['far', 'fa-search']" class="Tab-icon-BeSearch" />
-    
+    <font-awesome-icon :icon="['fas', 'search']" class="tab-icon" />
     <div id="search">
       <span>
         <img src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
@@ -15,15 +14,18 @@
 
 <script>
 export default {
-
+  name: 'AppHeaderSearchTab'
 }
 </script>
 
 <style>
 
   /* Tab 검색 영역 */
-  .Tab-icon-BeSearch {
+  .tab-icon{
     all: unset;
+    position: absolute;
+    top: -20px;
+    right: 0;
     display: none;
     cursor: pointer;
     color: #313131;
@@ -33,22 +35,23 @@ export default {
     /* ??? */
     display: none;
     position: relative;
+    width: 100%;
+    margin: 0 30px;
 
     z-index: 1;
 
-    -webkit-user-select: none;
+    /* -webkit-user-select: none; */
     user-select: none;
-
+    /* border: 10px solid purple; */
   }
 
   .tab-search-button {
-    border: 1px solid red;
     display: block;
     width: 40px;
     height: 40px;
     position: absolute;
-    top: -2px;
-    right: -2px;
+    top: -24px;
+    right: 0px;
     
     cursor: pointer;
     
@@ -56,6 +59,7 @@ export default {
     z-index: 2; /* 돋보기 앞에 배치 */
     
     -webkit-touch-callout: none;
+    border: 10px solid red;
   }
 
   /* 토글 인풋변환 */
@@ -110,5 +114,26 @@ export default {
     padding-left: 12px;
     top: 41%;
   }
+ /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
 
+  /* media Quary */
+  /* 태블릿 */
+  @media (max-width: 1020px) {
+    #side-tab-search-wrapper { display:  block;}
+   
+    .tab-icon {
+      display: flex;
+      justify-content: center;
+      margin: 5px;
+    }
+  }
+  @media (max-width: 750px){
+  }
+  @media (max-width: 599px){
+  }
+
+  /* 모바일 */
+  @media (max-width: 440px){
+    /* .app-header-wrapper {width: 100%;} */
+  }
 </style>

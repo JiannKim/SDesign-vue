@@ -6,20 +6,19 @@
 
 <script>
 import AppHeader from './components/AppHeader.vue'
-import VueRouter from 'vue-router'
+// import VueRouter from 'vue-router'
 
 // const routes = { path: '/logo-img'}
 
-const router = new VueRouter({
-  // routes
-})
+// const router = new VueRouter({
+//   // routes
+// })
 
 export default {
   name: 'app',
   components: {
     AppHeader,
   },
-  router,
 }
 </script>
 

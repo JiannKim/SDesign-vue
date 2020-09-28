@@ -9,38 +9,18 @@
       <span></span>
 
       <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
-      <ul id="sidebar-tab-menu-lists">
+      <ul id="sidebar-tab-menu-lists" >
         <!-- <router-link type="li" to="#">
           <a>{{ item }}</a>*5
         </router-link> -->
-        <a href="#"><li>dd</li></a>
-        <a href="#"><li>dd</li></a>
-        <a href="#"><li>dd</li></a>
+        <a href="#"><li>Pricing</li></a>
+        <a href="#"><li>FAQ</li></a>
+        <a href="#"><li>SFXHD</li></a>
+        <a href="#"><li>Sign in</li></a>
+        <a href="#"><li>Join</li></a>
       </ul>
     </nav>
   </div>
-
-    <!-- <div class="Tab-wrapper"> -->
-          <!-- <nav id="menuToggle">
-            <input type="checkbox" /> -->
-            
-            <!-- 햄버거 메뉴 버튼을 만드는 스펜태그 가운데 스펜은
-            보이지 않게 한다. -->
-            <!-- <span></span> -->
-            <!-- {/* 가운데스펜 없는척 */}
-            <span id="hiddenSpan"></span>
-            <span></span> -->
-            
-            <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
-            <!-- <ul id="menu">
-              <a href="#"><li>Pricing</li></a>
-              <a href="#"><li>FAQ</li></a>
-              <a href="#"><li>SFXHD</li></a>
-              <a href="#"><li>Sign in</li></a>
-              <a href="#"><li>Join</li></a>
-            </ul>
-          </nav> -->
-          
 </template>
 
 <script>
@@ -52,11 +32,20 @@ export default {
 <style>
 
   /* 메뉴 탭 스타일 */
-    .sidebar-tab-menu-button {
+  #sidebar-tab-menu-wrapper {
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0 30px;
+    transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
+  }
+
+  .sidebar-tab-menu-button {
     display: none;
-    /* top: 50px; */
-    /* left: 50px; */
     position: relative;
+    top: 0px;
+    left: 0px;
     
     z-index: 2;
     
@@ -66,13 +55,13 @@ export default {
 
   .sidebar-tab-menu-button a {
     text-decoration: none;
-    color: #424242;
+    color: #5c5c5c;
     
     transition: color 0.3s ease;
   }
 
   .sidebar-tab-menu-button a:hover {
-      color: rgb(115, 72, 163);
+      color: #fff;
   }
 
   .sidebar-tab-menu-button input {
@@ -92,13 +81,13 @@ export default {
   /* 햄버거 만들기 */
   .sidebar-tab-menu-button span {
     display: block;
-    width: 33px;
-    height: 4px;
-    margin: 5px 5px 2px 5px;
+    width: 35px;
+    height: 5.5px;
+    margin: 4px 5px 4px 5px;
     position: relative;
     
-    background: #282828;
-    border-radius: 3px;
+    background: #313131;
+    border-radius: 2px;
     
     z-index: 1;
     
@@ -165,7 +154,9 @@ export default {
   #sidebar-tab-menu-lists li:hover { padding-left: 15px;}
 
   /* And let's slide it in from the left */
-  .sidebar-tab-menu-button input:checked ~ ul {
+  
+  .sidebar-tab-menu-button input:checked ~ #sidebar-tab-menu-lists {
+    /* 위에 있는 ul의 트랜스폼을 넌해주겠다! */
     transform: none;
   }
 
@@ -173,33 +164,9 @@ export default {
 
 
   /* media Quary */   
-  @media (max-width: 1600px){
-  }
-  @media (max-width: 1500px){
-
-  }
-  @media (max-width: 1250px){
-  }
-
   /* 태블릿 */
   @media (max-width: 1020px) {
-    #sidebar-tab-menu-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 30px 0 30px;
-      transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
-    }
-    /* .app-header-search-box {display: none;} */
-    .Tab-icon-BeSearch, .Tab-app-menu {
-      display: flex;
-      justify-content: center;
-      margin: 5px;
-    }
-    /* .app-header-menu-lists {display: none;} */
     .sidebar-tab-menu-button {display: block !important;}
-    #side-tab-search-wrapper {display: block !important;}
   }
   @media (max-width: 750px){
   }
@@ -208,6 +175,6 @@ export default {
 
   /* 모바일 */
   @media (max-width: 440px){
-    .app-header-wrapper {width: 100%;}
+    /* .app-header-wrapper {width: 100%;} */
   }
   </style>

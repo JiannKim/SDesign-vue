@@ -1,24 +1,24 @@
 <template>
-    <div id="header-wrapper">
-      <header id="app-header-wrapper">
-        
-      <AppSidebarTabMenu />
-        <a class="app-header-logo-link" href="/">
-            <img class="app-header-logo" src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png" alt="s-Design-Logo" />
-        </a>
-        <div class="app-header-search-box">
-          <img class="header-search-icon" src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
-          <input type="text" placeholder="Search for sound effects" />
-        </div>
-          <ul class="app-header-menu-lists">
-            <a href="/" target="blank" class="header-menu-list"><li>Pricing</li></a>
-            <a href="/" target="blank" class="header-menu-list"><li>FAQ</li></a>
-            <a href="/" target="blank" class="header-menu-list"><li>SFXHD</li></a>
-            <a href="/" target="blank" class="header-menu-list"><li>Sign in/Join</li></a>
-          </ul>
-      </header>
-      <AppHeaderSearchTab />
+  <header id="app-header-wrapper">
+    
+    <a class="app-header-logo-link" href="/">
+        <img class="app-header-logo" src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png" alt="s-Design-Logo" />
+    </a>
+    <div class="app-header-search-box">
+      <img class="header-search-icon" src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
+      <input type="text" placeholder="Search for sound effects" />
     </div>
+    <ul class="app-header-menu-lists">
+      <a href="/" target="blank" class="header-menu-list"><li>Pricing</li></a>
+      <a href="/" target="blank" class="header-menu-list"><li>FAQ</li></a>
+      <a href="/" target="blank" class="header-menu-list"><li>SFXHD</li></a>
+      <a href="/" target="blank" class="header-menu-list"><li>Sign in/Join</li></a>
+    </ul>
+    <div id="header-wrapper">
+        <AppSidebarTabMenu />
+        <AppHeaderSearchTab />
+    </div>
+  </header>
 </template>
 
 <script>
@@ -133,32 +133,27 @@ export default {
   }
   /* 태블릿 */
   @media (max-width: 1020px) {
-    .app-header-wrapper {
+    #app-header-wrapper {
       width: 100%; 
       display: flex; 
       justify-content: center;
+      /* border: 1px solid red; */
       }
-    .app-header-logo-link {
-      width: 110px;
-      margin: 0 auto;
-      }
-    .app-header-search-box { display: none; }
-    .app-header-menu-lists { display: none; }
-    /* .Tab-wrapper {
+    #header-wrapper {
       width: 100%;
+      position: absolute;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 0 30px 0 30px;
       transition: margin 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
-    } */
-    /* .Tab-icon-BeSearch, .Tab-app-menu {
-      display: flex;
-      justify-content: center;
-      margin: 5px;
-    } */
-    /* #menuToggle {display: block !important;}
-    #searchToggle {display: block !important;} */
+      /* border: 1px solid red; */
+      }
+    .app-header-logo-link {
+      z-index: 1;
+      }
+    .app-header-search-box { display: none; }
+    .app-header-menu-lists { display: none; }
   }
   @media (max-width: 750px){
   }
