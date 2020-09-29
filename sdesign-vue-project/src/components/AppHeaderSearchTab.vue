@@ -42,7 +42,6 @@ export default {
 
     /* -webkit-user-select: none; */
     user-select: none;
-    /* border: 10px solid purple; */
   }
 
   .tab-search-button {
@@ -114,7 +113,7 @@ export default {
     padding-left: 12px;
     top: 41%;
   }
- /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
+ /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- */
 
   /* media Quary */
   /* 태블릿 */

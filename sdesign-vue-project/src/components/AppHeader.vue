@@ -28,7 +28,7 @@ import AppHeaderSearchTab from './AppHeaderSearchTab.vue'
 export default {
   components: {
     AppSidebarTabMenu,
-    AppHeaderSearchTab
+    AppHeaderSearchTab,
   }
 }
 </script>
@@ -59,7 +59,7 @@ export default {
   .app-header-menu-lists {
     display: flex;
     margin-right: 150px;
-    width: 440px;
+    width: 450px;
   }
   .header-menu-list {
     color: #313131;

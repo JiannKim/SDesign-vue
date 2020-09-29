@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <AppHeader />
+    <AppMainTop />
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
+import AppMainTop from './components/AppMainTop.vue'
+
 // import VueRouter from 'vue-router'
 
 // const routes = { path: '/logo-img'}
@@ -18,12 +21,14 @@ export default {
   name: 'app',
   components: {
     AppHeader,
+    AppMainTop,
   },
-}
+};
 </script>
 
 <style>
   #app {
+    width: 100%;
     margin: 0;
     padding: 0;
     /* background: #282828; */
