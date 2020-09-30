@@ -51,8 +51,6 @@ export default {
     justify-content: space-between;
     font-size: 2rem;
     position: fixed;
-    top: 0;
-    left: 0;
     z-index: 2;
   }
   /* ul-li */
