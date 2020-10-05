@@ -2,12 +2,14 @@
   <div id="app">
     <AppHeader />
     <AppMainTop />
+    <AppMainConter />
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppMainTop from './components/AppMainTop.vue'
+import AppMainConter from './components/AppMainCenter.vue'
 
 // import VueRouter from 'vue-router'
 
@@ -22,6 +24,7 @@ export default {
   components: {
     AppHeader,
     AppMainTop,
+    AppMainConter,
   },
 };
 </script>
