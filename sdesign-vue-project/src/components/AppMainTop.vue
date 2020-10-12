@@ -155,16 +155,50 @@ export default {};
   }
 }
 @media (max-width: 750px) {
-  /* .main-top-headline p {
-    width: 310px;
-  } */
+  .main-top-headline p {
+    width: 400px;
+  }
 }
 @media (max-width: 599px) {
-  /* .main-top-headline {
-    width: 400px;
-  } */
+  .main-top-headline {
+    width: 140px;
+  }
 }
-
+/* 블랙베리 모바일 */
+@media (max-width: 489px){
+  #main-top-wrapper { height: 580px;}
+  .main-top-image {
+    height: 286px;
+    overflow: hidden;
+  }
+.main-top-headline-box { 
+    display: block; 
+    position: relative; 
+    width: 100%;
+    height: 289px;
+    background-color: #101010;
+}
+.main-top-headline p {
+    margin-bottom: 27px;
+    width: 315px;
+}
+.main-top-headline { 
+    top: 30px; 
+    width: 335px;
+    padding: 0;
+    margin: 0 auto;
+}
+.main-top-headline h1 {
+    font-size: 40px;
+    width: 269px;
+    margin: 0;
+}
+.main-top-headline-button {
+    width: 335px;
+    height: 51px;
+}
+/* #menu { padding-bottom: 31px; } */
+}
 /* 모바일 */
 @media (max-width: 470px) {
   .main-top-image {
@@ -173,13 +207,13 @@ export default {};
   }
   .main-top-headline-box {
     /* display: block; */
-    background-color: rgb(0, 0, 0);
+    background-color: #101010;
     position: relative;
     width: 100%;
     height: 269px;
   }
   .main-top-headline {
-    /* top: 0px; */
+    top: 0px;
     width: 305px;
     padding: 0;
     margin: 0 auto;
@@ -197,4 +231,42 @@ export default {};
     height: 51px;
   }
 }
+  /* 아이폰se 모바일 */
+  @media (max-width: 369px){
+    #main-top-wrapper { 
+      height: 470px;
+      top: 53px;
+    }
+
+    .main-top-image {
+      background-image: url(../assets/mediaSE.png);
+      width: 100%;
+      height: 220px;
+    }
+    .main-top-headline-box { 
+        display: block; 
+        position: relative; 
+        width: 100%;
+        height: 247px;
+        background-color: #101010;
+    }
+    .main-top-headline { 
+        width: 270px;
+        padding: 0;
+        margin: 0 auto;
+    }
+    .main-top-headline h1 {
+        font-size: 33px;
+        width: 240px;
+        margin: 15px 0 4px 0;
+    }
+    .main-top-headline-button{
+        width: 270px;
+        height: 51px;
+    }
+    .main-top-headline p {
+      margin-bottom: 20px;
+      width: 275px;
+    }
+  }
 </style>
