@@ -82,12 +82,146 @@
     <section class="Home-content">
       <h1>음향효과 찾아보기</h1>
       <!-- 탭영역 -->
-      <ul class="tabs">
+      <!-- <ul class="tabs">
         <li
           v-for="item in items" :key="item.id"
         >{{item.title}}</li>
+      </ul> -->
+      <ul class="tabs">
+        <li
+          v-for="tab in tabs" :key="tab.id"
+          v-bind:class="{ active: tab === selectedTab }"
+          v-on:click="onClickTab(tab)"
+        >{{tab.title}}</li>
       </ul>
-      <!-- 최근 탭 -->
+        <div v-if="selectedTab === tabs[0]">
+          <!-- 최근 탭 -->
+          <div class="home-categories latest">
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/8KBMxX2/theme-Park.png"
+                  alt="walla sound effects"
+                />
+                <h3><span>theme park</span></h3>
+              </a>
+            </div>
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/YD33HH5/GFX.png"
+                  alt="whoosh sound effects"
+                />
+                <h3><span>gfx animation</span></h3>
+              </a>
+            </div>
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/6RYyQWc/final-Round.png"
+                  alt="walla sound effects"
+                />
+                <h3><span>final round</span></h3>
+              </a>
+            </div>
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/zVDXFhL/quiet.png"
+                  alt="walla sound effects"
+                />
+                <h3><span>quiet streets</span></h3>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="selectedTab === tabs[1]">
+          <!-- 지역 탭 -->
+          <div class="home-categories location">
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/s5VyDf8/seoul.png"
+                  alt="walla sound effects"
+                />
+                <h3><span>서 울</span></h3>
+              </a>
+            </div>
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/CH6yPL9/shanghai.png"
+                  alt="whoosh sound effects"
+                />
+                <h3><span>상 하 이</span></h3>
+              </a>
+            </div>
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/0sQ6w2r/london.png"
+                  alt="walla sound effects"
+                />
+                <h3><span>런 던</span></h3>
+              </a>
+            </div>
+            <div class="browse-container">
+              <a href="#">
+                <img
+                  src="https://i.ibb.co/qryWT7S/india.png"
+                  alt="walla sound effects"
+                />
+                <h3><span>인 도</span></h3>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          <!-- 태그 탭 -->
+          <div class="home-categories tags">
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>적막한</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>시원한</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>음악</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>신비로운</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>습지</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>소름끼치는</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>광활한</span></h3>
+            </a>
+          </div>
+          <div class="tags-container">
+            <a href="#">
+              <h3><span>기계음</span></h3>
+            </a>
+          </div>
+          </div>
+        </div>
+      <!-- 최근 탭
       <div class="home-categories latest">
         <div class="browse-container">
           <a href="#">
@@ -125,9 +259,9 @@
             <h3><span>quiet streets</span></h3>
           </a>
         </div>
-      </div>
+      </div> -->
       <!-- 지역 탭 -->
-      <div class="home-categories location">
+      <!-- <div class="home-categories location">
         <div class="browse-container">
           <a href="#">
             <img
@@ -164,9 +298,9 @@
             <h3><span>인 도</span></h3>
           </a>
         </div>
-      </div>
+      </div> -->
       <!-- 태그 탭 -->
-      <div class="home-categories tags">
+      <!-- <div class="home-categories tags">
         <div class="tags-container">
           <a href="#">
             <h3><span>적막한</span></h3>
@@ -207,7 +341,7 @@
             <h3><span>기계음</span></h3>
           </a>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <section class="Home-content">
@@ -274,19 +408,69 @@
 
 <script>
 export default {
+  //   data() {
+  //     return {
+  //         items: [
+  //             {title: '최근'},
+  //             {title: '지역'},
+  //             {title: '태그'},
+  //         ]
+  //     };
+  //   },
   data() {
     return {
-        items: [
-            {title: '최근'},
-            {title: '지역'},
-            {title: '태역'},
-        ]
+        query: '',
+        submitted: false,
+        tabs: [
+          {id: 1, title: '최근'},
+          {id: 2, title: '지역'},
+          {id: 3, title: '태그'},
+          ],
+        selectedTab: '',
+        searchResult: [],
     };
+  },
+  methods: {
+    // created() {
+    //   this.selectedTab = this.tab;
+    // },
+    onClickTab: function(tab) {
+      this.selectedTab = tab;
+    },
   },
 };
 </script>
 
 <style>
+
+.tabs {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 5px;
+}
+.tabs li {
+  list-style: none;
+  padding-top: 15px;
+  color: #313131;
+  height: 35px;
+  width: 60px;
+  margin: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: width 260ms cubic-bezier(.38, .38, .38, .38);
+}
+.tabs .active {
+  background: #313131;
+  padding-top: 15px;
+  color: #fff;
+  border-radius: 25px;
+  height: 35px;
+  width: 80px;
+  /* transform: scaleX(2, 1);; */
+  transition: width 170ms cubic-bezier(.38, .38, .38, .38);
+}
+
 .Home-content {
   padding-top: 77px;
   width: 1231px;
