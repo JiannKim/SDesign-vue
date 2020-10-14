@@ -67,7 +67,7 @@ export default {
     transform-origin: 0% 0%;
     height: auto;
     padding: 15px 0px 15px 0px;
-    transform: translate(0,-2%);
+    transform: translate(0,-1%);
     background: cdcdcd;
 
     transition: padding 0.5s cubic-bezier(0.4,0.2,0.05,2.0);
@@ -78,7 +78,7 @@ export default {
     position: fixed;
     width: 100%;
     height: 0;
-    top:75px;
+    top:73px;
     left: 0;
     overflow: hidden;
     background: rgba(32, 32, 32, 0.95);

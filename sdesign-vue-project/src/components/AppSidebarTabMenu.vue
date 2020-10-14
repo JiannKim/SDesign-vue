@@ -129,7 +129,8 @@ export default {};
 #sidebar-tab-menu-lists {
 	position: absolute;
 	width: 190px;
-	margin: 22px 0 0 -50px;
+	height: 226px;
+	margin: 20px 0 0 -50px;
 	padding: 10px 50px 30px 50px;
 	padding-top: 30px;
 	background: rgba(32, 32, 32, 0.95);

@@ -1,9 +1,9 @@
 <template>
-  <div class="Home-contents">
+  <div id="main-center-wrapper">
     <!-- 카드섹션 1 -->
-    <section class="Home-content">
+    <section class="main-center-contents">
       <h1>주요 카테고리</h1>
-      <div class="home-categories">
+      <div class="center-contents-categories">
         <div class="categories-container">
           <a href="#">
             <img
@@ -79,14 +79,9 @@
       </div>
     </section>
     <!-- 카드섹션 2 -->
-    <section class="Home-content">
+    <section class="main-center-contents">
       <h1>음향효과 찾아보기</h1>
       <!-- 탭영역 -->
-      <!-- <ul class="tabs">
-        <li
-          v-for="item in items" :key="item.id"
-        >{{item.title}}</li>
-      </ul> -->
       <ul class="tabs">
         <li
           v-for="tab in tabs" v-bind:key="tab.id"
@@ -96,7 +91,7 @@
       </ul>
         <div v-if="selectedTab === tabs[0]">
           <!-- 최근 탭 -->
-          <div class="home-categories latest">
+          <div class="center-contents-categories latest">
             <div class="browse-container">
               <a href="#">
                 <img
@@ -137,7 +132,7 @@
         </div>
         <div v-else-if="selectedTab === tabs[1]">
           <!-- 지역 탭 -->
-          <div class="home-categories location">
+          <div class="center-contents-categories location">
             <div class="browse-container">
               <a href="#">
                 <img
@@ -178,7 +173,7 @@
         </div>
         <div v-else>
           <!-- 태그 탭 -->
-          <div class="home-categories tags">
+          <div class="center-contents-categories tags">
           <div class="tags-container">
             <a href="#">
               <h3><span>적막한</span></h3>
@@ -221,132 +216,11 @@
           </div>
           </div>
         </div>
-      <!-- 최근 탭
-      <div class="home-categories latest">
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/8KBMxX2/theme-Park.png"
-              alt="walla sound effects"
-            />
-            <h3><span>theme park</span></h3>
-          </a>
-        </div>
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/YD33HH5/GFX.png"
-              alt="whoosh sound effects"
-            />
-            <h3><span>gfx animation</span></h3>
-          </a>
-        </div>
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/6RYyQWc/final-Round.png"
-              alt="walla sound effects"
-            />
-            <h3><span>final round</span></h3>
-          </a>
-        </div>
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/zVDXFhL/quiet.png"
-              alt="walla sound effects"
-            />
-            <h3><span>quiet streets</span></h3>
-          </a>
-        </div>
-      </div> -->
-      <!-- 지역 탭 -->
-      <!-- <div class="home-categories location">
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/s5VyDf8/seoul.png"
-              alt="walla sound effects"
-            />
-            <h3><span>서 울</span></h3>
-          </a>
-        </div>
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/CH6yPL9/shanghai.png"
-              alt="whoosh sound effects"
-            />
-            <h3><span>상 하 이</span></h3>
-          </a>
-        </div>
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/0sQ6w2r/london.png"
-              alt="walla sound effects"
-            />
-            <h3><span>런 던</span></h3>
-          </a>
-        </div>
-        <div class="browse-container">
-          <a href="#">
-            <img
-              src="https://i.ibb.co/qryWT7S/india.png"
-              alt="walla sound effects"
-            />
-            <h3><span>인 도</span></h3>
-          </a>
-        </div>
-      </div> -->
-      <!-- 태그 탭 -->
-      <!-- <div class="home-categories tags">
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>적막한</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>시원한</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>음악</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>신비로운</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>습지</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>소름끼치는</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>광활한</span></h3>
-          </a>
-        </div>
-        <div class="tags-container">
-          <a href="#">
-            <h3><span>기계음</span></h3>
-          </a>
-        </div>
-      </div> -->
     </section>
-
-    <section class="Home-content">
+    <!-- 카드섹션 3 -->
+    <section class="main-center-contents">
       <h1>사운드 디자이너</h1>
-      <div class="home-categories">
+      <div class="center-contents-categories">
         <div class="categories-container">
           <a href="#">
             <img
@@ -360,7 +234,8 @@
           <a href="#">
             <img
               src="https://i.ibb.co/HxvXQBx/b.png"
-              alt="whoosh sound effects"
+              alt="b image"
+
             />
             <h3><span>bbb</span></h3>
           </a>
@@ -368,8 +243,8 @@
         <div class="categories-container">
           <a href="#">
             <img
-              src="https://i.ibb.co/HqdF6Qg/c.png"
-              alt="walla sound effects"
+              src="https://i.ibb.co/DCJtb0G/c.png"
+              alt="c image"
             />
             <h3><span>ccc</span></h3>
           </a>
@@ -378,7 +253,7 @@
           <a href="#">
             <img
               src="https://i.ibb.co/WHp9S14/d.png"
-              alt="walla sound effects"
+              alt="d image"
             />
             <h3><span>ddd</span></h3>
           </a>
@@ -386,7 +261,7 @@
         <div class="categories-container">
           <a href="#">
             <img
-              src="https://i.ibb.co/JWZ034m/e.png"
+              src="https://i.ibb.co/Fq0wcgK/e.png"
               alt="walla sound effects"
             />
             <h3><span>eee</span></h3>
@@ -471,7 +346,7 @@ export default {
     transition: width 170ms cubic-bezier(.38, .38, .38, .38);
 }
 
-.Home-content {
+.main-center-contents {
   padding-top: 77px;
   width: 1231px;
   margin: 0 auto;
@@ -479,15 +354,15 @@ export default {
   top: 73px;
 }
 
-.Home-content h1 {
+.main-center-contents h1 {
   text-align: left;
   margin: 19px 5px 19px 5px;
 }
-.Home-content img {
+.main-center-contents img {
   width: 100%;
   display: flex;
 }
-.Home-content h3::before {
+.main-center-contents h3::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -507,7 +382,7 @@ export default {
   background: linear-gradient(to top,rgba(0,0,0,.8),rgba(16,22,35,.26)); */
 }
 
-.home-categories {
+.center-contents-categories {
   display: flex;
   flex-flow: wrap;
   justify-content: start;
@@ -542,7 +417,7 @@ export default {
   position: relative;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
-/* .home-categories a { width: 100%; } */
+/* .center-contents-categories a { width: 100%; } */
 
 /* 음향효과 찾아보기 섹션 */
 .browse-container {
@@ -558,7 +433,7 @@ export default {
   position: relative;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
-.Home-content h3:hover::before {
+.main-center-contents h3:hover::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -575,7 +450,7 @@ export default {
   background: linear-gradient(to top,rgba(0,0,0,.8),rgba(16,22,35,.26)); */
 }
 
-.home-categories h3 {
+.center-contents-categories h3 {
   color: #fff;
   position: absolute;
   margin: 0;
@@ -591,11 +466,11 @@ export default {
   align-items: center;
   transition: color 0.03s cubic-bezier(0.8, 0.2, 0.1, 1.6);
 }
-.home-categories h3:hover {
+.center-contents-categories h3:hover {
   color: #202020;
   transition: color 0.03s cubic-bezier(0.8, 0.2, 0.1, 1.6);
 }
-.home-categories span {
+.center-contents-categories span {
   z-index: 1;
   text-indent: 5px;
 }
@@ -690,7 +565,7 @@ export default {
 @media (max-width: 1600px) {
 }
 @media (max-width: 1500px) {
-  .Home-content {
+  .main-center-contents {
     width: 1010px;
     flex-grow: 1;
     margin: 0 auto;
@@ -709,7 +584,7 @@ export default {
   }
 }
 @media (max-width: 1250px) {
-  .Home-content {
+  .main-center-contents {
     width: 900px;
     flex-grow: 1;
     margin: 0 auto;
@@ -729,13 +604,13 @@ export default {
   .tags-container {
     width: 215px;
   }
-  .home-categories h3 {
+  .center-contents-categories h3 {
     font-size: 14px;
   }
 }
 /* 태블릿 */
 @media (max-width: 1020px) {
-  .Home-content {
+  .main-center-contents {
     width: 660px;
     flex-grow: 1;
     margin: 0 auto;
@@ -748,6 +623,10 @@ export default {
     width: 650px;
     height: 165px;
   }
+  /* 이미지 칸에 맞게 채우기 */
+  .categories-container-wide a {
+    width: 100%;
+  }
   .browse-container {
     width: 320px;
     height: 165px;
@@ -757,7 +636,7 @@ export default {
   }
 }
 @media (max-width: 750px) {
-  .Home-content {
+  .main-center-contents {
     width: 470px;
     flex-grow: 1;
     margin: 0 auto;
@@ -776,7 +655,7 @@ export default {
   }
 }
 @media (max-width: 599px) {
-  .Home-content {
+  .main-center-contents {
     width: 400px;
     flex-grow: 1;
     margin: 0 auto;
@@ -800,7 +679,7 @@ export default {
 
 /* 블랙베리 모바일 */
 @media (max-width: 489px) {
-  .Home-content {
+  .main-center-contents {
     width: 353px;
     flex-grow: 1;
     margin: 0 auto;
@@ -828,7 +707,7 @@ export default {
 
 /* 모바일 */
 @media (max-width: 470px) {
-  .Home-content {
+  .main-center-contents {
     width: 353px;
     flex-grow: 1;
     margin: 0 auto;
@@ -866,11 +745,11 @@ export default {
     }
     */
 
-  .Home-contents {
+  #main-center-wrapper {
     position: relative;
     top: -10px;
   }
-  .Home-content {
+  .main-center-contents {
     width: 290px;
     flex-grow: 1;
     margin: 0 auto;
@@ -887,7 +766,7 @@ export default {
     width: 282px;
     height: 115px;
   }
-  .home-categories span {
+  .center-contents-categories span {
     font-size: 12px;
   }
 }
