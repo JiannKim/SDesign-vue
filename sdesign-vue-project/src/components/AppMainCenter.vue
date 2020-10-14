@@ -89,8 +89,8 @@
       </ul> -->
       <ul class="tabs">
         <li
-          v-for="tab in tabs" :key="tab.id"
-          v-bind:class="{ active: tab === selectedTab }"
+          v-for="tab in tabs" v-bind:key="tab.id"
+          v-bind:class="{ active: selectedTab === tab }"
           v-on:click="onClickTab(tab)"
         >{{tab.title}}</li>
       </ul>
@@ -408,32 +408,33 @@
 
 <script>
 export default {
-  //   data() {
-  //     return {
-  //         items: [
-  //             {title: '최근'},
-  //             {title: '지역'},
-  //             {title: '태그'},
-  //         ]
-  //     };
-  //   },
   data() {
+    const tabs = [
+      {id: 1, title: "최근"},
+      {id: 2, title: "지역"},
+      {id: 3, title: "태그"},
+    ];
+    const [selectedTab] = tabs;
     return {
-        query: '',
-        submitted: false,
-        tabs: [
-          {id: 1, title: '최근'},
-          {id: 2, title: '지역'},
-          {id: 3, title: '태그'},
-          ],
-        selectedTab: '',
-        searchResult: [],
+      query: "",
+      submitted: false,
+      tabs,
+      selectedTab,
+      searchResult: [],
     };
+    // return {
+    //     query: '',
+    //     submitted: false,
+    //     tabs: [
+    //       {id: 1, title: '최근'},
+    //       {id: 2, title: '지역'},
+    //       {id: 3, title: '태그'},
+    //       ],
+    //     selectedTab: this.id,
+    //     searchResult: [],
+    // };
   },
   methods: {
-    // created() {
-    //   this.selectedTab = this.tab;
-    // },
     onClickTab: function(tab) {
       this.selectedTab = tab;
     },
@@ -448,27 +449,26 @@ export default {
   align-items: center;
   padding: 0;
   margin: 5px;
+  width: 200px;
 }
 .tabs li {
   list-style: none;
-  padding-top: 15px;
-  color: #313131;
-  height: 35px;
-  width: 60px;
+  color: #7c7c7c;
+  height: 30px;
+  width: 50px;
   margin: 1px;
   font-weight: bold;
   cursor: pointer;
   transition: width 260ms cubic-bezier(.38, .38, .38, .38);
 }
 .tabs .active {
-  background: #313131;
-  padding-top: 15px;
-  color: #fff;
-  border-radius: 25px;
-  height: 35px;
-  width: 80px;
-  /* transform: scaleX(2, 1);; */
-  transition: width 170ms cubic-bezier(.38, .38, .38, .38);
+    color: #313131;
+    height: 27px;
+    width: 60px;
+    border-bottom: 3px solid #313131;
+    transition-duration: 100ms;
+    transition-property: width;
+    transition: width 170ms cubic-bezier(.38, .38, .38, .38);
 }
 
 .Home-content {
