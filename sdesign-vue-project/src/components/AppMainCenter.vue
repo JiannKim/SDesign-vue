@@ -289,26 +289,28 @@ export default {
       {id: 2, title: "지역"},
       {id: 3, title: "태그"},
     ];
-    const [selectedTab] = tabs;
+    // const [selectedTab] = tabs;
     return {
       query: "",
       submitted: false,
       tabs,
-      selectedTab,
+      selectedTab: tabs[0],
       searchResult: [],
     };
-    // return {
-    //     query: '',
-    //     submitted: false,
-    //     tabs: [
-    //       {id: 1, title: '최근'},
-    //       {id: 2, title: '지역'},
-    //       {id: 3, title: '태그'},
-    //       ],
-    //     selectedTab: this.id,
-    //     searchResult: [],
-    // };
   },
+  // data() {
+  //   return {
+  //       query: '',
+  //       submitted: false,
+  //       tabs: [
+  //         {id: 1, title: '최근'},
+  //         {id: 2, title: '지역'},
+  //         {id: 3, title: '태그'},
+  //         ],
+  //       selectedTab: tabs[0],
+  //       searchResult: [],
+  //   };
+  // },
   methods: {
     onClickTab: function(tab) {
       this.selectedTab = tab;
