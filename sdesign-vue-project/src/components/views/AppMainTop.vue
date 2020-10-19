@@ -31,7 +31,7 @@ export default {};
   /* margin: 0; */
   width: 100%;
   height: 480px;
-  background-image: url(../assets/mainImage.png);
+  background-image: url(../../assets/mainImage.png);
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
@@ -150,7 +150,7 @@ export default {};
     background-color: rgba(0, 0, 0, 0);
   }
   .main-top-image {
-    background-image: url(../assets/1020px.png);
+    background-image: url(../../assets/1020px.png);
     width: 100%;
   }
 }
@@ -239,7 +239,7 @@ export default {};
     }
 
     .main-top-image {
-      background-image: url(../assets/mediaSE.png);
+      background-image: url(../../assets/mediaSE.png);
       width: 100%;
       height: 220px;
     }

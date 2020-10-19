@@ -88,9 +88,10 @@ export default {
     transform-origin: 0% 0%;
     transform: translate(0%, -2%);
 
-    transition: padding 0.3s cubic-bezier(0.05,0.7,0.5,1.0); 
+    /* transition: padding 0.3s cubic-bezier(0.05,0.7,0.5,1.0);  */
   }
   #search input {
+    opacity: 0;
     width: 90%;
     height: 45px;
     border: none;
@@ -104,6 +105,13 @@ export default {
   #search input:focus {
     box-shadow: 0 0 0 3px #A550A6 inset;
   }
+  .tab-search-button:checked ~ #search input {
+    opacity: 1;
+    transition: opacity 0.4s cubic-bezier(0.38,0.38,0.38,.38);  
+  }
+  .tab-search-button:checked ~ #search img {
+    opacity: 1;
+  }
 
   #search span {
     position: relative;
@@ -112,6 +120,8 @@ export default {
     position: absolute;
     padding-left: 12px;
     top: 41%;
+    z-index: 2;
+    opacity: 0;
   }
  /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- */
 

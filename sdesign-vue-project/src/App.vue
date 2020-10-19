@@ -3,13 +3,16 @@
     <AppHeader />
     <AppMainTop />
     <AppMainConter />
+    <div id="app-signup-form">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import AppHeader from './components/AppHeader.vue'
-import AppMainTop from './components/AppMainTop.vue'
-import AppMainConter from './components/AppMainCenter.vue'
+import AppHeader from "./components/views/AppHeader.vue";
+import AppMainTop from "./components/views/AppMainTop.vue";
+import AppMainConter from "./components/views/AppMainCenter.vue";
 
 // import VueRouter from 'vue-router'
 
@@ -20,7 +23,7 @@ import AppMainConter from './components/AppMainCenter.vue'
 // })
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     AppHeader,
     AppMainTop,
@@ -30,17 +33,23 @@ export default {
 </script>
 
 <style>
-   body {
-     margin: 0;
-     padding: 0;
-   }
-  #app {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    /* background: #282828; */
-    color: #202020;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+/* signup form */
+#app-signup-form {
+  /* display: none; */
+  /* margin: 0; */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* background: #282828; */
+  color: #202020;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
 </style>
