@@ -33,12 +33,6 @@ export default {
 </script>
 
 <style>
-/* signup form */
-#app-signup-form {
-  /* display: none; */
-  /* margin: 0; */
-}
-
 body {
   margin: 0;
   padding: 0;
