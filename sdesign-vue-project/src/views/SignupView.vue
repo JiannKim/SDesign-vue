@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SignupForm from "../sign/SignupForm";
+import SignupForm from "@/components/sign/SignupForm";
 
 export default {
   components: {
@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/form.css";
+@import "../assets/css/form.css";
 </style>

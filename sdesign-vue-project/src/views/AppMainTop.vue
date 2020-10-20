@@ -31,7 +31,7 @@ export default {};
   /* margin: 0; */
   width: 100%;
   height: 480px;
-  background-image: url(../../assets/mainImage.png);
+  background-image: url(../assets/mainImage.png);
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
@@ -59,7 +59,7 @@ export default {};
   width: 350px;
   font-family: Helvetica;
   font-size: 52px;
-  font-weight: bold;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -150,7 +150,7 @@ export default {};
     background-color: rgba(0, 0, 0, 0);
   }
   .main-top-image {
-    background-image: url(../../assets/1020px.png);
+    background-image: url(../assets/1020px.png);
     width: 100%;
   }
 }
@@ -165,39 +165,41 @@ export default {};
   }
 }
 /* 블랙베리 모바일 */
-@media (max-width: 489px){
-  #main-top-wrapper { height: 580px;}
+@media (max-width: 489px) {
+  #main-top-wrapper {
+    height: 580px;
+  }
   .main-top-image {
     height: 286px;
     overflow: hidden;
   }
-.main-top-headline-box { 
-    display: block; 
-    position: relative; 
+  .main-top-headline-box {
+    display: block;
+    position: relative;
     width: 100%;
     height: 289px;
     background-color: #101010;
-}
-.main-top-headline p {
+  }
+  .main-top-headline p {
     margin-bottom: 27px;
     width: 315px;
-}
-.main-top-headline { 
-    top: 30px; 
+  }
+  .main-top-headline {
+    top: 30px;
     width: 335px;
     padding: 0;
     margin: 0 auto;
-}
-.main-top-headline h1 {
+  }
+  .main-top-headline h1 {
     font-size: 40px;
     width: 269px;
     margin: 0;
-}
-.main-top-headline-button {
+  }
+  .main-top-headline-button {
     width: 335px;
     height: 51px;
-}
-/* #menu { padding-bottom: 31px; } */
+  }
+  /* #menu { padding-bottom: 31px; } */
 }
 /* 모바일 */
 @media (max-width: 470px) {
@@ -219,7 +221,7 @@ export default {};
     margin: 0 auto;
   }
   .main-top-headline p {
-      width: 310px;
+    width: 310px;
   }
   .main-top-headline h1 {
     font-size: 40px;
@@ -231,42 +233,42 @@ export default {};
     height: 51px;
   }
 }
-  /* 아이폰se 모바일 */
-  @media (max-width: 369px){
-    #main-top-wrapper { 
-      height: 470px;
-      top: 53px;
-    }
-
-    .main-top-image {
-      background-image: url(../../assets/mediaSE.png);
-      width: 100%;
-      height: 220px;
-    }
-    .main-top-headline-box { 
-        display: block; 
-        position: relative; 
-        width: 100%;
-        height: 247px;
-        background-color: #101010;
-    }
-    .main-top-headline { 
-        width: 270px;
-        padding: 0;
-        margin: 0 auto;
-    }
-    .main-top-headline h1 {
-        font-size: 33px;
-        width: 240px;
-        margin: 15px 0 4px 0;
-    }
-    .main-top-headline-button{
-        width: 270px;
-        height: 51px;
-    }
-    .main-top-headline p {
-      margin-bottom: 20px;
-      width: 275px;
-    }
+/* 아이폰se 모바일 */
+@media (max-width: 369px) {
+  #main-top-wrapper {
+    height: 470px;
+    top: 53px;
   }
+
+  .main-top-image {
+    background-image: url(../assets/mediaSE.png);
+    width: 100%;
+    height: 220px;
+  }
+  .main-top-headline-box {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 247px;
+    background-color: #101010;
+  }
+  .main-top-headline {
+    width: 270px;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .main-top-headline h1 {
+    font-size: 33px;
+    width: 240px;
+    margin: 15px 0 4px 0;
+  }
+  .main-top-headline-button {
+    width: 270px;
+    height: 51px;
+  }
+  .main-top-headline p {
+    margin-bottom: 20px;
+    width: 275px;
+  }
+}
 </style>

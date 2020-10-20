@@ -1,11 +1,11 @@
 <template>
-  <div id="form-wrapper">
+  <div id="form-container">
     <LoginForm />
   </div>
 </template>
 
 <script>
-import LoginForm from "../sign/LoginForm.vue";
+import LoginForm from "@/components/sign/LoginForm";
 
 export default {
   components: {
@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/form.css";
+@import "../assets/css/form.css";
 </style>

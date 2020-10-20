@@ -17,23 +17,15 @@
     </div>
     <ul class="app-header-menu-lists">
       <li class="header-menu-list">
-        <!-- <a href="/" target="blank" class="header-menu-list">Pricing</a> -->
-        <router-link to="/signup">Pricing</router-link>
+        <router-link to="/pricing" target="blank">Pricing</router-link>
       </li>
       <li class="header-menu-list">
-        <!-- <a href="/" target="blank" class="header-menu-list">FAQ</a> -->
-        <router-link to="/signup">FAQ</router-link>
+        <router-link to="/faq">FAQ</router-link>
       </li>
       <li class="header-menu-list">
-        <!-- <a href="/" target="blank" class="header-menu-list">SFXHD</a> -->
-        <router-link to="/signup">SFXHD</router-link>
+        <router-link to="/spi">SPI</router-link>
       </li>
-      <!-- <a href="/" target="blank" class="header-menu-list"><li>Signup</li></a> -->
-      <!-- <div>
-      <router-link to="/signup" class="header-menu-list"><li>SignUp</li></router-link>
-      <router-link to="/signup" class="header-menu-list"><li>Login</li></router-link>
-      </div> -->
-      <li class="header-menu-list">
+      <li class="header-menu-list form-list">
         <router-link to="/signup">SignUp</router-link>
         <span>/</span>
         <router-link to="/login">Login</router-link>
@@ -47,7 +39,7 @@
 </template>
 
 <script>
-import AppSidebarTabMenu from "./AppSidebarTabMenu.vue";
+import AppSidebarTabMenu from "../views/AppSidebarTabMenu.vue";
 import AppHeaderSearchTab from "./AppHeaderSearchTab.vue";
 
 export default {
@@ -95,8 +87,11 @@ export default {
 }
 .header-menu-list {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   margin-left: 50px;
+}
+.form-list {
+  font-weight: 600;
 }
 /* header logo */
 .app-header-logo {

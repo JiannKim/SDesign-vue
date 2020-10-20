@@ -1,18 +1,19 @@
 <template>
   <div id="app">
+    <div>
+      <router-view></router-view>
+    </div>
     <AppHeader />
     <AppMainTop />
     <AppMainConter />
-    <div id="app-signup-form">
-      <router-view></router-view>
-    </div>
   </div>
 </template>
 
 <script>
-import AppHeader from "./components/views/AppHeader.vue";
-import AppMainTop from "./components/views/AppMainTop.vue";
-import AppMainConter from "./components/views/AppMainCenter.vue";
+// import AppHeader from "./views/AppHeader.vue";
+import AppHeader from "@/views/AppHeader.vue";
+import AppMainTop from "@/views/AppMainTop.vue";
+import AppMainConter from "@/views/AppMainCenter.vue";
 
 // import VueRouter from 'vue-router'
 
@@ -33,17 +34,5 @@ export default {
 </script>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-}
-#app {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  /* background: #282828; */
-  color: #202020;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
+@import "./assets/css/common.css";
 </style>

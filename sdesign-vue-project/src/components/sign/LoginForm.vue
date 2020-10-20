@@ -1,5 +1,5 @@
 <template>
-  <div id="form-container">
+  <div id="form-wrapper">
     <h2>로그인</h2>
     <form @submit="submitForm">
       <div class="form-input">

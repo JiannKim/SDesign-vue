@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     submitForm() {
-      var a = 10;
       // const userData = {
       //   userdi: this.userid,
       //   password: this.password,

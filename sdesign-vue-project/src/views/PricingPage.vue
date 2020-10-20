@@ -1,0 +1,12 @@
+<template>
+  <div>
+    <h1>세계에서 가장 인기있는 사운드 웹사이트에 가입하세요.</h1>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style>
+</style>
