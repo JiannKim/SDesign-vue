@@ -16,11 +16,28 @@
       <input type="text" placeholder="Search for sound effects" />
     </div>
     <ul class="app-header-menu-lists">
-      <a href="/" target="blank" class="header-menu-list"><li>Pricing</li></a>
-      <a href="/" target="blank" class="header-menu-list"><li>FAQ</li></a>
-      <a href="/" target="blank" class="header-menu-list"><li>SFXHD</li></a>
+      <li class="header-menu-list">
+        <!-- <a href="/" target="blank" class="header-menu-list">Pricing</a> -->
+        <router-link to="/signup">Pricing</router-link>
+      </li>
+      <li class="header-menu-list">
+        <!-- <a href="/" target="blank" class="header-menu-list">FAQ</a> -->
+        <router-link to="/signup">FAQ</router-link>
+      </li>
+      <li class="header-menu-list">
+        <!-- <a href="/" target="blank" class="header-menu-list">SFXHD</a> -->
+        <router-link to="/signup">SFXHD</router-link>
+      </li>
       <!-- <a href="/" target="blank" class="header-menu-list"><li>Signup</li></a> -->
+      <!-- <div>
       <router-link to="/signup" class="header-menu-list"><li>SignUp</li></router-link>
+      <router-link to="/signup" class="header-menu-list"><li>Login</li></router-link>
+      </div> -->
+      <li class="header-menu-list">
+        <router-link to="/signup">SignUp</router-link>
+        <span>/</span>
+        <router-link to="/login">Login</router-link>
+      </li>
     </ul>
     <div id="header-wrapper">
       <AppSidebarTabMenu />
@@ -66,14 +83,20 @@ export default {
   display: flex;
   margin-right: 150px;
   width: 450px;
+  list-style: none;
 }
-.header-menu-list {
+/* .app-header-menu-lists li {
+  display: flex;
+  align-items: center;
+} */
+.header-menu-list a {
   color: #313131;
   text-decoration: none;
+}
+.header-menu-list {
   font-size: 16px;
   font-weight: bold;
   margin-left: 50px;
-  list-style: none;
 }
 /* header logo */
 .app-header-logo {
