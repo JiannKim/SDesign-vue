@@ -13,7 +13,7 @@ const router = new VueRouter({
   routes: [
     {
       path: "/signup",
-      // 코드 스플리팅(필요한 페이지를 열때만 데이터를 가져와준다.)
+      // 코드 스플리팅(필요한 페이지를 열때만 데이터를 가져와준다. )
       component: () => import("@/views/SignupView.vue"),
     },
     {
