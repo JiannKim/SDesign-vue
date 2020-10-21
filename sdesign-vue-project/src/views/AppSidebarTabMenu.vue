@@ -9,18 +9,25 @@
       <span></span>
 
       <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
+      <!-- <div id="lists-wrapper"> -->
       <ul id="sidebar-tab-menu-lists">
-        <!-- <router-link type="li" to="#">
-          <a>{{ item }}</a>*5
-        </router-link> -->
-        <a href="#"><li>Pricing</li></a>
-        <a href="#"><li>FAQ</li></a>
-        <a href="#"><li>SFXHD</li></a>
+        <router-link to="/pricing">
+          <li>Pricing</li>
+        </router-link>
+        <router-link to="/faq">
+          <li>FAQ</li>
+        </router-link>
+        <router-link to="/spi">
+          <li>SPI</li>
+        </router-link>
+        <router-link to="/login">
+          <li>Login</li>
+        </router-link>
         <router-link to="/signup">
           <li>SignUp</li>
         </router-link>
-        <!-- <a href="#"><li>Join</li></a> -->
       </ul>
+      <!-- </div> -->
     </nav>
   </div>
 </template>
@@ -50,17 +57,6 @@ export default {};
 
   -webkit-user-select: none;
   user-select: none;
-}
-
-.sidebar-tab-menu-button a {
-  text-decoration: none;
-  color: #5c5c5c;
-
-  transition: color 0.3s ease;
-}
-
-.sidebar-tab-menu-button a:hover {
-  color: #fff;
 }
 
 .sidebar-tab-menu-button input {
@@ -130,36 +126,49 @@ export default {};
 /* 기본 위치 왼쪽상단 고정 */
 #sidebar-tab-menu-lists {
   text-align: left;
-  position: absolute;
-  width: 150px;
-  height: 226px;
+  position: fixed;
+  /* width: 150px;
+  height: 226px; */
+  width: 0px;
+  height: 100%;
   margin: 20px 0 0 -55px;
-  padding: 10px 50px 30px 50px;
+  /* padding: 10px 50px 30px 50px; */
+  padding: 10px 0px 30px 40px;
   padding-top: 30px;
   background: rgba(32, 32, 32, 0.95);
+  display: flex;
+  flex-flow: column;
+  /* justify-content: space-around; */
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
 
   transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
+  transform: translate(-250%, 0);
 
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#sidebar-tab-menu-lists a {
+  text-decoration: none;
+  color: #5c5c5c;
+  transition: color 0.3s ease;
+  display: flex;
 }
 
 #sidebar-tab-menu-lists li {
   padding: 10px 0;
   font-size: 22px;
-
   transform: translateX(10px);
 }
 #sidebar-tab-menu-lists li:hover {
   padding-left: 5px;
+  color: #fff;
 }
 
 /* And let's slide it in from the left */
 
 .sidebar-tab-menu-button input:checked ~ #sidebar-tab-menu-lists {
-  /* 위에 있는 ul의 트랜스폼을 넌해주겠다! */
+  /* 위에 있는 ul의 트랜스폼을 넌해주겠다! 나오게 해줌 */
   transform: none;
 }
 

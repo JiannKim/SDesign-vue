@@ -84,9 +84,9 @@
       <!-- 탭영역 -->
       <ul class="tabs">
         <li
-          v-for="tab in tabs" v-bind:key="tab.id"
-          v-bind:class="{ active: selectedTab === tab }"
-          v-on:click="onClickTab(tab)"
+          v-for="tab in tabs" :key="tab.id"
+          :class="{ active: selectedTab === tab }"
+          @click="onClickTab(tab)"
         >{{tab.title}}</li>
       </ul>
         <div v-if="selectedTab === tabs[0]">
