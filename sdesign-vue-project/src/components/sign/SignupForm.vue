@@ -3,20 +3,27 @@
     <h2 class="form-title">회원 가입</h2>
     <form @submit="submitForm" class="form-box signup">
       <div ref="form-input" class="form-input rectangles">
-        <label :class="{isEmail: selectedInput}" @click="userId" ref="labels" for="userid">email</label>
+        <label :class="{isEmail: selectedId}" for="userid">email</label>
         <input
-          ref="test"
           type="text"
           name="userid"
           id="userid"
+          @focus="userId"
           v-model="userid"
           placeholder="email"
         />
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{isPass: selectedInput}" @click="userId" for="pass">password</label>
-        <input type="password" name="pass" id="pass" v-model="password" placeholder="password" />
+        <label :class="{isPass: selectedPass}" for="pass">password</label>
+        <input
+          type="password"
+          name="pass"
+          id="pass"
+          @focus="userPass"
+          v-model="password"
+          placeholder="password"
+        />
         <span class="underline"></span>
       </div>
       <button type="submit" class="form-button rectangles">가입</button>
@@ -35,7 +42,8 @@ export default {
     return {
       userid: "",
       password: "",
-      selectedInput: false,
+      selectedId: false,
+      selectedPass: false,
     };
   },
   methods: {
@@ -46,7 +54,14 @@ export default {
       // };
     },
     userId() {
-      this.selectedInput = true;
+      this.selectedId = true;
+    },
+    userPass() {
+      if (!this.selectedPass) {
+        this.selectedPass = true;
+      } else {
+        this.selectedPass = false;
+      }
     },
     // userId() {
     //   alert("pass test");
@@ -66,4 +81,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

@@ -1,6 +1,7 @@
 <template>
   <div id="form-container" :style="styleOb">
     <SignupForm />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -31,5 +32,5 @@ export default {
 </script>
 
 <style>
-/* @import "../assets/css/form.css"; */
+@import "../assets/css/form.css";
 </style>

@@ -129,13 +129,13 @@ export default {};
   position: fixed;
   /* width: 150px;
   height: 226px; */
-  width: 0px;
+  width: 100%;
   height: 100%;
   margin: 20px 0 0 -55px;
   /* padding: 10px 50px 30px 50px; */
   padding: 10px 0px 30px 40px;
   padding-top: 30px;
-  background: rgba(32, 32, 32, 0.95);
+  background: rgba(255, 255, 255, 0.836);
   display: flex;
   flex-flow: column;
   /* justify-content: space-around; */
@@ -147,14 +147,21 @@ export default {};
 
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
-
+#sidebar-tab-menu-lists::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 20px;
+  height: 100%;
+}
 #sidebar-tab-menu-lists a {
   text-decoration: none;
-  color: #5c5c5c;
+  color: rgba(0, 0, 0, 0.7);
   transition: color 0.3s ease;
-  display: flex;
+  width: 120px;
 }
-
 #sidebar-tab-menu-lists li {
   padding: 10px 0;
   font-size: 22px;
@@ -162,7 +169,7 @@ export default {};
 }
 #sidebar-tab-menu-lists li:hover {
   padding-left: 5px;
-  color: #fff;
+  color: #313131;
 }
 
 /* And let's slide it in from the left */

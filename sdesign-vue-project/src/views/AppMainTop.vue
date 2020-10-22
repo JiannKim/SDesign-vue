@@ -1,5 +1,5 @@
 <template>
-  <div id="main-top-wrapper">
+  <div id="main-top-wrapper" class="wrapper">
     <div class="main-top-image"></div>
     <div class="main-top-headline-box">
       <div class="main-top-headline">

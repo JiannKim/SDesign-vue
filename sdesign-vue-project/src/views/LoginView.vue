@@ -1,6 +1,8 @@
 <template>
-  <div id="form-container">
-    <LoginForm />
+  <div>
+    <div id="form-container" @click="$emit('close')">
+      <LoginForm />
+    </div>
   </div>
 </template>
 

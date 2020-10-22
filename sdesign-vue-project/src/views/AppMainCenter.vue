@@ -1,79 +1,71 @@
 <template>
-  <div id="main-center-wrapper">
+  <div id="main-center-wrapper" class="wrapper">
     <!-- 카드섹션 1 -->
     <section class="main-center-contents">
       <h1>주요 카테고리</h1>
       <div class="center-contents-categories">
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/X8NkVLQ/walla.png"
-              alt="walla sound effects"
-            />
-            <h3><span>walla</span></h3>
+            <img src="https://i.ibb.co/X8NkVLQ/walla.png" alt="walla sound effects" />
+            <h3>
+              <span>walla</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/Gp7Rzb2/whoosh.png"
-              alt="whoosh sound effects"
-            />
-            <h3><span>whoosh</span></h3>
+            <img src="https://i.ibb.co/Gp7Rzb2/whoosh.png" alt="whoosh sound effects" />
+            <h3>
+              <span>whoosh</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/C90RPzt/wind.png"
-              alt="walla sound effects"
-            />
-            <h3><span>wind</span></h3>
+            <img src="https://i.ibb.co/C90RPzt/wind.png" alt="walla sound effects" />
+            <h3>
+              <span>wind</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/4sQCBYB/footsteps.png"
-              alt="walla sound effects"
-            />
-            <h3><span>footsteps</span></h3>
+            <img src="https://i.ibb.co/4sQCBYB/footsteps.png" alt="walla sound effects" />
+            <h3>
+              <span>footsteps</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/YDQs9Jj/cartoon.png"
-              alt="walla sound effects"
-            />
-            <h3><span>cartoon</span></h3>
+            <img src="https://i.ibb.co/YDQs9Jj/cartoon.png" alt="walla sound effects" />
+            <h3>
+              <span>cartoon</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/svHs7YT/drones.png"
-              alt="walla sound effects"
-            />
-            <h3><span>drones</span></h3>
+            <img src="https://i.ibb.co/svHs7YT/drones.png" alt="walla sound effects" />
+            <h3>
+              <span>drones</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container-wide">
           <a href="#">
-            <img
-              src="https://i.ibb.co/fn51Pbw/menu.png"
-              alt="walla sound effects"
-            />
-            <h3><span>menus & interfaces</span></h3>
+            <img src="https://i.ibb.co/fn51Pbw/menu.png" alt="walla sound effects" />
+            <h3>
+              <span>menus & interfaces</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container-wide">
           <a href="#">
-            <img
-              src="https://i.ibb.co/bbLxzNq/ambience.png"
-              alt="walla sound effects"
-            />
-            <h3><span>ambience</span></h3>
+            <img src="https://i.ibb.co/bbLxzNq/ambience.png" alt="walla sound effects" />
+            <h3>
+              <span>ambience</span>
+            </h3>
           </a>
         </div>
       </div>
@@ -84,138 +76,147 @@
       <!-- 탭영역 -->
       <ul class="tabs">
         <li
-          v-for="tab in tabs" :key="tab.id"
+          v-for="tab in tabs"
+          :key="tab.id"
           :class="{ active: selectedTab === tab }"
           @click="onClickTab(tab)"
         >{{tab.title}}</li>
       </ul>
-        <div v-if="selectedTab === tabs[0]">
-          <!-- 최근 탭 -->
-          <div class="center-contents-categories latest">
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/8KBMxX2/theme-Park.png"
-                  alt="walla sound effects"
-                />
-                <h3><span>theme park</span></h3>
-              </a>
-            </div>
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/YD33HH5/GFX.png"
-                  alt="whoosh sound effects"
-                />
-                <h3><span>gfx animation</span></h3>
-              </a>
-            </div>
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/6RYyQWc/final-Round.png"
-                  alt="walla sound effects"
-                />
-                <h3><span>final round</span></h3>
-              </a>
-            </div>
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/zVDXFhL/quiet.png"
-                  alt="walla sound effects"
-                />
-                <h3><span>quiet streets</span></h3>
-              </a>
-            </div>
+      <div v-if="selectedTab === tabs[0]">
+        <!-- 최근 탭 -->
+        <div class="center-contents-categories latest">
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/8KBMxX2/theme-Park.png" alt="walla sound effects" />
+              <h3>
+                <span>theme park</span>
+              </h3>
+            </a>
+          </div>
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/YD33HH5/GFX.png" alt="whoosh sound effects" />
+              <h3>
+                <span>gfx animation</span>
+              </h3>
+            </a>
+          </div>
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/6RYyQWc/final-Round.png" alt="walla sound effects" />
+              <h3>
+                <span>final round</span>
+              </h3>
+            </a>
+          </div>
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/zVDXFhL/quiet.png" alt="walla sound effects" />
+              <h3>
+                <span>quiet streets</span>
+              </h3>
+            </a>
           </div>
         </div>
-        <div v-else-if="selectedTab === tabs[1]">
-          <!-- 지역 탭 -->
-          <div class="center-contents-categories location">
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/s5VyDf8/seoul.png"
-                  alt="walla sound effects"
-                />
-                <h3><span>서 울</span></h3>
-              </a>
-            </div>
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/CH6yPL9/shanghai.png"
-                  alt="whoosh sound effects"
-                />
-                <h3><span>상 하 이</span></h3>
-              </a>
-            </div>
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/0sQ6w2r/london.png"
-                  alt="walla sound effects"
-                />
-                <h3><span>런 던</span></h3>
-              </a>
-            </div>
-            <div class="browse-container">
-              <a href="#">
-                <img
-                  src="https://i.ibb.co/qryWT7S/india.png"
-                  alt="walla sound effects"
-                />
-                <h3><span>인 도</span></h3>
-              </a>
-            </div>
+      </div>
+      <div v-else-if="selectedTab === tabs[1]">
+        <!-- 지역 탭 -->
+        <div class="center-contents-categories location">
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/s5VyDf8/seoul.png" alt="walla sound effects" />
+              <h3>
+                <span>서 울</span>
+              </h3>
+            </a>
+          </div>
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/CH6yPL9/shanghai.png" alt="whoosh sound effects" />
+              <h3>
+                <span>상 하 이</span>
+              </h3>
+            </a>
+          </div>
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/0sQ6w2r/london.png" alt="walla sound effects" />
+              <h3>
+                <span>런 던</span>
+              </h3>
+            </a>
+          </div>
+          <div class="browse-container">
+            <a href="#">
+              <img src="https://i.ibb.co/qryWT7S/india.png" alt="walla sound effects" />
+              <h3>
+                <span>인 도</span>
+              </h3>
+            </a>
           </div>
         </div>
-        <div v-else>
-          <!-- 태그 탭 -->
-          <div class="center-contents-categories tags">
+      </div>
+      <div v-else>
+        <!-- 태그 탭 -->
+        <div class="center-contents-categories tags">
           <div class="tags-container">
             <a href="#">
-              <h3><span>적막한</span></h3>
+              <h3>
+                <span>적막한</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>시원한</span></h3>
+              <h3>
+                <span>시원한</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>음악</span></h3>
+              <h3>
+                <span>음악</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>신비로운</span></h3>
+              <h3>
+                <span>신비로운</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>습지</span></h3>
+              <h3>
+                <span>습지</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>소름끼치는</span></h3>
+              <h3>
+                <span>소름끼치는</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>광활한</span></h3>
+              <h3>
+                <span>광활한</span>
+              </h3>
             </a>
           </div>
           <div class="tags-container">
             <a href="#">
-              <h3><span>기계음</span></h3>
+              <h3>
+                <span>기계음</span>
+              </h3>
             </a>
-          </div>
           </div>
         </div>
+      </div>
     </section>
     <!-- 카드섹션 3 -->
     <section class="main-center-contents">
@@ -223,57 +224,50 @@
       <div class="center-contents-categories">
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/cvvDS37/a.png"
-              alt="walla sound effects"
-            />
-            <h3><span>aaa</span></h3>
+            <img src="https://i.ibb.co/cvvDS37/a.png" alt="walla sound effects" />
+            <h3>
+              <span>aaa</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/HxvXQBx/b.png"
-              alt="b image"
-
-            />
-            <h3><span>bbb</span></h3>
+            <img src="https://i.ibb.co/HxvXQBx/b.png" alt="b image" />
+            <h3>
+              <span>bbb</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/DCJtb0G/c.png"
-              alt="c image"
-            />
-            <h3><span>ccc</span></h3>
+            <img src="https://i.ibb.co/DCJtb0G/c.png" alt="c image" />
+            <h3>
+              <span>ccc</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/WHp9S14/d.png"
-              alt="d image"
-            />
-            <h3><span>ddd</span></h3>
+            <img src="https://i.ibb.co/WHp9S14/d.png" alt="d image" />
+            <h3>
+              <span>ddd</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/Fq0wcgK/e.png"
-              alt="walla sound effects"
-            />
-            <h3><span>eee</span></h3>
+            <img src="https://i.ibb.co/Fq0wcgK/e.png" alt="walla sound effects" />
+            <h3>
+              <span>eee</span>
+            </h3>
           </a>
         </div>
         <div class="categories-container">
           <a href="#">
-            <img
-              src="https://i.ibb.co/99QX7nb/f.png"
-              alt="walla sound effects"
-            />
-            <h3><span>fff</span></h3>
+            <img src="https://i.ibb.co/99QX7nb/f.png" alt="walla sound effects" />
+            <h3>
+              <span>fff</span>
+            </h3>
           </a>
         </div>
       </div>
@@ -285,9 +279,9 @@
 export default {
   data() {
     const tabs = [
-      {id: 1, title: "최근"},
-      {id: 2, title: "지역"},
-      {id: 3, title: "태그"},
+      { id: 1, title: "최근" },
+      { id: 2, title: "지역" },
+      { id: 3, title: "태그" },
     ];
     // const [selectedTab] = tabs;
     return {
@@ -312,7 +306,7 @@ export default {
   //   };
   // },
   methods: {
-    onClickTab: function(tab) {
+    onClickTab: function (tab) {
       this.selectedTab = tab;
     },
   },
@@ -320,7 +314,6 @@ export default {
 </script>
 
 <style>
-
 .tabs {
   display: flex;
   align-items: center;
@@ -336,24 +329,24 @@ export default {
   margin: 1px;
   font-weight: bold;
   cursor: pointer;
-  transition: width 260ms cubic-bezier(.38, .38, .38, .38);
+  transition: width 260ms cubic-bezier(0.38, 0.38, 0.38, 0.38);
 }
 .tabs .active {
-    color: #313131;
-    height: 27px;
-    width: 60px;
-    border-bottom: 3px solid #313131;
-    transition-duration: 100ms;
-    transition-property: width;
-    transition: width 170ms cubic-bezier(.38, .38, .38, .38);
+  color: #313131;
+  height: 27px;
+  width: 60px;
+  border-bottom: 3px solid #313131;
+  transition-duration: 100ms;
+  transition-property: width;
+  transition: width 170ms cubic-bezier(0.38, 0.38, 0.38, 0.38);
 }
 
 .main-center-contents {
-  padding-top: 77px;
+  padding-top: 73px;
   width: 1231px;
   margin: 0 auto;
-  position: relative;
-  top: 73px;
+  /* position: relative;
+  top: 73px; */
 }
 
 .main-center-contents h1 {
@@ -500,7 +493,8 @@ export default {
 }
 
 .tags h3 {
-  color: #202020;
+  color: #fff;
+  /* transition: color 0.03s cubic-bezier(0.8, 0.2, 0.1, 1.6); */
   /* position: absolute;
     margin: 0;
     left: 0;
@@ -539,13 +533,17 @@ export default {
   height: 100%;
   border-radius: 5px;
   content: "\A";
-  background: #f5f4ff;
+  background-color: #f5f4ff;
   /* background: linear-gradient(to top,rgba(255, 255, 255, 0.486),#f5f4ff4b); */
   /* background: -moz-linear-gradient(to top,rgba(0,0,0,.8),rgba(16,22,35,.26));
     background: -webkit-linear-gradient(to top,rgba(0,0,0,.8),rgba(16,22,35,.26));
     background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,0,0,.8)),to(rgba(16,22,35,.26)));
     background: -o-linear-gradient(to top,rgba(0,0,0,.8),rgba(16,22,35,.26));
     background: linear-gradient(to top,rgba(0,0,0,.8),rgba(16,22,35,.26)); */
+}
+.tags-container h3:hover {
+  color: #202020;
+  /* transition: color 0.03s cubic-bezier(0.8, 0.2, 0.1, 1.6); */
 }
 /* tags container */
 .tags-container {
@@ -686,7 +684,7 @@ export default {
     flex-grow: 1;
     margin: 0 auto;
     padding-top: 30px;
-    top: 68px;
+    /* top: 68px; */
   }
   .categories-container {
     width: 169px;
@@ -749,7 +747,7 @@ export default {
 
   #main-center-wrapper {
     position: relative;
-    top: -10px;
+    top: 50px;
   }
   .main-center-contents {
     width: 290px;

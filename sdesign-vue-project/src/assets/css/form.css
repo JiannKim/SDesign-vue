@@ -4,13 +4,14 @@
   background-color: #fff;
   /* color: #2d3d50; */
   color: #313131;
-  min-width: 370px;
-  min-height: 460px;
+  min-width: 310px;
+  min-height: 450px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
   padding: 50px;
+  margin: 20px;
   border-radius: 4px;
   box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.3);
   position: relative;
@@ -18,7 +19,10 @@
   border: none;
   z-index: 4;
   /* vertical-align: middle; */
-  /* border: 1px solid blue; */
+  /* border: 1px solid rgb(255, 70, 240); */
+}
+.form-title {
+  margin: 5px;
 }
 .form-box {
   background: #fff;
@@ -42,25 +46,21 @@
   /* border: 1px solid rgba(255, 0, 0, 0.267); */
 }
 .form-input input {
-  width: 100%;
   font-size: 22px;
+  text-align: center;
   outline: none;
-
-  position: relative;
-  border: none;
-  font-weight: 300;
+  /* border: 1px solid rgba(0, 251, 255, 0.363); */
 }
-.form-input label {
+.form-input input,
+label {
   width: 100%;
   font-weight: 300;
-
-  /* border: 1px solid rgba(0, 251, 255, 0.363); */
+  border: none;
 }
 .form-input::before,
 .underline {
-  /* width: 0; */
   width: 100%;
-  height: 2px;
+  height: 1px;
   border-radius: 3px;
   position: absolute;
   bottom: 0;
@@ -84,25 +84,20 @@
   top: 0;
   left: 0;
   color: transparent;
-  text-align: left;
+  /* text-align: left; */
   z-index: 1;
   cursor: pointer;
   line-height: 60px;
 }
-/* .form-input input:focus ~ label {
-  line-height: 18px;
-  font-size: 18px;
-  font-weight: 100px;
-  top: -10px;
-} */
 
 .isEmail,
 .isPass {
-  /* line-height: 18px !important; */
+  /* line-height: 30px !important; */
   font-size: 14px;
-  font-weight: 100px !important;
+  font-weight: 100 !important;
   color: #313131 !important;
-  top: -25px !important;
+  top: -30px !important;
+  /* border: 1px solid red; */
 }
 .form-button {
   all: unset;

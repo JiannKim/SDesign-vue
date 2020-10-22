@@ -16,6 +16,19 @@
       <input type="text" placeholder="Search for sound effects" />
     </div>
     <ul class="app-header-menu-lists">
+      <!-- <li class="header-menu-list" v-for="item in lists" :key="item.index">
+      <router-link to="/pricing">{{item.list}}</router-link>
+      </li>-->
+
+      <!-- 
+      <router-link
+        class="header-menu-list"
+        v-for="item in lists"
+        :key="item.index"
+        to="/pricing"
+        tag="li"
+      >{{item.list}}</router-link>-->
+
       <li class="header-menu-list">
         <router-link to="/pricing" target="blank">Pricing</router-link>
       </li>
@@ -25,10 +38,10 @@
       <li class="header-menu-list">
         <router-link to="/spi">SPI</router-link>
       </li>
-      <li class="header-menu-list form-list">
-        <router-link to="/signup">SignUp</router-link>
-        <span>/</span>
+      <li @click="mounted" class="header-menu-list form-list">
         <router-link to="/login">Login</router-link>
+        <span>/</span>
+        <router-link to="/signup">SignUp</router-link>
       </li>
     </ul>
     <div id="header-wrapper">
@@ -43,9 +56,23 @@ import AppSidebarTabMenu from "../views/AppSidebarTabMenu.vue";
 import AppHeaderSearchTab from "./AppHeaderSearchTab.vue";
 
 export default {
+  data() {
+    return {
+      lists: [{ list: "Pricing" }, { list: "FAQ" }, { list: "SPI" }],
+      address: [{ add: "/pricing" }, { add: "/faq" }, { add: "spi" }],
+    };
+  },
   components: {
     AppSidebarTabMenu,
     AppHeaderSearchTab,
+  },
+  methods: {
+    mounted() {
+      this.$modal.show("example");
+    },
+    modalHide() {
+      this.$modal.hideAll();
+    },
   },
 };
 </script>
@@ -89,6 +116,7 @@ export default {
   font-size: 16px;
   font-weight: 500;
   margin-left: 50px;
+  cursor: pointer;
 }
 .form-list {
   font-weight: 600;
