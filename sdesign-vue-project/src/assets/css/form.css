@@ -1,8 +1,7 @@
 /* form  */
 #form-wrapper {
   box-sizing: border-box;
-  background-color: #fff;
-  /* color: #2d3d50; */
+  /* background-color: #fff; */
   color: #313131;
   min-width: 310px;
   min-height: 450px;
@@ -12,14 +11,12 @@
   justify-content: center;
   padding: 50px;
   margin: 20px;
-  border-radius: 4px;
-  box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.3);
-  position: relative;
+  /* border-radius: 4px; */
+  /* box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.3); */
+  /* position: relative; */
   top: 10px;
   border: none;
   z-index: 4;
-  /* vertical-align: middle; */
-  /* border: 1px solid rgb(255, 70, 240); */
 }
 .form-title {
   margin: 5px;
@@ -192,7 +189,7 @@ label {
 /*  */
 
 /* view */
-#form-container {
+/* #form-container {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -204,4 +201,4 @@ label {
   position: fixed;
   top: 0px;
   z-index: 2;
-}
+} */

@@ -7,21 +7,21 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import AppHeader from "@/views/AppHeader.vue";
 
 library.add(faTwitter, faGithub, faSearch);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
-
-// Vue.component("app-modal", {
-//   template: "login-view",
-// });
+// vue-js-modal 기능 사용을 위한 등록
 Vue.use(vmodal, {
   componentName: "Modal",
 });
+
 Vue.config.productionTip = false;
 
 new Vue({
-  // vmodal,
+  vmodal,
+  AppHeader,
   router,
   render: (h) => h(App),
 }).$mount("#app");

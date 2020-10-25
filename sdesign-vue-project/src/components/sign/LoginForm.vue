@@ -3,7 +3,7 @@
     <h2>로그인</h2>
     <form @submit="submitForm" class="form-box signup">
       <div class="form-input rectangles">
-        <label :class="{isEmail: selectedId}" for="userid">email</label>
+        <label :class="{ isEmail: selectedId }" for="userid">email</label>
         <input
           type="text"
           name="userid"
@@ -14,7 +14,7 @@
         />
       </div>
       <div class="form-input rectangles">
-        <label :class="{isPass: selectedPass}" for="pass">password</label>
+        <label :class="{ isPass: selectedPass }" for="pass">password</label>
         <input
           type="password"
           name="pass"
@@ -44,6 +44,7 @@ export default {
       selectedPass: false,
     };
   },
+  props: ["modal-form"],
   methods: {
     submitForm() {
       // const userData = {
@@ -55,11 +56,13 @@ export default {
       this.selectedId = true;
     },
     userPass() {
-      if (!this.selectedPass) {
-        this.selectedPass = true;
-      } else {
-        this.selectedPass = false;
-      }
+      this.selectedPass = true;
+
+      // if (!this.selectedPass) {
+      //   this.selectedPass = true;
+      // } else {
+      //   this.selectedPass = false;
+      // }
     },
     modalHide() {
       console.log("ghjgjhg");
@@ -69,4 +72,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@import "../../assets/css/form.css";
+</style>

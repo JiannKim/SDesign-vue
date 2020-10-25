@@ -39,9 +39,9 @@
         <router-link to="/spi">SPI</router-link>
       </li>
       <li @click="mounted" class="header-menu-list form-list">
-        <router-link to="/login">Login</router-link>
-        <span>/</span>
-        <router-link to="/signup">SignUp</router-link>
+        login<!-- <router-link to="/login">Login</router-link> -->
+        <!-- <span>/</span> -->
+        <!-- <router-link to="/signup">SignUp</router-link> -->
       </li>
     </ul>
     <div id="header-wrapper">

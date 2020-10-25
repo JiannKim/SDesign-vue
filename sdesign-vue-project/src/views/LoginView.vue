@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="form-container" @click="$emit('close')">
+    <div id="form-container">
       <LoginForm />
     </div>
   </div>
@@ -17,5 +17,4 @@ export default {
 </script>
 
 <style>
-@import "../assets/css/form.css";
 </style>
