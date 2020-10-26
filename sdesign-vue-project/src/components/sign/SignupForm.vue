@@ -1,7 +1,7 @@
 <template>
   <div id="form-wrapper">
-    <h2 class="form-title">회원 가입</h2>
-    <form @submit="submitForm" class="form-box signup">
+    <h1 class="form-title">회원 가입</h1>
+    <form @submit.prevent="submitForm" class="form-box signup">
       <div class="form-input rectangles">
         <label :class="{ isEmail: selectedId }" for="userid">email</label>
         <input
@@ -26,6 +26,18 @@
         />
         <span class="underline"></span>
       </div>
+      <div class="form-input rectangles">
+        <label :class="{ isPass: selectedName }" for="name">user name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          @focus="userName"
+          v-model="nickname"
+          placeholder="user name"
+        />
+        <span class="underline"></span>
+      </div>
       <button type="submit" class="form-button rectangles">가입</button>
       <p>
         Already have an account?
@@ -39,6 +51,8 @@
 </template>
 
 <script>
+// import { registerUser } from "@/api";
+
 export default {
   data() {
     // const userInfo = [{ userid: "" }, { password: "" }];
@@ -47,6 +61,7 @@ export default {
       password: "",
       selectedId: false,
       selectedPass: false,
+      selectedName: false,
     };
   },
   methods: {
@@ -55,6 +70,7 @@ export default {
       //   userdi: this.userid,
       //   password: this.password,
       // };
+      // registerUser();
     },
     userId() {
       this.selectedId = true;
@@ -62,8 +78,10 @@ export default {
     userPass() {
       this.selectedPass = true;
     },
+    userName() {
+      this.selectedName = true;
+    },
     modalHide() {
-      console.log("ghjgjhg");
       this.$modal.hide("example2");
     },
   },

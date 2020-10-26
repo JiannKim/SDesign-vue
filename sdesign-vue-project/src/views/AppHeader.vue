@@ -1,12 +1,19 @@
 <template>
   <header id="app-header-wrapper">
-    <a class="app-header-logo-link" href="/">
+    <router-link class="app-header-logo-link" to="/main">
       <img
         class="app-header-logo"
         src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png"
         alt="s-Design-Logo"
       />
-    </a>
+    </router-link>
+    <!-- <a class="app-header-logo-link" href="/">
+      <img
+        class="app-header-logo"
+        src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png"
+        alt="s-Design-Logo"
+      />
+    </a> -->
     <div class="app-header-search-box">
       <img
         class="header-search-icon"

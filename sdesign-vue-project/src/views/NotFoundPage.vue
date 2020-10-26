@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Sound API Page</h1>
+    <h1>Page is not found.</h1>
   </div>
 </template>
 
@@ -8,5 +8,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>

@@ -1,6 +1,6 @@
 <template>
   <div id="form-wrapper">
-    <h2 class="form-title">로그인</h2>
+    <h1 class="form-title">로그인</h1>
     <form @submit="submitForm" class="form-box login">
       <div class="form-input rectangles">
         <label :class="{ isEmail: selectedId }" for="userid">email</label>

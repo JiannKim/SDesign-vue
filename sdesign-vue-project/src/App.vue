@@ -1,11 +1,16 @@
 <template>
   <div id="app">
+    <router-view></router-view>
     <div>
       <modal name="example" :width="420" :height="550">
         <LoginForm />
+        <!-- <LoginView /> -->
       </modal>
-      <modal name="example2" :width="420" :height="550">
+    </div>
+    <div>
+      <modal name="example2" :width="420" :height="610">
         <SignupForm />
+        <!-- <SignupView /> -->
       </modal>
     </div>
     <AppHeader />
@@ -16,13 +21,14 @@
 </template>
 
 <script>
-// import AppHeader from "./views/AppHeader.vue";
 import AppHeader from "@/views/AppHeader.vue";
 import AppMainTop from "@/views/AppMainTop.vue";
 import AppMainConter from "@/views/AppMainCenter.vue";
 import AppMainBottom from "@/views/AppMainBottom.vue";
 import LoginForm from "@/components/sign/LoginForm.vue";
 import SignupForm from "@/components/sign/SignupForm.vue";
+// import LoginView from "@/views/LoginView.vue";
+// import SignupView from "@/views/SignupView.vue";
 
 export default {
   data() {
@@ -38,17 +44,10 @@ export default {
     AppMainBottom,
     LoginForm,
     SignupForm,
+    // LoginView,
+    // SignupView,
   },
-  methods: {
-    example() {
-      this.$modal.show("example2", {
-        name: "example2",
-        width: "330px",
-        height: "130px",
-        draggable: true,
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 
