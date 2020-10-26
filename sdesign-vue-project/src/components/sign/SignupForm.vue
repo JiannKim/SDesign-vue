@@ -51,7 +51,7 @@
 </template>
 
 <script>
-// import { registerUser } from "@/api";
+import { registerUser } from "@/api";
 
 export default {
   data() {
@@ -59,6 +59,7 @@ export default {
     return {
       userid: "",
       password: "",
+      nickname: "",
       selectedId: false,
       selectedPass: false,
       selectedName: false,
@@ -66,11 +67,12 @@ export default {
   },
   methods: {
     submitForm() {
-      // const userData = {
-      //   userdi: this.userid,
-      //   password: this.password,
-      // };
-      // registerUser();
+      const userData = {
+        userid: this.userid,
+        password: this.password,
+        nickname: this.nickname,
+      };
+      registerUser(userData);
     },
     userId() {
       this.selectedId = true;

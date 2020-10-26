@@ -4,13 +4,11 @@
     <div>
       <modal name="example" :width="420" :height="550">
         <LoginForm />
-        <!-- <LoginView /> -->
       </modal>
     </div>
     <div>
       <modal name="example2" :width="420" :height="610">
         <SignupForm />
-        <!-- <SignupView /> -->
       </modal>
     </div>
     <AppHeader />
