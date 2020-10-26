@@ -1,7 +1,7 @@
 <template>
   <div id="form-wrapper">
-    <h2>로그인</h2>
-    <form @submit="submitForm" class="form-box signup">
+    <h2 class="form-title">로그인</h2>
+    <form @submit="submitForm" class="form-box login">
       <div class="form-input rectangles">
         <label :class="{ isEmail: selectedId }" for="userid">email</label>
         <input
@@ -12,6 +12,7 @@
           v-model="userid"
           placeholder="email"
         />
+        <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
         <label :class="{ isPass: selectedPass }" for="pass">password</label>
@@ -23,14 +24,17 @@
           v-model="password"
           placeholder="password"
         />
+        <span class="underline"></span>
       </div>
-      <button type="submit" class="form-button rectangles">로그인</button>
+      <button type="submit" class="btn form-button rectangles">로그인</button>
       <p>
         Go to
         <router-link to="/Signup">create a new account.</router-link>
       </p>
     </form>
-    <button ref="btn" @click="modalHide">close</button>
+    <button class="btn close-button" @click="modalHide">
+      <fa-icon :icon="['fas', 'times']" />
+    </button>
   </div>
 </template>
 
@@ -73,5 +77,14 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/form.css";
+/* @import "../../assets/css/form.css"; */
+
+.close-button {
+  all: unset;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #31313131;
+  font-size: 25px;
+}
 </style>

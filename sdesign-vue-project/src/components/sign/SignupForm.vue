@@ -2,8 +2,8 @@
   <div id="form-wrapper">
     <h2 class="form-title">회원 가입</h2>
     <form @submit="submitForm" class="form-box signup">
-      <div ref="form-input" class="form-input rectangles">
-        <label :class="{isEmail: selectedId}" for="userid">email</label>
+      <div class="form-input rectangles">
+        <label :class="{ isEmail: selectedId }" for="userid">email</label>
         <input
           type="text"
           name="userid"
@@ -15,7 +15,7 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{isPass: selectedPass}" for="pass">password</label>
+        <label :class="{ isPass: selectedPass }" for="pass">password</label>
         <input
           type="password"
           name="pass"
@@ -32,6 +32,9 @@
         <router-link to="/login">click here</router-link>
       </p>
     </form>
+    <button class="btn close-button" @click="modalHide">
+      <fa-icon :icon="['fas', 'times']" />
+    </button>
   </div>
 </template>
 
@@ -57,29 +60,14 @@ export default {
       this.selectedId = true;
     },
     userPass() {
-      if (!this.selectedPass) {
-        this.selectedPass = true;
-      } else {
-        this.selectedPass = false;
-      }
+      this.selectedPass = true;
     },
-    // userId() {
-    //   alert("pass test");
-    //   console.log("test1");
-    //   this.$refs.test.focus(function () {
-    //     console.log("test2");
-    //     this.$refs.labels.css({
-    //       background: "red",
-    //     });
-    //   });
-    // },
+    modalHide() {
+      console.log("ghjgjhg");
+      this.$modal.hide("example2");
+    },
   },
-  // password: function () {
-  //   alert("pass test");
-  //   this.$refs.test.focus();
-  // },
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -16,6 +16,9 @@ body {
   top: 73px;
 }
 a {
-  color: #A041F0;
+  color: #a041f0;
   text-decoration: none;
+}
+.btn {
+  cursor: pointer;
 }

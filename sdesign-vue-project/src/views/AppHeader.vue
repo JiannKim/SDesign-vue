@@ -35,13 +35,14 @@
       <li class="header-menu-list">
         <router-link to="/faq">FAQ</router-link>
       </li>
-      <li class="header-menu-list">
+      <!-- <li class="header-menu-list">
         <router-link to="/spi">SPI</router-link>
+      </li> -->
+      <li @click="loginMounted" class="header-menu-list form-list">
+        Login
       </li>
-      <li @click="mounted" class="header-menu-list form-list">
-        login<!-- <router-link to="/login">Login</router-link> -->
-        <!-- <span>/</span> -->
-        <!-- <router-link to="/signup">SignUp</router-link> -->
+      <li @click="signupMounted" class="header-menu-list form-list">
+        Sign Up
       </li>
     </ul>
     <div id="header-wrapper">
@@ -67,12 +68,15 @@ export default {
     AppHeaderSearchTab,
   },
   methods: {
-    mounted() {
+    loginMounted() {
       this.$modal.show("example");
     },
-    modalHide() {
-      this.$modal.hideAll();
+    signupMounted() {
+      this.$modal.show("example2");
     },
+    // modalHide() {
+    //   this.$modal.hideAll();
+    // },
   },
 };
 </script>

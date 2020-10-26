@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 // import LoginView from "@/views/LoginView.vue";
 import PricingPage from "@/views/PricingPage.vue";
 import FaqPage from "@/views/FaqPage.vue";
-import SpiPage from "@/views/SpiPage.vue";
+// import SpiPage from "@/views/SpiPage.vue";
 
 Vue.use(VueRouter);
 
@@ -28,10 +28,10 @@ const router = new VueRouter({
       path: "/faq",
       component: FaqPage,
     },
-    {
-      path: "/spi",
-      component: SpiPage,
-    },
+    // {
+    //   path: "/spi",
+    //   component: SpiPage,
+    // },
   ],
 });
 

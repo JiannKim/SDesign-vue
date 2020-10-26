@@ -2,7 +2,7 @@
   <!-- 검색 토글 -->
   <div id="side-tab-search-wrapper">
     <input type="checkbox" class="tab-search-button" />
-    <font-awesome-icon :icon="['fas', 'search']" class="tab-icon" />
+    <fa-icon :icon="['fas', 'search']" class="tab-icon" />
     <div id="search">
       <span>
         <img src="https://i.ibb.co/5LmPhyS/serch-Icon.png" alt="serch-Icon" />
