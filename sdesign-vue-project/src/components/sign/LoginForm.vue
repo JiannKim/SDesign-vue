@@ -58,7 +58,8 @@ export default {
       };
       loginUser(userData)
         .then((response) => {
-          console.log(response);
+          console.log("responser =>" + response);
+          this.initForm();
           // let token = response.data.token;
           // let useremail = response.data.user.accountEmail;
           // let nickname = response.data.user.nickname;
@@ -70,6 +71,10 @@ export default {
           // fetchNotes();
         })
         .catch((errer) => console.log(errer));
+    },
+    initForm() {
+      this.useremail = "";
+      this.password = "";
     },
     userId() {
       this.selectedId = true;

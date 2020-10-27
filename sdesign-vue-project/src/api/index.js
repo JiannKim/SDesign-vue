@@ -15,7 +15,7 @@ function registerUser(userData) {
     accountPw: userData.password,
     accountName: userData.nickname,
   };
-  axios.post(url, data, config);
+  return axios.post(url, data, config);
 }
 
 function loginUser(loginInfo) {
