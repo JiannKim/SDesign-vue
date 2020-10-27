@@ -53,17 +53,17 @@ export default {
   methods: {
     loginForm() {
       const userData = {
-        useremail: this.useremail,
-        password: this.password,
+        accountEmail: this.useremail,
+        accountPw: this.password,
       };
       loginUser(userData)
         .then((response) => {
           console.log(response);
           // let token = response.data.token;
-          let useremail = response.data.user.useremail;
-          let nickname = response.data.user.nickname;
-          console.log("useremail => " + useremail);
-          console.log("nickname => " + nickname);
+          // let useremail = response.data.user.accountEmail;
+          // let nickname = response.data.user.nickname;
+          // console.log("useremail => " + useremail);
+          // console.log("nickname => " + nickname);
           // this.$store.commit("setToken", token);
           // this.$store.commit("setUsers", useremail);
           // this.$store.commit("setNick", nickname);
