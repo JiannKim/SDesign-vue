@@ -8,9 +8,13 @@ import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+// import TheHeader from "@/components/common/TheHeader.vue";
+
 library.add(faTwitter, faGithub, faSearch, faTimes);
 
 Vue.component("fa-icon", FontAwesomeIcon);
+// Vue.component("the-Header", TheHeader);
+
 // vue-js-modal 기능 사용을 위한 등록
 Vue.use(vmodal, {
   componentName: "Modal",

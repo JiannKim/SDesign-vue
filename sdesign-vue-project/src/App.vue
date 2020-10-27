@@ -1,32 +1,16 @@
 <template>
   <div id="app">
+    <TheHeader />
     <router-view></router-view>
-    <div>
-      <modal name="example" :width="420" :height="550">
-        <LoginForm />
-      </modal>
-    </div>
-    <div>
-      <modal name="example2" :width="420" :height="610">
-        <SignupForm />
-      </modal>
-    </div>
-    <AppHeader />
-    <AppMainTop />
-    <AppMainConter />
-    <AppMainBottom />
+    <SignFormView />
   </div>
 </template>
 
 <script>
-import AppHeader from "@/views/AppHeader.vue";
-import AppMainTop from "@/views/AppMainTop.vue";
-import AppMainConter from "@/views/AppMainCenter.vue";
-import AppMainBottom from "@/views/AppMainBottom.vue";
-import LoginForm from "@/components/sign/LoginForm.vue";
-import SignupForm from "@/components/sign/SignupForm.vue";
-// import LoginView from "@/views/LoginView.vue";
-// import SignupView from "@/views/SignupView.vue";
+import TheHeader from "@/components/common/TheHeader.vue";
+// import LoginForm from "@/components/sign/LoginForm.vue";
+// import SignupForm from "@/components/sign/SignupForm.vue";
+import SignFormView from "@/views/SignFormView.vue";
 
 export default {
   data() {
@@ -36,14 +20,10 @@ export default {
   },
   name: "app",
   components: {
-    AppHeader,
-    AppMainTop,
-    AppMainConter,
-    AppMainBottom,
-    LoginForm,
-    SignupForm,
-    // LoginView,
-    // SignupView,
+    TheHeader,
+    // LoginForm,
+    // SignupForm,
+    SignFormView,
   },
   methods: {},
 };
@@ -51,5 +31,5 @@ export default {
 
 <style>
 @import "./assets/css/common.css";
-@import "./assets/css/form.css";
+/* @import "./assets/css/form.css"; */
 </style>

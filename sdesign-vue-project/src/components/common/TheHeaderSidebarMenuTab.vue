@@ -77,12 +77,12 @@ export default {};
 .sidebar-tab-menu-button span {
   display: block;
   width: 35px;
-  height: 5.5px;
-  margin: 4px 5px 4px 5px;
+  height: 4px;
+  margin: 8px 5px 8px 5px;
   position: relative;
 
   background: #313131;
-  border-radius: 2px;
+  border-radius: 3px;
 
   z-index: 1;
 

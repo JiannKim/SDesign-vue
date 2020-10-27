@@ -2,31 +2,20 @@
   <header id="app-header-wrapper">
     <router-link class="app-header-logo-link" to="/main">
       <img
-        class="app-header-logo"
-        src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png"
+        class="header-logo"
+        src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
         alt="s-Design-Logo"
       />
     </router-link>
-    <!-- <a class="app-header-logo-link" href="/">
-      <img
-        class="app-header-logo"
-        src="https://i.ibb.co/pWfncYT/s-Design-Logo-01.png"
-        alt="s-Design-Logo"
-      />
-    </a> -->
     <div class="app-header-search-box">
       <img
         class="header-search-icon"
-        src="https://i.ibb.co/5LmPhyS/serch-Icon.png"
+        src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
         alt="serch-Icon"
       />
       <input type="text" placeholder="Search for sound effects" />
     </div>
     <ul class="app-header-menu-lists">
-      <!-- <li class="header-menu-list" v-for="item in lists" :key="item.index">
-      <router-link to="/pricing">{{item.list}}</router-link>
-      </li>-->
-
       <!-- 
       <router-link
         class="header-menu-list"
@@ -37,31 +26,28 @@
       >{{item.list}}</router-link>-->
 
       <li class="header-menu-list">
-        <router-link to="/pricing" target="blank">Pricing</router-link>
+        <router-link to="/pricing">Pricing</router-link>
       </li>
       <li class="header-menu-list">
         <router-link to="/faq">FAQ</router-link>
       </li>
-      <!-- <li class="header-menu-list">
-        <router-link to="/spi">SPI</router-link>
-      </li> -->
       <li @click="loginMounted" class="header-menu-list form-list">
         Login
       </li>
-      <li @click="signupMounted" class="header-menu-list form-list">
+      <li @click="signupMounted" class="header-menu-list form-list signup-li">
         Sign Up
       </li>
     </ul>
     <div id="header-wrapper">
-      <AppSidebarTabMenu />
-      <AppHeaderSearchTab />
+      <TheHeaderSidebarMenuTab />
+      <TheHeaderSearchTab />
     </div>
   </header>
 </template>
 
 <script>
-import AppSidebarTabMenu from "../views/AppSidebarTabMenu.vue";
-import AppHeaderSearchTab from "./AppHeaderSearchTab.vue";
+import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab.vue";
+import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 
 export default {
   data() {
@@ -71,28 +57,24 @@ export default {
     };
   },
   components: {
-    AppSidebarTabMenu,
-    AppHeaderSearchTab,
+    TheHeaderSidebarMenuTab,
+    TheHeaderSearchTab,
   },
   methods: {
     loginMounted() {
-      this.$modal.show("example");
+      this.$modal.show("login-modal");
     },
     signupMounted() {
-      this.$modal.show("example2");
+      this.$modal.show("signup-modal");
     },
-    // modalHide() {
-    //   this.$modal.hideAll();
-    // },
+    modalHide() {
+      this.$modal.hideAll();
+    },
   },
 };
 </script>
 
-<style>
-* {
-  transition: all 0.3s cubic-bezier(0.38, 0.88, 0.38, 0.88);
-}
-
+<style scoped>
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
@@ -104,21 +86,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 2rem;
   position: fixed;
+  font-size: 2rem;
   z-index: 2;
 }
 /* ul-li */
 .app-header-menu-lists {
   display: flex;
-  margin-right: 150px;
-  width: 450px;
+  align-items: center;
+  margin-right: 100px;
+  width: 420px;
   list-style: none;
 }
-/* .app-header-menu-lists li {
-  display: flex;
-  align-items: center;
-} */
 .header-menu-list a {
   color: #313131;
   text-decoration: none;
@@ -132,9 +111,15 @@ export default {
 .form-list {
   font-weight: 600;
 }
+.signup-li {
+  border: 1px solid #282828;
+  border-radius: 20px;
+  padding: 10px;
+  width: 80px;
+}
 /* header logo */
-.app-header-logo {
-  width: 50px;
+.header-logo {
+  width: 100px;
   margin: 0 30px 0 147px;
   display: flex;
   align-items: center;
@@ -154,6 +139,7 @@ export default {
   position: absolute;
   left: 19px;
   top: 13px;
+  width: 17px;
 }
 
 .app-header-search-box input {
@@ -185,7 +171,7 @@ export default {
   .app-header-search-box {
     width: 41%;
   }
-  .app-header-logo {
+  .header-logo {
     margin-left: 50px;
   }
   .app-header-menu-lists {
@@ -193,7 +179,7 @@ export default {
   }
 }
 @media (max-width: 1250px) {
-  .app-header-logo {
+  .header-logo {
     margin-left: 30px;
   }
   .app-header-search-box {
@@ -220,9 +206,8 @@ export default {
     align-items: center;
     margin: 0 30px 0 30px;
     transition: margin 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
-    /* border: 1px solid red; */
   }
-  .app-header-logo-link {
+  .header-logo-link {
     z-index: 1;
   }
   .app-header-search-box {

@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import SignupView from "@/views/SignupView.vue";
-// import LoginView from "@/views/LoginView.vue";
+// import AppMain from "@/views/AppMain.vue";
 import PricingPage from "@/views/PricingPage.vue";
 import FaqPage from "@/views/FaqPage.vue";
 
@@ -16,16 +15,8 @@ const router = new VueRouter({
     },
     {
       path: "/main",
-      component: () => import("@/App.vue"),
-    },
-    {
-      path: "/signup",
-      // 코드 스플리팅(필요한 페이지를 열때만 데이터를 가져와준다. )
-      component: () => import("@/views/SignupView.vue"),
-    },
-    {
-      path: "/login",
-      component: () => import("@/views/LoginView.vue"),
+      // 코드 스플리팅(필요한 페이지를 열때만 데이터를 가져와준다. 임포트를 하지않고 가져온다. )
+      component: () => import("@/views/AppMain.vue"),
     },
     {
       path: "/pricing",
