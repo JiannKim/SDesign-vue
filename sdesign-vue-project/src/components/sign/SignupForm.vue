@@ -3,13 +3,13 @@
     <h1 class="form-title">회원 가입</h1>
     <form @submit.prevent="submitForm" class="form-box signup">
       <div class="form-input rectangles">
-        <label :class="{ isEmail: selectedId }" for="userid">email</label>
+        <label :class="{ isEmail: selectedId }" for="useremail">email</label>
         <input
           type="text"
-          name="userid"
-          id="userid"
+          name="useremail"
+          id="useremail"
           @focus="userId"
-          v-model="userid"
+          v-model="useremail"
           placeholder="email"
         />
         <span class="underline"></span>
@@ -44,7 +44,7 @@
         <router-link to="/login">click here</router-link>
       </p>
     </form>
-    <button class="btn close-button" @click="modalHide">
+    <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
     </button>
   </div>
@@ -57,7 +57,7 @@ export default {
   data() {
     // const userInfo = [{ userid: "" }, { password: "" }];
     return {
-      userid: "",
+      useremail: "",
       password: "",
       nickname: "",
       selectedId: false,
@@ -68,7 +68,7 @@ export default {
   methods: {
     submitForm() {
       const userData = {
-        userid: this.userid,
+        useremail: this.useremail,
         password: this.password,
         nickname: this.nickname,
       };
@@ -84,7 +84,7 @@ export default {
       this.selectedName = true;
     },
     modalHide() {
-      this.$modal.hide("example2");
+      this.$modal.hide("signup-modal");
     },
   },
 };

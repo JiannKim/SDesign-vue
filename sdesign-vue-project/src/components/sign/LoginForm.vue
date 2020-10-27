@@ -1,15 +1,15 @@
 <template>
   <div id="form-wrapper">
     <h1 class="form-title">로그인</h1>
-    <form @submit="submitForm" class="form-box login">
+    <form @submit.prevent="loginForm" class="form-box login">
       <div class="form-input rectangles">
-        <label :class="{ isEmail: selectedId }" for="userid">email</label>
+        <label :class="{ isEmail: selectedId }" for="useremail">email</label>
         <input
           type="text"
-          name="userid"
-          id="userid"
+          name="useremail"
+          id="useremail"
           @focus="userId"
-          v-model="userid"
+          v-model="useremail"
           placeholder="email"
         />
         <span class="underline"></span>
@@ -32,29 +32,44 @@
         <router-link to="/Signup">create a new account.</router-link>
       </p>
     </form>
-    <button class="btn close-button" @click="modalHide">
+    <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
     </button>
   </div>
 </template>
 
 <script>
+import { loginUser } from "@/api";
+
 export default {
   data() {
     return {
-      userid: "",
+      useremail: "",
       password: "",
       selectedId: false,
       selectedPass: false,
     };
   },
-  props: ["modal-form"],
   methods: {
-    submitForm() {
-      // const userData = {
-      //   userdi: this.userid,
-      //   password: this.password,
-      // };
+    loginForm() {
+      const userData = {
+        useremail: this.useremail,
+        password: this.password,
+      };
+      loginUser(userData)
+        .then((response) => {
+          console.log(response);
+          // let token = response.data.token;
+          let useremail = response.data.user.useremail;
+          let nickname = response.data.user.nickname;
+          console.log("useremail => " + useremail);
+          console.log("nickname => " + nickname);
+          // this.$store.commit("setToken", token);
+          // this.$store.commit("setUsers", useremail);
+          // this.$store.commit("setNick", nickname);
+          // fetchNotes();
+        })
+        .catch((errer) => console.log(errer));
     },
     userId() {
       this.selectedId = true;
@@ -69,8 +84,7 @@ export default {
       // }
     },
     modalHide() {
-      console.log("ghjgjhg");
-      this.$modal.hide("example");
+      this.$modal.hide("login-modal");
     },
   },
 };
