@@ -3,6 +3,7 @@
     <MainTop />
     <MainCenter />
     <MainBottom />
+    <MainUnder />
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import MainTop from "@/components/MainTop.vue";
 import MainCenter from "@/components/MainCenter.vue";
 import MainBottom from "@/components/MainBottom.vue";
+import MainUnder from "@/components/MainUnder.vue";
 
 export default {
   components: {
     MainTop,
     MainCenter,
     MainBottom,
+    MainUnder,
   },
 };
 </script>
