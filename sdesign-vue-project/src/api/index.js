@@ -5,23 +5,23 @@ const apiURL = axios.create({
   baseURL: "http://193.122.127.197:2500/api",
   // timeout: 5000
 });
-const config = {};
+// const config = {};
 
 // signup api 요청 메서드
-function registerUser(userData) {
-  const url = "http://193.122.127.197:2500/api/create/account";
-  console.log(userData);
-  const data = {
-    accountEmail: userData.useremail,
-    accountPw: userData.password,
-    accountName: userData.nickname,
-  };
-  return axios.post(url, data, config);
+function registerUser(userInfo) {
+  // const url = "http://193.122.127.197:2500/api/create/account";
+  // console.log("userData" + userData);
+  console.log("user data 19=>" + userInfo);
+  return apiURL.post("/create/account", userInfo);
+  // console.log("result1123123 => " + result);
+  // return result;
 }
 // login api 요청 메서드
 function loginUser(loginInfo) {
   console.log("login test => ", loginInfo);
   return apiURL.post("/login", loginInfo);
+  // console.log("result data => " + result.data);
+  // return result.data;
 }
 
 export { registerUser, loginUser };

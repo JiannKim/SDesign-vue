@@ -31,6 +31,7 @@
         Go to
         <router-link to="/Signup">create a new account.</router-link>
       </p>
+      <p>{{loginErrMessage}}</p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
@@ -46,33 +47,33 @@ export default {
     return {
       useremail: "",
       password: "",
-      logMessage: "",
+      loginErrMessage: "",
       selectedId: false,
       selectedPass: false,
     };
   },
   methods: {
-    loginForm() {
+    async loginForm() {
       const userData = {
         accountEmail: this.useremail,
         accountPw: this.password,
       };
-      loginUser(userData)
-        .then((response) => {
-          console.log("response =>" + response);
-
-          this.initForm();
-          // let token = response.data.token;
-          // let useremail = response.data.user.accountEmail;
-          // let nickname = response.data.user.nickname;
-          // console.log("useremail => " + useremail);
-          // console.log("nickname => " + nickname);
-          // this.$store.commit("setToken", token);
-          // this.$store.commit("setUsers", useremail);
-          // this.$store.commit("setNick", nickname);
-          // fetchNotes();
-        })
-        .catch((errer) => console.log(errer));
+      const { data } = await loginUser(userData);
+      console.log("response =>" + data);
+      if (data == "5504") {
+        console.log("바르게 입력해라!!");
+        this.loginErrMessage = `잘못된 정보입니다`;
+      }
+      this.initForm();
+      // let token = response.data.token;
+      // let useremail = response.data.user.accountEmail;
+      // let nickname = response.data.user.nickname;
+      // console.log("useremail => " + useremail);
+      // console.log("nickname => " + nickname);
+      // this.$store.commit("setToken", token);
+      // this.$store.commit("setUsers", useremail);
+      // this.$store.commit("setNick", nickname);
+      // fetchNotes();
     },
     initForm() {
       this.useremail = "";

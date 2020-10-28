@@ -17,15 +17,8 @@
         <router-link to="/faq">
           <li>FAQ</li>
         </router-link>
-        <router-link to="/spi">
-          <li>SPI</li>
-        </router-link>
-        <router-link to="/login">
-          <li>Login</li>
-        </router-link>
-        <router-link to="/signup">
-          <li>SignUp</li>
-        </router-link>
+        <li>Login</li>
+        <li>SignUp</li>
       </ul>
       <!-- </div> -->
     </nav>

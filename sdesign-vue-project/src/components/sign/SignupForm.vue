@@ -74,10 +74,13 @@ export default {
         accountPw: this.password,
         accountName: this.nickname,
       };
+      // console.log("user data => " + userData);
       const { data } = await registerUser(userData);
-      console.log(data.useremail);
-      this.logMessage = `${data.useremail} 님이 가입되셨습니다`;
-      this.initForm();
+      // console.log("response" + userData.accountEmail);
+      console.log(data);
+      // console.log(data.useremail);
+      // this.logMessage = `${data.useremail} 님이 가입되셨습니다`;
+      // this.initForm();
     },
     initForm() {
       this.useremail = "";
