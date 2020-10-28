@@ -735,16 +735,6 @@ export default {
 
 /* 아이폰se 모바일 */
 @media (max-width: 369px) {
-  /* .App-header { height: 63px; }
-    #menu { margin: 17px 0 0 -50px;}
-    #search { top: 64px;}
-    #searchToggle { font-size: 27px; }
-    #menuToggle span { 
-      width: 30px;
-      transform-origin: 1px 0px;
-    }
-    */
-
   #main-center-wrapper {
     position: relative;
     top: 50px;

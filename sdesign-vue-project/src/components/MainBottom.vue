@@ -166,9 +166,9 @@ export default {
   bottom: 0;
 }
 
-.img-b img {
+/* .img-b img {
   width: 65px;
-}
+} */
 
 .position-description {
   width: 100%;
@@ -191,4 +191,164 @@ export default {
 
 /* 반응형 */
 
+@media (max-width: 1600px) {
+}
+@media (max-width: 1500px) {
+}
+@media (max-width: 1250px) {
+  #main-bottom-wrapper {
+    height: auto;
+    top: 0;
+    padding-bottom: 20%;
+  }
+  .bottom-position {
+    width: 880px;
+  }
+  /* 거슬리는.. 이미지 b... ㅜ.ㅜ */
+  .img-b img {
+    width: 68px;
+    margin: 0 10px;
+  }
+  .images-position {
+    margin-bottom: 50px;
+    width: 275px;
+  }
+}
+
+/* 태블릿 */
+@media (max-width: 1020px) {
+  #main-bottom-wrapper {
+    height: auto;
+    top: 0;
+    padding-bottom: 20%;
+  }
+  .bottom-position {
+    width: 600px;
+  }
+  /* 거슬리는.. 이미지 b... ㅜ.ㅜ */
+  .img-b img {
+    width: 68px;
+    margin: 0 10px;
+  }
+  .images-position {
+    margin-bottom: 50px;
+    width: 275px;
+  }
+}
+@media (max-width: 750px) {
+  #main-bottom-wrapper {
+    height: auto;
+    top: 0;
+    padding-bottom: 20%;
+  }
+  .bottom-position {
+    width: 460px;
+  }
+  .bottom-title {
+    font-size: 24px;
+  }
+  .images-position {
+    margin-bottom: 50px;
+    width: 220px;
+  }
+}
+@media (max-width: 599px) {
+}
+
+/* 블랙베리 모바일 */
+@media (max-width: 489px) {
+  #main-bottom-wrapper {
+    height: auto;
+    top: 0;
+    padding-bottom: 60px;
+  }
+  .bottom-position {
+    top: 53px;
+    width: 340px;
+  }
+  .bottom-title {
+    font-size: 28px;
+  }
+  .numbers-title {
+    font-size: 36px;
+    width: 100%;
+  }
+  .bottom-images {
+    margin: 30px 0;
+  }
+  /* 거슬리는.. 이미지 b... ㅜ.ㅜ */
+  /* .img-b img {
+    width: 68px;
+    margin: 0 10px;
+  } */
+  .images-position {
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .position-description {
+    width: 65%;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 470px) {
+  /* #main-bottom-wrapper {
+    height: auto;
+    top: 0;
+    padding-bottom: 60px;
+  }
+  .bottom-position {
+    top: 53px;
+    width: 280px;
+  }
+  .bottom-title {
+    font-size: 24px;
+  }
+  .numbers-title {
+    font-size: 28px;
+    width: 270px;
+  }
+  .title-position span {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .bottom-images {
+    margin: 10px 0;
+  }
+  .images-position {
+    margin-bottom: 40px;
+  } */
+}
+
+/* 아이폰se 모바일 */
+@media (max-width: 369px) {
+  #main-bottom-wrapper {
+    height: auto;
+    top: 0;
+    padding-bottom: 60px;
+  }
+  .bottom-position {
+    top: 53px;
+    width: 280px;
+  }
+  .bottom-title {
+    font-size: 24px;
+  }
+  .numbers-title {
+    font-size: 30px;
+    width: 270px;
+  }
+  .title-position span {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .bottom-images {
+    margin: 10px 0;
+  }
+  .images-position {
+    margin-bottom: 40px;
+  }
+}
 </style>
