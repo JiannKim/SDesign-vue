@@ -61,8 +61,8 @@ export default {};
 
 .sidebar-tab-menu-button input {
   display: block;
-  width: 35px;
-  height: 25px;
+  width: 45px;
+  height: 35px;
   position: absolute;
 
   cursor: pointer;
@@ -78,7 +78,7 @@ export default {};
   display: block;
   width: 35px;
   height: 4px;
-  margin: 8px 5px 8px 5px;
+  margin: 6px 5px 0px 5px;
   position: relative;
 
   background: #313131;
@@ -129,7 +129,7 @@ export default {};
   position: fixed;
   /* width: 150px;
   height: 226px; */
-  width: 100%;
+  width: 50%;
   height: 100%;
   margin: 20px 0 0 -55px;
   /* padding: 10px 50px 30px 50px; */
@@ -173,8 +173,7 @@ export default {};
 }
 
 /* And let's slide it in from the left */
-
-.sidebar-tab-menu-button input:checked ~ #sidebar-tab-menu-lists {
+#tab-menu-button:checked ~ #sidebar-tab-menu-lists {
   /* 위에 있는 ul의 트랜스폼을 넌해주겠다! 나오게 해줌 */
   transform: none;
 }

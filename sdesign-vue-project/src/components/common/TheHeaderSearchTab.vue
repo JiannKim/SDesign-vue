@@ -106,7 +106,7 @@ export default {};
   background-color: #f3f3f3;
 }
 #search input:focus {
-  box-shadow: 0 0 0 3px #a550a6 inset;
+  box-shadow: 0 0 5px 2px #a550a6;
 }
 .tab-search-button:checked ~ #search input {
   opacity: 1;
