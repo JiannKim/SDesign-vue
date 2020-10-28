@@ -43,6 +43,7 @@
         Already have an account?
         <router-link to="/login">click here</router-link>
       </p>
+      <p>{{logMessage}}</p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
@@ -60,19 +61,28 @@ export default {
       useremail: "",
       password: "",
       nickname: "",
+      logMessage: "",
       selectedId: false,
       selectedPass: false,
       selectedName: false,
     };
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       const userData = {
-        useremail: this.useremail,
-        password: this.password,
-        nickname: this.nickname,
+        accountEmail: this.useremail,
+        accountPw: this.password,
+        accountName: this.nickname,
       };
-      registerUser(userData);
+      const { data } = await registerUser(userData);
+      console.log(data.useremail);
+      this.logMessage = `${data.useremail} 님이 가입되셨습니다`;
+      this.initForm();
+    },
+    initForm() {
+      this.useremail = "";
+      this.password = "";
+      this.nickname = "";
     },
     userId() {
       this.selectedId = true;

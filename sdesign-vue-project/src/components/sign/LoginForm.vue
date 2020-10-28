@@ -46,6 +46,7 @@ export default {
     return {
       useremail: "",
       password: "",
+      logMessage: "",
       selectedId: false,
       selectedPass: false,
     };
@@ -58,7 +59,8 @@ export default {
       };
       loginUser(userData)
         .then((response) => {
-          console.log("responser =>" + response);
+          console.log("response =>" + response);
+
           this.initForm();
           // let token = response.data.token;
           // let useremail = response.data.user.accountEmail;
