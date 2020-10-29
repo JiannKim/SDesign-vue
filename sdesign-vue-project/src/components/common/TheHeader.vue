@@ -83,6 +83,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   position: fixed;
+  top: 0;
+  left: 0;
   font-size: 2rem;
   z-index: 2;
 }
@@ -155,9 +157,6 @@ export default {
 
   /* media Quary */
 @media (max-width: 1600px) {
-  .app-header-wrapper {
-    width: 100%;
-  }
   .app-header-search-box {
     width: 40%;
     transition: width 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
@@ -220,8 +219,22 @@ export default {
 
 /* 모바일 */
 @media (max-width: 440px) {
-  .app-header-wrapper {
-    width: 100%;
+}
+/* 아이폰se 모바일 */
+@media (max-width: 369px) {
+  #app-header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  @-moz-document url-prefix() {
+    #app-header-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 </style>

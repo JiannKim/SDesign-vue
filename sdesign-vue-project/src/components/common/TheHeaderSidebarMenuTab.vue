@@ -183,7 +183,7 @@ export default {
   height: 226px; */
     width: 50%;
     height: 100%;
-    margin: 21px 0 0 -75px;
+    margin: 20px -50px;
     /* padding: 10px 50px 30px 50px; */
     padding: 10px 0px 30px 40px;
     padding-top: 30px;
