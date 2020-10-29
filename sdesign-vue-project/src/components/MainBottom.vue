@@ -87,7 +87,7 @@ export default {
 
 <style scoped>
 #main-bottom-wrapper {
-  margin: 107px 0;
+  margin-top: 107px;
   padding: 0;
   width: 100%;
   height: 588px;
@@ -312,7 +312,7 @@ export default {
   .position-img {
     display: flex;
     justify-content: center;
-}
+  }
   .position-description {
     margin-top: 12px;
   }
