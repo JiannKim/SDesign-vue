@@ -82,8 +82,7 @@ label {
   line-height: 50px;
 }
 
-.isEmail,
-.isPass {
+.isSelected {
   font-size: 14px;
   font-weight: 100 !important;
   color: #313131 !important;
@@ -92,7 +91,7 @@ label {
 .form-button {
   all: unset;
   background: rgb(161, 65, 240);
-  margin-top: 30px;
+  margin: 30px 0;
   border-radius: 4px;
   color: #fff;
 
@@ -106,7 +105,12 @@ label {
 .form-button:hover {
   background: rgb(172, 83, 245);
 }
-
+.log-message {
+  font-size: 16px;
+  word-break: keep-all;
+  padding-top: 10px;
+  color: rgba(216, 0, 29, 0.8);
+}
 /* view */
 /* #form-container {
   width: 100%;

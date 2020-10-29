@@ -2,13 +2,13 @@
   <div id="form-container">
     <!-- <SignupForm /> -->
     <div>
-      <modal name="signup-modal" :width="420" :height="610">
+      <modal name="signup-modal" :width="400" :height="610">
         <SignupForm />
       </modal>
     </div>
     <!-- <SignupForm /> -->
     <div>
-      <modal name="login-modal" :width="420" :height="550">
+      <modal name="login-modal" :width="380" :height="550">
         <LoginForm />
       </modal>
     </div>

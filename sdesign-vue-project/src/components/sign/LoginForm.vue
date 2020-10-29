@@ -3,7 +3,7 @@
     <h1 class="form-title">로그인</h1>
     <form @submit.prevent="loginForm" class="form-box login">
       <div class="form-input rectangles">
-        <label :class="{ isEmail: selectedId }" for="useremail">email</label>
+        <label :class="{ isSelected: selectedId }" for="useremail">email</label>
         <input
           type="text"
           name="useremail"
@@ -15,7 +15,7 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{ isPass: selectedPass }" for="pass">password</label>
+        <label :class="{ isSelected: selectedPass }" for="pass">password</label>
         <input
           type="password"
           name="pass"
@@ -26,12 +26,12 @@
         />
         <span class="underline"></span>
       </div>
+      <p class="log-message">{{loginMessage}}</p>
       <button type="submit" class="btn form-button rectangles">로그인</button>
       <p>
         Go to
         <router-link to="/Signup">create a new account.</router-link>
       </p>
-      <p>{{loginErrMessage}}</p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
@@ -47,11 +47,12 @@ export default {
     return {
       useremail: "",
       password: "",
-      loginErrMessage: "",
+      loginMessage: "",
       selectedId: false,
       selectedPass: false,
     };
   },
+  props: {},
   methods: {
     async loginForm() {
       const userData = {
@@ -59,10 +60,12 @@ export default {
         accountPw: this.password,
       };
       const { data } = await loginUser(userData);
-      console.log("response =>" + data);
+      console.log("response =>" + data.accountName);
       if (data == "5504") {
         console.log("바르게 입력해라!!");
-        this.loginErrMessage = `잘못된 정보입니다`;
+        this.loginMessage = `* 아이디 또는 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
+      } else {
+        this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
       }
       this.initForm();
       // let token = response.data.token;

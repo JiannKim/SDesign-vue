@@ -3,7 +3,7 @@
     <h1 class="form-title">회원 가입</h1>
     <form @submit.prevent="submitForm" class="form-box signup">
       <div class="form-input rectangles">
-        <label :class="{ isEmail: selectedId }" for="useremail">email</label>
+        <label :class="{ isSelected: selectedId }" for="useremail">email</label>
         <input
           type="text"
           name="useremail"
@@ -15,7 +15,7 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{ isPass: selectedPass }" for="pass">password</label>
+        <label :class="{ isSelected: selectedPass }" for="pass">password</label>
         <input
           type="password"
           name="pass"
@@ -27,7 +27,7 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{ isPass: selectedName }" for="name">user name</label>
+        <label :class="{ isSelected: selectedName }" for="name">user name</label>
         <input
           type="text"
           name="name"
@@ -43,7 +43,7 @@
         Already have an account?
         <router-link to="/login">click here</router-link>
       </p>
-      <p>{{logMessage}}</p>
+      <p class="log-message">{{signMessage}}</p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
@@ -61,7 +61,7 @@ export default {
       useremail: "",
       password: "",
       nickname: "",
-      logMessage: "",
+      signMessage: "",
       selectedId: false,
       selectedPass: false,
       selectedName: false,
@@ -76,7 +76,13 @@ export default {
       };
       // console.log("user data => " + userData);
       const { data } = await registerUser(userData);
-      // console.log("response" + userData.accountEmail);
+      console.log("Signup response =>" + data.accountEmail);
+      if (data == "3588") {
+        console.log("중복된 아이디다!!");
+        this.signMessage = `* 중복된 아이디 입니다`;
+      } else {
+        this.signMessage = `* ${data.accountEmail}로 가입 되셨습니다`;
+      }
       console.log(data);
       // console.log(data.useremail);
       // this.logMessage = `${data.useremail} 님이 가입되셨습니다`;

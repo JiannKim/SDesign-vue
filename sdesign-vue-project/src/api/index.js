@@ -11,7 +11,7 @@ const apiURL = axios.create({
 function registerUser(userInfo) {
   // const url = "http://193.122.127.197:2500/api/create/account";
   // console.log("userData" + userData);
-  console.log("user data 19=>" + userInfo);
+  console.log("register data =>" + userInfo);
   return apiURL.post("/create/account", userInfo);
   // console.log("result1123123 => " + result);
   // return result;
