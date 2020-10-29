@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar-tab-menu-wrapper">
     <nav class="sidebar-tab-menu-button">
-      <input id="tab-menu-button" type="checkbox" />
+      <input id="tab-menu-button" type="checkbox" @click="clicked" />
       <!-- 햄버거 메뉴 버튼을 만드는 스펜태그 가운데 스펜은 보이지 않게 한다. -->
       <span></span>
       <!-- 가운데 스펜은 없는척 -->
@@ -10,23 +10,56 @@
 
       <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
       <!-- <div id="lists-wrapper"> -->
-      <ul id="sidebar-tab-menu-lists">
-        <router-link to="/pricing">
-          <li>Pricing</li>
-        </router-link>
-        <router-link to="/faq">
-          <li>FAQ</li>
-        </router-link>
-        <li>Login</li>
-        <li>SignUp</li>
-      </ul>
+      <!-- <label for="checked">{{checked}}</label> -->
+      <!-- <button @click="clicked">sksk</button> -->
+
+      <transition name="listbox">
+        <ul
+          class="sidebar-tab-menu-lists"
+          :class="{isChecked: ckeckedInput}"
+          @click="$emit('close')"
+        >
+          <router-link to="/pricing">
+            <li class="tab-menu-lists-list">Pricing</li>
+          </router-link>
+          <router-link to="/faq">
+            <li class="tab-menu-lists-list">FAQ</li>
+          </router-link>
+          <li @click="loginMounted" class="tab-menu-lists-list form-list">Login</li>
+          <li @click="signupMounted" class="tab-menu-lists-list form-list">SignUp</li>
+        </ul>
+      </transition>
       <!-- </div> -->
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      ckeckedInput: "",
+    };
+  },
+  methods: {
+    clicked: function () {
+      console.log("changed");
+      // this.ckeckedInput = true;
+      this.ckeckedInput === true
+        ? (this.ckeckedInput = false)
+        : (this.ckeckedInput = true);
+    },
+    loginMounted() {
+      this.$modal.show("login-modal");
+    },
+    signupMounted() {
+      this.$modal.show("signup-modal");
+    },
+    modalHide() {
+      this.$modal.hideAll();
+    },
+  },
+};
 </script>
 
 <style>
@@ -117,18 +150,19 @@ export default {};
 }
 
 /* 기본 위치 왼쪽상단 고정 */
-#sidebar-tab-menu-lists {
+.sidebar-tab-menu-lists {
   text-align: left;
   position: fixed;
   /* width: 150px;
   height: 226px; */
   width: 50%;
   height: 100%;
-  margin: 20px 0 0 -55px;
+  margin: 21px 0 0 -55px;
   /* padding: 10px 50px 30px 50px; */
   padding: 10px 0px 30px 40px;
   padding-top: 30px;
   background: rgba(255, 255, 255, 0.836);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   flex-flow: column;
   /* justify-content: space-around; */
@@ -140,7 +174,45 @@ export default {};
 
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
-#sidebar-tab-menu-lists::before {
+/* 파이어폭스 스타일 */
+@-moz-document url-prefix() {
+  .sidebar-tab-menu-lists {
+    text-align: left;
+    position: fixed;
+    /* width: 150px;
+  height: 226px; */
+    width: 50%;
+    height: 100%;
+    margin: 21px 0 0 -75px;
+    /* padding: 10px 50px 30px 50px; */
+    padding: 10px 0px 30px 40px;
+    padding-top: 30px;
+    background: rgba(255, 255, 255, 0.836);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-flow: column;
+    /* justify-content: space-around; */
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+
+    transform-origin: 0% 0%;
+    transform: translate(-250%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  .sidebar-tab-menu-lists::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 20px;
+    height: 100%;
+  }
+}
+
+.sidebar-tab-menu-lists::before {
   content: "";
   background: rgba(0, 0, 0, 0.8);
   position: absolute;
@@ -149,25 +221,35 @@ export default {};
   width: 20px;
   height: 100%;
 }
-#sidebar-tab-menu-lists a {
+.sidebar-tab-menu-lists a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.7);
   transition: color 0.3s ease;
   width: 120px;
 }
-#sidebar-tab-menu-lists li {
+.tab-menu-lists-list {
   padding: 10px 0;
   font-size: 22px;
   transform: translateX(10px);
+  width: 120px;
+  cursor: pointer;
 }
-#sidebar-tab-menu-lists li:hover {
+.tab-menu-lists-list:hover {
   padding-left: 5px;
   color: #313131;
 }
+.form-list {
+  font-weight: 600;
+}
 
 /* And let's slide it in from the left */
-#tab-menu-button:checked ~ #sidebar-tab-menu-lists {
-  /* 위에 있는 ul의 트랜스폼을 넌해주겠다! 나오게 해줌 */
+/* #tab-menu-button:checked ~ #sidebar-tab-menu-lists { */
+/* 위에 있는 ul의 트랜스폼을 넌해주겠다! 나오게 해줌 */
+/* transform: none;
+} */
+
+/* 위에 있는 ul의 트랜스폼을 넌해주겠다! 나오게 해줌 */
+.isChecked {
   transform: none;
 }
 

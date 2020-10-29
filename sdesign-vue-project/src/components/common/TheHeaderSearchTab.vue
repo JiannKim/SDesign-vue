@@ -32,7 +32,7 @@ export default {};
 
   z-index: 1;
 
-  /* -webkit-user-select: none; */
+  -webkit-user-select: none;
   user-select: none;
 }
 

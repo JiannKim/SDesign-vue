@@ -31,12 +31,8 @@
       <li class="header-menu-list">
         <router-link to="/faq">FAQ</router-link>
       </li>
-      <li @click="loginMounted" class="header-menu-list form-list">
-        Login
-      </li>
-      <li @click="signupMounted" class="header-menu-list form-list signup-li">
-        Sign Up
-      </li>
+      <li @click="loginMounted" class="header-menu-list form-list">Login</li>
+      <li @click="signupMounted" class="header-menu-list form-list signup-li">Sign Up</li>
     </ul>
     <div id="header-wrapper">
       <TheHeaderSidebarMenuTab />
