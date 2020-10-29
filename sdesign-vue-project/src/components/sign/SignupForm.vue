@@ -38,12 +38,12 @@
         />
         <span class="underline"></span>
       </div>
+      <p class="log-message">{{signMessage}}</p>
       <button type="submit" class="form-button rectangles">가입</button>
       <p>
         Already have an account?
         <router-link to="/login">click here</router-link>
       </p>
-      <p class="log-message">{{signMessage}}</p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
