@@ -166,9 +166,9 @@ export default {
   bottom: 0;
 }
 
-/* .img-b img {
-  width: 65px;
-} */
+.img-b img {
+  width: 68px;
+}
 
 .position-description {
   width: 100%;
@@ -194,41 +194,28 @@ export default {
 @media (max-width: 1600px) {
 }
 @media (max-width: 1500px) {
-}
-@media (max-width: 1250px) {
-  #main-bottom-wrapper {
-    height: auto;
-    top: 0;
-    padding-bottom: 20%;
-  }
   .bottom-position {
-    width: 880px;
-  }
-  /* 거슬리는.. 이미지 b... ㅜ.ㅜ */
-  .img-b img {
-    width: 68px;
-    margin: 0 10px;
+    width: 78%;
   }
   .images-position {
-    margin-bottom: 50px;
-    width: 275px;
+    width: 20%;
   }
+}
+@media (max-width: 1250px) {
 }
 
 /* 태블릿 */
 @media (max-width: 1020px) {
   #main-bottom-wrapper {
     height: auto;
-    top: 0;
-    padding-bottom: 20%;
+    padding-bottom: 15%;
   }
   .bottom-position {
-    width: 600px;
+    width: 640px;
   }
   /* 거슬리는.. 이미지 b... ㅜ.ㅜ */
   .img-b img {
     width: 68px;
-    margin: 0 10px;
   }
   .images-position {
     margin-bottom: 50px;
@@ -239,7 +226,6 @@ export default {
   #main-bottom-wrapper {
     height: auto;
     top: 0;
-    padding-bottom: 20%;
   }
   .bottom-position {
     width: 460px;
@@ -276,16 +262,16 @@ export default {
   .bottom-images {
     margin: 30px 0;
   }
-  /* 거슬리는.. 이미지 b... ㅜ.ㅜ */
-  /* .img-b img {
-    width: 68px;
-    margin: 0 10px;
-  } */
   .images-position {
     margin-bottom: 50px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+  }
+  /* img b 정렬 */
+  .position-img {
+    display: flex;
+    justify-content: center;
   }
   .position-description {
     width: 65%;
@@ -294,34 +280,7 @@ export default {
 
 /* 모바일 */
 @media (max-width: 470px) {
-  /* #main-bottom-wrapper {
-    height: auto;
-    top: 0;
-    padding-bottom: 60px;
-  }
-  .bottom-position {
-    top: 53px;
-    width: 280px;
-  }
-  .bottom-title {
-    font-size: 24px;
-  }
-  .numbers-title {
-    font-size: 28px;
-    width: 270px;
-  }
-  .title-position span {
-    font-size: 15px;
-    margin-top: 10px;
-  }
-  .bottom-images {
-    margin: 10px 0;
-  }
-  .images-position {
-    margin-bottom: 40px;
-  } */
 }
-
 /* 아이폰se 모바일 */
 @media (max-width: 369px) {
   #main-bottom-wrapper {
@@ -349,6 +308,13 @@ export default {
   }
   .images-position {
     margin-bottom: 40px;
+  }
+  .position-img {
+    display: flex;
+    justify-content: center;
+}
+  .position-description {
+    margin-top: 12px;
   }
 }
 </style>
