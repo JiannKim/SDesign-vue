@@ -26,6 +26,10 @@
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
         </div>
       </div>
     </div>
@@ -43,7 +47,7 @@ export default {};
 <style scoped lang="scss">
 #main-under-section-wrapper {
   width: 100%;
-  height: 1173px;
+  height: 100%;
   position: relative;
   top: 60px;
   left: 0;
@@ -130,7 +134,7 @@ export default {};
 
 .under-section-contents {
   max-width: 80%;
-  max-height: 823px;
+  max-height: 820px;
   margin: 0 auto;
   text-align: left;
   position: relative;
@@ -141,7 +145,7 @@ export default {};
 
 .contents-title {
   width: 24%;
-  height: 100%;
+  // height: 100%;
   padding: 0 8% 10%;
   word-break: keep-all;
   font-stretch: normal;
@@ -154,11 +158,13 @@ export default {};
 
 .contents-clients-logo {
   width: 60%;
+  // height: 100%;
   padding: 1% 2.5%;
 }
 /* 임시 고양이 이미지 */
 .contents-clients-logo img {
-  width: 25%;
+  width: 10%;
+  margin: 4.5% 6%;
 }
 
 /* 반응형 */
@@ -174,7 +180,7 @@ export default {};
 /* 태블릿 */
 @media (max-width: 1020px) {
   #main-under-section-wrapper {
-    height: 1073px;
+    height: 100%;
   }
   #under-section-container,
   .under-bgimage,
@@ -182,23 +188,18 @@ export default {};
     height: 723px;
   }
   .under-section-bottom {
-    /* width: 100%; */
     height: 300px;
-    /* color: #fff; */
-    /* background-color: #000; */
-
-    /* border: 1px solid aquamarine; */
   }
 }
 @media (max-width: 750px) {
   #main-under-section-wrapper {
-    height: 973px;
+    height: 100%;
     top: 0px;
   }
   #under-section-container,
   .under-bgimage,
   .under-darkness-box {
-    height: 623px;
+    height: 500px;
   }
   .contents-title h1 {
     font-size: 36px !important;
@@ -226,21 +227,8 @@ export default {};
   }
   .contents-title {
     width: 250px;
-    height: 170px;
+    height: 120px;
   }
-  // .under-section-bottom {
-  //   height: 220px;
-  //   h1 {
-  //     font-size: 42px;
-  //   }
-  //   a {
-  //     font: {
-  //       size: 42px;
-  //       weight: 800;
-  //     }
-  //     color: #5e39f1;
-  //   }
-  // }
 }
 
 /* 블랙베리 모바일 */
