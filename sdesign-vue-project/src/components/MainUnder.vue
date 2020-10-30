@@ -1,33 +1,37 @@
 <template>
   <div id="main-under-section-wrapper">
-    <div class="under-bgimage">
-      <!-- <img src="https://i.ibb.co/0VJNmhX/sdesign-under-img-tiny.png" alt="sdesign-under-image" /> -->
+    <div id="under-section-container">
+      <!-- 언더영역 배경 -->
+      <div class="under-bgimage"></div>
+      <!-- 좌측 다크니스 박스 -->
+      <div class="under-darkness-box"></div>
+      <!-- 컨텐츠 영역 -->
+      <div class="under-section-contents">
+        <div class="contents-title">
+          <h1 style="font-size: 42px">
+            신뢰받는
+            <br />선도 브랜드, <br />대행사 네트워크.
+          </h1>
+        </div>
+        <div class="contents-clients-logo">
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+        </div>
+      </div>
     </div>
-    <!-- 좌측 다크니스 박스 -->
-    <div class="under-darkness-box"></div>
-    <!-- 컨텐츠 영역 -->
-    <div class="under-section-contents">
-      <div class="contents-title">
-        <h1 style="font-size: 42px">
-          신뢰받는
-          <br />선도 브랜드,
-          <br />대행사 네트워크.
-        </h1>
-      </div>
-      <div class="contents-clients-logo">
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-        <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-      </div>
+    <div class="under-section-bottom">
+      <h1>Sound like a Pro.</h1>
+      <router-link to="/pricing">지금 무료로 시작하세요.</router-link>
     </div>
   </div>
 </template>
@@ -36,23 +40,58 @@
 export default {};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #main-under-section-wrapper {
   width: 100%;
-  height: 823px;
+  height: 1173px;
   position: relative;
   top: 60px;
   left: 0;
-  overflow: hidden;
   margin: 0 0 80px 0;
   display: flex;
-  align-items: center;
+  flex-flow: column;
+}
 
-  border: 1px solid pink;
+#under-section-container {
+  width: 100%;
+  height: 823px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  z-index: 1;
+}
+
+.under-section-bottom {
+  width: 100%;
+  height: 350px;
+  color: #fff;
+  background-color: #000;
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  line-height: 50px;
+
+  // sass 적용
+  h1 {
+    font-size: 42px;
+  }
+  a {
+    font: {
+      size: 42px;
+      weight: 800;
+    }
+    color: #5e39f1;
+  }
 }
 
 .under-bgimage {
   width: 100%;
+  height: 823px;
   background-image: url("../assets/sdesign_under_img_tiny.png");
   background-size: cover;
   -moz-background-size: cover;
@@ -63,8 +102,6 @@ export default {};
   position: absolute;
   top: 0;
   bottom: 0;
-  /* left: 33%;
-  width: 67%; */
 }
 
 .under-bgimage::after {
@@ -87,6 +124,7 @@ export default {};
   height: 100%;
   display: block;
   position: absolute;
+  top: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -94,10 +132,8 @@ export default {};
   max-width: 80%;
   max-height: 823px;
   margin: 0 auto;
-  /* padding: 0 25px 88px; */
   text-align: left;
   position: relative;
-  /* top: 9%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,70 +174,92 @@ export default {};
 /* 태블릿 */
 @media (max-width: 1020px) {
   #main-under-section-wrapper {
-    /* width: 100%; */
+    height: 1073px;
+  }
+  #under-section-container,
+  .under-bgimage,
+  .under-darkness-box {
     height: 723px;
-    /* position: relative;
-  top: 60px;
-  left: 0;
-  overflow: hidden;
-  margin: 0 0 80px 0;
-  display: flex;
-  align-items: center; */
+  }
+  .under-section-bottom {
+    /* width: 100%; */
+    height: 300px;
+    /* color: #fff; */
+    /* background-color: #000; */
+
+    /* border: 1px solid aquamarine; */
   }
 }
 @media (max-width: 750px) {
   #main-under-section-wrapper {
-    height: 623px;
+    height: 973px;
     top: 0px;
+  }
+  #under-section-container,
+  .under-bgimage,
+  .under-darkness-box {
+    height: 623px;
   }
   .contents-title h1 {
     font-size: 36px !important;
   }
+  .under-section-bottom {
+    height: 220px;
+    h1 {
+      font-size: 36px;
+    }
+    a {
+      font: {
+        size: 36px;
+        weight: 800;
+      }
+      color: #5e39f1;
+    }
+  }
 }
 @media (max-width: 599px) {
   .under-darkness-box {
-    /* width: 100%;
-    height: 40%; */
     display: none;
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5); */
   }
   .under-section-contents {
-    /* max-width: 80%; */
-    /* max-height: 823px; */
-    /* margin: 0 auto; */
-    /* padding: 0 25px 88px; */
-    /* text-align: left; */
-    /* position: relative; */
-    /* top: 9%; */
-    /* display: flex; */
     flex-flow: column;
-    /* justify-content: space-between; */
-    /* align-items: center; */
   }
   .contents-title {
     width: 250px;
     height: 170px;
-    /* padding: 0 8% 10%; */
-    /* word-break: keep-all; */
-    /* font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    vertical-align: middle; */
-    /* color: #fff; */
   }
-  /* .contents-clients-logo {
-    width: 70%;
-  } */
+  // .under-section-bottom {
+  //   height: 220px;
+  //   h1 {
+  //     font-size: 42px;
+  //   }
+  //   a {
+  //     font: {
+  //       size: 42px;
+  //       weight: 800;
+  //     }
+  //     color: #5e39f1;
+  //   }
+  // }
 }
 
 /* 블랙베리 모바일 */
 @media (max-width: 489px) {
   .contents-clients-logo {
     width: 80%;
+  }
+  .under-section-bottom {
+    height: 200px;
+    h1 {
+      font-size: 30px;
+    }
+    a {
+      font: {
+        size: 30px;
+        weight: 800;
+      }
+      color: #5e39f1;
+    }
   }
 }
 
