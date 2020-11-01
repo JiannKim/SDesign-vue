@@ -51,7 +51,7 @@ export default {};
   position: relative;
   top: 60px;
   left: 0;
-  margin: 0 0 80px 0;
+  // margin: 0 0 80px 0;
   display: flex;
   flex-flow: column;
 }
