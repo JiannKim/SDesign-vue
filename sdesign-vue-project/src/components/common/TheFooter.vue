@@ -8,7 +8,21 @@
     </div>
     <div class="footer-lists">
       <div class="lists-column">
-        <h3 v-for="title in titles" :key="title.index">{{ title.list }}</h3>
+        <!-- <h3 v-for="title in titles" :key="title.index">{{ title.list }}</h3> -->
+        <h3>Product</h3>
+        <ul>
+          <router-link tag="li" :to="{ name: 'sounds' }">Sounds</router-link>
+          <router-link tag="li" :to="{ name: 'pricing', params: { id: 1 } }"
+            >Pricing</router-link
+          >
+          <router-link tag="li" :to="{ name: 'faq' }">FAQ</router-link>
+        </ul>
+      </div>
+      <div class="lists-column">
+        <h3>Company</h3>
+      </div>
+      <div class="lists-column">
+        <h3>Improve</h3>
       </div>
     </div>
   </div>
@@ -18,7 +32,7 @@
 export default {
   data() {
     return {
-      titles: [{ list: "Product" }, { list: "Company" }, { list: "Improve" }],
+      // titles: [{ list: "Product" }, { list: "Company" }, { list: "Improve" }],
     };
   },
 };
@@ -43,5 +57,15 @@ $bgColor: #000;
     width: 10%;
     filter: invert(100%);
   }
+}
+
+.footer-lists {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+
+  border: 1px solid blueviolet;
+}
+.lists-column {
 }
 </style>
