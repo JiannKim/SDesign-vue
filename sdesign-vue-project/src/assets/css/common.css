@@ -25,6 +25,9 @@ a {
   color: #a041f0;
   text-decoration: none;
 }
+li {
+  list-style: none;
+}
 .button {
   cursor: pointer;
 }

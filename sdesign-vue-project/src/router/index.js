@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import AppMain from "@/views/AppMain.vue";
-import PricingPage from "@/views/PricingPage.vue";
-import FaqPage from "@/views/FaqPage.vue";
 
 Vue.use(VueRouter);
 
@@ -20,11 +18,18 @@ const router = new VueRouter({
     },
     {
       path: "/pricing",
-      component: PricingPage,
+      name: "pricing",
+      component: () => import("@/views/PricingPage.vue"),
     },
     {
       path: "/faq",
-      component: FaqPage,
+      name: "faq",
+      component: () => import("@/views/FaqPage.vue"),
+    },
+    {
+      path: "/sounds",
+      name: "sounds",
+      component: () => import("@/views/SoundsPage.vue"),
     },
     {
       path: "*",
