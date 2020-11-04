@@ -63,9 +63,6 @@ export default {
     signupMounted() {
       this.$modal.show("signup-modal");
     },
-    modalHide() {
-      this.$modal.hideAll();
-    },
   },
 };
 </script>

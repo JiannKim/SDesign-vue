@@ -27,7 +27,9 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{ isSelected: selectedName }" for="name">user name</label>
+        <label :class="{ isSelected: selectedName }" for="name"
+          >user name</label
+        >
         <input
           type="text"
           name="name"
@@ -38,11 +40,10 @@
         />
         <span class="underline"></span>
       </div>
-      <p class="log-message">{{signMessage}}</p>
+      <p class="log-message">{{ signMessage }}</p>
       <button type="submit" class="form-button rectangles">가입</button>
-      <p>
-        Already have an account?
-        <router-link to="/login">click here</router-link>
+      <p class="modal-open" @click="loginMounted">
+        Already have an account? click here
       </p>
     </form>
     <button class="button close-button" @click="modalHide">
@@ -68,6 +69,13 @@ export default {
     };
   },
   methods: {
+    loginMounted() {
+      this.modalHide();
+      this.$modal.show("login-modal");
+    },
+    modalHide() {
+      this.$modal.hide("signup-modal");
+    },
     async submitForm() {
       const userData = {
         accountEmail: this.useremail,
@@ -101,9 +109,6 @@ export default {
     },
     userName() {
       this.selectedName = true;
-    },
-    modalHide() {
-      this.$modal.hide("signup-modal");
     },
   },
 };

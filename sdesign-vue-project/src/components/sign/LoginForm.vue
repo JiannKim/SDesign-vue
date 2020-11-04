@@ -26,11 +26,11 @@
         />
         <span class="underline"></span>
       </div>
-      <p class="log-message">{{loginMessage}}</p>
+      <p class="log-message">{{ loginMessage }}</p>
       <button type="submit" class="btn form-button rectangles">로그인</button>
-      <p>
-        Go to
-        <router-link to="/Signup">create a new account.</router-link>
+      <p class="modal-open" @click="signupMounted">
+        Go to create a new account.
+        <!-- <router-link to="/main">create a new account.</router-link> -->
       </p>
     </form>
     <button class="button close-button" @click="modalHide">
@@ -54,6 +54,15 @@ export default {
   },
   props: {},
   methods: {
+    signupMounted() {
+      this.modalHide();
+      this.$modal.show("signup-modal");
+    },
+    modalHide() {
+      this.$modal.hide("login-modal");
+    },
+    // modalHide() {
+    // },
     async loginForm() {
       const userData = {
         accountEmail: this.useremail,
@@ -94,16 +103,11 @@ export default {
       //   this.selectedPass = false;
       // }
     },
-    modalHide() {
-      this.$modal.hide("login-modal");
-    },
   },
 };
 </script>
 
-<style>
-/* @import "../../assets/css/form.css"; */
-
+<style scope lang="scss">
 .close-button {
   all: unset;
   position: absolute;
