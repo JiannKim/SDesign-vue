@@ -151,23 +151,46 @@ $bgColor: #000;
 
 /* 태블릿 */
 @media (max-width: 1020px) {
-  // .footer-wrapper {
-  //   width: 800px;
-  // }
+  .footer-wrapper {
+    min-width: 750px;
+    .footer-logo-image {
+      width: 150px;
+    }
+    .footer-social-icons {
+      width: 150px;
+      .fa-icon {
+        margin: 0 11px;
+        font-size: 24px;
+      }
+    }
+  }
 }
 @media (max-width: 750px) {
+  .footer-wrapper {
+    min-width: 610px;
+  }
 }
 @media (max-width: 599px) {
+  .footer-wrapper {
+    min-width: 490px;
+    .footer-logo-image {
+      width: 120px;
+      img {
+        min-width: 70px;
+      }
+    }
+    .footer-social-icons {
+      width: 120px;
+      .fa-icon {
+        margin: 0 9px;
+        font-size: 20px;
+      }
+    }
+  }
 }
 
 /* 블랙베리 모바일 */
 @media (max-width: 489px) {
-}
-/* 모바일 */
-@media (max-width: 470px) {
-}
-/* 아이폰se 모바일 */
-@media (max-width: 369px) {
   #app-footer-wrapper {
     height: 600px;
   }
@@ -181,6 +204,9 @@ $bgColor: #000;
     padding-top: 50px;
     .footer-logo-image {
       justify-content: center;
+      img {
+        min-width: 100px;
+      }
     }
     .footer-lists {
       height: 340px;
@@ -194,11 +220,22 @@ $bgColor: #000;
     }
     .footer-social-icons {
       padding: 0;
+      width: 165px;
+      .fa-icon {
+        margin: 0 16px;
+        font-size: 24px;
+      }
     }
   }
 
   .footer-copyright {
     bottom: 46px;
   }
+}
+/* 모바일 */
+@media (max-width: 470px) {
+}
+/* 아이폰se 모바일 */
+@media (max-width: 369px) {
 }
 </style>
