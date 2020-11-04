@@ -41,7 +41,7 @@
         <span class="underline"></span>
       </div>
       <p class="log-message">{{ signMessage }}</p>
-      <button type="submit" class="form-button rectangles">가입</button>
+      <button type="submit" class="button form-button rectangles">가입</button>
       <p class="modal-open" @click="loginMounted">
         Already have an account? click here
       </p>
