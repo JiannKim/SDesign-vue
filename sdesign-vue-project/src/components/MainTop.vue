@@ -28,13 +28,17 @@ export default {};
 
 .main-top-image {
   position: relative;
-  /* margin: 0; */
+  top: 0;
   width: 100%;
   height: 480px;
-  background-image: url(../assets/mainImage.png);
+  background-image: url(../assets/mainTopImg.png);
   overflow: hidden;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
 }
 
 .main-top-headline-box {
@@ -47,12 +51,14 @@ export default {};
 
 .main-top-headline {
   position: relative;
-  /* top: -480px; */
-  padding: 75px 50px;
-  width: 300px;
+  top: 0;
+  padding: 75px 0;
+  width: 35%;
+  min-width: 300px;
   display: flex;
   flex-flow: column;
-  margin: 0 auto;
+  margin: 20px 40%;
+  /* border: 1px solid violet; */
 }
 .main-top-headline h1 {
   text-align: left;
@@ -68,9 +74,11 @@ export default {};
   text-align: left;
 }
 .main-top-headline p {
-  width: 554px;
+  /* width: 554px; */
+  width: 151%;
+  max-width: 554px;
   height: 36px;
-  margin-bottom: 30px;
+  margin: 30px 0;
   font-family: Helvetica;
   font-size: 16px;
   font-weight: bold;
@@ -128,12 +136,18 @@ export default {};
 
 @media (max-width: 1600px) {
   .main-top-headline {
-    width: 350px;
+    min-width: 350px;
+    margin: 20px auto;
+  }
+  .main-top-headline p {
+    width: 130%;
+    word-break: keep-all;
   }
 }
 @media (max-width: 1500px) {
   .main-top-headline {
-    width: 330px;
+    min-width: 330px;
+    margin: 20px auto;
   }
   .main-top-headline p {
     width: 400px;
@@ -141,7 +155,7 @@ export default {};
 }
 @media (max-width: 1250px) {
   .main-top-headline {
-    width: 330px;
+    min-width: 330px;
   }
 }
 /* 태블릿 */
@@ -152,6 +166,11 @@ export default {};
   .main-top-image {
     background-image: url(../assets/1020px.png);
     width: 100%;
+    background-attachment: scroll;
+  }
+  .main-top-headline {
+    min-width: 210px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 750px) {
@@ -161,7 +180,7 @@ export default {};
 }
 @media (max-width: 599px) {
   .main-top-headline {
-    width: 140px;
+    min-width: 140px;
   }
 }
 /* 블랙베리 모바일 */
@@ -186,7 +205,7 @@ export default {};
   }
   .main-top-headline {
     top: 30px;
-    width: 335px;
+    min-width: 335px;
     padding: 0;
     margin: 0 auto;
   }
@@ -212,11 +231,11 @@ export default {};
     background-color: #101010;
     position: relative;
     width: 100%;
-    height: 269px;
+    height: 279px;
   }
   .main-top-headline {
     top: 0px;
-    width: 305px;
+    min-width: 305px;
     padding: 0;
     margin: 0 auto;
   }
@@ -249,11 +268,11 @@ export default {};
     display: block;
     position: relative;
     width: 100%;
-    height: 247px;
+    height: 267px;
     background-color: #101010;
   }
   .main-top-headline {
-    width: 270px;
+    min-width: 270px;
     padding: 0;
     margin: 0 auto;
   }
@@ -267,8 +286,8 @@ export default {};
     height: 51px;
   }
   .main-top-headline p {
-    margin-bottom: 20px;
-    width: 275px;
+    margin-bottom: 30px;
+    width: 100%;
   }
 }
 </style>
