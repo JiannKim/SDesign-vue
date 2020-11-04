@@ -74,7 +74,8 @@ export default {
         console.log("바르게 입력해라!!");
         this.loginMessage = `* 아이디 또는 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
       } else {
-        this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
+        this.modalHide();
+        // this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
       }
       this.initForm();
       // let token = response.data.token;

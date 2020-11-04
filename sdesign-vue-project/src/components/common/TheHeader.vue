@@ -148,7 +148,9 @@ export default {
   margin: 0 5px 0 45px;
   outline: none;
 }
-
+#header-wrapper {
+  z-index: -1;
+}
 /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
 
 
