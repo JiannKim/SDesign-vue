@@ -1,6 +1,6 @@
 <template>
   <header id="app-header-wrapper">
-    <router-link class="app-header-logo-link" to="/main">
+    <router-link class="app-header-logo-link" to="/">
       <img
         class="header-logo"
         src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
@@ -16,15 +16,6 @@
       <input type="text" placeholder="Search for sound effects" />
     </div>
     <ul class="app-header-menu-lists">
-      <!-- 
-      <router-link
-        class="header-menu-list"
-        v-for="item in lists"
-        :key="item.index"
-        to="/pricing"
-        tag="li"
-      >{{item.list}}</router-link>-->
-
       <li class="header-menu-list">
         <router-link to="/pricing">Pricing</router-link>
       </li>
@@ -35,6 +26,12 @@
       <template v-if="isUserLogin">
         <span class="header-menu-list users-info"
           >{{ $store.state.useremail }} 님 안녕하세요 :)</span
+        >
+        <a
+          href="javascript:;"
+          @click="logoutUser"
+          class="header-menu-list users-info"
+          >로그아웃</a
         >
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
@@ -77,6 +74,10 @@ export default {
     },
     signupMounted() {
       this.$modal.show("signup-modal");
+    },
+    // store에 있는 clearUserEmail함수를 가져와서 로그아웃 기능의 메서드를 만들어준다
+    logoutUser() {
+      return this.$store.commit("clearUserEmail");
     },
   },
 };

@@ -45,7 +45,6 @@
       </button>
       <p class="modal-open" @click="signupMounted">
         Go to create a new account.
-        <!-- <router-link to="/main">create a new account.</router-link> -->
       </p>
     </form>
     <button class="button close-button" @click="modalHide">
