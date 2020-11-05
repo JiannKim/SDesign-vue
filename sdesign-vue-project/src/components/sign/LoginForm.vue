@@ -92,18 +92,20 @@ export default {
         };
         const { data } = await loginUser(userData);
         console.log("response.data =>" + data);
-        console.log("data.accountName =>" + data.accountName);
+        console.log("data.accountEmail =>" + data.accountEmail);
+
         // 비밀번호를 다르게 입력한 경우
         if (data == "5504") {
           console.log("바르게 입력하세요");
           this.loginMessage = `* 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
           this.initPass();
-          this.errorClass = "isError";
+          // this.errorClass = "isError";
         } else {
           // 로그인 되었을 경우 페이지 이동 === <router-link to="" />
-          this.$router.replace("/");
+          this.$router.push("/");
+          this.$store.commit("setUserEmail", data.accountEmail);
           // 모달 닫기
-          // this.modalHide();
+          this.modalHide();
           // this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
         }
         // let token = response.data.token;
@@ -112,7 +114,8 @@ export default {
         // console.log("useremail => " + useremail);
         // console.log("nickname => " + nickname);
         // this.$store.commit("setToken", token);
-        // this.$store.commit("setUsers", useremail);
+
+        // this.$store.commit("setUserEmail", data.accountEmail);
         // this.$store.commit("setNick", nickname);
         // fetchNotes();
       } catch (error) {

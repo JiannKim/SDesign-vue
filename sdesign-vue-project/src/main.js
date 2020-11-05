@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import vmodal from "vue-js-modal";
+import store from "@/store/index";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -33,7 +34,8 @@ Vue.use(vmodal, {
 Vue.config.productionTip = false;
 
 new Vue({
-  vmodal,
   router,
+  vmodal,
+  store,
   render: (h) => h(App),
 }).$mount("#app");
