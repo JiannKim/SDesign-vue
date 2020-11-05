@@ -16,8 +16,14 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(faTwitter, faGithub, faInstagram, faSearch, faTimes);
 
+// fontawesome icon 사용을 위한 전역 컴포넌트로 등록
 Vue.component("fa-icon", FontAwesomeIcon);
-// Vue.component("the-Header", TheHeader);
+// input에 v-focus를 해주기 위해 전역 등록
+Vue.directive("focus", {
+  inserted: function(el) {
+    el.focus();
+  },
+});
 
 // vue-js-modal 기능 사용을 위한 등록
 Vue.use(vmodal, {
