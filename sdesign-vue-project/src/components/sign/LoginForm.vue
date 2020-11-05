@@ -108,7 +108,6 @@ export default {
 
           // 모달 닫기
           this.modalHide();
-          // this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
         }
         // let token = response.data.token;
         // let useremail = response.data.user.accountEmail;
@@ -125,9 +124,7 @@ export default {
         console.log(error.response);
         this.loginMessage = `* 가입 정보가 없습니다. 올바른 정보를 입력해 주세요!`;
         this.initForm();
-      } finally {
-        // this.initForm();
-      }
+      } 
     },
     initPass() {
       this.password = "";
@@ -141,12 +138,6 @@ export default {
     },
     userPass() {
       this.selectedPass = false;
-
-      // if (!this.selectedPass) {
-      //   this.selectedPass = true;
-      // } else {
-      //   this.selectedPass = false;
-      // }
     },
   },
 };

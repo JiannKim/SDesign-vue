@@ -27,11 +27,6 @@ export default {
     SignupForm,
     LoginForm,
   },
-  methods: {
-    // modalHide() {
-    //   this.$modal.hideAll();
-    // },
-  },
 };
 </script>
 

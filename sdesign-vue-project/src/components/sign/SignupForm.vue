@@ -103,8 +103,8 @@ export default {
           accountPw: this.password,
           accountName: this.nickname,
         };
-        // console.log("user data => " + userData);
         const { data } = await registerUser(userData);
+        console.log(data);
         console.log("Signup response =>" + data.accountEmail);
         if (data == "3588") {
           console.log("중복된 아이디다!!");
@@ -114,10 +114,10 @@ export default {
           // console.log("else data =>" + data);
           // this.signMessage = `* ${data.accountEmail} 로 가입 되셨습니다.
           // 해당 이메일로 인증 메일을 전송 하였으니 인증 후 사용해 주세요 :)`;
+          
+          // 가입 완료시 모달 끄기
           this.modalHide();
         }
-        console.log(data);
-        // this.initForm();
       } catch (error) {
         console.log("error");
       } finally {

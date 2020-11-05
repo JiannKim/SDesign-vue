@@ -56,7 +56,6 @@ import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 export default {
   data() {
     return {
-      // stateUserEmail: "$store.state.useremail",
     };
   },
   components: {
