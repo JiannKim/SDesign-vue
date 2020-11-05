@@ -92,6 +92,7 @@ export default {
         const { data } = await loginUser(userData);
         console.log("response.data =>" + data);
         console.log("data.accountEmail =>" + data.accountEmail);
+        console.log("data.accountName =>" + data.accountName);
 
         // 비밀번호를 다르게 입력한 경우
         if (data == "5504") {
@@ -103,6 +104,8 @@ export default {
           // 로그인 되었을 경우 페이지 이동 === <router-link to="" />
           this.$router.push("/");
           this.$store.commit("setUserEmail", data.accountEmail);
+          this.$store.commit("setUserName", data.accountName);
+
           // 모달 닫기
           this.modalHide();
           // this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;

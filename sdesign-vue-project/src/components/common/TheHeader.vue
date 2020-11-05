@@ -25,14 +25,14 @@
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
         <span class="header-menu-list users-info"
-          >{{ $store.state.useremail }} 님 안녕하세요 :)</span
+          >{{ $store.state.nickname }} 님 안녕하세요 :)</span
         >
-        <a
+        <!-- <a
           href="javascript:;"
           @click="logoutUser"
           class="header-menu-list users-info"
           >로그아웃</a
-        >
+        > -->
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
       <template v-else>
