@@ -31,8 +31,19 @@
       <li class="header-menu-list">
         <router-link to="/faq">FAQ</router-link>
       </li>
-      <li @click="loginMounted" class="header-menu-list form-list">Login</li>
-      <li @click="signupMounted" class="header-menu-list form-list signup-li">Sign Up</li>
+      <!-- 1. 로그인이 되었을 때 -->
+      <template v-if="isUserLogin">
+        <span class="header-menu-list users-info"
+          >{{ $store.state.useremail }} 님 안녕하세요 :)</span
+        >
+      </template>
+      <!-- 2. 로그아웃이 되었을 때 -->
+      <template v-else>
+        <li @click="loginMounted" class="header-menu-list form-list">Login</li>
+        <li @click="signupMounted" class="header-menu-list form-list signup-li">
+          Sign Up
+        </li>
+      </template>
     </ul>
     <div id="header-wrapper">
       <TheHeaderSidebarMenuTab />
@@ -48,13 +59,17 @@ import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 export default {
   data() {
     return {
-      lists: [{ list: "Pricing" }, { list: "FAQ" }, { list: "SPI" }],
-      address: [{ add: "/pricing" }, { add: "/faq" }, { add: "spi" }],
+      // stateUserEmail: "$store.state.useremail",
     };
   },
   components: {
     TheHeaderSidebarMenuTab,
     TheHeaderSearchTab,
+  },
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
+    },
   },
   methods: {
     loginMounted() {
@@ -67,7 +82,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
@@ -148,6 +163,14 @@ export default {
   margin: 0 5px 0 45px;
   outline: none;
 }
+
+.users-info {
+  font: {
+    size: 16px;
+    weight: 300;
+  }
+}
+
 #header-wrapper {
   z-index: -1;
 }
