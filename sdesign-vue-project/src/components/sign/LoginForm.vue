@@ -64,8 +64,8 @@ export default {
       useremail: "",
       password: "",
       loginMessage: "",
-      selectedId: "",
-      selectedPass: "",
+      selectedId: true,
+      selectedPass: true,
       errorClass: "",
     };
   },
@@ -100,8 +100,10 @@ export default {
           this.initPass();
           this.errorClass = "isError";
         } else {
+          // 로그인 되었을 경우 페이지 이동 === <router-link to="" />
+          this.$router.replace("/");
           // 모달 닫기
-          this.modalHide();
+          // this.modalHide();
           // this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
         }
         // let token = response.data.token;

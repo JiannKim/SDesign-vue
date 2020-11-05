@@ -42,6 +42,7 @@
   font-size: 22px;
   text-align: center;
   outline: none;
+  padding-top: 7px;
 }
 .form-input input,
 label {
