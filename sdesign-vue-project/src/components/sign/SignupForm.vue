@@ -3,8 +3,11 @@
     <h1 class="form-title">회원 가입</h1>
     <form @submit.prevent="submitForm" class="form-box signup">
       <div class="form-input rectangles">
-        <label :class="{ isSelected: selectedId }" for="useremail">email</label>
+        <label :class="{ isSelected: !selectedId }" for="useremail"
+          >email</label
+        >
         <input
+          v-focus
           type="text"
           name="useremail"
           id="useremail"
@@ -14,8 +17,13 @@
         />
         <span class="underline"></span>
       </div>
+      <span class="warning" v-if="!isUserEmailValid && useremail"
+        >올바른 이메일 형식을 입력해 주세요</span
+      >
       <div class="form-input rectangles">
-        <label :class="{ isSelected: selectedPass }" for="pass">password</label>
+        <label :class="{ isSelected: !selectedPass }" for="pass"
+          >password</label
+        >
         <input
           type="password"
           name="pass"
@@ -27,7 +35,7 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{ isSelected: selectedName }" for="name"
+        <label :class="{ isSelected: !selectedName }" for="name"
           >user name</label
         >
         <input
@@ -41,7 +49,14 @@
         <span class="underline"></span>
       </div>
       <p class="log-message">{{ signMessage }}</p>
-      <button type="submit" class="button form-button rectangles">가입</button>
+      <button
+        :disabled="!isUserEmailValid || !password || !nickname"
+        type="submit"
+        class="button form-button rectangles"
+        :class="{ disabled: !isUserEmailValid || !password || !nickname }"
+      >
+        가입
+      </button>
       <p class="modal-open" @click="loginMounted">
         Already have an account? click here
       </p>
@@ -54,19 +69,24 @@
 
 <script>
 import { registerUser } from "@/api";
+import { validateEmail } from "@/utils/validation";
 
 export default {
   data() {
-    // const userInfo = [{ userid: "" }, { password: "" }];
     return {
       useremail: "",
       password: "",
       nickname: "",
       signMessage: "",
-      selectedId: false,
-      selectedPass: false,
-      selectedName: false,
+      selectedId: true,
+      selectedPass: true,
+      selectedName: true,
     };
+  },
+  computed: {
+    isUserEmailValid() {
+      return validateEmail(this.useremail);
+    },
   },
   methods: {
     loginMounted() {
@@ -77,24 +97,32 @@ export default {
       this.$modal.hide("signup-modal");
     },
     async submitForm() {
-      const userData = {
-        accountEmail: this.useremail,
-        accountPw: this.password,
-        accountName: this.nickname,
-      };
-      // console.log("user data => " + userData);
-      const { data } = await registerUser(userData);
-      console.log("Signup response =>" + data.accountEmail);
-      if (data == "3588") {
-        console.log("중복된 아이디다!!");
-        this.signMessage = `* 중복된 아이디 입니다`;
-      } else {
-        this.signMessage = `* ${data.accountEmail}로 가입 되셨습니다`;
+      try {
+        const userData = {
+          accountEmail: this.useremail,
+          accountPw: this.password,
+          accountName: this.nickname,
+        };
+        // console.log("user data => " + userData);
+        const { data } = await registerUser(userData);
+        console.log("Signup response =>" + data.accountEmail);
+        if (data == "3588") {
+          console.log("중복된 아이디다!!");
+          this.signMessage = `* ${this.useremail} 은 이미 가입된 아이디 입니다.`;
+        } else {
+          // 데이터에 이메일이 언디파인드로 나와서 아직 사용할 수 없음..
+          // console.log("else data =>" + data);
+          // this.signMessage = `* ${data.accountEmail} 로 가입 되셨습니다.
+          // 해당 이메일로 인증 메일을 전송 하였으니 인증 후 사용해 주세요 :)`;
+          this.modalHide();
+        }
+        console.log(data);
+        // this.initForm();
+      } catch (error) {
+        console.log("error");
+      } finally {
+        this.initForm();
       }
-      console.log(data);
-      // console.log(data.useremail);
-      // this.logMessage = `${data.useremail} 님이 가입되셨습니다`;
-      // this.initForm();
     },
     initForm() {
       this.useremail = "";
@@ -102,13 +130,13 @@ export default {
       this.nickname = "";
     },
     userId() {
-      this.selectedId = true;
+      this.selectedId = false;
     },
     userPass() {
-      this.selectedPass = true;
+      this.selectedPass = false;
     },
     userName() {
-      this.selectedName = true;
+      this.selectedName = false;
     },
   },
 };

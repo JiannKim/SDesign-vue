@@ -8,7 +8,7 @@
     </div>
     <!-- <SignupForm /> -->
     <div>
-      <modal name="signup-modal" :width="410" :height="625">
+      <modal name="signup-modal" :width="410" :height="635">
         <SignupForm />
       </modal>
     </div>

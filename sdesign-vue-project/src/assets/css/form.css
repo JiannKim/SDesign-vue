@@ -88,6 +88,7 @@ label {
   color: #313131 !important;
   top: -20px !important;
 }
+
 .form-button {
   all: unset;
   background: rgb(161, 65, 240);
@@ -106,10 +107,17 @@ label {
   background: rgb(172, 83, 245);
 }
 .log-message {
-  font-size: 16px;
+  font-size: 14px;
   word-break: keep-all;
-  padding-top: 10px;
+  margin-top: 7px;
   color: rgba(216, 0, 29, 0.8);
+}
+.warning {
+  color: rgba(216, 0, 29, 0.8);
+  margin-top: 7px;
+  position: relative;
+  right: -30px;
+  font-size: 14px;
 }
 /* view */
 /* #form-container {

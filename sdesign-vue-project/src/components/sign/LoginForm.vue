@@ -3,8 +3,11 @@
     <h1 class="form-title">로그인</h1>
     <form @submit.prevent="loginForm" class="form-box login">
       <div class="form-input rectangles">
-        <label :class="{ isSelected: selectedId }" for="useremail">email</label>
+        <label :class="{ isSelected: !selectedId }" for="useremail"
+          >email</label
+        >
         <input
+          v-focus
           type="text"
           name="useremail"
           id="useremail"
@@ -14,8 +17,13 @@
         />
         <span class="underline"></span>
       </div>
+      <span class="warning" v-if="!isUserEmailValid && useremail"
+        >올바른 이메일 형식을 입력해 주세요</span
+      >
       <div class="form-input rectangles">
-        <label :class="{ isSelected: selectedPass }" for="pass">password</label>
+        <label :class="[{ isSelected: !selectedPass }, errorClass]" for="pass"
+          >password</label
+        >
         <input
           type="password"
           name="pass"
@@ -24,10 +32,17 @@
           v-model="password"
           placeholder="password"
         />
-        <span class="underline"></span>
+        <span class="underline" :class="{ errorClass }"></span>
       </div>
       <p class="log-message">{{ loginMessage }}</p>
-      <button :disabled="!isUserEmailValid || !password" type="submit" class="button form-button rectangles">로그인</button>
+      <button
+        :disabled="!isUserEmailValid || !password"
+        type="submit"
+        class="button form-button rectangles"
+        :class="{ disabled: !isUserEmailValid || !password }"
+      >
+        로그인
+      </button>
       <p class="modal-open" @click="signupMounted">
         Go to create a new account.
         <!-- <router-link to="/main">create a new account.</router-link> -->
@@ -49,8 +64,9 @@ export default {
       useremail: "",
       password: "",
       loginMessage: "",
-      selectedId: false,
-      selectedPass: false,
+      selectedId: "",
+      selectedPass: "",
+      errorClass: "",
     };
   },
   props: {},
@@ -76,11 +92,15 @@ export default {
         };
         const { data } = await loginUser(userData);
         console.log("response.data =>" + data);
-        console.log("response =>" + data.accountName);
+        console.log("data.accountName =>" + data.accountName);
+        // 비밀번호를 다르게 입력한 경우
         if (data == "5504") {
-          console.log("바르게 입력해라!!");
-          this.loginMessage = `* 아이디 또는 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
+          console.log("바르게 입력하세요");
+          this.loginMessage = `* 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
+          this.initPass();
+          this.errorClass = "isError";
         } else {
+          // 모달 닫기
           this.modalHide();
           // this.loginMessage = `* ${data.accountName}님 로그인 되셨습니다`;
         }
@@ -97,20 +117,23 @@ export default {
         // 에러 핸들링할 코드
         console.log(error.response);
         this.loginMessage = `* 가입 정보가 없습니다. 올바른 정보를 입력해 주세요!`;
-        // this.initForm();
-      } finally {
         this.initForm();
+      } finally {
+        // this.initForm();
       }
+    },
+    initPass() {
+      this.password = "";
     },
     initForm() {
       this.useremail = "";
       this.password = "";
     },
     userId() {
-      this.selectedId = true;
+      this.selectedId = false;
     },
     userPass() {
-      this.selectedPass = true;
+      this.selectedPass = false;
 
       // if (!this.selectedPass) {
       //   this.selectedPass = true;
