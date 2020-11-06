@@ -90,7 +90,7 @@ export default {
           accountPw: this.password,
         };
         const { data } = await loginUser(userData);
-        console.log("response.data =>" + data);
+        console.log("response.data =>", data);
         console.log("data.accountEmail =>" + data.accountEmail);
         console.log("data.accountName =>" + data.accountName);
 

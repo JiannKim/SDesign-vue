@@ -27,12 +27,12 @@
         <span class="header-menu-list users-info"
           >{{ $store.state.nickname }} 님 안녕하세요 :)</span
         >
-        <!-- <a
+        <a
           href="javascript:;"
           @click="logoutUser"
           class="header-menu-list users-info"
           >로그아웃</a
-        > -->
+        >
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
       <template v-else>
@@ -55,8 +55,7 @@ import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     TheHeaderSidebarMenuTab,
@@ -169,6 +168,9 @@ export default {
     size: 16px;
     weight: 300;
   }
+  border: 1px solid #000;
+  border-radius: 7px;
+  padding: 3px;
 }
 
 #header-wrapper {
