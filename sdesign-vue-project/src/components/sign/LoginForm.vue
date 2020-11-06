@@ -105,7 +105,8 @@ export default {
           this.$router.push("/");
           this.$store.commit("setUserEmail", data.accountEmail);
           this.$store.commit("setUserName", data.accountName);
-
+          console.log("data.token =>" + data.token);
+          this.$store.commit("setToken", data.token);
           // 모달 닫기
           this.modalHide();
         }
@@ -124,7 +125,7 @@ export default {
         console.log(error.response);
         this.loginMessage = `* 가입 정보가 없습니다. 올바른 정보를 입력해 주세요!`;
         this.initForm();
-      } 
+      }
     },
     initPass() {
       this.password = "";

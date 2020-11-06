@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     useremail: "",
     nickname: "",
+    token: "",
   },
   getters: {
     isLogin(state) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     clearUserEmail(state) {
       state.useremail = "";
+    },
+    setToken(state, token) {
+      state.token = token;
     },
   },
 });

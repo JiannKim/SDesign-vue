@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store";
 
 const apiURL = axios.create({
   // - axios.create() => axios 내부적으로 제공하는 속성
@@ -7,6 +8,9 @@ const apiURL = axios.create({
 
   // - 뷰에서 설정된 빌드 속성에 의해 env파일을 설정하여 쉽게 불러 올 수 있도록 해줌
   baseURL: process.env.VUE_APP_API_URL,
+  headers: {
+    Authorization: store.state.token,
+  },
 });
 // const config = {};
 
