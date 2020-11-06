@@ -4,16 +4,17 @@
       <!-- 언더영역 배경 -->
       <div class="under-bgimage"></div>
       <!-- 좌측 다크니스 박스 -->
-      <div class="under-darkness-box"></div>
+      <!-- <div class="under-darkness-box"></div> -->
       <!-- 컨텐츠 영역 -->
       <div class="under-section-contents">
         <div class="contents-title">
           <h1 style="font-size: 42px">
-            신뢰받는
-            <br />선도 브랜드, <br />대행사 네트워크.
+            <!-- 신뢰받는
+            <br />선도 브랜드, <br />대행사 네트워크. -->
           </h1>
         </div>
         <div class="contents-clients-logo">
+          <!-- <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
@@ -28,8 +29,7 @@
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
           <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
+          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" /> -->
         </div>
       </div>
     </div>
