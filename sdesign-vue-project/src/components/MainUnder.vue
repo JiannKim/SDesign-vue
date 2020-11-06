@@ -9,8 +9,8 @@
       <div class="under-section-contents">
         <div class="contents-title">
           <h1 style="font-size: 42px">
-            <!-- 신뢰받는
-            <br />선도 브랜드, <br />대행사 네트워크. -->
+            신뢰받는
+            <br />선도 브랜드, <br />대행사 네트워크.
           </h1>
         </div>
         <div class="contents-clients-logo">
@@ -138,13 +138,15 @@ export default {};
   margin: 0 auto;
   text-align: left;
   position: relative;
-  display: flex;
+  // display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .contents-title {
-  width: 24%;
+  // width: 24%;
+  width: 100%;
+  // border: 1px solid white;
   // height: 100%;
   padding: 0 8% 10%;
   word-break: keep-all;
