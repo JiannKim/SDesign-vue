@@ -5,7 +5,7 @@ import vmodal from "vue-js-modal";
 import store from "@/store/index";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimes, faHome } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
   faGithub,
@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // import TheHeader from "@/components/common/TheHeader.vue";
 
-library.add(faTwitter, faGithub, faInstagram, faSearch, faTimes);
+library.add(faTwitter, faGithub, faInstagram, faSearch, faTimes, faHome);
 
 // fontawesome icon 사용을 위한 전역 컴포넌트로 등록
 Vue.component("fa-icon", FontAwesomeIcon);

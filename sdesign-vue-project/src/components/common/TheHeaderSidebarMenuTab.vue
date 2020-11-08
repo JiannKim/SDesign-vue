@@ -5,7 +5,9 @@
       <!-- 햄버거 메뉴 버튼을 만드는 스펜태그 가운데 스펜은 보이지 않게 한다. -->
       <span></span>
       <!-- 가운데 스펜은 없는척 -->
-      <span id="hidden-span"></span>
+      <span id="hidden-span">
+        <p>menu</p>
+      </span>
       <span></span>
 
       <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
@@ -16,17 +18,41 @@
       <transition name="listbox">
         <ul
           class="sidebar-tab-menu-lists"
-          :class="{isChecked: ckeckedInput}"
+          :class="{ isChecked: ckeckedInput }"
           @click="$emit('close')"
         >
+          <router-link to="/">
+            <li class="tab-menu-lists-list">
+              <fa-icon :icon="['fa', 'home']" />
+            </li>
+          </router-link>
           <router-link to="/pricing">
             <li class="tab-menu-lists-list">Pricing</li>
           </router-link>
           <router-link to="/faq">
             <li class="tab-menu-lists-list">FAQ</li>
           </router-link>
-          <li @click="loginMounted" class="tab-menu-lists-list form-list">Login</li>
-          <li @click="signupMounted" class="tab-menu-lists-list form-list">SignUp</li>
+          <!-- 1. 로그인이 되었을 때 -->
+          <template v-if="isUserLogin">
+            <p class="tab-menu-lists-list users-info">
+              {{ $store.state.nickname }} 님 안녕하세요 :)
+            </p>
+            <a
+              href="javascript:;"
+              @click="logoutUser"
+              class="tab-menu-lists-list users-info"
+              >로그아웃</a
+            >
+          </template>
+          <!-- 2. 로그아웃이 되었을 때 -->
+          <template v-else>
+            <li @click="loginMounted" class="tab-menu-lists-list form-list">
+              Login
+            </li>
+            <li @click="signupMounted" class="tab-menu-lists-list form-list">
+              SignUp
+            </li>
+          </template>
         </ul>
       </transition>
       <!-- </div> -->
@@ -41,8 +67,13 @@ export default {
       ckeckedInput: "",
     };
   },
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
+    },
+  },
   methods: {
-    clicked: function () {
+    clicked: function() {
       console.log("changed");
       // this.ckeckedInput = true;
       this.ckeckedInput === true
@@ -58,11 +89,14 @@ export default {
     modalHide() {
       this.$modal.hideAll();
     },
+    logoutUser() {
+      return this.$store.commit("clearUserEmail");
+    },
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 /* 메뉴 탭 스타일 */
 #sidebar-tab-menu-wrapper {
   /* width: 100%; */
@@ -121,6 +155,14 @@ export default {
 /* 메뉴 탭 버튼의 가운데 스팬 숨김 */
 #hidden-span {
   background-color: #fff;
+  p {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -4px;
+  }
 }
 
 .sidebar-tab-menu-button span:first-child {
@@ -141,7 +183,7 @@ export default {
 /* 가운데 스펜 숨기기 */
 .sidebar-tab-menu-button input:checked ~ span:nth-last-child(3) {
   opacity: 0;
-  /* transform: rotate(0deg) scale(0.2, 0.2); */
+  transform: rotate(0deg) scale(0.2, 0.2);
 }
 
 /* 마지막 스펜 옮기기 */
@@ -253,10 +295,22 @@ export default {
   transform: none;
 }
 
+// 로그인 사용자 정보
+.users-info {
+  font: {
+    size: 16px;
+    weight: 300;
+  }
+  border: 1px solid #000;
+  border-radius: 7px;
+  padding: 5px;
+  width: 130px;
+  margin: 10px 0;
+}
+
 /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
 
-
-  /* media Quary */
+/* media Quary */
 /* 태블릿 */
 @media (max-width: 1020px) {
   .sidebar-tab-menu-button {
