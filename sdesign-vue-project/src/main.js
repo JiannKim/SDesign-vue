@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import vmodal from "vue-js-modal";
 import store from "@/store/index";
+import VuePlyr from "vue-plyr";
+import "vue-plyr/dist/vue-plyr.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -57,6 +59,8 @@ Vue.directive("focus", {
 Vue.use(vmodal, {
   componentName: "Modal",
 });
+// vue-plyr 모듈 사용을 위한 등록
+Vue.use(VuePlyr);
 
 Vue.config.productionTip = false;
 

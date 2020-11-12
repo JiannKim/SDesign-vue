@@ -11,7 +11,7 @@
             class="bar-play-icon"
             @click="
               play(
-                'https://soundsnap-prod.nyc3.digitaloceanspaces.com/files/audio/1b/transcode/445673-Underground_Car_Park_Night_-Air_Ventilation_Ducts_-Some_Cars_And_Walla_-Interior_Car_Perspective_-Forestville_-Sydney.mp3?response-content-disposition=attachment%3B+filename%3D%22445673-Underground_Car_Park_Night_-Air_Ventilation_Ducts_-Some_Cars_And_Walla_-Interior_Car_Perspective_-Forestville_-Sydney.mp3%22&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AD4PI63EK5AJWZMJZZKH%2F20201111%2Fnyc3%2Fs3%2Faws4_request&X-Amz-Date=20201111T070551Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=a21cf00f70539f6bf7c2c4e1effbf896afa22222fac353bbdf04fc2d1fa2eef9'
+                'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3'
               )
             "
           >
@@ -39,23 +39,6 @@
           step="0.1"
         />
       </div>
-      <!-- 
-      <a href="javascript:;">
-        PLAY ALL
-      </a>
-
-      <a href="javascript:;">
-        <fa-icon :icon="['fa', 'volume-up']"></fa-icon>
-      </a>
-
-      <input
-        type="range"
-        id="js-Range"
-        min="0.1"
-        max="10.0"
-        value="3"
-        step="0.1"
-      /> -->
 
       <button class="buy-button">
         구매 하기
@@ -65,9 +48,9 @@
     </div>
 
     <div class="sounds-page-contents">
-      이곳은 walla sounds page 입니다.
+      이곳은 sounds page 입니다.
       <h1>
-        walla sounds (983)
+        sounds (983)
       </h1>
 
       <div class="contents-select">
@@ -98,19 +81,20 @@
       </div>
 
       <div class="contents-player">
-        <template>
-          <a
-            href="javascript:;"
-            class="bar-play-icon"
-            @click="
-              play(
-                'https://soundsnap-prod.nyc3.digitaloceanspaces.com/files/audio/1b/transcode/445673-Underground_Car_Park_Night_-Air_Ventilation_Ducts_-Some_Cars_And_Walla_-Interior_Car_Perspective_-Forestville_-Sydney.mp3?response-content-disposition=attachment%3B+filename%3D%22445673-Underground_Car_Park_Night_-Air_Ventilation_Ducts_-Some_Cars_And_Walla_-Interior_Car_Perspective_-Forestville_-Sydney.mp3%22&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AD4PI63EK5AJWZMJZZKH%2F20201111%2Fnyc3%2Fs3%2Faws4_request&X-Amz-Date=20201111T125724Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=5fdc06c367b811261dc2ed63d317e245d9c0fdb9e413461c9662d7c4002115b5'
-              )
-            "
-          >
-            <fa-icon :icon="['fa', 'play']"></fa-icon>
-          </a>
-        </template>
+        <!-- <template> -->
+        <vue-plyr>
+          <audio controls crossorigin playsinline>
+            <source
+              src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3"
+              type="audio/mp3"
+            />
+            <source
+              src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.ogg"
+              type="audio/ogg"
+            />
+          </audio>
+        </vue-plyr>
+        <!-- </template> -->
       </div>
     </div>
   </div>
@@ -142,9 +126,11 @@ export default {
   },
   methods: {
     play(sound) {
+      let audio = new Audio(sound);
       if (sound) {
-        var audio = new Audio(sound);
         audio.play();
+      } else {
+        audio.pause();
       }
     },
   },
