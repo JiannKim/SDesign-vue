@@ -21,7 +21,7 @@ export default {};
 <style>
 #main-top-wrapper {
   position: relative;
-  top: 73px;
+  top: 0;
   /* width: 100%; */
   /* height: 480px; */
 }

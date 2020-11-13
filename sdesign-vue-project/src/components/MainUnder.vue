@@ -1,10 +1,10 @@
 <template>
-  <div id="main-under-section-wrapper">
+  <div id="main-under-section-wrapper" class="wrapper">
     <div id="under-section-container">
       <!-- 언더영역 배경 -->
       <div class="under-bgimage"></div>
       <!-- 좌측 다크니스 박스 -->
-      <!-- <div class="under-darkness-box"></div> -->
+      <div class="under-darkness-box"></div>
       <!-- 컨텐츠 영역 -->
       <div class="under-section-contents">
         <div class="contents-title">
@@ -14,22 +14,32 @@
           </h1>
         </div>
         <div class="contents-clients-logo">
-          <!-- <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" />
-          <img src="https://i.ibb.co/0MfwqfB/mago.png" alt="mago" border="0" /> -->
+          <img src="https://i.ibb.co/SNVy3H3/bbc.png" alt="bbc" />
+          <img src="https://i.ibb.co/jkHzLBp/disney.png" alt="disney" />
+          <img src="https://i.ibb.co/NYGp0C9/guitarhero.png" alt="guitarhero" />
+          <img src="https://i.ibb.co/s1fKStr/vh1.png" alt="vh1" />
+          <img src="https://i.ibb.co/82rMGfF/mtv.png" alt="mtv" />
+          <img src="https://i.ibb.co/1844xBj/konami.png" alt="konami" />
+          <img src="https://i.ibb.co/kydht4F/nbc.png" alt="nbc" />
+          <img
+            src="https://i.ibb.co/VCpxcSL/nickelodeon.png"
+            alt="nickelodeon"
+          />
+          <img src="https://i.ibb.co/JkRGBGM/aljazeera.png" alt="aljazeera" />
+          <img src="https://i.ibb.co/RBYLCZW/nokia.png" alt="nokia" />
+          <img src="https://i.ibb.co/whJ9D40/ogilvy.png" alt="ogilvy" />
+          <img src="https://i.ibb.co/s9sRn9Q/pixar.png" alt="pixar" />
+          <img
+            src="https://i.ibb.co/b3F3rBL/playstation.png"
+            alt="playstation"
+          />
+          <img src="https://i.ibb.co/z4jZyty/vice.png" alt="vice" />
+          <img src="https://i.ibb.co/jTjsrNL/zynga.png" alt="zynga" />
+          <img src="https://i.ibb.co/5sD2zk3/cbs.png" alt="cbs" />
+          <img src="https://i.ibb.co/42gWd4w/comedy.png" alt="comedy" />
+          <img src="https://i.ibb.co/ZB9c8WB/discovery.png" alt="discovery" />
+          <img src="https://i.ibb.co/5T5Jhyk/hbo.png" alt="hbo" />
+          <img src="https://i.ibb.co/F7DTGQG/microsoft.png" alt="microsoft" />
         </div>
       </div>
     </div>
@@ -49,7 +59,7 @@ export default {};
   width: 100%;
   height: 100%;
   position: relative;
-  top: 60px;
+  top: 32px;
   left: 0;
   // margin: 0 0 80px 0;
   display: flex;
@@ -138,16 +148,13 @@ export default {};
   margin: 0 auto;
   text-align: left;
   position: relative;
-  // display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .contents-title {
-  // width: 24%;
-  width: 100%;
-  // border: 1px solid white;
-  // height: 100%;
+  width: 24%;
   padding: 0 8% 10%;
   word-break: keep-all;
   font-stretch: normal;
@@ -160,13 +167,13 @@ export default {};
 
 .contents-clients-logo {
   width: 60%;
-  // height: 100%;
   padding: 1% 2.5%;
 }
 /* 임시 고양이 이미지 */
 .contents-clients-logo img {
-  width: 10%;
+  width: 9%;
   margin: 4.5% 6%;
+  opacity: 0.4;
 }
 
 /* 반응형 */

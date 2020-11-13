@@ -1,16 +1,18 @@
 <template>
   <div id="main-bottom-wrapper">
     <div class="bottom-position">
-      <h1 class="bottom-title titles">세계에서 가장 널리 사용되는 음향효과 플랫폼</h1>
+      <h1 class="bottom-title titles">
+        세계에서 가장 널리 사용되는 음향효과 플랫폼
+      </h1>
 
       <div class="numbers-title titles">
         <div class="title-position">
-          <p>{{registeredUser}}</p>
+          <p>{{ registeredUser }}</p>
           <span>등록된 사용자 수</span>
         </div>
 
         <div class="title-position">
-          <p>{{soundNumber}}</p>
+          <p>{{ soundNumber }}</p>
           <span>효과음의 수</span>
         </div>
       </div>
@@ -18,7 +20,10 @@
         <div class="bottom-images titles">
           <div class="images-position">
             <div class="position-img">
-              <img src="https://i.ibb.co/1XkBWf6/A-D-Icon-01.png" alt="A-Icon" />
+              <img
+                src="https://i.ibb.co/1XkBWf6/A-D-Icon-01.png"
+                alt="A-Icon"
+              />
             </div>
             <div class="position-description">
               <h2>Focus</h2>
@@ -31,33 +36,40 @@
 
           <div class="images-position img-b">
             <div class="position-img">
-              <img src="https://i.ibb.co/cTYQdzT/A-D-Icon-02.png" alt="B-Icon" />
+              <img
+                src="https://i.ibb.co/cTYQdzT/A-D-Icon-02.png"
+                alt="B-Icon"
+              />
             </div>
             <div class="position-description">
               <h2>Varies</h2>
               <p>
-                국내에서 가장 다양하고
-                인기있는 음향효과 라이브러리입니다.
+                국내에서 가장 다양하고 인기있는 음향효과 라이브러리입니다.
               </p>
             </div>
           </div>
 
           <div class="images-position">
             <div class="position-img">
-              <img src="https://i.ibb.co/BnZ5QcB/A-D-Icon-03.png" alt="C-Icon" />
+              <img
+                src="https://i.ibb.co/BnZ5QcB/A-D-Icon-03.png"
+                alt="C-Icon"
+              />
             </div>
             <div class="position-description">
               <h2>Free</h2>
               <p>
-                추가되는 비용과 절차없이
-                원하는만큼 사운드를 사용할 수 있습니다.
+                추가되는 비용과 절차없이 원하는만큼 사운드를 사용할 수 있습니다.
               </p>
             </div>
           </div>
 
           <div class="images-position">
             <div class="position-img">
-              <img src="https://i.ibb.co/yRRfb7n/A-D-Icon-04.png" alt="D-Icon" />
+              <img
+                src="https://i.ibb.co/yRRfb7n/A-D-Icon-04.png"
+                alt="D-Icon"
+              />
             </div>
             <div class="position-description">
               <h2>Service</h2>
@@ -87,12 +99,11 @@ export default {
 
 <style scoped>
 #main-bottom-wrapper {
-  margin-top: 107px;
   padding: 0;
   width: 100%;
   height: 588px;
   position: relative;
-  top: 60px;
+  top: 32px;
   background-color: #f5f4ff;
 }
 
