@@ -48,7 +48,6 @@
     </div>
 
     <div class="sounds-page-contents">
-      이곳은 sounds page 입니다.
       <h1>
         sounds (983)
       </h1>
@@ -158,7 +157,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgb(98, 0, 255);
+  // border: 1px solid rgb(98, 0, 255);
 }
 
 .player-bar-section,
@@ -240,8 +239,13 @@ a {
 }
 
 .sounds-page-contents {
+  width: 80%;
+  margin: 0 auto;
   .contents-select {
-    width: 600px;
+    width: 585px;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
     border: 1px solid forestgreen;
     select {
       // all: unset;
@@ -251,7 +255,6 @@ a {
       border: none;
       border-radius: 4px;
       background: #a1a1a1;
-      margin: 0 5px;
       color: #fff;
       appearance: none;
       font: {
@@ -267,6 +270,7 @@ a {
     }
   }
   h1 {
+    margin: 50px 0;
     font: {
       size: 42px;
       weight: 600;
