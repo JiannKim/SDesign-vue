@@ -199,7 +199,7 @@ export default {
   height: 226px; */
   width: 50%;
   height: 100%;
-  margin: 21px 0 0 -55px;
+  margin: 21px 0 0 -45px;
   /* padding: 10px 50px 30px 50px; */
   padding: 10px 0px 30px 40px;
   padding-top: 30px;
@@ -254,15 +254,17 @@ export default {
   }
 }
 
-.sidebar-tab-menu-lists::before {
-  content: "";
-  background: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  left: 20px;
-  width: 20px;
-  height: 100%;
-}
+// list box 왼쪽 검정 막대
+// .sidebar-tab-menu-lists::before {
+//   content: "";
+//   background: rgba(0, 0, 0, 0.8);
+//   position: absolute;
+//   top: 0;
+//   left: 20px;
+//   width: 20px;
+//   height: 100%;
+// }
+
 .sidebar-tab-menu-lists a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.7);

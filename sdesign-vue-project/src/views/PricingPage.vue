@@ -50,13 +50,7 @@
           <img src="https://i.ibb.co/P5BQgMG/client-1-2x.png" />
         </span>
         <span>
-          <img src="https://i.ibb.co/6DgHXTP/client-2-2x.png" />
-        </span>
-        <span>
           <img src="https://i.ibb.co/JyhZsLJ/client-3-2x.png" />
-        </span>
-        <span>
-          <img src="https://i.ibb.co/L5hfQfN/client-4-2x.png" />
         </span>
         <span>
           <img src="https://i.ibb.co/Y3NhV1Y/client-6-2x.png" />
@@ -65,10 +59,13 @@
           <img src="https://i.ibb.co/M5gG68t/client-7-2x.png" />
         </span>
         <span>
-          <img src="https://i.ibb.co/6rrV743/client-9-2x.png" />
+          <img src="https://i.ibb.co/L5hfQfN/client-4-2x.png" />
         </span>
         <span>
           <img src="https://i.ibb.co/VSnqJbW/client-10-2x.png" />
+        </span>
+        <span>
+          <img src="https://i.ibb.co/6DgHXTP/client-2-2x.png" />
         </span>
         <span>
           <img src="https://i.ibb.co/fX8CRpG/client-11-2x.png" />
@@ -80,13 +77,16 @@
           <img src="https://i.ibb.co/SVpc6QK/client-13-2x.png" />
         </span>
         <span>
+          <img src="https://i.ibb.co/6rrV743/client-9-2x.png" />
+        </span>
+        <span>
           <img src="https://i.ibb.co/TWhy1TM/client-14-2x.png" />
         </span>
         <span>
-          <img src="https://i.ibb.co/yW99sMp/client-15-2x.png" />
+          <img src="https://i.ibb.co/D94Wdyh/client-16-2x.png" />
         </span>
         <span>
-          <img src="https://i.ibb.co/D94Wdyh/client-16-2x.png" />
+          <img src="https://i.ibb.co/yW99sMp/client-15-2x.png" />
         </span>
       </div>
     </div>
