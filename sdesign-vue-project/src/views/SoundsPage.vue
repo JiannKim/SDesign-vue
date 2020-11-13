@@ -48,7 +48,7 @@
     </div>
 
     <div class="sounds-page-contents">
-      <h1>
+      <h1 class="page-title">
         sounds (983)
       </h1>
 
@@ -141,7 +141,7 @@ export default {
   border: 1px solid red;
   // position: relative;
   // top: 0px;
-  margin-top: 73px;
+  // margin-top: 73px;
   width: 100%;
   height: auto;
   button {
@@ -269,12 +269,13 @@ a {
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAXVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9RKvvlAAAAHnRSTlMA/ROrKqImGsYXwa++piJlNALv5+bQyp2XUg4HhoQSotHMAAAAzUlEQVRYw+3RuQ7CMBBF0XGchC37voD//zMxUswIOQXOUFC8W440p3mEEEIIIYTQd0VVvO7d17iKDnD1PDRtUpBXkbTNMNfBYNUZW1Z4XmZsXRUM3o3ZE1PrvXoEg5PZxPTDu27nKRgs1fZ6TXc8VYZvfDMssrelD+x88sT47C63E5FEPMe+JxfZ084LFzWLEo+7aLd137t99YVILHIqt55IzJXvyUX2IhIXJertJc6Ti74nF9mTi6Oy3sieuKXUulzol9U1IYQQQgj9fU8Znhyj7M/eQgAAAABJRU5ErkJggg==");
     }
   }
-  h1 {
-    margin: 50px 0;
-    font: {
-      size: 42px;
-      weight: 600;
-    }
-  }
+  //.side-page
+  // h1 {
+  //   margin: 50px 0;
+  //   font: {
+  //     size: 42px;
+  //     weight: 600;
+  //   }
+  // }
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <TheHeader />
-    <router-view></router-view>
+    <div id="side-page">
+      <router-view></router-view>
+    </div>
     <!-- 모달 폼 -->
     <SignFormView />
     <TheFooter />
@@ -31,4 +33,8 @@ export default {
 
 <style>
 @import "./assets/css/common.css";
+
+#side-page {
+  padding-top: 73px;
+}
 </style>
