@@ -34,7 +34,7 @@
               <span> $ </span>
               199
             </div>
-            <button class="button">Access now</button>
+            <button class="button unlimited-btn">Access now</button>
           </div>
         </div>
       </div>
@@ -177,13 +177,22 @@ export default {};
         width: 150px;
         height: 47px;
         color: #313131;
-        background: #fff;
+        background-color: transparent;
         border: 1px solid;
         border-radius: 4px;
         font: {
           size: 16px;
           weight: 600;
         }
+      }
+      .unlimited-btn {
+        color: #fff;
+        background: linear-gradient(to bottom, #8546faeb, #5000e4eb);
+        transition: none;
+        border: none;
+      }
+      .unlimited-btn:hover {
+        background: #5000e4eb;
       }
     }
   }
