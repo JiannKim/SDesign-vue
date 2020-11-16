@@ -342,7 +342,6 @@ export default {
       { id: 2, title: "지역" },
       { id: 3, title: "태그" },
     ];
-    // const [selectedTab] = tabs;
     return {
       query: "",
       submitted: false,
@@ -351,19 +350,6 @@ export default {
       searchResult: [],
     };
   },
-  // data() {
-  //   return {
-  //       query: '',
-  //       submitted: false,
-  //       tabs: [
-  //         {id: 1, title: '최근'},
-  //         {id: 2, title: '지역'},
-  //         {id: 3, title: '태그'},
-  //         ],
-  //       selectedTab: tabs[0],
-  //       searchResult: [],
-  //   };
-  // },
   methods: {
     onClickTab: function(tab) {
       this.selectedTab = tab;
