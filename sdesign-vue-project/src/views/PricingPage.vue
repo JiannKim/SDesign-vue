@@ -41,9 +41,9 @@
     </div>
     <div class="bottom-section">
       <!-- <div class="bottom-title"> -->
-        <!-- <h4> -->
-        <!-- 우리는 가장 큰 미디어와 광고 브랜드의 신뢰를 받고 있습니다. -->
-        <!-- </h4> -->
+      <!-- <h4> -->
+      <!-- 우리는 가장 큰 미디어와 광고 브랜드의 신뢰를 받고 있습니다. -->
+      <!-- </h4> -->
       <!-- </div> -->
       <div class="bottom-logo-icons">
         <span>
@@ -112,6 +112,7 @@ export default {};
   display: flex;
   justify-content: center;
   flex-flow: column;
+  word-break: keep-all;
   h1 {
     margin-bottom: 30px;
   }
@@ -211,5 +212,54 @@ export default {};
   img {
     width: 100%;
   }
+}
+
+/* media Quary */
+@media (max-width: 1600px) {
+}
+@media (max-width: 1500px) {
+}
+@media (max-width: 1250px) {
+}
+
+/* 태블릿 */
+@media (max-width: 1020px) {
+  .top-section {
+    padding: 15px;
+  }
+  .middle-section {
+    min-width: 90%;
+    .products-wrapper {
+      align-items: center;
+      .card-products {
+        min-width: 300px;
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .middle-section {
+    .products-wrapper {
+      flex-flow: column;
+      align-items: center;
+      .card-products {
+        width: 90%;
+      }
+    }
+  }
+  .bottom-logo-icons {
+    img {
+      width: 80%;
+    }
+  }
+}
+@media (max-width: 599px) {
+}
+
+/* 모바일 */
+@media (max-width: 440px) {
+}
+/* 아이폰se 모바일 */
+@media (max-width: 369px) {
 }
 </style>
