@@ -297,19 +297,6 @@ export default {
   transform: none;
 }
 
-// 로그인 사용자 정보
-.users-info {
-  font: {
-    size: 16px;
-    weight: 300;
-  }
-  border: 1px solid #000;
-  border-radius: 7px;
-  padding: 5px;
-  width: 130px;
-  margin: 10px 0;
-}
-
 /* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
 
 /* media Quary */

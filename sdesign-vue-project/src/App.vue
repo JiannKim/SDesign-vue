@@ -34,6 +34,7 @@ export default {
 <style>
 @import "./assets/css/common.css";
 
+/* 컴포넌트 영역 잡아주기 위해 헤더 높이만큼 패딩값 넣기 */
 #side-page {
   padding-top: 73px;
 }

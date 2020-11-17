@@ -25,7 +25,7 @@
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
         <span class="header-menu-list users-info"
-          >{{ $store.state.nickname }} 님 안녕하세요 :)</span
+          >Signed in as {{ $store.state.nickname }} :)</span
         >
         <a
           href="javascript:;"
@@ -42,6 +42,7 @@
         </li>
       </template>
     </ul>
+    <!-- 태블릿 모드 -->
     <div id="header-wrapper">
       <TheHeaderSidebarMenuTab />
       <TheHeaderSearchTab />
@@ -81,7 +82,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
@@ -163,14 +164,12 @@ export default {
   outline: none;
 }
 
+// 로그인 사용자 정보
 .users-info {
   font: {
     size: 16px;
-    weight: 300;
+    weight: 600;
   }
-  border: 1px solid #000;
-  border-radius: 7px;
-  padding: 3px;
 }
 
 #header-wrapper {
