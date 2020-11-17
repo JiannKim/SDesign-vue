@@ -35,14 +35,16 @@
           <!-- 1. 로그인이 되었을 때 -->
           <template v-if="isUserLogin">
             <p class="tab-menu-lists-list users-info">
-              {{ $store.state.nickname }} 님 안녕하세요 :)
+              Signed in as
+              <span>{{ $store.state.nickname }}</span>
             </p>
             <a
               href="javascript:;"
               @click="logoutUser"
               class="tab-menu-lists-list users-info"
-              >로그아웃</a
             >
+              로그아웃
+            </a>
           </template>
           <!-- 2. 로그아웃이 되었을 때 -->
           <template v-else>
@@ -96,7 +98,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 /* 메뉴 탭 스타일 */
 #sidebar-tab-menu-wrapper {
   /* width: 100%; */
@@ -199,7 +201,7 @@ export default {
   height: 226px; */
   width: 50%;
   height: 100%;
-  margin: 21px 0 0 -45px;
+  margin: 21px 0 0 -35px;
   /* padding: 10px 50px 30px 50px; */
   padding: 10px 0px 30px 40px;
   padding-top: 30px;
@@ -267,19 +269,17 @@ export default {
 
 .sidebar-tab-menu-lists a {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.7);
-  transition: color 0.3s ease;
+  color: rgba(37, 37, 37, 0.7);
   width: 120px;
 }
 .tab-menu-lists-list {
   padding: 10px 0;
   font-size: 22px;
-  transform: translateX(10px);
   width: 120px;
-  cursor: pointer;
+  // cursor: pointer;
 }
 .tab-menu-lists-list:hover {
-  padding-left: 5px;
+  transform: translateX(5px);
   color: #313131;
 }
 .form-list {
@@ -297,9 +297,20 @@ export default {
   transform: none;
 }
 
-/* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
+// 로그인 사용자 정보
+.users-info {
+  width: 180px;
+  display: flex;
+  align-items: baseline;
+  font-weight: 400;
+  span {
+    font-weight: 600;
+    width: 0;
+  }
+}
 
 /* media Quary */
+
 /* 태블릿 */
 @media (max-width: 1020px) {
   .sidebar-tab-menu-button {

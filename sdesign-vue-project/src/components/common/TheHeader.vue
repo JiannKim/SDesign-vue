@@ -24,15 +24,27 @@
       </li>
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
-        <span class="header-menu-list users-info"
-          >Signed in as {{ $store.state.nickname }} :)</span
-        >
-        <a
-          href="javascript:;"
-          @click="logoutUser"
-          class="header-menu-list users-info"
-          >로그아웃</a
-        >
+        <div class="login-user">
+          <div
+            class="header-menu-list users-info"
+            @click="userInfo = !userInfo"
+          >
+            Signed in as
+            <span>{{ $store.state.nickname }}</span>
+          </div>
+          <div v-if="!userInfo" class="user-info-box">
+            <a href="javascript:;" @click="logoutUser" class="users-info"
+              >등록하기
+            </a>
+            <a
+              href="javascript:;"
+              @click="logoutUser"
+              class="users-info logout-btn"
+            >
+              <span>로그아웃</span>
+            </a>
+          </div>
+        </div>
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
       <template v-else>
@@ -56,7 +68,9 @@ import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      userInfo: true,
+    };
   },
   components: {
     TheHeaderSidebarMenuTab,
@@ -82,7 +96,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+$bgColor-common: #fff;
+$txtColor-common: #313131;
+
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
@@ -156,7 +173,6 @@ export default {
   border: none;
   background-color: #f3f3f3;
   font-size: 17px;
-  /* width: 670px; */
   width: 100%;
   align-items: center;
   margin-left: 45px;
@@ -164,12 +180,66 @@ export default {
   outline: none;
 }
 
-// 로그인 사용자 정보
-.users-info {
-  font: {
-    size: 16px;
-    weight: 600;
+.login-user {
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+
+  span {
+    font-weight: 600;
   }
+
+  // 유저 인포 자세히 보기 박스
+  .user-info-box {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 130px;
+    height: auto;
+    // display: flex;
+    // flex-flow: column;
+    // justify-content: center;
+    // align-items: center;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 7px;
+    // border: 1px solid teal;
+  }
+  .user-info-box::after,
+  .user-info-box::before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .user-info-box::after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #fff;
+    border-width: 9px;
+    margin-left: -9px;
+  }
+  .user-info-box::before {
+    border-color: rgba(224, 224, 224, 0);
+    border-bottom-color: #e0e0e0;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+  a {
+    color: $txtColor-common;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  // .logout-btn {
+  //   margin-top: 16px;
+  //   font-weight: 600;
+  // }
 }
 
 #header-wrapper {
