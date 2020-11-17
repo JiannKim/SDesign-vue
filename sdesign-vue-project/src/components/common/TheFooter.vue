@@ -2,10 +2,12 @@
   <div id="app-footer-wrapper">
     <div class="footer-wrapper">
       <div class="footer-logo-image">
-        <img
-          src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
-          alt="s-Design-Logo"
-        />
+        <router-link to="/">
+          <img
+            src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
+            alt="s-Design-Logo"
+          />
+        </router-link>
       </div>
       <div class="footer-lists">
         <div class="lists-column">
