@@ -41,7 +41,7 @@
               @click="logoutUser"
               class="users-info logout-btn"
             >
-              <span>로그아웃</span>
+              <span>로그아웃ddd</span>
             </a>
           </div>
         </div>
