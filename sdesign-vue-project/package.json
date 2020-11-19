@@ -16,7 +16,6 @@
 		"axios": "^0.21.0",
 		"core-js": "^3.6.5",
 		"element-ui": "^2.13.2",
-		"nginx": "0.0.0",
 		"semantic-ui-icon": "^2.3.3",
 		"semantic-ui-vue": "^0.11.0",
 		"vue": "^2.6.11",
