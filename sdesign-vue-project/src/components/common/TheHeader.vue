@@ -29,19 +29,21 @@
             class="header-menu-list users-info"
             @click="userInfo = !userInfo"
           >
-            Signed in as
-            <span>{{ $store.state.nickname }}</span>
+            ME
+            <!-- Signed in as -->
+            <!-- <span>{{ $store.state.nickname }}</span> -->
           </div>
           <div v-if="!userInfo" class="user-info-box">
-            <a href="javascript:;" @click="logoutUser" class="users-info"
-              >등록하기
-            </a>
-            <a
-              href="javascript:;"
-              @click="logoutUser"
-              class="users-info logout-btn"
-            >
-              <span>로그아웃ddd</span>
+            <div class="user-info">
+              Signed in as
+              <span>
+                {{ $store.state.nickname }}
+              </span>
+            </div>
+
+            <router-link to="/upload" class="">Upload</router-link>
+            <a href="javascript:;" @click="logoutUser" class="logout-btn">
+              <span>로그아웃</span>
             </a>
           </div>
         </div>
@@ -184,27 +186,27 @@ $txtColor-common: #313131;
   position: relative;
   font-size: 16px;
   font-weight: 400;
-
-  span {
+  .users-info {
     font-weight: 600;
+  }
+  .user-info {
+    font-size: 14px;
+    padding: 10px 0;
+    span {
+      font-weight: 600;
+    }
   }
 
   // 유저 인포 자세히 보기 박스
   .user-info-box {
     position: absolute;
-    top: 40px;
-    right: 0;
-    width: 130px;
+    top: 30px;
+    left: -15px;
+    width: 150px;
     height: auto;
-    // display: flex;
-    // flex-flow: column;
-    // justify-content: center;
-    // align-items: center;
-    padding: 5px;
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 7px;
-    // border: 1px solid teal;
   }
   .user-info-box::after,
   .user-info-box::before {
@@ -234,19 +236,22 @@ $txtColor-common: #313131;
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 10px 0;
+    padding: 15px 0;
+    border-top: 1px solid #e0e0e0;
   }
-  // .logout-btn {
-  //   margin-top: 16px;
-  //   font-weight: 600;
-  // }
+  .logout-btn {
+    padding-top: 15px;
+    font-weight: 600;
+    border-top: 1px solid #e0e0e0;
+    background-color: #e0e0e085;
+  }
 }
 
 #header-wrapper {
   z-index: -1;
 }
-/* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
 
+/* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- *
 
   /* media Quary */
 @media (max-width: 1600px) {

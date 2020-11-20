@@ -10,11 +10,6 @@
       </span>
       <span></span>
 
-      <!-- 버튼이 체크되면 나타나는 메뉴박스 -->
-      <!-- <div id="lists-wrapper"> -->
-      <!-- <label for="checked">{{checked}}</label> -->
-      <!-- <button @click="clicked">sksk</button> -->
-
       <transition name="listbox">
         <ul
           class="sidebar-tab-menu-lists"
