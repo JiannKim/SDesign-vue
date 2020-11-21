@@ -2,6 +2,7 @@
   transition: all 0.3s cubic-bezier(0.38, 0.88, 0.38, 0.88);
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 #app {
   width: 100%;
