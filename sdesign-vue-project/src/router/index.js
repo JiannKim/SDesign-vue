@@ -32,6 +32,11 @@ const router = new VueRouter({
       component: () => import("@/views/SoundsPage.vue"),
     },
     {
+      path: "/upload",
+      name: "upload",
+      component: () => import("@/views/UploadPage.vue"),
+    },
+    {
       path: "*",
       component: () => import("@/views/NotFoundPage.vue"),
     },

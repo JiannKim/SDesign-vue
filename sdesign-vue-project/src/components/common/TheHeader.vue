@@ -25,25 +25,16 @@
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
         <div class="login-user">
-          <div
-            class="header-menu-list users-info"
-            @click="userInfo = !userInfo"
-          >
-            ME
-            <!-- Signed in as -->
-            <!-- <span>{{ $store.state.nickname }}</span> -->
-          </div>
+          <div class="header-menu-list users-info" @click="userInfo = !userInfo">ME</div>
           <div v-if="!userInfo" class="user-info-box">
             <div class="user-info">
               Signed in as
-              <span>
-                {{ $store.state.nickname }}
-              </span>
+              <span>{{ $store.state.nickname }}</span>
             </div>
 
-            <router-link to="/upload" class="">Upload</router-link>
+            <router-link to="/upload" class>Upload</router-link>
             <a href="javascript:;" @click="logoutUser" class="logout-btn">
-              <span>로그아웃</span>
+              <span>Logout</span>
             </a>
           </div>
         </div>
@@ -51,9 +42,7 @@
       <!-- 2. 로그아웃이 되었을 때 -->
       <template v-else>
         <li @click="loginMounted" class="header-menu-list form-list">Login</li>
-        <li @click="signupMounted" class="header-menu-list form-list signup-li">
-          Sign Up
-        </li>
+        <li @click="signupMounted" class="header-menu-list form-list signup-li">Sign Up</li>
       </template>
     </ul>
     <!-- 태블릿 모드 -->
