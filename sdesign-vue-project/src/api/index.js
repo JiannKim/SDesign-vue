@@ -28,5 +28,9 @@ function loginUser(loginInfo) {
   console.log("login data => ", loginInfo);
   return instance.post("/login", loginInfo);
 }
+// 사운드 리스트 데이터 조회 api 요청 메서드
+function fetchSounds() {
+  return instance.get("posts");
+}
 
-export { registerUser, loginUser };
+export { registerUser, loginUser, fetchSounds };
