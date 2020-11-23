@@ -32,9 +32,9 @@ const router = new VueRouter({
       component: () => import("@/views/SoundsPage.vue"),
     },
     {
-      path: "/upload",
-      name: "upload",
-      component: () => import("@/views/UploadPage.vue"),
+      path: "/account",
+      name: "account",
+      component: () => import("@/views/AccountPage.vue"),
     },
     {
       path: "*",
