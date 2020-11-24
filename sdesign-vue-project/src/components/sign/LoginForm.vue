@@ -3,12 +3,10 @@
     <h1 class="form-title">로그인</h1>
     <form @submit.prevent="loginForm" class="form-box login">
       <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedId }" for="useremail"
-          >email</label
-        >
+        <label :class="{ isSelected: !selectedId }" for="useremail">email</label>
         <input
           v-focus
-          type="text"
+          type="email"
           name="useremail"
           id="useremail"
           @focus="userId"
@@ -17,13 +15,9 @@
         />
         <span class="underline"></span>
       </div>
-      <span class="warning" v-if="!isUserEmailValid && useremail"
-        >올바른 이메일 형식을 입력해 주세요</span
-      >
+      <span class="warning" v-if="!isUserEmailValid && useremail">올바른 이메일 형식을 입력해 주세요</span>
       <div class="form-input rectangles">
-        <label :class="[{ isSelected: !selectedPass }, errorClass]" for="pass"
-          >password</label
-        >
+        <label :class="[{ isSelected: !selectedPass }, errorClass]" for="pass">password</label>
         <input
           type="password"
           name="pass"
@@ -40,12 +34,8 @@
         type="submit"
         class="button form-button rectangles"
         :class="{ disabled: !isUserEmailValid || !password }"
-      >
-        로그인
-      </button>
-      <p class="modal-open" @click="signupMounted">
-        Go to create a new account.
-      </p>
+      >로그인</button>
+      <p class="modal-open" @click="signupMounted">Go to create a new account.</p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
