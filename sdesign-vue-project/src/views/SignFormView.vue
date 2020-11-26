@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style scope lang="scss">
-@import "../assets/css/form.css";
+@import "../style/form.css";
 
 form {
   .modal-open {

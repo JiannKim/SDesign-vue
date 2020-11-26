@@ -5,7 +5,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        additionalData: `@import "@/assets/css/foundation/common.scss";`,
+        additionalData: `@import "@/css/foundation/common.scss";`,
       },
     },
   },

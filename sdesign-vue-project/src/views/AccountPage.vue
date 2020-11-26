@@ -113,9 +113,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "./assets/css/listItem.scss";
-@import "./assets/css/foundation/listItem";
-
 .top-title-section {
   padding-bottom: 40px;
 }

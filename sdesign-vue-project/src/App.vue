@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style>
-@import "./assets/css/common.css";
+@import "./style/common.css";
 
 /* 컴포넌트 영역 잡아주기 위해 헤더 높이만큼 패딩값 넣기 */
 #side-page {
