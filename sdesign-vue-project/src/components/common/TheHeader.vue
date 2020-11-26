@@ -88,9 +88,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$bgColor-common: #fff;
-$txtColor-common: #313131;
-
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
@@ -98,7 +95,7 @@ $txtColor-common: #313131;
   width: 100%;
   height: 73px;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -221,7 +218,7 @@ $txtColor-common: #313131;
     margin-left: -10px;
   }
   a {
-    color: $txtColor-common;
+    color: #313131;
     width: 100%;
     display: flex;
     justify-content: center;
