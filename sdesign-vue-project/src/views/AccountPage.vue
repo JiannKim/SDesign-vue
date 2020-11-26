@@ -49,6 +49,9 @@
             <li>a</li>
             <li>b</li>
             <li>c</li>
+            <!-- <li v-for="listItem in listItems" :key="listItem._id">{{listItem}}</li> -->
+            <!-- <li>{{this.listItems}}</li> -->
+            <SoundsListItem v-for="listItem in listItems" :key="listItem._id" :listItem="listItem" />
           </ul>
         </div>
 
@@ -72,9 +75,13 @@
 </template>
 
 <script>
+import SoundsListItem from "@/components/common/TheSoundsListItem.vue";
 import { fetchSounds } from "@/api";
 
 export default {
+  components: {
+    SoundsListItem,
+  },
   data() {
     const tabs = [
       { mainText: "Upload" },
@@ -91,17 +98,21 @@ export default {
       { text: "Cartoon", value: "cartoon" },
     ];
     return {
+      // userToken: "",
       tabs,
       selectedTab: "",
       fname: "",
       ftag: "",
       order,
+      listItems: [],
     };
   },
   methods: {
     async fetchData() {
       const { data } = await fetchSounds();
       console.log("fetchData response =>", data);
+      console.log("data.result[].tags =>", data.result[0].tags);
+      this.listItems = `${data.result.result}`;
     },
     onClickTab(tab) {
       this.selectedTab = tab;

@@ -29,9 +29,13 @@ function loginUser(loginInfo) {
   return instance.post("/login", loginInfo);
 }
 // 사운드 리스트 데이터 조회 api 요청 메서드
+// function fetchSounds(token) {
+//   console.log("fetchSounds() test");
+//   return instance.get("/get/my/soundList", token);
+// }
 function fetchSounds() {
   console.log("fetchSounds() test");
-  return instance.get("/get/my/soundList");
+  return instance.get("/get/soundList");
 }
 
 export { registerUser, loginUser, fetchSounds };
