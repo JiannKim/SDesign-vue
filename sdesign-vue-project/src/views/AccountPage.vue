@@ -26,7 +26,7 @@
           </div>
           <div class="file-uploader">
             <label for="files" class="input-label">
-              <input class="me" type="file" id="files" ref="file" />
+              <input class="me" type="file" id="files" />
               파일찾기
             </label>
             <!-- <p>{{file}}aa.png</p> -->
@@ -46,23 +46,9 @@
             <h2>Upload List</h2>
           </div>
           <ul>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
-            <!-- <li v-for="listItem in listItems" :key="listItem._id">{{listItem}}</li> -->
-            <!-- <li>{{this.listItems}}</li> -->
             <SoundsListItem v-for="listItem in listItems" :key="listItem._id" :listItem="listItem" />
           </ul>
         </div>
-
-        <!-- 
-        <audio class="player" controls ref="player">
-          <source
-            src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3"
-            ref="source"
-          />
-        </audio> 
-        -->
       </template>
       <template v-else-if="selectedTab === tabs[1]">
         <p>profile 섹션</p>
@@ -111,8 +97,9 @@ export default {
     async fetchData() {
       const { data } = await fetchSounds();
       console.log("fetchData response =>", data);
+      console.log("data.result =>", data.result);
       console.log("data.result[].tags =>", data.result[0].tags);
-      this.listItems = `${data.result.result}`;
+      this.listItems = data.result;
     },
     onClickTab(tab) {
       this.selectedTab = tab;
@@ -126,6 +113,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// @import "./assets/css/listItem.scss";
+@import "./assets/css/foundation/listItem";
+
 .top-title-section {
   padding-bottom: 40px;
 }

@@ -1,26 +1,38 @@
 <template>
   <li>
     <div>
+      <p>filePath</p>
+      <audio class="player" controls ref="player">
+        <source :src="listItem.filePath" ref="source" />
+      </audio>
+    </div>
+    <div>
       <p>soundName</p>
       {{listItem.soundName}}
     </div>
     <div>
       <p>category</p>
-      <!-- {{listItem.category}} -->
+      {{listItem.category}}
     </div>
     <div>
       <p>tags</p>
-      <!-- {{listItem.tags}} -->
+      {{isTag+listItem.tags.join(" #")}}
     </div>
     <div>
       <p>accountName</p>
-      <!-- {{listItem.accountName}} -->
+      {{listItem.accountId.accountName}}
     </div>
   </li>
 </template>
 
 <script>
 export default {
+  data() {
+    const isTag = this.listItem.tags.length > 0 ? "#" : "";
+    return {
+      isTag,
+    };
+  },
   props: {
     listItem: {
       type: Object,
@@ -30,5 +42,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+p {
+  color: #e0e0e0;
+  font-size: 12px;
+}
 </style>
