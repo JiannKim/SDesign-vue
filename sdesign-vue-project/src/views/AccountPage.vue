@@ -45,9 +45,11 @@
           <div class="bottom-title-section">
             <h2>Upload List</h2>
           </div>
+          <!-- <div class="list-items"> -->
           <ul>
             <SoundsListItem v-for="listItem in listItems" :key="listItem._id" :listItem="listItem" />
           </ul>
+          <!-- </div> -->
         </div>
       </template>
       <template v-else-if="selectedTab === tabs[1]">
@@ -271,7 +273,18 @@ export default {
         max-width: 81%;
         margin: 0 auto;
       }
-      // share-alt-square
+    }
+    // .list-items {
+    // border: 1px solid khaki;
+    // border-top: 1px solid $primary;
+    // margin-top: 44px;
+    // width: 1209px;
+    // }
+    ul {
+      max-width: 1275px;
+      margin: 0 auto;
+      border-top: 1px solid $primary;
+      margin-top: 44px;
     }
   }
 }

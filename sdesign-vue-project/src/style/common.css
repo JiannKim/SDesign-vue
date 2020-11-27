@@ -24,7 +24,7 @@ a {
 }
 li {
   list-style: none;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .button {
   cursor: pointer;
