@@ -208,11 +208,11 @@ export default {
         // -moz-background-clip: text;
         // -webkit-text-fill-color: transparent;
         // -moz-text-fill-color: transparent;
-        animation: slidebg 1.5s linear infinite;
+        animation: slidebg 2s linear infinite;
       }
       @keyframes slidebg {
         to {
-          background-position: 20vw;
+          background-position: 50vw;
         }
       }
     }
