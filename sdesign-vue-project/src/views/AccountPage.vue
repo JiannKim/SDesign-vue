@@ -9,8 +9,10 @@
           v-for="tab in tabs"
           :key="tab.index"
           @click="onClickTab(tab)"
-          :class="{active : selectedTab === tab}"
-        >{{tab.mainText}}</li>
+          :class="{ active: selectedTab === tab }"
+        >
+          {{ tab.mainText }}
+        </li>
       </ul>
     </div>
     <div class="contents-section">
@@ -35,7 +37,9 @@
             <div class="select-option">
               <fa-icon icon="caret-down" class="caret-icon" />
               <select name="categories" id="categories" class="select-box">
-                <option v-for="option in order" :key="option.index">{{option.text}}</option>
+                <option v-for="option in order" :key="option.index">{{
+                  option.text
+                }}</option>
               </select>
             </div>
             <button class="submit-button">등록하기</button>
@@ -47,7 +51,11 @@
           </div>
           <!-- <div class="list-items"> -->
           <ul>
-            <SoundsListItem v-for="listItem in listItems" :key="listItem._id" :listItem="listItem" />
+            <SoundsListItem
+              v-for="listItem in listItems"
+              :key="listItem._id"
+              :listItem="listItem"
+            />
           </ul>
           <!-- </div> -->
         </div>
@@ -274,14 +282,8 @@ export default {
         margin: 0 auto;
       }
     }
-    // .list-items {
-    // border: 1px solid khaki;
-    // border-top: 1px solid $primary;
-    // margin-top: 44px;
-    // width: 1209px;
-    // }
     ul {
-      max-width: 1275px;
+      max-width: 88.5%;
       margin: 0 auto;
       border-top: 1px solid $primary;
       margin-top: 44px;

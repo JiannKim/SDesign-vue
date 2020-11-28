@@ -10,11 +10,11 @@
         <div class="play-container">
           <!-- <p>filePath</p> -->
           <vue-plyr id="plyr">
-            <audio class="player-box" controls playsinline controlslist ref="player">
+            <audio class="player-box plyr--full-ui" controls ref="player">
               <source :src="listItem.filePath" ref="source" />
             </audio>
           </vue-plyr>
-          <!-- <audio class="player-box" controls  controlsList="nodownload" ref="player">
+          <!-- <audio class="player-box" controls controlslist="nodownload" ref="player">
             <source :src="listItem.filePath" ref="source" />
           </audio>-->
         </div>
@@ -27,7 +27,9 @@
           <div class="sound-download icon">
             <a
               :href="listItem.filePath"
-              @click.prevent="downloadItem(listItem.filePath,listItem.soundName)"
+              @click.prevent="
+                downloadItem(listItem.filePath, listItem.soundName)
+              "
             >
               <p>mp3</p>
               <fa-icon icon="download" id="dicon" />
@@ -36,23 +38,27 @@
         </div>
         <div style="text-align: left; width: 200px;">
           <!-- <p>soundName:</p> -->
-          Title: {{listItem.soundName}}
+          Title: {{ listItem.soundName }}
         </div>
-        <span class="arrow" :class="{active: !isSelected}" @click="clicked"></span>
+        <span
+          class="arrow"
+          :class="{ active: !isSelected }"
+          @click="clicked"
+        ></span>
       </div>
     </div>
-    <div class="disabled-container" :class="{isMore: !isSelected}">
+    <div class="disabled-container" :class="{ isMore: !isSelected }">
       <div>
         <!-- <p>category</p> -->
-        {{listItem.category}}
+        {{ listItem.category }}
       </div>
       <div>
         <!-- <p>tags</p> -->
-        {{isTag+listItem.tags.join(" #")}}
+        {{ isTag + listItem.tags.join(" #") }}
       </div>
       <div>
         <!-- <p>accountName</p> -->
-        {{listItem.accountId.accountName}}
+        {{ listItem.accountId.accountName }}
       </div>
     </div>
   </li>
@@ -64,15 +70,18 @@ import Axios from "axios";
 export default {
   data() {
     const isTag = this.listItem.tags.length > 0 ? "#" : "";
+    // const isPlyr = this.vuePlyr("#plyr");
     return {
       isTag,
       isSelected: true,
+      // isPlyr,
     };
   },
   methods: {
-    clicked: function () {
+    clicked: function() {
       this.isSelected = this.isSelected ? false : true;
     },
+    // download 버튼 활성화 시켜주는 api
     downloadItem(url, label) {
       Axios.get(url, { responseType: "blob" })
         .then((response) => {
@@ -96,19 +105,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 #sound-list-items-wrapper {
-  // border: 1px solid powderblue;
   border-bottom: 1px solid $primary;
   // display: flex;
   // justify-content: space-between;
   // align-items: center;
-  max-width: 1275px;
+  // max-width: 1275px;
+  max-width: 100%;
   // height: 87px;
   margin: 0 auto;
 }
 .enabled-container {
   display: flex;
-  width: 100%;
+  // width: 100%;
   height: 87px;
   justify-content: space-between;
   align-items: center;
@@ -148,19 +158,16 @@ export default {
     }
   }
   .sound-info {
-    width: 1209px;
+    // width: 1209px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .play-container {
       display: flex;
-      width: 659px;
-      .player-box {
-        width: 100%;
-        color: $primary;
-        background-color: $list-bg;
-        outline: none;
-      }
+      // width: 659px;
+      max-width: 56%;
+      min-width: 56%;
     }
   }
   .icons {
@@ -174,7 +181,6 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      // cursor: pointer;
       color: #fff;
     }
     .sound-like {
