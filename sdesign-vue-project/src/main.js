@@ -70,5 +70,6 @@ new Vue({
   router,
   vmodal,
   store,
+  VuePlyr,
   render: (h) => h(App),
 }).$mount("#app");
