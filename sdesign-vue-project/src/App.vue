@@ -31,11 +31,34 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import "./style/common.css";
 
 /* 컴포넌트 영역 잡아주기 위해 헤더 높이만큼 패딩값 넣기 */
 #side-page {
   padding-top: 73px;
+}
+
+// plyr style customs
+.plyr {
+  transition: $sub-transition;
+  width: 100%;
+  .plyr__controls {
+    --plyr-color-main: transition;
+    --plyr-audio-control-color: #313131;
+    --plyr-audio-controls-background: transition;
+    --plyr-control-radius: 11px;
+    --plyr-audio-control-color-hover: none;
+    .plyr__progress,
+    .plyr__volume {
+      & input[type="range"] {
+        color: rgba(141, 0, 222, 0.4);
+        // color: #909090;
+      }
+    }
+    .plyr__control[role="menuitemradio"] {
+      --plyr-color-main: #e0e0e0;
+    }
+  }
 }
 </style>
