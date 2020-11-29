@@ -167,7 +167,6 @@ export default {
   // 요소 제목 스타일
   span {
     font-weight: bold;
-    margin-bottom: 5px;
   }
   // 요소 내용 스타일
   p {
@@ -362,7 +361,9 @@ export default {
     max-width: 150px;
     display: flex;
     flex-flow: column;
-
+    span {
+      margin-bottom: 5px;
+    }
     .part-sound-designer {
       display: flex;
       align-items: center;
