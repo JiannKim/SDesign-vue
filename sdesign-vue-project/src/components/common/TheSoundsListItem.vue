@@ -87,8 +87,8 @@
             <fa-icon icon="share-alt-square" />
           </a>
           <template>
-            <modal name="clip-modal" :width="370" :height="50">
-              <div>
+            <modal name="clip-modal" :width="390" :height="32">
+              <div class="clipboard">
                 <textarea
                   name=""
                   id="copyPath"
@@ -144,6 +144,7 @@ export default {
       copyText.setAttribute("type", "text");
       copyText.select();
       document.execCommand("copy");
+      this.$modal.hide("clip-modal");
     },
   },
   props: {
@@ -393,5 +394,33 @@ export default {
 .isMore {
   height: 185px !important;
   background-color: $list-bg;
+}
+// clip modal show
+.clipboard {
+  display: flex;
+  justify-content: space-between;
+  width: 390px;
+  margin: 0 auto;
+  border-radius: 3px;
+  textarea {
+    width: 100%;
+    border: 1px solid $active-btn;
+    // border: none;
+    outline: none;
+    padding: 0 5px;
+  }
+  button {
+    all: unset;
+    border: 1px solid $active-btn;
+    background: $nomal-btn;
+    outline: none;
+    padding: 5px;
+    &:hover {
+      background: $hover-btn;
+    }
+    &:active {
+      background-color: $active-btn;
+    }
+  }
 }
 </style>
