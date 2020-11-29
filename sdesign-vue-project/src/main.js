@@ -20,6 +20,7 @@ import {
   faDownload,
   faAngleDown,
   faCaretDown,
+  faShareAltSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -45,7 +46,8 @@ library.add(
   faHeart,
   faDownload,
   faAngleDown,
-  faCaretDown
+  faCaretDown,
+  faShareAltSquare
 );
 
 // fontawesome icon 사용을 위한 전역 컴포넌트로 등록

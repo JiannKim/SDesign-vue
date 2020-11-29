@@ -1,8 +1,8 @@
 <template>
-  <li id="sound-list-items-wrapper">
+  <li id="sound-list-items-wrapper" :class="{ isMore: !isSelected }">
     <div class="enabled-container">
       <div class="list-remove">
-        <button class="list-remove-button">
+        <button class="list-remove-button" v-if="!isSelected">
           <span></span>
         </button>
       </div>
@@ -31,14 +31,18 @@
                 downloadItem(listItem.filePath, listItem.soundName)
               "
             >
-              <p>mp3</p>
+              <!-- <p>mp3</p> -->
+              <span>mp3</span>
               <fa-icon icon="download" id="dicon" />
             </a>
           </div>
         </div>
-        <div style="text-align: left; width: 200px;">
+        <div class="sound-title">
           <!-- <p>soundName:</p> -->
-          Title: {{ listItem.soundName }}
+          <span>Title:</span>
+          <p>
+            {{ listItem.soundName }}
+          </p>
         </div>
         <span
           class="arrow"
@@ -47,20 +51,60 @@
         ></span>
       </div>
     </div>
-    <div class="disabled-container" :class="{ isMore: !isSelected }">
-      <div>
-        <!-- <p>category</p> -->
-        {{ listItem.category }}
+    <transition name="detail-fade">
+      <div class="disabled-container" v-if="!isSelected">
+        <div class="detail-parts-1">
+          <div>
+            <!-- <p>category</p> -->
+            <span>Category:</span>
+            <p>
+              {{ listItem.category }}
+            </p>
+          </div>
+          <div>
+            <!-- <p>tags</p> -->
+            <span>Tags:</span>
+            <p>
+              {{ isTag + listItem.tags.join(" #") }}
+            </p>
+          </div>
+        </div>
+        <div class="detail-parts-2">
+          <!-- <p>accountName</p> -->
+          <span>Sound Designer</span>
+          <div class="part-sound-designer">
+            <span class="designer-img"></span>
+            <p>
+              {{ listItem.accountId.accountName }}
+            </p>
+          </div>
+        </div>
+        <div class="detail-parts-3">
+          <!-- <p>share icon</p> -->
+          <span>Share</span>
+          <!-- <p> -->
+          <a id="isShare" ref="isShare" @click="clipModal()">
+            <fa-icon icon="share-alt-square" />
+          </a>
+          <template>
+            <modal name="clip-modal" :width="370" :height="50">
+              <div>
+                <textarea
+                  name=""
+                  id="copyPath"
+                  v-model="listItem.filePath"
+                  cols="35"
+                  rows="2"
+                >
+                </textarea>
+                <button @click="isCopied()">copy</button>
+              </div>
+            </modal>
+          </template>
+          <!-- </p> -->
+        </div>
       </div>
-      <div>
-        <!-- <p>tags</p> -->
-        {{ isTag + listItem.tags.join(" #") }}
-      </div>
-      <div>
-        <!-- <p>accountName</p> -->
-        {{ listItem.accountId.accountName }}
-      </div>
-    </div>
+    </transition>
   </li>
 </template>
 
@@ -70,15 +114,13 @@ import Axios from "axios";
 export default {
   data() {
     const isTag = this.listItem.tags.length > 0 ? "#" : "";
-    // const isPlyr = this.vuePlyr("#plyr");
     return {
       isTag,
       isSelected: true,
-      // isPlyr,
     };
   },
   methods: {
-    clicked: function() {
+    clicked() {
       this.isSelected = this.isSelected ? false : true;
     },
     // download 버튼 활성화 시켜주는 api
@@ -94,6 +136,15 @@ export default {
         })
         .catch(console.error);
     },
+    clipModal() {
+      this.$modal.show("clip-modal");
+    },
+    isCopied() {
+      let copyText = document.querySelector("#copyPath");
+      copyText.setAttribute("type", "text");
+      copyText.select();
+      document.execCommand("copy");
+    },
   },
   props: {
     listItem: {
@@ -105,17 +156,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 #sound-list-items-wrapper {
   border-bottom: 1px solid $primary;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  // max-width: 1275px;
+  position: relative;
   max-width: 100%;
-  // height: 87px;
+  height: 88px;
+  overflow: hidden;
   margin: 0 auto;
+
+  // 요소 제목 스타일
+  span {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  // 요소 내용 스타일
+  p {
+    color: #a1a1a1;
+    display: inline;
+  }
 }
+// sound list info
 .enabled-container {
   display: flex;
   // width: 100%;
@@ -193,7 +253,7 @@ export default {
       a {
         width: 100%;
         height: 100%;
-        p {
+        span {
           font-size: 14px;
           margin-right: 7px;
           text-transform: uppercase;
@@ -222,6 +282,13 @@ export default {
         }
       }
     }
+  }
+  .sound-title {
+    text-align: left;
+    min-width: 200px;
+    width: 220px;
+    text-overflow: ellipsis;
+    padding-top: 2px;
   }
   // 더보기 화살표
   .arrow {
@@ -262,12 +329,68 @@ export default {
     }
   }
 }
-.disabled-container {
-  // border: 1px solid wheat;
-  width: 100%;
-  display: none;
+
+// transition 컨트롤러
+.detail-fade-enter-active {
+  transition: all 0.4s ease;
 }
+.detail-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.detail-fade-enter,
+.detail-fade-leave-to {
+  transform: translateY(15px);
+  opacity: 0;
+}
+// more info -> 디테일 영역
+.disabled-container {
+  width: 92.8%;
+  position: absolute;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  .detail-parts-1 {
+    width: 445px;
+    height: 50px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  }
+  .detail-parts-2,
+  .detail-parts-3 {
+    max-width: 150px;
+    display: flex;
+    flex-flow: column;
+
+    .part-sound-designer {
+      display: flex;
+      align-items: center;
+      .designer-img {
+        display: inline-block;
+        text-align: center;
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        border-radius: 7px;
+        border: 1px solid $primary;
+        margin-right: 18px;
+      }
+    }
+  }
+  .detail-parts-3 {
+    a {
+      color: $sub-txt;
+      font-size: 40px;
+      :hover {
+        color: $link-txt;
+      }
+    }
+  }
+}
+// detail section show!
 .isMore {
-  display: block;
+  height: 185px !important;
+  background-color: $list-bg;
 }
 </style>
