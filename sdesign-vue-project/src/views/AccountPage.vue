@@ -107,8 +107,6 @@ export default {
     async fetchData() {
       const { data } = await fetchSounds();
       console.log("fetchData response =>", data);
-      console.log("data.result =>", data.result);
-      console.log("data.result[].tags =>", data.result[0].tags);
       this.listItems = data.result;
     },
     onClickTab(tab) {
