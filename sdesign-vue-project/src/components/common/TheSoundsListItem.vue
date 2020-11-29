@@ -1,14 +1,18 @@
 <template>
   <li id="sound-list-items-wrapper" :class="{ isMore: !isSelected }">
     <div class="enabled-container">
-      <div class="list-remove">
-        <button class="list-remove-button" v-if="!isSelected">
-          <span></span>
+      <!-- <div class="list-remove">
+        <button
+          class="list-remove-button"
+          :class="{ on: !isSelected }"
+          v-if="!isSelected"
+        > -->
+      <!-- <span></span> -->
+      <!-- remove
         </button>
-      </div>
+      </div> -->
       <div class="sound-info">
         <div class="play-container">
-          <!-- <p>filePath</p> -->
           <vue-plyr id="plyr">
             <audio class="player-box plyr--full-ui" controls ref="player">
               <source :src="listItem.filePath" ref="source" />
@@ -31,14 +35,12 @@
                 downloadItem(listItem.filePath, listItem.soundName)
               "
             >
-              <!-- <p>mp3</p> -->
               <span>mp3</span>
               <fa-icon icon="download" id="dicon" />
             </a>
           </div>
         </div>
         <div class="sound-title">
-          <!-- <p>soundName:</p> -->
           <span>Title:</span>
           <p>
             {{ listItem.soundName }}
@@ -85,6 +87,7 @@
           <a id="isShare" ref="isShare" @click="clipModal()">
             <fa-icon icon="share-alt-square" />
           </a>
+          <!-- clipboard modal section -->
           <template>
             <modal name="clip-modal" :width="390" :height="32">
               <div class="clipboard">
@@ -100,7 +103,11 @@
               </div>
             </modal>
           </template>
-          <!-- </p> -->
+        </div>
+        <div class="list-remove">
+          <button class="list-remove-button" v-if="!isSelected">
+            remove
+          </button>
         </div>
       </div>
     </transition>
@@ -172,38 +179,50 @@ export default {
   span {
     cursor: pointer;
   }
-  .list-remove {
-    width: 55px;
-    margin-left: 5px;
-    .list-remove-button {
-      all: unset;
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-      // 삭제 버튼
-      span {
-        &:before,
-        &:after {
-          position: relative;
-          top: 1px;
-          left: -2px;
-          transform: rotate(45deg);
-          content: "";
-          display: block;
-          width: 20px;
-          height: 2px;
-          background-color: rgb(213, 54, 54);
-          border-radius: 2px;
-        }
-        &:after {
-          transform: rotate(-45deg);
-          position: relative;
-          top: -1px;
-          left: -2px;
-        }
-      }
-    }
-  }
+  // X
+  // .list-remove {
+  //   // width: 25px;
+  //   // margin-left: 10px;
+  //   // padding: 0px 5px;
+  //   position: absolute;
+  //   // top: 0;
+  //   bottom: 10px;
+  //   left: 18px;
+  //   .list-remove-button {
+  //     all: unset;
+  //     // width: 16px;
+  //     width: 44px;
+  //     // height: 16px;
+  //     height: 13px;
+  //     cursor: pointer;
+  //     font-size: 11px;
+  //     background-color: rgb(230, 0, 0);
+  //     border-radius: 4px;
+  //     color: #fff;
+  //     // 삭제 버튼
+  //     span {
+  //       &:before,
+  //       &:after {
+  //         position: relative;
+  //         top: 1px;
+  //         left: -2px;
+  //         transform: rotate(45deg);
+  //         content: "";
+  //         display: block;
+  //         width: 15px;
+  //         height: 2px;
+  //         background-color: rgb(213, 54, 54);
+  //         border-radius: 2px;
+  //       }
+  //       &:after {
+  //         transform: rotate(-45deg);
+  //         position: relative;
+  //         top: -1px;
+  //         left: -2px;
+  //       }
+  //     }
+  // }
+  // }
   .sound-info {
     // width: 1209px;
     width: 100%;
@@ -213,8 +232,9 @@ export default {
     .play-container {
       display: flex;
       // width: 659px;
-      max-width: 56%;
-      min-width: 56%;
+      // max-width: 56%;
+      min-width: 47%;
+      width: 56%;
     }
   }
   .icons {
@@ -272,14 +292,15 @@ export default {
   }
   .sound-title {
     text-align: left;
-    min-width: 200px;
+    min-width: 20%;
     width: 220px;
     text-overflow: ellipsis;
     padding-top: 2px;
+    margin: 0 18px;
   }
   // 더보기 화살표
   .arrow {
-    width: 19px;
+    width: 20px;
     height: 18px;
     position: relative;
     bottom: 0px;
@@ -331,14 +352,16 @@ export default {
 }
 // more info -> 디테일 영역
 .disabled-container {
-  width: 92.8%;
-  position: absolute;
-  right: 20px;
+  // width: 92.8%;
+  max-width: 97%;
+  margin: 0 auto;
+  position: relative;
   display: flex;
   justify-content: space-between;
   text-align: left;
   .detail-parts-1 {
-    width: 445px;
+    // width: 445px;
+    width: 59%;
     height: 50px;
     display: flex;
     flex-flow: column;
@@ -376,6 +399,22 @@ export default {
       }
     }
   }
+  .list-remove {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    text-align: center;
+    .list-remove-button {
+      all: unset;
+      width: 48px;
+      height: 15px;
+      cursor: pointer;
+      font-size: 12px;
+      background-color: rgb(230, 0, 0);
+      border-radius: 4px;
+      color: #fff;
+    }
+  }
 }
 // detail section show!
 .isMore {
@@ -407,6 +446,36 @@ export default {
     }
     &:active {
       background-color: $active-btn;
+    }
+  }
+}
+
+// 태블릿
+@media (max-width:1020px) {
+  .enabled-container {
+    .icons {
+      .sound-download {
+        width: 68px;
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .enabled-container {
+    .icons {
+      width: 135px;
+      .sound-download {
+        width: 68px;
+      }
+    }
+  }
+  .disabled-container {
+    width: 94.5%;
+    margin: 0 auto;
+    .detail-parts-1 {
+      min-width: 390px;
+      max-width: 390px;
+      word-break: keep-all;
     }
   }
 }
