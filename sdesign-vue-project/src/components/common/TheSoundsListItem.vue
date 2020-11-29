@@ -82,7 +82,6 @@
         <div class="detail-parts-3">
           <!-- <p>share icon</p> -->
           <span>Share</span>
-          <!-- <p> -->
           <a id="isShare" ref="isShare" @click="clipModal()">
             <fa-icon icon="share-alt-square" />
           </a>
