@@ -26,7 +26,7 @@
           </div>
           <div class="sound-download icon">
             <a
-              :href="listItem.filePath"
+              href="javascript:;"
               @click.prevent="
                 downloadItem(listItem.filePath, listItem.soundName)
               "
@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import Axios from "axios";
+import { downloadItem } from "@/api";
 
 export default {
   data() {
@@ -116,24 +116,12 @@ export default {
     return {
       isTag,
       isSelected: true,
+      downloadItem,
     };
   },
   methods: {
     clicked() {
       this.isSelected = this.isSelected ? false : true;
-    },
-    // download 버튼 활성화 시켜주는 api
-    downloadItem(url, label) {
-      Axios.get(url, { responseType: "blob" })
-        .then((response) => {
-          const blob = new Blob([response.data], { type: "audio/mp3" });
-          const link = document.createElement("a");
-          link.href = URL.createObjectURL(blob);
-          link.download = label;
-          link.click();
-          URL.revokeObjectURL(link.href);
-        })
-        .catch(console.error);
     },
     clipModal() {
       this.$modal.show("clip-modal");

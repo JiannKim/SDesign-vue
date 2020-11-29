@@ -28,14 +28,29 @@ function loginUser(loginInfo) {
   console.log("login data => ", loginInfo);
   return instance.post("/login", loginInfo);
 }
-// 사운드 리스트 데이터 조회 api 요청 메서드
+
 // function fetchSounds(token) {
 //   console.log("fetchSounds() test");
 //   return instance.get("/get/my/soundList", token);
 // }
+
+// 사운드 리스트 데이터 조회 api 요청 메서드
 function fetchSounds() {
   console.log("fetchSounds() test");
   return instance.get("/get/soundList");
 }
+// download 버튼 활성화 시켜주는 api
+function downloadItem(url, label) {
+  axios.get(url, { responseType: "blob" })
+    .then((response) => {
+      const blob = new Blob([response.data], { type: "audio/mp3" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = label;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    })
+    .catch(console.error);
+}
 
-export { registerUser, loginUser, fetchSounds };
+export { registerUser, loginUser, fetchSounds, downloadItem };
