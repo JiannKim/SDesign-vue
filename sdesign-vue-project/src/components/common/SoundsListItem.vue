@@ -6,9 +6,8 @@
           class="list-remove-button"
           :class="{ on: !isSelected }"
           v-if="!isSelected"
-        > -->
-      <!-- <span></span> -->
-      <!-- remove
+        >
+          <span></span>
         </button>
       </div> -->
       <div class="sound-info">
@@ -18,9 +17,6 @@
               <source :src="listItem.filePath" ref="source" />
             </audio>
           </vue-plyr>
-          <!-- <audio class="player-box" controls controlslist="nodownload" ref="player">
-            <source :src="listItem.filePath" ref="source" />
-          </audio>-->
         </div>
         <div class="icons">
           <div class="sound-like icon">
@@ -57,14 +53,12 @@
       <div class="disabled-container" v-if="!isSelected">
         <div class="detail-parts-1">
           <div>
-            <!-- <p>category</p> -->
             <span>Category:</span>
             <p>
               {{ listItem.category }}
             </p>
           </div>
           <div>
-            <!-- <p>tags</p> -->
             <span>Tags:</span>
             <p>
               {{ isTag + listItem.tags.join(" #") }}
@@ -72,7 +66,6 @@
           </div>
         </div>
         <div class="detail-parts-2">
-          <!-- <p>accountName</p> -->
           <span>Sound Designer</span>
           <div class="part-sound-designer">
             <span class="designer-img"></span>
@@ -82,7 +75,6 @@
           </div>
         </div>
         <div class="detail-parts-3">
-          <!-- <p>share icon</p> -->
           <span>Share</span>
           <a id="isShare" ref="isShare" @click="clipModal()">
             <fa-icon icon="share-alt-square" />
@@ -231,8 +223,6 @@ export default {
     align-items: center;
     .play-container {
       display: flex;
-      // width: 659px;
-      // max-width: 56%;
       min-width: 47%;
       width: 56%;
     }
@@ -352,7 +342,6 @@ export default {
 }
 // more info -> 디테일 영역
 .disabled-container {
-  // width: 92.8%;
   max-width: 97%;
   margin: 0 auto;
   position: relative;
@@ -431,7 +420,6 @@ export default {
   textarea {
     width: 100%;
     border: 1px solid $active-btn;
-    // border: none;
     outline: none;
     padding: 0 5px;
   }
@@ -451,7 +439,7 @@ export default {
 }
 
 // 태블릿
-@media (max-width:1020px) {
+@media (max-width: 1020px) {
   .enabled-container {
     .icons {
       .sound-download {

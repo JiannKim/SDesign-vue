@@ -68,7 +68,7 @@
 <script>
 import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab.vue";
 import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
-import AccountModal from "@/components/common/TheAccountModal.vue";
+import AccountModal from "@/components/common/AccountModal.vue";
 import vmodal from "vue-js-modal";
 
 export default {
