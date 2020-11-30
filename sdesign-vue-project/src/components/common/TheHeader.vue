@@ -25,24 +25,36 @@
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
         <div class="login-user">
-          <div class="header-menu-list users-info" @click="userInfo = !userInfo">ME</div>
-          <div v-if="!userInfo" class="user-info-box">
-            <div class="user-info">
-              Signed in as
-              <span>{{ $store.state.nickname }}</span>
-            </div>
-
-            <router-link to="/upload" class>Upload</router-link>
-            <a href="javascript:;" @click="logoutUser" class="logout-btn">
-              <span>Logout</span>
-            </a>
+          <div class="header-menu-list users-info" @click="accountModalMounted">
+            <!-- @click="userInfo = !userInfo" -->
+            ME
           </div>
+          <!-- <template> -->
+          <!-- <transition v-if="!userInfo" >
+              <div class="user-info-box">
+                <div class="user-info">
+                  Signed in as
+                  <span>{{ $store.state.nickname }}</span>
+                </div>
+
+                <router-link to="/account" class>My page</router-link>
+                <a href="javascript:;" @click="logoutUser" class="logout-btn">
+                  <span>Logout</span>
+                </a>
+              </div>
+            </transition> -->
+          <modal name="account-modal"  class="account-modal">
+            <AccountModal />
+          </modal>
+          <!-- </template> -->
         </div>
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
       <template v-else>
         <li @click="loginMounted" class="header-menu-list form-list">Login</li>
-        <li @click="signupMounted" class="header-menu-list form-list signup-li">Sign Up</li>
+        <li @click="signupMounted" class="header-menu-list form-list signup-li">
+          Sign Up
+        </li>
       </template>
     </ul>
     <!-- 태블릿 모드 -->
@@ -56,16 +68,20 @@
 <script>
 import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab.vue";
 import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
+import AccountModal from "@/components/common/TheAccountModal.vue";
+import vmodal from "vue-js-modal";
 
 export default {
   data() {
     return {
       userInfo: true,
+      vmodal,
     };
   },
   components: {
     TheHeaderSidebarMenuTab,
     TheHeaderSearchTab,
+    AccountModal,
   },
   computed: {
     isUserLogin() {
@@ -73,21 +89,22 @@ export default {
     },
   },
   methods: {
+    accountModalMounted() {
+      // this.modalHide();
+      this.$modal.show("account-modal");
+    },
     loginMounted() {
       this.$modal.show("login-modal");
     },
     signupMounted() {
       this.$modal.show("signup-modal");
     },
-    // store에 있는 clearUserEmail함수를 가져와서 로그아웃 기능의 메서드를 만들어준다
-    logoutUser() {
-      return this.$store.commit("clearUserEmail");
-    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
@@ -104,43 +121,17 @@ export default {
   left: 0;
   font-size: 2rem;
   z-index: 2;
+  .app-header-logo-link {
+    width: 100px;
+    display: flex;
+    margin: 0 30px 0 147px;
+    z-index: 1;
+    /* header logo */
+    .header-logo {
+      width: 100px;
+    }
+  }
 }
-/* ul-li */
-.app-header-menu-lists {
-  display: flex;
-  align-items: center;
-  margin-right: 100px;
-  width: 420px;
-  list-style: none;
-}
-.header-menu-list a {
-  color: #313131;
-  text-decoration: none;
-}
-.header-menu-list {
-  font-size: 16px;
-  font-weight: 500;
-  margin-left: 50px;
-  cursor: pointer;
-}
-.form-list {
-  font-weight: 600;
-}
-.signup-li {
-  border: 1px solid #282828;
-  border-radius: 20px;
-  padding: 10px;
-  width: 80px;
-}
-/* header logo */
-.header-logo {
-  width: 100px;
-  margin: 0 30px 0 147px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .app-header-search-box {
   width: 743px;
   height: 43px;
@@ -149,87 +140,60 @@ export default {
   position: relative;
   display: flex;
   transition: width 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
+  .header-search-icon {
+    position: absolute;
+    left: 19px;
+    top: 13px;
+    width: 17px;
+  }
+  input {
+    border: none;
+    background-color: #f3f3f3;
+    font-size: 17px;
+    width: 100%;
+    align-items: center;
+    margin-left: 45px;
+    margin: 0 5px 0 45px;
+    outline: none;
+  }
 }
-.header-search-icon {
-  position: absolute;
-  left: 19px;
-  top: 13px;
-  width: 17px;
-}
-
-.app-header-search-box input {
-  border: none;
-  background-color: #f3f3f3;
-  font-size: 17px;
-  width: 100%;
+/* ul-li */
+.app-header-menu-lists {
+  display: flex;
   align-items: center;
-  margin-left: 45px;
-  margin: 0 5px 0 45px;
-  outline: none;
+  margin-right: 100px;
+  width: 420px;
+  list-style: none;
+  .header-menu-list {
+    font-size: 16px;
+    margin-left: 50px;
+    a {
+      color: #313131;
+      text-decoration: none;
+    }
+  }
 }
 
+// 폼 메뉴
+.form-list {
+  font-weight: 600;
+  cursor: pointer;
+  &.signup-li {
+    border: 1px solid $base-color;
+    border-radius: 20px;
+    padding: 10px;
+    width: 80px;
+  }
+}
+// 로그인이 되었을때
 .login-user {
   position: relative;
   font-size: 16px;
   font-weight: 400;
-  .users-info {
+  .users-info,
+  span {
     font-weight: 600;
-  }
-  .user-info {
-    font-size: 14px;
-    padding: 10px 0;
-    span {
-      font-weight: 600;
-    }
-  }
-
-  // 유저 인포 자세히 보기 박스
-  .user-info-box {
-    position: absolute;
-    top: 30px;
-    left: -15px;
-    width: 150px;
-    height: auto;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 7px;
-  }
-  .user-info-box::after,
-  .user-info-box::before {
-    bottom: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: "";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-  .user-info-box::after {
-    border-color: rgba(255, 255, 255, 0);
-    border-bottom-color: #fff;
-    border-width: 9px;
-    margin-left: -9px;
-  }
-  .user-info-box::before {
-    border-color: rgba(224, 224, 224, 0);
-    border-bottom-color: #e0e0e0;
-    border-width: 10px;
-    margin-left: -10px;
-  }
-  a {
-    color: #313131;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-    border-top: 1px solid #e0e0e0;
-  }
-  .logout-btn {
-    padding-top: 15px;
-    font-weight: 600;
-    border-top: 1px solid #e0e0e0;
-    background-color: #e0e0e085;
+    cursor: pointer;
   }
 }
 
@@ -250,16 +214,16 @@ export default {
   .app-header-search-box {
     width: 41%;
   }
-  .header-logo {
-    margin-left: 50px;
+  .app-header-logo-link {
+    margin-left: 120px !important;
   }
   .app-header-menu-lists {
     margin-right: 50px;
   }
 }
 @media (max-width: 1250px) {
-  .header-logo {
-    margin-left: 30px;
+  .app-header-logo-link {
+    margin-left: 85px !important;
   }
   .app-header-search-box {
     width: 38%;
@@ -275,7 +239,6 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
-    /* border: 1px solid red; */
   }
   #header-wrapper {
     width: 100%;
@@ -286,8 +249,8 @@ export default {
     margin: 0 30px 0 30px;
     transition: margin 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
   }
-  .header-logo-link {
-    z-index: 1;
+  .app-header-logo-link {
+    margin: 0 auto !important;
   }
   .app-header-search-box {
     display: none;

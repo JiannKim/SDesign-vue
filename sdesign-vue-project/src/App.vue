@@ -38,6 +38,22 @@ export default {
 #side-page {
   padding-top: 73px;
 }
+// my account modal custom
+.account-modal {
+  .vm--modal {
+    max-width: 152px;
+    max-height: 57px;
+    left: 78% !important;
+    top: 6% !important;
+    background: rgba(255, 255, 255, 0) !important;
+    overflow: unset !important;
+    transform: translate(-50%, 0) !important;
+    border-radius: 7px;
+  }
+  .vm--overlay {
+    opacity: 0 !important;
+  }
+}
 
 // plyr style customs
 .plyr {
