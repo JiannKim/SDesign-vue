@@ -43,12 +43,13 @@ export default {
   .vm--modal {
     max-width: 152px;
     max-height: 57px;
-    left: 78% !important;
+    left: 79.2% !important;
     top: 6% !important;
     background: rgba(255, 255, 255, 0) !important;
     overflow: unset !important;
     transform: translate(-50%, 0) !important;
     border-radius: 7px;
+    transition: opacity 0.2s ease;
   }
   .vm--overlay {
     opacity: 0 !important;
