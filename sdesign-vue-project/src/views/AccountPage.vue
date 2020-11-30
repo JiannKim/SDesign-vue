@@ -49,15 +49,15 @@
           <div class="bottom-title-section">
             <h2>Upload List</h2>
           </div>
-          <!-- <div class="list-items"> -->
-          <ul>
+          <!-- <div v-if="isLoading">Loading..</div> -->
+          <LoadingSpinner v-if="isLoading" />
+          <ul v-else>
             <SoundsListItem
               v-for="listItem in listItems"
               :key="listItem._id"
               :listItem="listItem"
             />
           </ul>
-          <!-- </div> -->
         </div>
       </template>
       <template v-else-if="selectedTab === tabs[1]">
@@ -72,11 +72,13 @@
 
 <script>
 import SoundsListItem from "@/components/common/TheSoundsListItem.vue";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import { fetchSounds } from "@/api";
 
 export default {
   components: {
     SoundsListItem,
+    LoadingSpinner,
   },
   data() {
     const tabs = [
@@ -101,12 +103,15 @@ export default {
       ftag: "",
       order,
       listItems: [],
+      isLoading: false,
     };
   },
   methods: {
     async fetchData() {
+      this.isLoading = true;
       const { data } = await fetchSounds();
       console.log("fetchData response =>", data);
+      this.isLoading = false;
       this.listItems = data.result;
     },
     onClickTab(tab) {
@@ -267,8 +272,7 @@ export default {
     }
   }
   .tab-upload-lists {
-    border: 1px solid violet;
-    margin-top: 103px;
+    margin: 103px 0 90px 0;
     .bottom-title-section {
       border-bottom: 1px solid #e0e0e0;
       padding-bottom: 20px;
