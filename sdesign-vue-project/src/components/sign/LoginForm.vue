@@ -3,7 +3,9 @@
     <h1 class="form-title">로그인</h1>
     <form @submit.prevent="loginForm" class="form-box login">
       <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedId }" for="useremail">email</label>
+        <label :class="{ isSelected: !selectedId }" for="useremail"
+          >email</label
+        >
         <input
           v-focus
           type="email"
@@ -15,9 +17,13 @@
         />
         <span class="underline"></span>
       </div>
-      <span class="warning" v-if="!isUserEmailValid && useremail">올바른 이메일 형식을 입력해 주세요</span>
+      <span class="warning" v-if="!isUserEmailValid && useremail"
+        >올바른 이메일 형식을 입력해 주세요</span
+      >
       <div class="form-input rectangles">
-        <label :class="[{ isSelected: !selectedPass }, errorClass]" for="pass">password</label>
+        <label :class="[{ isSelected: !selectedPass }, errorClass]" for="pass"
+          >password</label
+        >
         <input
           type="password"
           name="pass"
@@ -34,8 +40,12 @@
         type="submit"
         class="button form-button rectangles"
         :class="{ disabled: !isUserEmailValid || !password }"
-      >로그인</button>
-      <p class="modal-open" @click="signupMounted">Go to create a new account.</p>
+      >
+        로그인
+      </button>
+      <p class="modal-open" @click="signupMounted">
+        Go to create a new account.
+      </p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
@@ -46,6 +56,7 @@
 <script>
 import { loginUser } from "@/api";
 import { validateEmail } from "@/utils/validation";
+import { saveAuthToCookie, saveUserToCookie } from "@/utils/cookies";
 
 export default {
   data() {
@@ -80,36 +91,27 @@ export default {
           accountPw: this.password,
         };
         const { data } = await loginUser(userData);
-        console.log("response.data =>", data);
-        console.log("data.accountEmail =>" + data.accountEmail);
-        console.log("data.accountName =>" + data.accountName);
+        // console.log("response.data =>", data);
+        // console.log("data.accountEmail =>" + data.accountEmail);
+        // console.log("data.accountName =>" + data.accountName);
 
         // 비밀번호를 다르게 입력한 경우
         if (data == "5504") {
-          console.log("바르게 입력하세요");
+          // console.log("바르게 입력하세요");
           this.loginMessage = `* 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
           this.initPass();
           // this.errorClass = "isError";
         } else {
-          // 로그인 되었을 경우 페이지 이동 === <router-link to="" />
+          saveAuthToCookie(data.token);
+          saveUserToCookie(data.accountName);
+          // 로그인 했을 때 페이지 이동 => main
           this.$router.push("/");
           this.$store.commit("setUserEmail", data.accountEmail);
           this.$store.commit("setUserName", data.accountName);
-          console.log("data.token =>" + data.token);
           this.$store.commit("setToken", data.token);
           // 모달 닫기
           this.modalHide();
         }
-        // let token = response.data.token;
-        // let useremail = response.data.user.accountEmail;
-        // let nickname = response.data.user.nickname;
-        // console.log("useremail => " + useremail);
-        // console.log("nickname => " + nickname);
-        // this.$store.commit("setToken", token);
-
-        // this.$store.commit("setUserEmail", data.accountEmail);
-        // this.$store.commit("setNick", nickname);
-        // fetchNotes();
       } catch (error) {
         // 에러 핸들링할 코드
         console.log(error.response);
