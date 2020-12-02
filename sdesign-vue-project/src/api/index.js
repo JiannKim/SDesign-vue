@@ -18,10 +18,10 @@ function createInstance() {
 const instance = createInstance();
 
 // signup api 요청 메서드
-function registerUser(userInfo) {
+function registerUser(joinInfo) {
   // const url = "http://193.122.127.197:2500/api/create/account";
-  console.log("register data(userInfo) =>", userInfo);
-  return instance.post("/create/account", userInfo);
+  console.log("register data(joinInfo) =>", joinInfo);
+  return instance.post("/create/account", joinInfo);
 }
 // login api 요청 메서드
 function loginUser(loginInfo) {
@@ -36,12 +36,20 @@ function loginUser(loginInfo) {
 
 // 사운드 리스트 데이터 조회 api 요청 메서드
 function fetchSounds() {
-  console.log("fetchSounds() test");
   return instance.get("/get/soundList");
 }
+// 사운드 리스트 데이터 생성 api 요청
+function createSounds(formInfo, token) {
+  console.log("createSounds data(formInfo) =>", formInfo);
+  return instance.post("/upload/file", formInfo, {
+    header: { token }
+  });
+}
+
 // download 버튼 활성화 시켜주는 api
 function downloadItem(url, label) {
-  axios.get(url, { responseType: "blob" })
+  axios
+    .get(url, { responseType: "blob" })
     .then((response) => {
       const blob = new Blob([response.data], { type: "audio/mp3" });
       const link = document.createElement("a");
@@ -53,4 +61,4 @@ function downloadItem(url, label) {
     .catch(console.error);
 }
 
-export { registerUser, loginUser, fetchSounds, downloadItem };
+export { registerUser, loginUser, fetchSounds, downloadItem, createSounds };
