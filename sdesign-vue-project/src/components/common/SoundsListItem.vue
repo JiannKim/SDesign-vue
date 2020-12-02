@@ -97,7 +97,11 @@
           </template>
         </div>
         <div class="list-remove">
-          <button class="list-remove-button" v-if="!isSelected">
+          <button
+            class="list-remove-button"
+            v-if="!isSelected"
+            @click="submitRemove"
+          >
             remove
           </button>
         </div>
@@ -107,7 +111,7 @@
 </template>
 
 <script>
-import { downloadItem } from "@/api";
+import { downloadItem, removeItem } from "@/api";
 
 export default {
   data() {
@@ -119,6 +123,16 @@ export default {
     };
   },
   methods: {
+    async submitRemove() {
+      const data = this.listItem._id;
+      const token = this.$store.state.token;
+      try {
+        await removeItem({ soundId: data }, token);
+        this.$router.go("/accoutn");
+      } catch (error) {
+        console.log("err =>", error);
+      }
+    },
     clicked() {
       this.isSelected = this.isSelected ? false : true;
     },

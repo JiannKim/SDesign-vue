@@ -11,7 +11,13 @@
       </div>
       <div class="file-uploader">
         <label for="files" class="input-label">
-          <input type="file" id="files" accept="audio/*" @change="isFile" />
+          <input
+            type="file"
+            id="files"
+            ref="soundFile"
+            accept="audio/*"
+            @change="isFile"
+          />
           파일찾기
         </label>
       </div>
@@ -72,7 +78,7 @@ export default {
       title: "",
       tags: "",
       category: "",
-      files: "",
+      uploadSound: "",
       order,
       listItems: [],
       isLoading: false,
@@ -80,27 +86,24 @@ export default {
     };
   },
   methods: {
-    isFile(event) {
-      // let file = event.target.files;
-      // console.log("file", file);
-      const uploadSound = event.target.files[0];
-      this.files = window.URL.createObjectURL(uploadSound);
-      // this.files = file;
-      console.log(this.files);
+    isFile() {
+      this.uploadSound = this.$refs.soundFile.files[0];
     },
     async submitForm() {
-      const formData = [
-        { soundName: this.title },
-        { tags: this.tags },
-        { category: this.category },
-        { userFile: this.files },
-      ];
+      const formData = {
+        soundName: this.title,
+        tags: this.tags,
+        category: this.category,
+        userFile: this.uploadSound,
+      };
       const token = this.$store.state.token;
       try {
         const { data } = await createSounds(formData, token);
         console.log("createData response =>", data);
+        this.inntForm();
+        this.$router.go("/accoutn");
       } catch (error) {
-        console.log("catch err =>", error);
+        console.log("err =>", error);
       }
     },
     async fetchData() {
@@ -114,6 +117,12 @@ export default {
         this.isLoading = false;
         this.listItems = data.result;
       }
+    },
+    inntForm() {
+      this.title = "";
+      this.tags = "";
+      this.category = "";
+      this.uploadSound = "";
     },
   },
   created() {
