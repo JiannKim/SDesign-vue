@@ -150,6 +150,12 @@ export default {
   height: 88px;
   overflow: hidden;
   margin: 0 auto;
+  // &::after {
+  //   content: "";
+  //   width: 100%;
+  //   height: 1px;
+  //   background-color: $primary;
+  // }
 
   // 요소 제목 스타일
   span {
@@ -168,7 +174,7 @@ export default {
   height: 87px;
   justify-content: space-between;
   align-items: center;
-  span {
+  .arrow {
     cursor: pointer;
   }
   // X

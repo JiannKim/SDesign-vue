@@ -1,38 +1,45 @@
 <template>
   <div class="contents-section">
-    <div class="upload tab-content">
+    <form class="upload form-content" @submit.prevent="submitForm">
       <div class="input-container">
         <label for="fname">제목</label>
-        <input type="text" name="fname" id="fname" v-model="fname" />
+        <input type="text" name="fname" id="fname" v-model="title" />
       </div>
       <div class="input-container">
         <label for="ftag">태그</label>
-        <input type="text" name="ftag" id="ftag" v-model="ftag" />
+        <input type="text" name="ftag" id="ftag" v-model="tags" />
       </div>
       <div class="file-uploader">
         <label for="files" class="input-label">
-          <input class="me" type="file" id="files" />
+          <input type="file" id="files" accept="audio/*" @change="isFile" />
           파일찾기
         </label>
       </div>
-      <div class="file-submit">
+      <div class="file-select">
         <div class="select-option">
           <fa-icon icon="caret-down" class="caret-icon" />
-          <select name="categories" id="categories" class="select-box">
-            <option v-for="option in order" :key="option.index">{{
-              option.text
-            }}</option>
+          <select
+            name="categories"
+            id="categories"
+            class="select-box"
+            v-model="category"
+          >
+            <option value="">-- 카테고리 선택 --</option>
+            <option v-for="option in order" :key="option.index">
+              {{ option.text }}
+            </option>
           </select>
         </div>
-        <button class="submit-button">등록하기</button>
+        <button type="submit" class="submit-button">등록하기</button>
       </div>
-    </div>
-    <div class="tab-upload-lists">
+    </form>
+    <div class="form-upload-lists">
       <div class="bottom-title-section">
         <h2>Upload List</h2>
       </div>
       <LoadingSpinner v-if="isLoading" />
       <ul v-else>
+        <p>{{ logMessage }}</p>
         <SoundsListItem
           v-for="listItem in listItems"
           :key="listItem._id"
@@ -44,7 +51,7 @@
 </template>
 
 <script>
-import { fetchSounds } from "@/api";
+import { fetchSounds, createSounds } from "@/api";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 
@@ -55,7 +62,6 @@ export default {
   },
   data() {
     const order = [
-      { text: "카테고리를 선택해주세요", value: "" },
       { text: "Walla", value: "walla" },
       { text: "Theme", value: "theme" },
       { text: "Whoosh", value: "whoosh" },
@@ -63,20 +69,50 @@ export default {
       { text: "Cartoon", value: "cartoon" },
     ];
     return {
-      fname: "",
-      ftag: "",
+      title: "",
+      tags: "",
+      category: "",
+      files: "",
       order,
       listItems: [],
       isLoading: false,
+      logMessage: "",
     };
   },
   methods: {
+    isFile(event) {
+      // let file = event.target.files;
+      // console.log("file", file);
+      const uploadSound = event.target.files[0];
+      this.files = window.URL.createObjectURL(uploadSound);
+      // this.files = file;
+    },
+    async submitForm() {
+      const formData = [
+        { title: this.title },
+        { tags: this.tags },
+        { category: this.category },
+        { files: this.files },
+      ];
+      const token = this.$store.state.token;
+      try {
+        const { data } = await createSounds(formData, token);
+        console.log("createData response =>", data);
+      } catch (error) {
+        console.log("catch err =>", error);
+      }
+    },
     async fetchData() {
       this.isLoading = true;
       const { data } = await fetchSounds();
       console.log("fetchData response =>", data);
-      this.isLoading = false;
-      this.listItems = data.result;
+      if (data.result.length === 0) {
+        this.isLoading = false;
+        this.logMessage = "업로드한 사운드가 없습니다.";
+      } else {
+        this.isLoading = false;
+        this.listItems = data.result;
+      }
     },
   },
   created() {
@@ -86,7 +122,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .contents-section {
   // border: 1px solid olive;
   .upload {
@@ -98,7 +134,7 @@ export default {
     border: 1px solid #e0e0e0;
     border-radius: 4px;
   }
-  .tab-content {
+  .form-content {
     border: none;
     display: block;
     margin-top: 28px;
@@ -153,7 +189,7 @@ export default {
         transition: none;
       }
     }
-    .file-submit {
+    .file-select {
       display: flex;
       margin-top: 20px;
       .select-option {
@@ -197,7 +233,7 @@ export default {
       }
     }
   }
-  .tab-upload-lists {
+  .form-upload-lists {
     margin: 103px 0 90px 0;
     .bottom-title-section {
       border-bottom: 1px solid #e0e0e0;
@@ -213,7 +249,7 @@ export default {
     ul {
       max-width: 88.5%;
       margin: 0 auto;
-      border-top: 1px solid $primary;
+      // border-top: 1px solid $primary;
       margin-top: 44px;
     }
   }
