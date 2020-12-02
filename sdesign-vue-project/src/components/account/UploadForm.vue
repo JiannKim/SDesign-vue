@@ -89,10 +89,10 @@ export default {
     },
     async submitForm() {
       const formData = [
-        { title: this.title },
+        { soundName: this.title },
         { tags: this.tags },
         { category: this.category },
-        { files: this.files },
+        { userFile: this.files },
       ];
       const token = this.$store.state.token;
       try {
