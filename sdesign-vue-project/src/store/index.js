@@ -13,8 +13,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     useremail: "",
-    // nickname: "",
-    // token: "",
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
   },

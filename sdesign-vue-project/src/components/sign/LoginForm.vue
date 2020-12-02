@@ -54,9 +54,7 @@
 </template>
 
 <script>
-// import { loginUser } from "@/api";
 import { validateEmail } from "@/utils/validation";
-// import { saveAuthToCookie, saveUserToCookie } from "@/utils/cookies";
 
 export default {
   data() {
@@ -91,7 +89,7 @@ export default {
           accountPw: this.password,
         };
         const data = await this.$store.dispatch("LOGIN", userData);
-        console.log(data);
+        
         // 비밀번호를 다르게 입력한 경우
         if (data == "5504") {
           // console.log("바르게 입력하세요");

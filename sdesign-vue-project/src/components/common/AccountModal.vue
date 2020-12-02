@@ -4,9 +4,10 @@
       Signed in as
       <span> {{ $store.state.nickname }}</span>
     </div>
-
-    <!-- <router-link to="/account" >My page</router-link> -->
-    <a href="/account" @click="modalHide">My page</a>
+    <div @click="modalHide">
+      <router-link to="/account">My page</router-link>
+    </div>
+    <!-- <a href="/account" @click="modalHide">My page</a> -->
     <a href="javascript:;" @click="logoutUser" class="logout-btn">
       <span>Logout</span>
     </a>
