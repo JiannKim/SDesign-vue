@@ -86,6 +86,7 @@ export default {
       const uploadSound = event.target.files[0];
       this.files = window.URL.createObjectURL(uploadSound);
       // this.files = file;
+      console.log(this.files);
     },
     async submitForm() {
       const formData = [
