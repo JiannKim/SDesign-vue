@@ -117,7 +117,7 @@ export default {
   },
   created() {
     this.fetchData();
-    this.selectedTab = this.tabs[0];
+    // this.selectedTab = this.tabs[0];
   },
 };
 </script>
