@@ -42,7 +42,7 @@ function fetchSounds() {
 function createSounds(formInfo, token) {
   console.log("createSounds data(formInfo) =>", formInfo);
   return instance.post("/upload/file", formInfo, {
-    header: { token }
+    headers: { token },
   });
 }
 
