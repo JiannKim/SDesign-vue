@@ -41,11 +41,27 @@ function fetchSounds() {
 // 사운드 리스트 데이터 생성 api 요청
 function createSounds(formInfo, token) {
   console.log("createSounds data(formInfo) =>", formInfo);
-  return instance.post("/upload/file", formInfo, {
-    headers: { token },
+  let data = new FormData();
+  // console.log("formInfo.userFile.name =>", formInfo.userFile.name);
+  data.append("userFile", formInfo.userFile);
+  data.append("soundName", formInfo.soundName);
+  data.append("category", formInfo.category);
+  data.append("tags", formInfo.tags);
+  console.log(data);
+  return instance.post("/upload/file", data, {
+    headers: {
+      token,
+      "Content-Type": "multipart/form-data",
+    },
   });
 }
-
+function removeItem(removeInfo, token) {
+  return instance.post("/remove/my/sound", removeInfo, {
+    headers: {
+      token,
+    },
+  });
+}
 // download 버튼 활성화 시켜주는 api
 function downloadItem(url, label) {
   axios
@@ -61,4 +77,11 @@ function downloadItem(url, label) {
     .catch(console.error);
 }
 
-export { registerUser, loginUser, fetchSounds, downloadItem, createSounds };
+export {
+  registerUser,
+  loginUser,
+  fetchSounds,
+  downloadItem,
+  createSounds,
+  removeItem,
+};
