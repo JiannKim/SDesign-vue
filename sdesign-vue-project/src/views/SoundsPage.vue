@@ -144,7 +144,7 @@ export default {
 
 <style scoped lang="scss">
 #sounds-page-wrapper {
-  border: 1px solid red;
+  // border: 1px solid red;
   // position: relative;
   // top: 0px;
   // margin-top: 73px;
@@ -252,7 +252,6 @@ a {
     display: flex;
     justify-content: space-between;
     margin: 50px 0;
-    border: 1px solid;
     select {
       width: 175px;
       height: 43px;
