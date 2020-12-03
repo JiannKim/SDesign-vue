@@ -20,6 +20,7 @@
     "semantic-ui-icon": "^2.3.3",
     "semantic-ui-vue": "^0.11.0",
     "vue": "^2.6.11",
+    "vue-cli": "^2.9.6",
     "vue-js-modal": "^2.0.0-rc.6",
     "vue-plyr": "^7.0.0",
     "vue-router": "^3.4.3",
