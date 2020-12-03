@@ -1,6 +1,6 @@
 <template>
   <div id="sounds-page-wrapper">
-    <div class="top-player-bar">
+    <!-- <div class="top-player-bar">
       <div class="player-bar-section">
         <div class="play-icons">
           <a href="javascript:;" class="bar-play-icon">
@@ -9,11 +9,6 @@
           <a
             href="javascript:;"
             class="bar-play-icon"
-            @click="
-              play(
-                'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3'
-              )
-            "
           >
             <fa-icon :icon="['fa', 'play']"></fa-icon>
           </a>
@@ -21,15 +16,12 @@
             <fa-icon class="fa-icon" :icon="['fa', 'step-forward']"></fa-icon>
           </a>
         </div>
-
         <a href="javascript:;">
           PLAY ALL
         </a>
-
         <a href="javascript:;" class="bar-volume-icon">
           <fa-icon :icon="['fa', 'volume-up']"></fa-icon>
         </a>
-
         <input
           type="range"
           id="js-Range"
@@ -39,19 +31,15 @@
           step="0.1"
         />
       </div>
-
       <button class="buy-button">
         구매 하기
       </button>
-
       <div class="top-bar-progress"></div>
-    </div>
-
+    </div> -->
     <div class="sounds-page-contents">
       <h1 class="page-title">
         sounds (983)
       </h1>
-
       <div class="contents-select">
         <select name="abcd" id="op1">
           <option
@@ -78,29 +66,33 @@
           >
         </select>
       </div>
-
       <div class="contents-player">
-        <!-- <template> -->
-        <vue-plyr>
-          <audio controls crossorigin playsinline>
-            <source
-              src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3"
-              type="audio/mp3"
+        <div class="form-upload-lists">
+          <LoadingSpinner v-if="isLoading" />
+          <ul v-else>
+            <p>{{ logMessage }}</p>
+            <SoundsListItem
+              v-for="listItem in listItems"
+              :key="listItem._id"
+              :listItem="listItem"
             />
-            <source
-              src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.ogg"
-              type="audio/ogg"
-            />
-          </audio>
-        </vue-plyr>
-        <!-- </template> -->
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { fetchSounds } from "@/api";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
+import SoundsListItem from "@/components/common/SoundsListItem.vue";
+
 export default {
+  components: {
+    LoadingSpinner,
+    SoundsListItem,
+  },
   data() {
     return {
       opOne: [
@@ -121,17 +113,31 @@ export default {
         { text: "B", value: "B" },
         { text: "C", value: "C" },
       ],
+      listItems: [],
+      isLoading: false,
+      logMessage: "",
     };
   },
   methods: {
-    play(sound) {
-      let audio = new Audio(sound);
-      if (sound) {
-        audio.play();
-      } else {
-        audio.pause();
+    async fetchData() {
+      try {
+        this.isLoading = true;
+        const { data } = await fetchSounds();
+        console.log("fetchData response =>", data);
+        // if (data.result.length === 0) {
+        //   this.isLoading = false;
+        //   this.logMessage = "업로드된 사운드가 없습니다.";
+        // } else {
+        this.isLoading = false;
+        this.listItems = data.result;
+        // }
+      } catch (error) {
+        console.log("this ", error);
       }
     },
+  },
+  created() {
+    this.fetchData();
   },
 };
 </script>
@@ -242,13 +248,12 @@ a {
   width: 80%;
   margin: 0 auto;
   .contents-select {
-    width: 585px;
+    max-width: 585px;
     display: flex;
     justify-content: space-between;
     margin: 50px 0;
-    border: 1px solid forestgreen;
+    border: 1px solid;
     select {
-      // all: unset;
       width: 175px;
       height: 43px;
       padding: 0 13px;
@@ -257,25 +262,26 @@ a {
       background: #a1a1a1;
       color: #fff;
       appearance: none;
+      margin-right: 10px;
       font: {
         size: 14px;
         weight: 600;
       }
-
-      /* Select Icon Background */
+      /* Select caret Icon Background */
       background-repeat: no-repeat;
       background-size: 30px;
-      background-position: 140px center;
+      background-position: 96% center;
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAXVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9RKvvlAAAAHnRSTlMA/ROrKqImGsYXwa++piJlNALv5+bQyp2XUg4HhoQSotHMAAAAzUlEQVRYw+3RuQ7CMBBF0XGchC37voD//zMxUswIOQXOUFC8W440p3mEEEIIIYTQd0VVvO7d17iKDnD1PDRtUpBXkbTNMNfBYNUZW1Z4XmZsXRUM3o3ZE1PrvXoEg5PZxPTDu27nKRgs1fZ6TXc8VYZvfDMssrelD+x88sT47C63E5FEPMe+JxfZ084LFzWLEo+7aLd137t99YVILHIqt55IzJXvyUX2IhIXJertJc6Ti74nF9mTi6Oy3sieuKXUulzol9U1IYQQQgj9fU8Znhyj7M/eQgAAAABJRU5ErkJggg==");
     }
   }
-  //.side-page
-  // h1 {
-  //   margin: 50px 0;
-  //   font: {
-  //     size: 42px;
-  //     weight: 600;
-  //   }
-  // }
+  .form-upload-lists {
+    margin: 103px 0 90px 0;
+    ul {
+      // max-width: 88.5%;
+      // margin: 0 auto;
+      border-top: 1px solid $primary;
+      // margin-top: 44px;
+    }
+  }
 }
 </style>

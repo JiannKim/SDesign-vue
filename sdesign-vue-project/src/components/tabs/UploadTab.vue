@@ -34,24 +34,29 @@ export default {
     return {
       logMessage: "",
       isLoading: false,
-      // listItems: [],
+      listItems: [],
     };
   },
   methods: {
-    async fetchData() {
+    async fetchMyData() {
       const token = this.$store.state.token;
-      this.isLoading = true;
-      const { data } = await fetchMySounds(token);
-      console.log("fetchData response =>", data);
-      if (data.result.length === 0) {
-        this.isLoading = false;
-        this.logMessage = "업로드한 사운드가 없습니다.";
-      } else {
-        this.isLoading = false;
-        this.listItems = data.result;
+      try {
+        this.isLoading = true;
+        const { data } = await fetchMySounds(token);
+        console.log("fetchMyData response =>", data);
+        if (data.result.length === 0) {
+          this.isLoading = false;
+          this.logMessage = "업로드된 사운드가 없습니다.";
+        } else {
+          this.isLoading = false;
+          this.listItems = data.result;
+        }
+      } catch (error) {
+        console.log("this ", error);
       }
     },
     // async submitRemove() {
+    //   console.log(this.ListItem.data);
     //   const data = this.listItem._id;
     //   const token = this.$store.state.token;
     //   try {
@@ -63,7 +68,7 @@ export default {
     // },
   },
   created() {
-    this.fetchData();
+    this.fetchMyData();
   },
 };
 </script>
