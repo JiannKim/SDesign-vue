@@ -16,7 +16,6 @@
       </ul>
     </div>
     <div class="contents-section">
-      <!-- <UploadForm v-if="selectedTab === tabs[0]" /> -->
       <UploadTab v-if="selectedTab === tabs[0]" />
       <template v-else-if="selectedTab === tabs[1]">
         <p>profile 섹션</p>

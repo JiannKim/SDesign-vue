@@ -99,7 +99,7 @@
         <div class="list-remove">
           <button
             class="list-remove-button"
-            v-if="isLogin && isPublic"
+            v-if="this.listItem.myItem === true"
             @click="submitRemove"
           >
             remove
@@ -119,9 +119,7 @@ export default {
     return {
       isTag,
       isClicked: true,
-      isLogin: true,
       downloadItem,
-      isPublic: true,
     };
   },
   methods: {

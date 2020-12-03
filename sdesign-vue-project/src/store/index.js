@@ -20,6 +20,9 @@ export default new Vuex.Store({
     isLogin(state) {
       return state.token !== "";
     },
+    isPublic(state) {
+      return state.useremail === "";
+    },
   },
   mutations: {
     setUserEmail(state, useremail) {

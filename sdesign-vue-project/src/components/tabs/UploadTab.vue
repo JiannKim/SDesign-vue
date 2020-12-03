@@ -43,12 +43,15 @@ export default {
       const token = this.$store.state.token;
       try {
         this.isLoading = true;
-        const { data } = await fetchMySounds(token);
+        let { data } = await fetchMySounds(token);
         console.log("fetchMyData response =>", data);
         if (data.result.length === 0) {
           this.isLoading = false;
           this.logMessage = "업로드된 사운드가 없습니다.";
         } else {
+          for (let i = 0; i < data.result.length; i++) {
+            data.result[i].myItem = true;
+          }
           this.isLoading = false;
           this.listItems = data.result;
         }
@@ -56,17 +59,6 @@ export default {
         console.log("this ", error);
       }
     },
-    // async submitRemove() {
-    //   console.log(this.ListItem.data);
-    //   const data = this.listItem._id;
-    //   const token = this.$store.state.token;
-    //   try {
-    //     await removeItem({ soundId: data }, token);
-    //     this.$router.go("/accoutn");
-    //   } catch (error) {
-    //     console.log("err =>", error);
-    //   }
-    // },
   },
   created() {
     this.fetchMyData();
