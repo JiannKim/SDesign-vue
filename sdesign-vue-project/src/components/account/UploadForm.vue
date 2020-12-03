@@ -79,7 +79,7 @@ export default {
         const { data } = await createSounds(formData, token);
         console.log("createData response =>", data);
         this.inntForm();
-        this.$router.go("/accoutn");
+        this.$emit("refresh");
       } catch (error) {
         console.log("err =>", error);
       }

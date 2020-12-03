@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UploadForm />
+    <UploadForm @refresh="fetchMyData" />
     <div class="form-upload-lists">
       <div class="bottom-title-section">
         <h2>Upload List</h2>
@@ -12,6 +12,7 @@
           v-for="listItem in listItems"
           :key="listItem._id"
           :listItem="listItem"
+          @refresh="fetchMyData"
         />
       </ul>
     </div>
