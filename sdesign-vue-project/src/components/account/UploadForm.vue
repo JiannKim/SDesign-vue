@@ -14,8 +14,8 @@
           <input
             type="file"
             id="files"
-            ref="soundFile"
             accept="audio/*"
+            ref="soundFile"
             @change="isFile"
           />
           파일찾기
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     isFile() {
-      this.uploadSound = this.$refs.soundFile.files[0];
+      this.uploadSound = event.target.files[0];
     },
     async submitForm() {
       const formData = {
@@ -88,7 +88,7 @@ export default {
       this.title = "";
       this.tags = "";
       this.category = "";
-      this.uploadSound = "";
+      this.$refs.soundFile.value = null;
     },
   },
 };
