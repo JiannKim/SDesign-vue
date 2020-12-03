@@ -141,8 +141,7 @@ export default {
         padding: 12px 0 10px 0;
         margin-right: 15px;
         border-right: 1px solid #e0e0e0;
-        background-image: linear-gradient(to bottom, #f3f3f3, #e0e0e0);
-
+        background-image: $nomal-select;
         input[type="file"] {
           position: absolute;
           top: 10px;
