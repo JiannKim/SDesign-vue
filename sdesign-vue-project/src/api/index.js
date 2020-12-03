@@ -58,7 +58,7 @@ function removeItem(removeInfo, token) {
 }
 // 검색 api 요청
 function searchSounds(searchData) {
-  return instance.get("/search/sound", searchData);
+  return instance.get("/search/sound", { params: searchData });
 }
 // download 버튼 활성화 시켜주는 api
 function downloadItem(url, label) {

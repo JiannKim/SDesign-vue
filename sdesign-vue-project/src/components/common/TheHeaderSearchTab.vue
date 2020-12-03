@@ -1,6 +1,8 @@
 <template>
   <!-- 검색 토글 -->
   <div id="side-tab-search-wrapper">
+    <!-- <Autocomplete :search="search" /> -->
+    <!-- <input type="search" class="tab-search-button" /> -->
     <input type="checkbox" class="tab-search-button" />
     <img
       class="search-icon"
@@ -9,17 +11,65 @@
     />
     <!-- 폰트어썸 돋보기 아이콘 -->
     <!-- <fa-icon :icon="['fas', 'search']" class="search-icon" /> -->
-    <div id="search">
+    <form id="search" @submit.prevent="submitSearch">
+      <!-- <Autocomplete
+        base-class="search"
+        :search="submitSearch"
+        placeholder="Search for sound effects"
+      /> -->
+
       <span>
-        <img class="header-search-icon" src="https://i.ibb.co/QDNng2N/search-Icon-03.png" alt="serch-Icon" />
+        <img
+          class="header-search-icon"
+          src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
+          alt="serch-Icon"
+        />
       </span>
-      <input type="text" placeholder="Search for sound effects" />
-    </div>
+      <input
+        type="search"
+        placeholder="Search for sound effects"
+        v-model="keywordItem"
+      />
+    </form>
   </div>
 </template>
 
 <script>
-export default {};
+import { searchSounds } from "@/api";
+// import Autocomplete from "@trevoreyre/autocomplete-vue";
+
+export default {
+  // components: { Autocomplete },
+  data() {
+    return {
+      keywordItem: "",
+      url: "https://limeprj.xyz:2501/api/search/sound",
+      // listItems: [],
+    };
+  },
+  methods: {
+    async submitSearch() {
+      let searchData = {
+        // keyword: this.url + this.keywordItem,
+        keyword: this.keywordItem,
+      };
+      // searchData = this.$route.query;
+      try {
+        const { data } = await searchSounds(searchData);
+        console.log(data);
+        // this.$router.push("/sounds");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  // props: {
+  //   listItem: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  // },
+};
 </script>
 
 <style scoped>
