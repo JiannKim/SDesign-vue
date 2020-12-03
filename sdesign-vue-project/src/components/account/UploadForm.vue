@@ -39,33 +39,13 @@
         <button type="submit" class="submit-button">등록하기</button>
       </div>
     </form>
-    <div class="form-upload-lists">
-      <div class="bottom-title-section">
-        <h2>Upload List</h2>
-      </div>
-      <LoadingSpinner v-if="isLoading" />
-      <ul v-else>
-        <p>{{ logMessage }}</p>
-        <SoundsListItem
-          v-for="listItem in listItems"
-          :key="listItem._id"
-          :listItem="listItem"
-        />
-      </ul>
-    </div>
   </div>
 </template>
 
 <script>
-import { fetchSounds, createSounds } from "@/api";
-import SoundsListItem from "@/components/common/SoundsListItem.vue";
-import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
+import { createSounds } from "@/api";
 
 export default {
-  components: {
-    SoundsListItem,
-    LoadingSpinner,
-  },
   data() {
     const order = [
       { text: "Walla", value: "walla" },
@@ -73,6 +53,7 @@ export default {
       { text: "Whoosh", value: "whoosh" },
       { text: "Wind", value: "wind" },
       { text: "Cartoon", value: "cartoon" },
+      { text: "LOL", value: "LOL" },
     ];
     return {
       title: "",
@@ -80,9 +61,6 @@ export default {
       category: "",
       uploadSound: "",
       order,
-      listItems: [],
-      isLoading: false,
-      logMessage: "",
     };
   },
   methods: {
@@ -106,18 +84,6 @@ export default {
         console.log("err =>", error);
       }
     },
-    async fetchData() {
-      this.isLoading = true;
-      const { data } = await fetchSounds();
-      console.log("fetchData response =>", data);
-      if (data.result.length === 0) {
-        this.isLoading = false;
-        this.logMessage = "업로드한 사운드가 없습니다.";
-      } else {
-        this.isLoading = false;
-        this.listItems = data.result;
-      }
-    },
     inntForm() {
       this.title = "";
       this.tags = "";
@@ -125,15 +91,11 @@ export default {
       this.uploadSound = "";
     },
   },
-  created() {
-    this.fetchData();
-  },
 };
 </script>
 
 <style scoped lang="scss">
 .contents-section {
-  // border: 1px solid olive;
   .upload {
     display: flex;
     max-width: 521px;
@@ -240,26 +202,6 @@ export default {
         border: 1px solid;
         color: #313131;
       }
-    }
-  }
-  .form-upload-lists {
-    margin: 103px 0 90px 0;
-    .bottom-title-section {
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 20px;
-      h2 {
-        font-weight: 100;
-        text-align: left;
-        max-width: 1170px;
-        max-width: 81%;
-        margin: 0 auto;
-      }
-    }
-    ul {
-      max-width: 88.5%;
-      margin: 0 auto;
-      // border-top: 1px solid $primary;
-      margin-top: 44px;
     }
   }
 }

@@ -16,7 +16,8 @@
       </ul>
     </div>
     <div class="contents-section">
-      <UploadForm v-if="selectedTab === tabs[0]" />
+      <!-- <UploadForm v-if="selectedTab === tabs[0]" /> -->
+      <UploadTab v-if="selectedTab === tabs[0]" />
       <template v-else-if="selectedTab === tabs[1]">
         <p>profile 섹션</p>
       </template>
@@ -28,11 +29,13 @@
 </template>
 
 <script>
-import UploadForm from "@/components/account/UploadForm.vue";
+// import UploadForm from "@/components/account/UploadForm.vue";
+import UploadTab from "@/components/tabs/UploadTab.vue";
 
 export default {
   components: {
-    UploadForm,
+    // UploadForm,
+    UploadTab,
   },
   data() {
     const tabs = [

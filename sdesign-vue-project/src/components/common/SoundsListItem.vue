@@ -120,6 +120,7 @@ export default {
       isTag,
       isSelected: true,
       downloadItem,
+      listItems: [],
     };
   },
   methods: {
@@ -164,13 +165,6 @@ export default {
   height: 88px;
   overflow: hidden;
   margin: 0 auto;
-  // &::after {
-  //   content: "";
-  //   width: 100%;
-  //   height: 1px;
-  //   background-color: $primary;
-  // }
-
   // 요소 제목 스타일
   span {
     font-weight: bold;
@@ -395,7 +389,7 @@ export default {
         background-color: #fff;
         border-radius: 7px;
         border: 1px solid $primary;
-        margin-right: 18px;
+        margin-right: 10px;
       }
     }
   }
@@ -429,6 +423,7 @@ export default {
 .isMore {
   height: 185px !important;
   background-color: $list-bg;
+  border-top: 1px solid $base-color;
 }
 // clip modal show
 .clipboard {
