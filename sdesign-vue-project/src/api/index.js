@@ -20,34 +20,27 @@ const instance = createInstance();
 // signup api 요청 메서드
 function registerUser(joinInfo) {
   // const url = "http://193.122.127.197:2500/api/create/account";
-  console.log("register data(joinInfo) =>", joinInfo);
   return instance.post("/create/account", joinInfo);
 }
 // login api 요청 메서드
 function loginUser(loginInfo) {
-  console.log("login data => ", loginInfo);
   return instance.post("/login", loginInfo);
 }
-
-// function fetchSounds(token) {
-//   console.log("fetchSounds() test");
-//   return instance.get("/get/my/soundList", token);
-// }
-
+// 고유 사운드 리스트 조회 api 요청 메서드
+function fetchMySounds(token) {
+  return instance.get("/get/my/soundList", { headers: { token } });
+}
 // 사운드 리스트 데이터 조회 api 요청 메서드
 function fetchSounds() {
   return instance.get("/get/soundList");
 }
 // 사운드 리스트 데이터 생성 api 요청
 function createSounds(formInfo, token) {
-  console.log("createSounds data(formInfo) =>", formInfo);
   let data = new FormData();
-  // console.log("formInfo.userFile.name =>", formInfo.userFile.name);
   data.append("userFile", formInfo.userFile);
   data.append("soundName", formInfo.soundName);
   data.append("category", formInfo.category);
   data.append("tags", formInfo.tags);
-  console.log(data);
   return instance.post("/upload/file", data, {
     headers: {
       token,
@@ -55,6 +48,7 @@ function createSounds(formInfo, token) {
     },
   });
 }
+// 데이터 삭제 api 요청
 function removeItem(removeInfo, token) {
   return instance.post("/remove/my/sound", removeInfo, {
     headers: {
@@ -80,6 +74,7 @@ function downloadItem(url, label) {
 export {
   registerUser,
   loginUser,
+  fetchMySounds,
   fetchSounds,
   downloadItem,
   createSounds,
