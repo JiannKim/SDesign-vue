@@ -29,12 +29,10 @@
 </template>
 
 <script>
-// import UploadForm from "@/components/account/UploadForm.vue";
 import UploadTab from "@/components/tabs/UploadTab.vue";
 
 export default {
   components: {
-    // UploadForm,
     UploadTab,
   },
   data() {

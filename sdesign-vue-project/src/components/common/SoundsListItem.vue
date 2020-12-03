@@ -1,11 +1,11 @@
 <template>
-  <li id="sound-list-items-wrapper" :class="{ isMore: !isSelected }">
+  <li id="sound-list-items-wrapper" :class="{ isMore: !isClicked }">
     <div class="enabled-container">
       <!-- <div class="list-remove">
         <button
           class="list-remove-button"
-          :class="{ on: !isSelected }"
-          v-if="!isSelected"
+          :class="{ on: !isClicked }"
+          v-if="!isClicked"
         >
           <span></span>
         </button>
@@ -44,13 +44,13 @@
         </div>
         <span
           class="arrow"
-          :class="{ active: !isSelected }"
+          :class="{ active: !isClicked }"
           @click="clicked"
         ></span>
       </div>
     </div>
     <transition name="detail-fade">
-      <div class="disabled-container" v-if="!isSelected">
+      <div class="disabled-container" v-if="!isClicked">
         <div class="detail-parts-1">
           <div>
             <span>Category:</span>
@@ -99,7 +99,7 @@
         <div class="list-remove">
           <button
             class="list-remove-button"
-            v-if="!isSelected"
+            v-if="isLogin && isPublic"
             @click="submitRemove"
           >
             remove
@@ -118,9 +118,10 @@ export default {
     const isTag = this.listItem.tags.length > 0 ? "#" : "";
     return {
       isTag,
-      isSelected: true,
+      isClicked: true,
+      isLogin: true,
       downloadItem,
-      listItems: [],
+      isPublic: true,
     };
   },
   methods: {
@@ -129,13 +130,16 @@ export default {
       const token = this.$store.state.token;
       try {
         await removeItem({ soundId: data }, token);
-        this.$router.go("/accoutn");
+        // if(){
+
+          this.$router.go("/accoutn");
+        // }else{}
       } catch (error) {
         console.log("err =>", error);
       }
     },
     clicked() {
-      this.isSelected = this.isSelected ? false : true;
+      this.isClicked = this.isClicked ? false : true;
     },
     clipModal() {
       this.$modal.show("clip-modal");
@@ -153,6 +157,7 @@ export default {
       type: Object,
       required: true,
     },
+    soundItem: Function,
   },
 };
 </script>
@@ -457,7 +462,9 @@ export default {
 @media (max-width: 1020px) {
   .enabled-container {
     .icons {
+      // width: 16%;
       .sound-download {
+        margin-left: 5px;
         width: 68px;
       }
     }
@@ -466,10 +473,10 @@ export default {
 @media (max-width: 750px) {
   .enabled-container {
     .icons {
-      width: 135px;
-      .sound-download {
-        width: 68px;
-      }
+      // width: 155px;
+      // .sound-download {
+      //   width: 68px;
+      // }
     }
   }
   .disabled-container {
