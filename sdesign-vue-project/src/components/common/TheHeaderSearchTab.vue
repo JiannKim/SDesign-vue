@@ -43,21 +43,14 @@ export default {
   data() {
     return {
       keywordItem: "",
-      url: "https://limeprj.xyz:2501/api/search/sound",
-      // listItems: [],
     };
   },
   methods: {
     async submitSearch() {
-      let searchData = {
-        // keyword: this.url + this.keywordItem,
-        keyword: this.keywordItem,
-      };
-      // searchData = this.$route.query;
       try {
-        const { data } = await searchSounds(searchData);
+        const { data } = await searchSounds(this.keywordItem);
         console.log(data);
-        // this.$router.push("/sounds");
+        this.$router.push("/sounds");
       } catch (error) {
         console.log(error);
       }
