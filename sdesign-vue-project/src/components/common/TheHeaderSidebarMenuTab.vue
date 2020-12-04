@@ -33,13 +33,24 @@
               Signed in as
               <span>{{ $store.state.nickname }}</span>
             </p>
-            <router-link to="/upload" class="tab-menu-lists-list users-info">Upload</router-link>
-            <a href="javascript:;" @click="logoutUser" class="tab-menu-lists-list users-info">Logout</a>
+            <router-link to="/upload" class="tab-menu-lists-list users-info"
+              >Upload</router-link
+            >
+            <a
+              href="javascript:;"
+              @click="logoutUser"
+              class="tab-menu-lists-list users-info"
+              >Logout</a
+            >
           </template>
           <!-- 2. 로그아웃이 되었을 때 -->
           <template v-else>
-            <li @click="loginMounted" class="tab-menu-lists-list form-list">Login</li>
-            <li @click="signupMounted" class="tab-menu-lists-list form-list">SignUp</li>
+            <li @click="loginMounted" class="tab-menu-lists-list form-list">
+              Login
+            </li>
+            <li @click="signupMounted" class="tab-menu-lists-list form-list">
+              SignUp
+            </li>
           </template>
         </ul>
       </transition>
@@ -61,7 +72,7 @@ export default {
     },
   },
   methods: {
-    clicked: function () {
+    clicked: function() {
       console.log("changed");
       // this.ckeckedInput = true;
       this.ckeckedInput === true
@@ -78,7 +89,7 @@ export default {
       this.$modal.hideAll();
     },
     logoutUser() {
-      return this.$store.commit("clearUserEmail");
+      return this.$store.commit("clearUserInfo");
     },
   },
 };

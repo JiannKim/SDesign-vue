@@ -34,10 +34,8 @@ export default new Vuex.Store({
     setToken(state, token) {
       state.token = token;
     },
-    // clearUserEmail(state) {
-    //   state.useremail = "";
-    // },
-    clearUserToken(state) {
+    clearUserInfo(state) {
+      state.nickname = "";
       state.token = "";
     },
   },
