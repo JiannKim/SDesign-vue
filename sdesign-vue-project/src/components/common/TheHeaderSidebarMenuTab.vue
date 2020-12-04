@@ -33,8 +33,8 @@
               Signed in as
               <span>{{ $store.state.nickname }}</span>
             </p>
-            <router-link to="/upload" class="tab-menu-lists-list users-info"
-              >Upload</router-link
+            <router-link to="/account" class="tab-menu-lists-list users-info"
+              >My page</router-link
             >
             <a
               href="javascript:;"
@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     clicked: function() {
-      console.log("changed");
+      // console.log("changed");
       // this.ckeckedInput = true;
       this.ckeckedInput === true
         ? (this.ckeckedInput = false)
