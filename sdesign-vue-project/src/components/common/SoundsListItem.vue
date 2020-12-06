@@ -152,7 +152,6 @@ export default {
       type: Object,
       required: true,
     },
-    soundItem: Function,
   },
 };
 </script>
@@ -466,14 +465,14 @@ export default {
   }
 }
 @media (max-width: 750px) {
-  .enabled-container {
-    .icons {
-      // width: 155px;
-      // .sound-download {
-      //   width: 68px;
-      // }
-    }
-  }
+  // .enabled-container {
+  // .icons {
+  // width: 155px;
+  // .sound-download {
+  //   width: 68px;
+  // }
+  // }
+  // }
   .disabled-container {
     width: 94.5%;
     margin: 0 auto;
