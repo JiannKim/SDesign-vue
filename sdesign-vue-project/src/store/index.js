@@ -6,7 +6,7 @@ import {
   saveAuthToCookie,
   saveUserToCookie,
 } from "@/utils/cookies";
-import { loginUser } from "@/api";
+import { loginUser, searchSounds } from "@/api";
 
 Vue.use(Vuex);
 
@@ -15,10 +15,14 @@ export default new Vuex.Store({
     useremail: "",
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
+    searchtext: "",
   },
   getters: {
     isLogin(state) {
       return state.token !== "";
+    },
+    isSearch(state) {
+      return state.searchtext !== "";
     },
   },
   mutations: {
@@ -35,8 +39,12 @@ export default new Vuex.Store({
       state.nickname = "";
       state.token = "";
     },
+    setSearchText(state, searchtext) {
+      state.searchtext = searchtext;
+    },
   },
   actions: {
+    // 로그인
     async LOGIN({ commit }, userData) {
       const { data } = await loginUser(userData);
       console.log("response.data =>", data);
@@ -46,6 +54,24 @@ export default new Vuex.Store({
       commit("setUserName", data.accountName);
       commit("setToken", data.token);
       return data;
+    },
+    // 검색
+    async SEARCH({ commit }, searchData) {
+      const { data } = await searchSounds(searchData);
+      console.log("store", data);
+      commit("setSearchText", searchData);
+      return data;
+    },
+  },
+  watch: {
+    $route(to, from) {
+      if (to.path === "/promotions") {
+        this.$store.dispatch("getAllPromotions");
+      } else if (to.path === "/promotions/coupon") {
+        this.$store.dispatch("getAllPromotions", {
+          type: "coupon",
+        });
+      }
     },
   },
 });

@@ -7,20 +7,27 @@
         alt="s-Design-Logo"
       />
     </router-link>
-    <div class="app-header-search-box">
+    <form @submit.prevent="submitSearch" class="app-header-search-box">
       <img
         class="header-search-icon"
         src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
         alt="serch-Icon"
       />
-      <input type="text" placeholder="Search for sound effects" />
-    </div>
+      <input
+        type="text"
+        placeholder="Search for sound effects"
+        v-model="keywordItem"
+      />
+    </form>
     <ul class="app-header-menu-lists">
       <li class="header-menu-list">
         <router-link to="/pricing">Pricing</router-link>
       </li>
       <li class="header-menu-list">
         <router-link to="/faq">FAQ</router-link>
+      </li>
+      <li class="header-menu-list">
+        <router-link to="/sounds">Sounds</router-link>
       </li>
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
@@ -29,24 +36,9 @@
             <!-- @click="userInfo = !userInfo" -->
             ME
           </div>
-          <!-- <template> -->
-          <!-- <transition v-if="!userInfo" >
-              <div class="user-info-box">
-                <div class="user-info">
-                  Signed in as
-                  <span>{{ $store.state.nickname }}</span>
-                </div>
-
-                <router-link to="/account" class>My page</router-link>
-                <a href="javascript:;" @click="logoutUser" class="logout-btn">
-                  <span>Logout</span>
-                </a>
-              </div>
-            </transition> -->
-          <modal name="account-modal"  class="account-modal">
+          <modal name="account-modal" class="account-modal">
             <AccountModal />
           </modal>
-          <!-- </template> -->
         </div>
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
@@ -70,12 +62,14 @@ import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab
 import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 import AccountModal from "@/components/common/AccountModal.vue";
 import vmodal from "vue-js-modal";
+// import { searchSounds } from "@/api";
 
 export default {
   data() {
     return {
       userInfo: true,
       vmodal,
+      keywordItem: "",
     };
   },
   components: {
@@ -83,14 +77,19 @@ export default {
     TheHeaderSearchTab,
     AccountModal,
   },
-  computed: {
-    isUserLogin() {
-      return this.$store.getters.isLogin;
-    },
-  },
   methods: {
+    async submitSearch() {
+      try {
+        const data = await this.$store.dispatch("SEARCH", this.keywordItem);
+        // const { data } = await searchSounds(this.keywordItem);
+        console.log("theHeader", data);
+        this.$forceUpdate();
+        // this.$router.push("/sounds");
+      } catch (error) {
+        console.log(error);
+      }
+    },
     accountModalMounted() {
-      // this.modalHide();
       this.$modal.show("account-modal");
     },
     loginMounted() {
@@ -100,11 +99,15 @@ export default {
       this.$modal.show("signup-modal");
     },
   },
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
-
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
