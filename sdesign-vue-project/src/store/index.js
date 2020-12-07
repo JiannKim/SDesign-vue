@@ -16,6 +16,7 @@ export default new Vuex.Store({
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
     searchtext: "",
+    searchlist: [],
   },
   getters: {
     isLogin(state) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     isSearch(state) {
       return state.searchtext !== "";
+    },
+    isSearchList(state) {
+      return state.searchlist.length !== 0;
     },
   },
   mutations: {
@@ -42,6 +46,9 @@ export default new Vuex.Store({
     setSearchText(state, searchtext) {
       state.searchtext = searchtext;
     },
+    setSearchList(state, searchlist) {
+      state.searchlist = searchlist;
+    },
   },
   actions: {
     // 로그인
@@ -60,18 +67,9 @@ export default new Vuex.Store({
       const { data } = await searchSounds(searchData);
       console.log("store", data);
       commit("setSearchText", searchData);
+      commit("setSearchList", data.result);
+      console.log("store", data.result);
       return data;
-    },
-  },
-  watch: {
-    $route(to, from) {
-      if (to.path === "/promotions") {
-        this.$store.dispatch("getAllPromotions");
-      } else if (to.path === "/promotions/coupon") {
-        this.$store.dispatch("getAllPromotions", {
-          type: "coupon",
-        });
-      }
     },
   },
 });

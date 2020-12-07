@@ -81,10 +81,12 @@ export default {
     async submitSearch() {
       try {
         const data = await this.$store.dispatch("SEARCH", this.keywordItem);
-        // const { data } = await searchSounds(this.keywordItem);
         console.log("theHeader", data);
-        this.$forceUpdate();
-        // this.$router.push("/sounds");
+        this.$router.push({
+          path: "/sounds",
+          query: { keyword: this.keywordItem },
+        });
+        this.initKeyword();
       } catch (error) {
         console.log(error);
       }
@@ -97,6 +99,9 @@ export default {
     },
     signupMounted() {
       this.$modal.show("signup-modal");
+    },
+    initKeyword() {
+      this.keywordItem = "";
     },
   },
   computed: {
