@@ -33,7 +33,6 @@
       <template v-if="isUserLogin">
         <div class="login-user">
           <div class="header-menu-list users-info" @click="accountModalMounted">
-            <!-- @click="userInfo = !userInfo" -->
             ME
           </div>
           <modal name="account-modal" class="account-modal">
@@ -61,14 +60,11 @@
 import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab.vue";
 import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
 import AccountModal from "@/components/common/AccountModal.vue";
-import vmodal from "vue-js-modal";
-// import { searchSounds } from "@/api";
 
 export default {
   data() {
     return {
       userInfo: true,
-      vmodal,
       keywordItem: "",
     };
   },
@@ -81,7 +77,7 @@ export default {
     async submitSearch() {
       try {
         const data = await this.$store.dispatch("SEARCH", this.keywordItem);
-        console.log("theHeader", data);
+        console.log(data);
         this.$router.push({
           path: "/sounds",
           query: { keyword: this.keywordItem },

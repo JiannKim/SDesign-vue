@@ -38,6 +38,22 @@ export default {
 #side-page {
   padding-top: 73px;
 }
+// theHeaderSearchTab
+.search-modal {
+  &.vm--container {
+    top: 70px !important;
+  }
+  .vm--modal {
+    top: 3px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 90px !important;
+    background: rgba(255, 255, 255, 0.836);
+  }
+  .vm--overlay {
+    opacity: 0 !important;
+  }
+}
 // my account modal custom
 .account-modal {
   .vm--modal {

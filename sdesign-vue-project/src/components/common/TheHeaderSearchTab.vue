@@ -1,45 +1,39 @@
 <template>
   <!-- 검색 토글 -->
   <div id="side-tab-search-wrapper">
-    <!-- <Autocomplete :search="search" /> -->
-    <!-- <input type="search" class="tab-search-button" /> -->
-    <input type="checkbox" class="tab-search-button" />
+    <input
+      type="checkbox"
+      class="tab-search-button"
+      @click="searchModalMounted"
+    />
     <img
       class="search-icon"
       src="https://i.ibb.co/pWW7yMx/search-Icon-02.png"
       alt="search button"
     />
-    <!-- 폰트어썸 돋보기 아이콘 -->
-    <!-- <fa-icon :icon="['fas', 'search']" class="search-icon" /> -->
-    <form id="search" @submit.prevent="submitSearch">
-      <!-- <Autocomplete
-        base-class="search"
-        :search="submitSearch"
-        placeholder="Search for sound effects"
-      /> -->
-
-      <span>
-        <img
-          class="header-search-icon"
-          src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
-          alt="serch-Icon"
+    <modal name="search-modal" class="search-modal">
+      <form id="search" @submit.prevent="submitSearch">
+        <span>
+          <img
+            class="search-icon"
+            src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
+            alt="serch-Icon"
+          />
+        </span>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search for sound effects"
+          v-model="keywordItem"
+          v-focus
         />
-      </span>
-      <input
-        type="search"
-        placeholder="Search for sound effects"
-        v-model="keywordItem"
-      />
-    </form>
+      </form>
+    </modal>
   </div>
 </template>
 
 <script>
-import { searchSounds } from "@/api";
-// import Autocomplete from "@trevoreyre/autocomplete-vue";
-
 export default {
-  // components: { Autocomplete },
   data() {
     return {
       keywordItem: "",
@@ -48,150 +42,110 @@ export default {
   methods: {
     async submitSearch() {
       try {
-        const { data } = await searchSounds(this.keywordItem);
+        const data = await this.$store.dispatch("SEARCH", this.keywordItem);
         console.log(data);
-        this.$router.push("/sounds");
+        this.$router.push({
+          path: "/sounds",
+          query: { keyword: this.keywordItem },
+        });
+        this.keywordItem = "";
+        this.$modal.hide("search-modal");
       } catch (error) {
         console.log(error);
       }
     },
+    searchModalMounted() {
+      this.$modal.show("search-modal");
+    },
   },
-  // props: {
-  //   listItem: {
-  //     type: Object,
-  //     required: true,
-  //   },
-  // },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #side-tab-search-wrapper {
   /* ??? */
   display: none;
   position: relative;
-  width: 100%;
+  width: 94%;
   margin: 0 30px;
-
   z-index: 1;
-
-  -webkit-user-select: none;
   user-select: none;
+  -webkit-user-select: none;
+  .tab-search-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    cursor: pointer;
+    opacity: 0; /* hide checkbox */
+    z-index: 2; /* 돋보기 앞에 배치 */
+    -webkit-touch-callout: none;
+  }
 }
-
-/* Tab 검색 버튼 영역 */
+// 돋보기 검색 버튼 아이콘
 .search-icon {
   position: absolute;
-  /* font-size: 2rem; */
   top: -20px;
   right: 0;
   width: 33px;
   display: none;
-  cursor: pointer;
-  /* color: #313131; */
 }
-
-.tab-search-button {
-  display: block;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: -24px;
-  right: 0px;
-
-  cursor: pointer;
-
-  opacity: 0; /* hide checkbox */
-  z-index: 2; /* 돋보기 앞에 배치 */
-
-  -webkit-touch-callout: none;
-}
-
-/* 토글 인풋변환 */
-.tab-search-button:checked ~ #search {
-  /* opacity: 1; */
-  transform-origin: 0% 0%;
-  height: auto;
-  padding: 15px 0px 15px 0px;
-  transform: translate(0, -1%);
-  background: cdcdcd;
-
-  transition: padding 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
-}
-
-/* 화면 오른쪽 상단에 배치 */
+// 검색 모달 창
 #search {
   position: fixed;
+  // top: 75px;
+  // left: 0;
   width: 100%;
-  height: 0;
-  top: 73px;
-  left: 0;
-  overflow: hidden;
-  background: rgba(32, 32, 32, 0.95);
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-
-  transform-origin: 0% 0%;
-  transform: translate(0%, -2%);
-
-  /* transition: padding 0.3s cubic-bezier(0.05,0.7,0.5,1.0);  */
+  // height: 42px;
+  // overflow: hidden;
+  // background: rgba(255, 255, 255, 0.836);
+  // -webkit-font-smoothing: antialiased;
+  // transform-origin: 0% 0%;
+  padding: 20px 0;
+  transform: translate(0%, 2%);
+  .search-input {
+    width: 90%;
+    height: 45px;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    outline: none;
+    padding: 7px 10px 7px 40px;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+    &:focus {
+      box-shadow: 0 0 5px 1px #a550a6;
+    }
+  }
+  span {
+    position: relative;
+    .search-icon {
+      position: absolute;
+      top: 27%;
+      left: 0;
+      padding-left: 7px;
+      width: 16px;
+      z-index: 2;
+    }
+  }
 }
-#search input {
-  opacity: 0;
-  width: 90%;
-  height: 45px;
-  border: none;
-  border-radius: 3px;
-  font-size: 18px;
-  outline: none;
-  padding: 7px 10px 7px 40px;
-  box-sizing: border-box;
-  background-color: #f3f3f3;
-}
-#search input:focus {
-  box-shadow: 0 0 5px 2px #a550a6;
-}
-.tab-search-button:checked ~ #search input {
-  opacity: 1;
-  transition: opacity 0.4s cubic-bezier(0.38, 0.38, 0.38, 0.38);
-}
-.tab-search-button:checked ~ #search img {
-  opacity: 1;
-}
-
-#search span {
-  position: relative;
-}
-#search .header-search-icon {
-  position: absolute;
-  padding-left: 12px;
-  top: 41%;
-  width: 16px;
-  z-index: 2;
-  opacity: 0;
-}
-/* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- */
 
 /* media Quary */
+
 /* 태블릿 */
 @media (max-width: 1020px) {
   #side-tab-search-wrapper {
     display: block;
   }
-
   .search-icon {
     display: flex;
     justify-content: center;
     margin: 5px;
   }
 }
-@media (max-width: 750px) {
-}
-@media (max-width: 599px) {
-}
-
 /* 모바일 */
 @media (max-width: 440px) {
-  /* .app-header-wrapper {width: 100%;} */
 }
 </style>
