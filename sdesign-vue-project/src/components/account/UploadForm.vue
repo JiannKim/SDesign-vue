@@ -53,7 +53,7 @@ export default {
       { text: "Whoosh", value: "whoosh" },
       { text: "Wind", value: "wind" },
       { text: "Cartoon", value: "cartoon" },
-      { text: "LOL", value: "LOL" },
+      { text: "Game", value: "game" },
     ];
     return {
       title: "",

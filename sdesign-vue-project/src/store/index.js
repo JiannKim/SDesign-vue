@@ -63,7 +63,7 @@ export default new Vuex.Store({
     async SEARCH({ commit }, searchData) {
       const { data } = await searchSounds(searchData);
       commit("setSearchText", searchData);
-      commit("setSearchList", data.result);
+      commit("setSearchList", data);
       return data;
     },
   },

@@ -3,7 +3,7 @@
     <UploadForm @refresh="fetchMyData" />
     <div class="form-upload-lists">
       <div class="bottom-title-section">
-        <h2>Upload List</h2>
+        <h2>Upload List ({{ totalCount }})</h2>
       </div>
       <LoadingSpinner v-if="isLoading" />
       <ul v-else>
@@ -33,6 +33,7 @@ export default {
   },
   data() {
     return {
+      totalCount: "",
       logMessage: "",
       isLoading: false,
       listItems: [],
@@ -54,6 +55,7 @@ export default {
           }
           this.isLoading = false;
           this.listItems = data.result;
+          this.totalCount = data.totalCount;
         }
       } catch (error) {
         console.log("this ", error);

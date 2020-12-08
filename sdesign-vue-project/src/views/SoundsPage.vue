@@ -37,9 +37,7 @@
       <div class="top-bar-progress"></div>
     </div> -->
     <div class="sounds-page-contents">
-      <h1 class="page-title">
-        sounds (983)
-      </h1>
+      <h1 class="page-title">sounds ({{ totalCount }})</h1>
       <div class="contents-select">
         <select name="abcd" id="op1">
           <option
@@ -94,6 +92,7 @@ export default {
     SoundsListItem,
   },
   data() {
+    // let totalCount = this.fetchData.data.totalCount;
     return {
       opOne: [
         { text: "Most recent", value: "Most recent" },
@@ -113,6 +112,7 @@ export default {
         { text: "B", value: "B" },
         { text: "C", value: "C" },
       ],
+      totalCount: "",
       logMessage: "",
       isLoading: false,
       listItems: [],
@@ -124,6 +124,7 @@ export default {
         if (!value) {
           this.fetchData(true);
         } else {
+          // 쿼리 변경 후 뿌려주는 함수
           const data = await this.$store.dispatch(
             "SEARCH",
             this.$store.state.searchtext
@@ -132,9 +133,11 @@ export default {
           if (data.totalCount > 0) {
             this.listItems = data.result;
             this.logMessage = "";
+            this.totalCount = data.totalCount;
           } else if (data.totalCount === 0) {
             this.logMessage = "검색 결과가 없습니다.";
             this.listItems = [];
+            this.totalCount = data.totalCount;
           }
         }
       },
@@ -149,7 +152,7 @@ export default {
         if (value !== true) {
           this.isLoading = false;
           let searchListItem = this.$store.state.searchlist;
-          this.listItems = searchListItem;
+          this.listItems = searchListItem.result;
         } else {
           const { data } = await fetchSounds();
           // console.log("fetchSounds =>", data);
@@ -160,6 +163,7 @@ export default {
           this.isLoading = false;
           this.listItems = data.result;
           this.logMessage = "";
+          this.totalCount = data.totalCount;
           // }
         }
       } catch (error) {
