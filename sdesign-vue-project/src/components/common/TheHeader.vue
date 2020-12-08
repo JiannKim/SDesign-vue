@@ -80,8 +80,7 @@ export default {
   methods: {
     async submitSearch() {
       try {
-        const data = await this.$store.dispatch("SEARCH", this.keywordItem);
-        console.log(data);
+        await this.$store.dispatch("SEARCH", this.keywordItem);
         this.$router.push({
           path: "/sounds",
           query: { keyword: this.keywordItem },
@@ -220,13 +219,13 @@ export default {
   /* media Quary */
 @media (max-width: 1600px) {
   .app-header-search-box {
-    width: 47%;
+    // width: 47%;
     transition: width 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
   }
 }
 @media (max-width: 1500px) {
   .app-header-search-box {
-    width: 45%;
+    width: 55%;
   }
   .app-header-logo-link {
     margin-left: 120px !important;

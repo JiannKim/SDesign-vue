@@ -75,6 +75,13 @@
               :listItem="listItem"
             />
           </ul>
+          <infinite-loading
+            slot="append"
+            spinner="waveDots"
+            @infinite="infiniteHandler"
+          >
+            <div slot="no-more">- 목록의 끝입니다 :) -</div>
+          </infinite-loading>
         </div>
       </div>
     </div>
@@ -92,7 +99,8 @@ export default {
     SoundsListItem,
   },
   data() {
-    // let totalCount = this.fetchData.data.totalCount;
+    // const next = this.$store.state.searchlist;
+
     return {
       opOne: [
         { text: "Most recent", value: "Most recent" },
@@ -116,13 +124,15 @@ export default {
       logMessage: "",
       isLoading: false,
       listItems: [],
+      paginator: {},
+      page: 1,
     };
   },
   watch: {
     "$route.query.keyword": {
       async handler(value, oldValue) {
         if (!value) {
-          this.fetchData(true);
+          // this.fetchData(true);
         } else {
           // 쿼리 변경 후 뿌려주는 함수
           const data = await this.$store.dispatch(
@@ -146,28 +156,52 @@ export default {
     },
   },
   methods: {
-    async fetchData(value) {
+    // async fetchData(value) {
+    //   try {
+    //     this.isLoading = true;
+    //     if (value !== true) {
+    //       this.isLoading = false;
+    //       let searchListItem = this.$store.state.searchlist;
+    //       this.listItems = searchListItem.result;
+    //     } else {
+    //       const { data } = await fetchSounds();
+    //       this.$store.commit("setPaginator", data.paginator);
+    //       this.paginator = this.$store.state.paginator;
+    //       // console.log("nenen", this.paginator.next);
+    //       // console.log("fetchSounds =>", data);
+    //       // if (data.result.length === 0) {
+    //       //   this.isLoading = false;
+    //       //   this.logMessage = "업로드된 사운드가 없습니다.";
+    //       // } else {
+    //       this.isLoading = false;
+    //       this.listItems = data.result;
+    //       this.logMessage = "";
+    //       this.totalCount = data.totalCount;
+    //       this.infiniteHandler();
+    //       // }
+    //     }
+    //   } catch (error) {
+    //     console.log("this error", error);
+    //   }
+    // },
+
+    async infiniteHandler($state) {
       try {
-        this.isLoading = true;
-        if (value !== true) {
-          this.isLoading = false;
-          let searchListItem = this.$store.state.searchlist;
-          this.listItems = searchListItem.result;
-        } else {
-          const { data } = await fetchSounds();
-          // console.log("fetchSounds =>", data);
-          // if (data.result.length === 0) {
-          //   this.isLoading = false;
-          //   this.logMessage = "업로드된 사운드가 없습니다.";
-          // } else {
-          this.isLoading = false;
-          this.listItems = data.result;
-          this.logMessage = "";
+        const { data } = await fetchSounds(this.paginator.next);
+        if (data.paginator.hasNext === true) {
+          console.log("개시", this.paginator.next);
+          console.log("시작", data.paginator.next);
+          console.log("재할당", this.paginator);
+          this.page += 1;
+          this.listItems = this.listItems.concat(data.result);
+          this.paginator = data.paginator;
           this.totalCount = data.totalCount;
-          // }
+          $state.loaded();
+        } else {
+          $state.complete();
         }
       } catch (error) {
-        console.log("this error", error);
+        return error;
       }
     },
   },
@@ -177,7 +211,8 @@ export default {
     },
   },
   created() {
-    this.fetchData();
+    // this.fetchData();
+    this.infiniteHandler();
   },
 };
 </script>

@@ -16,7 +16,8 @@ export default new Vuex.Store({
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
     searchtext: "",
-    searchlist: [],
+    searchlist: {},
+    paginator: {},
   },
   getters: {
     isLogin(state) {
@@ -46,12 +47,14 @@ export default new Vuex.Store({
     setSearchList(state, searchlist) {
       state.searchlist = searchlist;
     },
+    setPaginator(state, paginator) {
+      state.paginator = paginator;
+    },
   },
   actions: {
     // 로그인
     async LOGIN({ commit }, userData) {
       const { data } = await loginUser(userData);
-      console.log("response.data =>", data);
       saveAuthToCookie(data.token);
       saveUserToCookie(data.accountName);
       commit("setUserEmail", data.accountEmail);

@@ -5,8 +5,7 @@ import vmodal from "vue-js-modal";
 import store from "@/store/index";
 import VuePlyr from "vue-plyr";
 import "vue-plyr/dist/vue-plyr.css";
-// import Autocomplete from "@trevoreyre/autocomplete-vue";
-// import "@trevoreyre/autocomplete-vue/dist/style.css";
+import InfiniteLoading from "vue-infinite-loading";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -30,8 +29,6 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-// import TheHeader from "@/components/common/TheHeader.vue";
 
 library.add(
   faTwitter,
@@ -67,8 +64,8 @@ Vue.use(vmodal, {
 });
 // vue-plyr 모듈 사용을 위한 등록
 Vue.use(VuePlyr);
-// autocomplete 검색 기능 사용
-// Vue.use(Autocomplete);
+
+Vue.use(InfiniteLoading);
 
 Vue.config.productionTip = false;
 
@@ -77,6 +74,6 @@ new Vue({
   vmodal,
   store,
   VuePlyr,
-  // Autocomplete,
+  InfiniteLoading,
   render: (h) => h(App),
 }).$mount("#app");

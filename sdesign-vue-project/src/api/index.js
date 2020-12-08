@@ -31,8 +31,9 @@ function fetchMySounds(token) {
   return instance.get("/get/my/soundList", { headers: { token } });
 }
 // 사운드 리스트 데이터 조회 api 요청 메서드
-function fetchSounds() {
-  return instance.get("/get/soundList");
+function fetchSounds(next) {
+  const paging = { params: { next: next } };
+  return instance.get("/get/soundList", paging);
 }
 // 사운드 리스트 데이터 생성 api 요청
 function createSounds(formInfo, token) {
