@@ -70,7 +70,7 @@
         <div class="form-upload-lists">
           <LoadingSpinner v-if="isLoading" />
           <ul v-else>
-            <!-- <p>{{ logMessage }}</p> -->
+            <p>{{ logMessage }}</p>
             <SoundsListItem
               v-for="listItem in listItems"
               :key="listItem._id"
@@ -119,63 +119,33 @@ export default {
     };
   },
   watch: {
-    "$store.state.searchtext": {
+    "$route.query.keyword": {
       async handler(value, oldValue) {
         const data = await this.$store.dispatch(
           "SEARCH",
           this.$store.state.searchtext
         );
-        console.log("tetttt");
-        console.log(this.$store.state.searchlist);
-        console.log(value, oldValue);
-        this.listItems = data.result;
+        console.log("change value =>", value, oldValue);
+        if (data.totalCount > 0) {
+          this.listItems = data.result;
+          this.logMessage = "";
+        } else if (data.totalCount === 0) {
+          this.logMessage = "검색 결과가 없습니다.";
+          this.listItems = [];
+        }
       },
       deep: true,
       immediate: true,
     },
   },
   methods: {
-    // isFetch() {},
-    // async fetchData() {
-    //   try {
-    //     this.isLoading = true;
-    //     const { data } = await fetchSounds();
-    //     console.log("fetchData response =>", data);
-    //     // if (data.result.length === 0) {
-    //     //   this.isLoading = false;
-    //     //   this.logMessage = "업로드된 사운드가 없습니다.";
-    //     // } else {
-    //     this.isLoading = false;
-    //     this.listItems = data.result;
-    //     // }
-    //   } catch (error) {
-    //     console.log("this ", error);
-    //   }
-    // },
     async fetchData() {
-      // console.log("this.isSearched ->", this.isSearched);
       try {
         this.isLoading = true;
         if (this.isSearched) {
-          // const data = await this.$store.dispatch("SEARCH", this.keyword);
-          // console.log("fetchData/search response =>", data);
-          // this.$router.go(this.$router.currentRoute);
-
-          // this.$router.go(this.$router.currentRoute);
-          // this.$emit("refresh");
-
           this.isLoading = false;
           let searchListItem = this.$store.state.searchlist;
           this.listItems = searchListItem;
-
-          // console.log(this.$props.Keyword);
-          // const { data } = await searchSounds(this.$store.state.searchtext);
-          // console.log("searchSounds response =>", data);
-
-          // const { data } = await fetchSounds();
-          // console.log("fetchSounds =>", data);
-          // this.isLoading = false;
-          // this.listItems = data.result;
         } else {
           const { data } = await fetchSounds();
           console.log("fetchSounds =>", data);
@@ -185,6 +155,7 @@ export default {
           // } else {
           this.isLoading = false;
           this.listItems = data.result;
+          this.logMessage = "";
           // }
         }
       } catch (error) {
@@ -196,9 +167,9 @@ export default {
     isSearched() {
       return this.$store.getters.isSearch;
     },
-    isSearchList() {
-      return this.$store.getters.isSearchList;
-    },
+    // isSearchList() {
+    //   return this.$store.getters.isSearchList;
+    // },
   },
   created() {
     this.fetchData();
@@ -342,6 +313,9 @@ export default {
       // margin: 0 auto;
       border-top: 1px solid $primary;
       // margin-top: 44px;
+    }
+    p {
+      margin: 50px 0;
     }
   }
 }
