@@ -121,17 +121,21 @@ export default {
   watch: {
     "$route.query.keyword": {
       async handler(value, oldValue) {
-        const data = await this.$store.dispatch(
-          "SEARCH",
-          this.$store.state.searchtext
-        );
-        console.log("change value =>", value, oldValue);
-        if (data.totalCount > 0) {
-          this.listItems = data.result;
-          this.logMessage = "";
-        } else if (data.totalCount === 0) {
-          this.logMessage = "검색 결과가 없습니다.";
-          this.listItems = [];
+        if (!value) {
+          this.fetchData(true);
+        } else {
+          const data = await this.$store.dispatch(
+            "SEARCH",
+            this.$store.state.searchtext
+          );
+          console.log("change value =>", value, oldValue);
+          if (data.totalCount > 0) {
+            this.listItems = data.result;
+            this.logMessage = "";
+          } else if (data.totalCount === 0) {
+            this.logMessage = "검색 결과가 없습니다.";
+            this.listItems = [];
+          }
         }
       },
       deep: true,
@@ -139,16 +143,16 @@ export default {
     },
   },
   methods: {
-    async fetchData() {
+    async fetchData(value) {
       try {
         this.isLoading = true;
-        if (this.isSearched) {
+        if (value !== true) {
           this.isLoading = false;
           let searchListItem = this.$store.state.searchlist;
           this.listItems = searchListItem;
         } else {
           const { data } = await fetchSounds();
-          console.log("fetchSounds =>", data);
+          // console.log("fetchSounds =>", data);
           // if (data.result.length === 0) {
           //   this.isLoading = false;
           //   this.logMessage = "업로드된 사운드가 없습니다.";
@@ -159,7 +163,7 @@ export default {
           // }
         }
       } catch (error) {
-        console.log("this ", error);
+        console.log("this error", error);
       }
     },
   },
@@ -167,9 +171,6 @@ export default {
     isSearched() {
       return this.$store.getters.isSearch;
     },
-    // isSearchList() {
-    //   return this.$store.getters.isSearchList;
-    // },
   },
   created() {
     this.fetchData();

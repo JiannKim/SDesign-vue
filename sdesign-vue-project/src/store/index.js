@@ -25,9 +25,6 @@ export default new Vuex.Store({
     isSearch(state) {
       return state.searchtext !== "";
     },
-    isSearchList(state) {
-      return state.searchlist.length !== 0;
-    },
   },
   mutations: {
     setUserEmail(state, useremail) {

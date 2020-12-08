@@ -27,7 +27,7 @@
         <router-link to="/faq">FAQ</router-link>
       </li>
       <li class="header-menu-list">
-        <router-link to="/sounds" @click.native="gotoUrl()">
+        <router-link to="/sounds" @click.native="update()">
           Sounds
         </router-link>
       </li>
@@ -91,8 +91,8 @@ export default {
         console.log(error);
       }
     },
-    gotoUrl() {
-      this.$router.go("/sounds");
+    update() {
+      this.$forceUpdate();
     },
     accountModalMounted() {
       this.$modal.show("account-modal");
