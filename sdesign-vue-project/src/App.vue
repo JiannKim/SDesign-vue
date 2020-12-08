@@ -58,14 +58,16 @@ export default {
 .account-modal {
   .vm--modal {
     max-width: 152px;
-    max-height: 57px;
-    left: 79.2% !important;
+    max-height: 150px;
+    left: 92% !important;
     top: 6% !important;
+    // margin-right: 20px !important;
     background: rgba(255, 255, 255, 0) !important;
     overflow: unset !important;
     transform: translate(-50%, 0) !important;
     border-radius: 7px;
     transition: opacity 0.2s ease;
+    box-shadow: 0 10px 50px -5px rgba(27, 33, 58, 0.3) !important;
   }
   .vm--overlay {
     opacity: 0 !important;

@@ -27,7 +27,9 @@
         <router-link to="/faq">FAQ</router-link>
       </li>
       <li class="header-menu-list">
-        <router-link to="/sounds">Sounds</router-link>
+        <router-link to="/sounds" @click.native="gotoUrl()">
+          Sounds
+        </router-link>
       </li>
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
@@ -66,6 +68,8 @@ export default {
     return {
       userInfo: true,
       keywordItem: "",
+      preUrl: "",
+      pageIndex: 0,
     };
   },
   components: {
@@ -86,6 +90,9 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    gotoUrl() {
+      this.$router.go("/sounds");
     },
     accountModalMounted() {
       this.$modal.show("account-modal");
@@ -137,8 +144,10 @@ export default {
   }
 }
 .app-header-search-box {
-  width: 743px;
+  // width: 830px;
+  width: 100%;
   height: 43px;
+  margin: 0 5%;
   border-radius: 3px;
   background-color: #f3f3f3;
   position: relative;
@@ -166,11 +175,11 @@ export default {
   display: flex;
   align-items: center;
   margin-right: 100px;
-  width: 420px;
+  width: 520px;
   list-style: none;
   .header-menu-list {
     font-size: 16px;
-    margin-left: 50px;
+    margin-left: 46px;
     a {
       color: #313131;
       text-decoration: none;
@@ -186,6 +195,7 @@ export default {
     border: 1px solid $base-color;
     border-radius: 20px;
     padding: 10px;
+    margin-left: 20px;
     width: 80px;
   }
 }
@@ -210,13 +220,13 @@ export default {
   /* media Quary */
 @media (max-width: 1600px) {
   .app-header-search-box {
-    width: 40%;
+    width: 47%;
     transition: width 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
   }
 }
 @media (max-width: 1500px) {
   .app-header-search-box {
-    width: 41%;
+    width: 45%;
   }
   .app-header-logo-link {
     margin-left: 120px !important;
@@ -230,7 +240,8 @@ export default {
     margin-left: 85px !important;
   }
   .app-header-search-box {
-    width: 38%;
+    // width: 45%;
+    margin: 0 30px;
   }
   .app-header-menu-lists {
     margin-right: 30px;
