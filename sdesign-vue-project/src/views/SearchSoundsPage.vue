@@ -1,0 +1,271 @@
+<template>
+  <div id="sounds-page-wrapper">
+    <div class="sounds-page-contents">
+      <h1 class="page-title">Search Sounds ({{ totalCount }})</h1>
+      <div class="contents-player">
+        <div class="form-upload-lists">
+          <LoadingSpinner v-if="isLoading" />
+          <ul v-else>
+            <p>{{ logMessage }}</p>
+            <SoundsListItem
+              v-for="listItem in listItems"
+              :key="listItem.index"
+              :listItem="listItem"
+            />
+          </ul>
+          <infinite-loading
+            slot="append"
+            spinner="waveDots"
+            @infinite="infiniteHandler"
+          >
+            <div slot="no-more">- 목록의 끝입니다 :) -</div>
+          </infinite-loading>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { searchSounds } from "@/api";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
+import SoundsListItem from "@/components/common/SoundsListItem.vue";
+
+export default {
+  components: {
+    LoadingSpinner,
+    SoundsListItem,
+  },
+  data() {
+    // const next = this.$store.state.searchlist;
+
+    return {
+      opOne: [
+        { text: "Most recent", value: "Most recent" },
+        { text: "A", value: "A" },
+        { text: "B", value: "B" },
+        { text: "C", value: "C" },
+      ],
+      opTwo: [
+        { text: "Any length", value: "Any length" },
+        { text: "A", value: "A" },
+        { text: "B", value: "B" },
+        { text: "C", value: "C" },
+      ],
+      opThree: [
+        { text: "All libraries", value: "All libraries" },
+        { text: "A", value: "A" },
+        { text: "B", value: "B" },
+        { text: "C", value: "C" },
+      ],
+      totalCount: "",
+      logMessage: "",
+      isLoading: false,
+      listItems: [],
+      paginator: {},
+      keyword: "",
+    };
+  },
+  watch: {
+    "$store.state.searchtext": {
+      async handler(value) {
+        // const { data } = await searchSounds(value, this.paginator.next);
+        this.keyword = value;
+        // this.paginator = data.paginator;
+        // this.totalCount = data.totalCount;
+        // this.listItems = data.result;
+        // console.log("change value =>", value);
+        // this.infiniteHandler();
+        // if (data.totalCount > 0) {
+        //   // this.paginator = data.paginator;
+        //   this.logMessage = "";
+        // } else if (data.totalCount === 0) {
+        //   this.logMessage = "검색 결과가 없습니다.";
+        //   this.listItems = [];
+        // }
+
+        // this.infiniteHandler();
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
+  // watch: {
+  //   "$store.state.searchtext": {
+  //     async handler(value) {
+  //       this.keyword = value;
+  //       const data = await this.$store.dispatch(
+  //         "SEARCH",
+  //         this.$store.state.searchtext
+  //       );
+  //       this.paginator = data.paginator;
+  //       this.listItems = data.result;
+  //     },
+  //     deep: true,
+  //     immediate: true,
+  //   },
+  // },
+  methods: {
+    async infiniteHandler($state) {
+      try {
+        console.log("ddddd", this.keyword, this.paginator.next);
+        const { data } = await searchSounds(this.keyword, this.paginator.next);
+        if (data.result.length) {
+          this.listItems = this.listItems.concat(data.result);
+          this.paginator = data.paginator;
+          this.totalCount = data.totalCount;
+          $state.loaded();
+        } else {
+          $state.complete();
+        }
+      } catch (error) {
+        return error;
+      }
+    },
+  },
+};
+</script>
+
+<style scoped lang="scss">
+#sounds-page-wrapper {
+  width: 100%;
+  height: auto;
+  button {
+    cursor: pointer;
+  }
+}
+// 상단 플레이 바 영역
+// .top-player-bar {
+//   width: 84%;
+//   min-width: 700px;
+//   height: 66px;
+//   margin: 0 auto;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   // border: 1px solid rgb(98, 0, 255);
+// }
+// .player-bar-section,
+// .play-icons {
+//   width: 520px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   .play-icons {
+//     width: 150px;
+//   }
+// }
+// .bar-play-icon {
+//   width: 43px;
+//   height: 43px;
+//   font-size: 20px;
+//   background-color: #fff;
+//   border: 1px solid #a1a1a1;
+//   border-radius: 9px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   outline: none;
+//   margin: 5px;
+//   color: #a1a1a1;
+// }
+// .bar-play-icon:nth-child(1),
+// .bar-play-icon:nth-child(3) {
+//   width: 33px;
+//   height: 33px;
+//   .fa-icon {
+//     font-size: 14px;
+//   }
+// }
+// .bar-play-icon:hover {
+//   background-color: #000;
+//   border: 1px solid #a1a1a1;
+//   color: #fff;
+// }
+// .bar-volume-icon {
+//   border: none;
+//   width: 36px;
+// }
+// button,
+// a {
+//   width: 112px;
+//   height: 37px;
+//   background-color: #fff;
+//   border: 1px solid #a1a1a1;
+//   border-radius: 17px;
+//   color: #a1a1a1;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font: {
+//     size: 18px;
+//     weight: 600;
+//   }
+// }
+// .buy-button {
+//   border: 1px solid #313131;
+//   border-radius: 5px;
+//   color: #313131;
+// }
+// .top-bar-progress {
+//   height: 4px;
+//   width: 100%;
+//   transition: all 0.3s ease;
+//   position: absolute;
+//   left: 0;
+//   top: 140px;
+//   background-color: #2a50717d;
+// }
+
+.sounds-page-contents {
+  width: 80%;
+  margin: 0 auto;
+  .contents-select {
+    max-width: 585px;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    select {
+      width: 175px;
+      height: 43px;
+      padding: 0 13px;
+      border: none;
+      border-radius: 4px;
+      background: $dis-select;
+      color: #fff;
+      appearance: none;
+      margin-right: 10px;
+      outline: none;
+      font: {
+        size: 14px;
+        weight: 600;
+      }
+      /* Select caret Icon Background */
+      background-repeat: no-repeat;
+      background-size: 30px;
+      background-position: 96% center;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAXVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9RKvvlAAAAHnRSTlMA/ROrKqImGsYXwa++piJlNALv5+bQyp2XUg4HhoQSotHMAAAAzUlEQVRYw+3RuQ7CMBBF0XGchC37voD//zMxUswIOQXOUFC8W440p3mEEEIIIYTQd0VVvO7d17iKDnD1PDRtUpBXkbTNMNfBYNUZW1Z4XmZsXRUM3o3ZE1PrvXoEg5PZxPTDu27nKRgs1fZ6TXc8VYZvfDMssrelD+x88sT47C63E5FEPMe+JxfZ084LFzWLEo+7aLd137t99YVILHIqt55IzJXvyUX2IhIXJertJc6Ti74nF9mTi6Oy3sieuKXUulzol9U1IYQQQgj9fU8Znhyj7M/eQgAAAABJRU5ErkJggg==");
+      &:hover {
+        background: $en-select;
+        /* Select caret Icon Background */
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: 96% center;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAXVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9RKvvlAAAAHnRSTlMA/ROrKqImGsYXwa++piJlNALv5+bQyp2XUg4HhoQSotHMAAAAzUlEQVRYw+3RuQ7CMBBF0XGchC37voD//zMxUswIOQXOUFC8W440p3mEEEIIIYTQd0VVvO7d17iKDnD1PDRtUpBXkbTNMNfBYNUZW1Z4XmZsXRUM3o3ZE1PrvXoEg5PZxPTDu27nKRgs1fZ6TXc8VYZvfDMssrelD+x88sT47C63E5FEPMe+JxfZ084LFzWLEo+7aLd137t99YVILHIqt55IzJXvyUX2IhIXJertJc6Ti74nF9mTi6Oy3sieuKXUulzol9U1IYQQQgj9fU8Znhyj7M/eQgAAAABJRU5ErkJggg==");
+      }
+    }
+  }
+  .form-upload-lists {
+    margin: 73px 0 90px 0;
+    ul {
+      // max-width: 88.5%;
+      // margin: 0 auto;
+      border-top: 1px solid $primary;
+      // margin-top: 44px;
+    }
+    p {
+      margin: 50px 0;
+    }
+  }
+}
+</style>

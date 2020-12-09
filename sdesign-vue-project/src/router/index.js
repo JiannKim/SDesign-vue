@@ -37,6 +37,11 @@ const router = new VueRouter({
       component: () => import("@/views/AccountPage.vue"),
     },
     {
+      path: "/search",
+      name: "search",
+      component: () => import("@/views/SearchSoundsPage.vue"),
+    },
+    {
       path: "*",
       component: () => import("@/views/NotFoundPage.vue"),
     },
