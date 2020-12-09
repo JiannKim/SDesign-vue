@@ -82,7 +82,7 @@ export default {
       try {
         await this.$store.dispatch("SEARCH", this.keywordItem);
         this.$router.push({
-          path: "/sounds",
+          path: "/search",
           query: { keyword: this.keywordItem },
         });
         this.initKeyword();
