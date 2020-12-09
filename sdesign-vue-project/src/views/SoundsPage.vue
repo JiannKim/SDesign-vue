@@ -123,7 +123,6 @@ export default {
       isLoading: false,
       listItems: [],
       paginator: {},
-      page: 1,
     };
   },
   methods: {
@@ -131,7 +130,6 @@ export default {
       try {
         const { data } = await fetchSounds(this.paginator.next);
         if (data.result.length) {
-          this.page += 1;
           this.listItems = this.listItems.concat(data.result);
           this.paginator = data.paginator;
           this.totalCount = data.totalCount;

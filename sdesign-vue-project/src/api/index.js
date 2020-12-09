@@ -27,13 +27,14 @@ function loginUser(loginInfo) {
   return instance.post("/login", loginInfo);
 }
 // 고유 사운드 리스트 조회 api 요청 메서드
-function fetchMySounds(token) {
-  return instance.get("/get/my/soundList", { headers: { token } });
+function fetchMySounds(token, next) {
+  const config = { headers: { token }, params: { next } };
+  return instance.get("/get/my/soundList", config);
 }
 // 사운드 리스트 데이터 조회 api 요청 메서드
 function fetchSounds(next) {
-  const paging = { params: { next: next } };
-  return instance.get("/get/soundList", paging);
+  const config = { params: { next } };
+  return instance.get("/get/soundList", config);
 }
 // 사운드 리스트 데이터 생성 api 요청
 function createSounds(formInfo, token) {

@@ -6,7 +6,7 @@ import {
   saveAuthToCookie,
   saveUserToCookie,
 } from "@/utils/cookies";
-import { loginUser, fetchSounds, searchSounds } from "@/api";
+import { loginUser, searchSounds } from "@/api";
 
 Vue.use(Vuex);
 
@@ -67,11 +67,11 @@ export default new Vuex.Store({
       return data;
     },
     // 조회
-    async FETCH({ commit }, next) {
-      const { data } = await fetchSounds(next);
-      commit("setFetchList", data);
-      commit("setPaginator", data.paginator);
-    },
+    // async FETCH({ commit }, next) {
+    //   const { data } = await fetchSounds(next);
+    //   commit("setFetchList", data);
+    //   commit("setPaginator", data.paginator);
+    // },
     // 검색
     async SEARCH({ commit }, searchData, next) {
       const { data } = await searchSounds(searchData, next);

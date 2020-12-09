@@ -10,11 +10,18 @@
         <p>{{ logMessage }}</p>
         <SoundsListItem
           v-for="listItem in listItems"
-          :key="listItem._id"
+          :key="listItem.index"
           :listItem="listItem"
           @refresh="fetchMyData"
         />
       </ul>
+      <infinite-loading
+        slot="append"
+        spinner="waveDots"
+        @infinite="infiniteHandler"
+      >
+        <div slot="no-more">목록의 끝입니다 :)</div>
+      </infinite-loading>
     </div>
   </div>
 </template>
@@ -37,34 +44,63 @@ export default {
       logMessage: "",
       isLoading: false,
       listItems: [],
+      paginator: {},
     };
   },
   methods: {
-    async fetchMyData() {
-      const token = this.$store.state.token;
+    // async fetchMyData() {
+    //   const token = this.$store.state.token;
+    //   try {
+    //     this.isLoading = true;
+    //     const { data } = await fetchMySounds(token, this.paginator.next);
+    //     this.totalCount = data.totalCount;
+    //     this.paginator = data.paginator;
+    //     // console.log("fetchMyData response =>", data);
+    //     if (data.result.length === 0) {
+    //       this.isLoading = false;
+    //       this.logMessage = "업로드된 사운드가 없습니다.";
+    //     } else {
+    //       for (let i = 0; i < data.result.length; i++) {
+    //         data.result[i].myItem = true;
+    //       }
+    //       this.isLoading = false;
+    //       this.listItems = data.result;
+    //       // this.paginator = data.paginator;
+    //     }
+    //   } catch (error) {
+    //     console.log("this ", error);
+    //   }
+    // },
+    async infiniteHandler($state) {
       try {
-        this.isLoading = true;
-        let { data } = await fetchMySounds(token);
-        console.log("fetchMyData response =>", data);
+        const token = this.$store.state.token;
+        const { data } = await fetchMySounds(token, this.paginator.next);
+        this.totalCount = data.totalCount;
+        this.paginator = data.paginator;
         if (data.result.length === 0) {
           this.isLoading = false;
           this.logMessage = "업로드된 사운드가 없습니다.";
-        } else {
+        }
+        if (data.result.length) {
           for (let i = 0; i < data.result.length; i++) {
             data.result[i].myItem = true;
           }
-          this.isLoading = false;
-          this.listItems = data.result;
-          this.totalCount = data.totalCount;
+          // this.isLoading = false;
+          // this.listItems = data.result;
+          this.listItems = this.listItems.concat(data.result);
+          this.paginator = data.paginator;
+          $state.loaded();
+        } else {
+          $state.complete();
         }
       } catch (error) {
-        console.log("this ", error);
+        return error;
       }
     },
   },
-  created() {
-    this.fetchMyData();
-  },
+  // created() {
+  //   this.fetchMyData();
+  // },
 };
 </script>
 
