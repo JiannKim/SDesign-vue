@@ -66,8 +66,8 @@
       </div>
       <div class="contents-player">
         <div class="form-upload-lists">
-          <LoadingSpinner v-if="isLoading" />
-          <ul v-else>
+          <!-- <LoadingSpinner v-if="isLoading" /> -->
+          <ul>
             <SoundsListItem
               v-for="listItem in listItems"
               :key="listItem.index"
@@ -75,10 +75,13 @@
             />
           </ul>
           <infinite-loading
-            slot="append"
-            spinner="waveDots"
+            slot="spinner"
+            spinner=""
             @infinite="infiniteHandler"
           >
+            <span slot="spinner">
+              <LoadingSpinner />
+            </span>
             <div slot="no-more">목록의 끝입니다 :)</div>
           </infinite-loading>
         </div>
@@ -118,7 +121,7 @@ export default {
         { text: "C", value: "C" },
       ],
       totalCount: "",
-      isLoading: false,
+      // isLoading: false,
       listItems: [],
       paginator: {},
     };
@@ -126,16 +129,18 @@ export default {
   methods: {
     async infiniteHandler($state) {
       try {
-        const { data } = await fetchSounds(this.paginator.next);
-        if (data.result.length) {
-          this.listItems = this.listItems.concat(data.result);
-          this.paginator = data.paginator;
-          this.totalCount = data.totalCount;
-          $state.loaded();
-          // setTimeout(() => this.isLoading = false, 2000);
-        } else {
-          $state.complete();
-        }
+        await setTimeout(async () => {
+          // this.isLoading = false
+          const { data } = await fetchSounds(this.paginator.next);
+          if (data.result.length) {
+            this.listItems = this.listItems.concat(data.result);
+            this.paginator = data.paginator;
+            this.totalCount = data.totalCount;
+            $state.loaded();
+          } else {
+            $state.complete();
+          }
+        }, 200);
       } catch (error) {
         return error;
       }
@@ -281,6 +286,9 @@ export default {
       // margin: 0 auto;
       border-top: 1px solid $primary;
       // margin-top: 44px;
+    }
+    .infinite-loading-container {
+      padding-top: 20px;
     }
   }
 }
