@@ -45,7 +45,7 @@ export default {
         const data = await this.$store.dispatch("SEARCH", this.keywordItem);
         console.log(data);
         this.$router.push({
-          path: "/sounds",
+          path: "/search",
           query: { keyword: this.keywordItem },
         });
         this.keywordItem = "";
