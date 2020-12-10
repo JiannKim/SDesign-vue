@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UploadForm @refresh="fetchMyData" />
+    <UploadForm @refresh="" />
     <div class="form-upload-lists">
       <div class="bottom-title-section">
         <h2>Upload List ({{ totalCount }})</h2>
@@ -12,7 +12,7 @@
           v-for="listItem in listItems"
           :key="listItem.index"
           :listItem="listItem"
-          @refresh="fetchMyData"
+          @refresh=""
         />
       </ul>
       <infinite-loading
