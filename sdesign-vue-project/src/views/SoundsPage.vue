@@ -68,7 +68,6 @@
         <div class="form-upload-lists">
           <LoadingSpinner v-if="isLoading" />
           <ul v-else>
-            <p>{{ logMessage }}</p>
             <SoundsListItem
               v-for="listItem in listItems"
               :key="listItem.index"
@@ -119,7 +118,6 @@ export default {
         { text: "C", value: "C" },
       ],
       totalCount: "",
-      logMessage: "",
       isLoading: false,
       listItems: [],
       paginator: {},
@@ -134,6 +132,7 @@ export default {
           this.paginator = data.paginator;
           this.totalCount = data.totalCount;
           $state.loaded();
+          // setTimeout(() => this.isLoading = false, 2000);
         } else {
           $state.complete();
         }
@@ -243,7 +242,8 @@ export default {
     max-width: 585px;
     display: flex;
     justify-content: space-between;
-    margin: 50px 0;
+    // justify-content: space-around;
+    margin: 70px 0;
     select {
       width: 175px;
       height: 43px;
@@ -253,7 +253,7 @@ export default {
       background: $dis-select;
       color: #fff;
       appearance: none;
-      margin-right: 10px;
+      // margin-right: 10px;
       outline: none;
       font: {
         size: 14px;
@@ -282,9 +282,25 @@ export default {
       border-top: 1px solid $primary;
       // margin-top: 44px;
     }
-    p {
-      margin: 50px 0;
+  }
+}
+
+// 모바일 반응형
+@media (max-width: 660px) {
+  .sounds-page-contents {
+    .contents-select {
+      flex-flow: column;
+      margin: 70px 0 50px 0;
+      select {
+        min-width: 100%;
+        margin-bottom: 10px;
+      }
     }
+    .form-upload-lists {
+      margin: 0;
+    }
+  }
+  @media (max-width: 440px) {
   }
 }
 </style>
