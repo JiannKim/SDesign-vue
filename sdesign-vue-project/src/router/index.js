@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "@/store";
 // import AppMain from "@/views/AppMain.vue";
 
 Vue.use(VueRouter);
@@ -35,6 +36,7 @@ const router = new VueRouter({
       path: "/account",
       name: "account",
       component: () => import("@/views/AccountPage.vue"),
+      meta: { auth: true },
     },
     {
       path: "/search",
@@ -46,6 +48,14 @@ const router = new VueRouter({
       component: () => import("@/views/NotFoundPage.vue"),
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth && !store.getters.isLogin) {
+    next("/main");
+    return;
+  }
+  next();
 });
 
 export default router;

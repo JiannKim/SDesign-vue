@@ -1,6 +1,6 @@
 <template>
   <header id="app-header-wrapper">
-    <router-link class="app-header-logo-link" to="/">
+    <router-link to="/" class="app-header-logo-link">
       <img
         class="header-logo"
         src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
