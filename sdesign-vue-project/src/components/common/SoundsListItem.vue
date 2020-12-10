@@ -36,7 +36,7 @@
             </a>
           </div>
         </div>
-        <div class="sound-title">
+        <div class="sound-title" @click="clicked">
           <span>Title:</span>
           <p>
             {{ listItem.soundName }}
@@ -47,6 +47,69 @@
           :class="{ active: !isClicked }"
           @click="clicked"
         ></span>
+      </div>
+      <!-- 모바일 반응형 -->
+      <div class="mobile-disabled-container">
+        <div class="detail-parts-1">
+          <div class="mobile-sound-title">
+            <span>Title:</span>
+            <p>
+              {{ listItem.soundName }}
+            </p>
+          </div>
+          <div>
+            <span>Category:</span>
+            <p>
+              {{ listItem.category }}
+            </p>
+          </div>
+          <div>
+            <span>Tags:</span>
+            <p>
+              {{ isTag + listItem.tags.join(" #") }}
+            </p>
+          </div>
+        </div>
+        <div class="detail-parts-2">
+          <span>Sound Designer</span>
+          <div class="part-sound-designer">
+            <span class="designer-img"></span>
+            <p>
+              {{ listItem.accountId.accountName }}
+            </p>
+          </div>
+        </div>
+        <div class="detail-parts-3">
+          <span>Share</span>
+          <a id="isShare" ref="isShare" @click="clipModal()">
+            <fa-icon icon="share-alt-square" />
+          </a>
+          <!-- clipboard modal section -->
+          <template>
+            <modal name="clip-modal" :width="390" :height="32">
+              <div class="clipboard">
+                <textarea
+                  name=""
+                  id="copyPath"
+                  v-model="listItem.filePath"
+                  cols="35"
+                  rows="2"
+                >
+                </textarea>
+                <button @click="isCopied()">copy</button>
+              </div>
+            </modal>
+          </template>
+        </div>
+        <div class="list-remove">
+          <button
+            class="list-remove-button"
+            v-if="this.listItem.myItem === true"
+            @click="submitRemove"
+          >
+            remove
+          </button>
+        </div>
       </div>
     </div>
     <transition name="detail-fade">
@@ -176,11 +239,12 @@ export default {
 }
 // sound list info
 .enabled-container {
-  display: flex;
   // width: 100%;
   height: 87px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 10px;
   .arrow {
     cursor: pointer;
   }
@@ -294,10 +358,12 @@ export default {
     }
   }
   .sound-title {
-    text-align: left;
     min-width: 20%;
     width: 220px;
+    height: 30px;
     text-overflow: ellipsis;
+    text-align: left;
+    line-height: 30px;
     padding-top: 2px;
     margin: 0 18px;
   }
@@ -374,9 +440,6 @@ export default {
     max-width: 150px;
     display: flex;
     flex-flow: column;
-    span {
-      margin-bottom: 5px;
-    }
     .part-sound-designer {
       display: flex;
       align-items: center;
@@ -388,7 +451,70 @@ export default {
         background-color: #fff;
         border-radius: 7px;
         border: 1px solid $primary;
-        margin-right: 10px;
+        margin: 5px 10px 0 0;
+      }
+    }
+  }
+  .detail-parts-3 {
+    a {
+      color: $sub-txt;
+      font-size: 40px;
+      :hover {
+        color: $link-txt;
+      }
+    }
+  }
+  .list-remove {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    text-align: center;
+    .list-remove-button {
+      all: unset;
+      width: 48px;
+      height: 15px;
+      cursor: pointer;
+      font-size: 12px;
+      background-color: rgb(230, 0, 0);
+      border-radius: 4px;
+      color: #fff;
+    }
+  }
+}
+// 모바일 디테일 영역
+.mobile-disabled-container {
+  max-width: 97%;
+  margin: 0 auto;
+  position: relative;
+  // display: flex;
+  display: none;
+  justify-content: space-between;
+  text-align: left;
+  .detail-parts-1 {
+    // width: 445px;
+    width: 59%;
+    height: 50px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  }
+  .detail-parts-2,
+  .detail-parts-3 {
+    max-width: 150px;
+    display: flex;
+    flex-flow: column;
+    .part-sound-designer {
+      display: flex;
+      align-items: center;
+      .designer-img {
+        display: inline-block;
+        text-align: center;
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        border-radius: 7px;
+        border: 1px solid $primary;
+        margin: 5px 10px 0 0;
       }
     }
   }
@@ -456,7 +582,6 @@ export default {
 @media (max-width: 1020px) {
   .enabled-container {
     .icons {
-      // width: 16%;
       .sound-download {
         margin-left: 5px;
         width: 68px;
@@ -465,22 +590,56 @@ export default {
   }
 }
 @media (max-width: 750px) {
-  // .enabled-container {
-  // .icons {
-  // width: 155px;
-  // .sound-download {
-  //   width: 68px;
-  // }
-  // }
-  // }
+  #sound-list-items-wrapper {
+    height: 145px;
+  }
+  // 더보기 숨기기
   .disabled-container {
-    width: 94.5%;
-    margin: 0 auto;
-    .detail-parts-1 {
-      min-width: 390px;
-      max-width: 390px;
-      word-break: keep-all;
+    display: none;
+  }
+  .enabled-container {
+    height: 120px;
+    display: flex;
+    flex-flow: column;
+    padding: 0 10px;
+    .sound-info {
+      .play-container {
+        width: 80%;
+      }
+      .sound-download {
+        a:hover {
+          animation: slidebg 1s linear infinite;
+        }
+      }
+      // 데스크탑 타이틀 숨김
+      .sound-title {
+        display: none;
+      }
+      // 더보기 버튼 숨김
+      .arrow {
+        display: none;
+      }
+    }
+    .mobile-disabled-container {
+      display: flex;
+      // width: 100%;
+      min-width: 100%;
+      .detail-parts-1 {
+        width: 59%;
+        height: 75px;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+      }
+      .detail-parts-1,
+      .detail-parts-2,
+      .detail-parts-3 {
+        margin-right: 7px;
+      }
     }
   }
 }
+// 모바일 반응형
+// @media (max-width: 440px) {
+// }
 </style>

@@ -84,6 +84,12 @@ export default {
     --plyr-audio-controls-background: transition;
     --plyr-control-radius: 11px;
     --plyr-audio-control-color-hover: none;
+    padding: var(--plyr-control-spacing, 10px 10px 10px 0) !important;
+    .plyr__controls__item {
+      &:first-child {
+        padding: var(--plyr-control-spacing, 10px 10px 10px 0) !important;
+      }
+    }
     .plyr__progress,
     .plyr__volume {
       & input[type="range"] {
@@ -91,8 +97,11 @@ export default {
         // color: #909090;
       }
     }
-    .plyr__control[role="menuitemradio"] {
-      --plyr-color-main: #e0e0e0;
+    // .plyr__control[role="menuitemradio"] {
+    //   --plyr-color-main: #e0e0e0;
+    // }
+    .plyr__menu {
+      display: none;
     }
   }
 }
