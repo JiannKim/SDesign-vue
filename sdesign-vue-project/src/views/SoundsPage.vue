@@ -308,7 +308,5 @@ export default {
       margin: 0;
     }
   }
-  @media (max-width: 440px) {
-  }
 }
 </style>

@@ -18,98 +18,37 @@
             </audio>
           </vue-plyr>
         </div>
-        <div class="icons">
-          <div class="sound-like icon">
-            <a href="javascript:;">
-              <fa-icon icon="heart" />
-            </a>
+        <div class="enabled-el">
+          <div class="icons">
+            <div class="sound-like icon">
+              <a href="javascript:;">
+                <fa-icon icon="heart" />
+              </a>
+            </div>
+            <div class="sound-download icon">
+              <a
+                href="javascript:;"
+                @click.prevent="
+                  downloadItem(listItem.filePath, listItem.soundName)
+                "
+              >
+                <span>mp3</span>
+                <fa-icon icon="download" id="dicon" />
+              </a>
+            </div>
           </div>
-          <div class="sound-download icon">
-            <a
-              href="javascript:;"
-              @click.prevent="
-                downloadItem(listItem.filePath, listItem.soundName)
-              "
-            >
-              <span>mp3</span>
-              <fa-icon icon="download" id="dicon" />
-            </a>
+          <div class="sound-title">
+            <span>Title:</span>
+            <p>
+              {{ listItem.soundName }}
+            </p>
           </div>
-        </div>
-        <div class="sound-title" @click="clicked">
-          <span>Title:</span>
-          <p>
-            {{ listItem.soundName }}
-          </p>
         </div>
         <span
           class="arrow"
           :class="{ active: !isClicked }"
           @click="clicked"
         ></span>
-      </div>
-      <!-- 모바일 반응형 -->
-      <div class="mobile-disabled-container">
-        <div class="detail-parts-1">
-          <div class="mobile-sound-title">
-            <span>Title:</span>
-            <p>
-              {{ listItem.soundName }}
-            </p>
-          </div>
-          <div>
-            <span>Category:</span>
-            <p>
-              {{ listItem.category }}
-            </p>
-          </div>
-          <div>
-            <span>Tags:</span>
-            <p>
-              {{ isTag + listItem.tags.join(" #") }}
-            </p>
-          </div>
-        </div>
-        <div class="detail-parts-2">
-          <span>Sound Designer</span>
-          <div class="part-sound-designer">
-            <span class="designer-img"></span>
-            <p>
-              {{ listItem.accountId.accountName }}
-            </p>
-          </div>
-        </div>
-        <div class="detail-parts-3">
-          <span>Share</span>
-          <a id="isShare" ref="isShare" @click="clipModal()">
-            <fa-icon icon="share-alt-square" />
-          </a>
-          <!-- clipboard modal section -->
-          <template>
-            <modal name="clip-modal" :width="390" :height="32">
-              <div class="clipboard">
-                <textarea
-                  name=""
-                  id="copyPath"
-                  v-model="listItem.filePath"
-                  cols="35"
-                  rows="2"
-                >
-                </textarea>
-                <button @click="isCopied()">copy</button>
-              </div>
-            </modal>
-          </template>
-        </div>
-        <div class="list-remove">
-          <button
-            class="list-remove-button"
-            v-if="this.listItem.myItem === true"
-            @click="submitRemove"
-          >
-            remove
-          </button>
-        </div>
       </div>
     </div>
     <transition name="detail-fade">
@@ -304,68 +243,71 @@ export default {
       width: 56%;
     }
   }
-  .icons {
+  .enabled-el {
     display: flex;
-    justify-content: space-between;
-    width: 125px;
-    .icon,
-    a {
-      border-radius: 4px;
-      background-color: #e0e0e0;
+    width: 100%;
+    .icons {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      color: #fff;
-    }
-    .sound-like {
-      width: 36px;
-      height: 28px;
-    }
-    .sound-download {
-      width: 78px;
-      height: 28px;
+      width: 125px;
+      margin: 0 40px 0 20px;
+      .icon,
       a {
-        width: 100%;
-        height: 100%;
-        span {
-          font-size: 14px;
-          margin-right: 7px;
-          text-transform: uppercase;
-          font-weight: bold;
+        border-radius: 4px;
+        background-color: #e0e0e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+      }
+      .sound-like {
+        width: 36px;
+        height: 28px;
+      }
+      .sound-download {
+        width: 78px;
+        height: 28px;
+        a {
+          width: 100%;
+          height: 100%;
+          span {
+            font-size: 14px;
+            margin-right: 7px;
+            text-transform: uppercase;
+            font-weight: bold;
+          }
         }
-      }
-      a:hover {
-        background-image: linear-gradient(
-          -45deg,
-          #00c0ff 0%,
-          #ffcf00 49%,
-          #fc4f4f 80%,
-          #00c0ff 100%
-        );
-        // 텍스트만
-        // background-clip: text;
-        // -webkit-background-clip: text;
-        // -moz-background-clip: text;
-        // -webkit-text-fill-color: transparent;
-        // -moz-text-fill-color: transparent;
-        animation: slidebg 2s linear infinite;
-      }
-      @keyframes slidebg {
-        to {
-          background-position: 50vw;
+        a:hover {
+          background-image: linear-gradient(
+            -45deg,
+            #00c0ff 0%,
+            #ffcf00 49%,
+            #fc4f4f 80%,
+            #00c0ff 100%
+          );
+          // 텍스트만
+          // background-clip: text;
+          // -webkit-background-clip: text;
+          // -moz-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+          // -moz-text-fill-color: transparent;
+          animation: slidebg 2s linear infinite;
+        }
+        @keyframes slidebg {
+          to {
+            background-position: 50vw;
+          }
         }
       }
     }
-  }
-  .sound-title {
-    min-width: 20%;
-    width: 220px;
-    height: 30px;
-    text-overflow: ellipsis;
-    text-align: left;
-    line-height: 30px;
-    padding-top: 2px;
-    margin: 0 18px;
+    .sound-title {
+      min-width: 25%;
+      text-overflow: ellipsis;
+      text-align: left;
+      line-height: 30px;
+      padding-top: 2px;
+    }
   }
   // 더보기 화살표
   .arrow {
@@ -428,8 +370,7 @@ export default {
   justify-content: space-between;
   text-align: left;
   .detail-parts-1 {
-    // width: 445px;
-    width: 59%;
+    width: 30%;
     height: 50px;
     display: flex;
     flex-flow: column;
@@ -580,66 +521,53 @@ export default {
 
 // 태블릿
 @media (max-width: 1020px) {
-  .enabled-container {
+  .enabled-el {
     .icons {
       .sound-download {
         margin-left: 5px;
         width: 68px;
       }
     }
+    .sound-title {
+      margin-right: 20px;
+    }
   }
 }
 @media (max-width: 750px) {
   #sound-list-items-wrapper {
-    height: 145px;
-  }
-  // 더보기 숨기기
-  .disabled-container {
-    display: none;
+    height: 108px;
   }
   .enabled-container {
-    height: 120px;
+    height: 105px;
     display: flex;
     flex-flow: column;
     padding: 0 10px;
     .sound-info {
+      display: block;
       .play-container {
-        width: 80%;
+        width: 90%;
       }
-      .sound-download {
-        a:hover {
-          animation: slidebg 1s linear infinite;
+      .enabled-el {
+        display: flex;
+        flex-flow: row-reverse;
+        justify-content: space-between;
+        .icons {
+          margin: 0;
+          .sound-download {
+            a:hover {
+              animation: slidebg 1s linear infinite;
+            }
+          }
         }
       }
-      // 데스크탑 타이틀 숨김
-      .sound-title {
-        display: none;
-      }
-      // 더보기 버튼 숨김
       .arrow {
-        display: none;
-      }
-    }
-    .mobile-disabled-container {
-      display: flex;
-      // width: 100%;
-      min-width: 100%;
-      .detail-parts-1 {
-        width: 59%;
-        height: 75px;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-      }
-      .detail-parts-1,
-      .detail-parts-2,
-      .detail-parts-3 {
-        margin-right: 7px;
+        position: absolute;
+        top: 20px;
       }
     }
   }
 }
 // 모바일 반응형
-// @media (max-width: 440px) {
-// }
+@media (max-width: 440px) {
+}
 </style>
