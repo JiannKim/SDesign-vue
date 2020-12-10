@@ -111,6 +111,7 @@ export default {};
   cursor: pointer;
   overflow: hidden;
   position: relative;
+  outline: none;
 }
 .main-top-headline-button::after {
   background-color: #fff;
