@@ -422,69 +422,6 @@ export default {
     }
   }
 }
-// 모바일 디테일 영역
-.mobile-disabled-container {
-  max-width: 97%;
-  margin: 0 auto;
-  position: relative;
-  // display: flex;
-  display: none;
-  justify-content: space-between;
-  text-align: left;
-  .detail-parts-1 {
-    // width: 445px;
-    width: 59%;
-    height: 50px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-  }
-  .detail-parts-2,
-  .detail-parts-3 {
-    max-width: 150px;
-    display: flex;
-    flex-flow: column;
-    .part-sound-designer {
-      display: flex;
-      align-items: center;
-      .designer-img {
-        display: inline-block;
-        text-align: center;
-        width: 35px;
-        height: 35px;
-        background-color: #fff;
-        border-radius: 7px;
-        border: 1px solid $primary;
-        margin: 5px 10px 0 0;
-      }
-    }
-  }
-  .detail-parts-3 {
-    a {
-      color: $sub-txt;
-      font-size: 40px;
-      :hover {
-        color: $link-txt;
-      }
-    }
-  }
-  .list-remove {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    text-align: center;
-    .list-remove-button {
-      all: unset;
-      width: 48px;
-      height: 15px;
-      cursor: pointer;
-      font-size: 12px;
-      background-color: rgb(230, 0, 0);
-      border-radius: 4px;
-      color: #fff;
-    }
-  }
-}
 // detail section show!
 .isMore {
   height: 185px !important;

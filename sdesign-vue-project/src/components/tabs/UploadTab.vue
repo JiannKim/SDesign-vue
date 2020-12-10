@@ -124,5 +124,8 @@ export default {
     // border-top: 1px solid $primary;
     margin-top: 44px;
   }
+  .infinite-loading-container {
+    padding-top: 20px;
+  }
 }
 </style>
