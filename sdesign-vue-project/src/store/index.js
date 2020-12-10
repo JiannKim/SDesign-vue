@@ -15,14 +15,16 @@ export default new Vuex.Store({
     useremail: "",
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
-    fetchlist: {},
     searchtext: "",
-    searchlist: {},
-    paginator: {},
+    // searchlist: {},
+    // fetchlist: {},
+    // paginator: {},
   },
   getters: {
     isLogin(state) {
-      return state.token !== "";
+      const result =
+        state.token !== "" && state.token !== undefined ? true : false;
+      return result;
     },
     isSearch(state) {
       return state.searchtext !== "";
@@ -42,18 +44,18 @@ export default new Vuex.Store({
       state.nickname = "";
       state.token = "";
     },
-    setFetchList(state, fetchlist) {
-      state.fetchlist = fetchlist;
-    },
     setSearchText(state, searchtext) {
       state.searchtext = searchtext;
     },
-    setSearchList(state, searchlist) {
-      state.searchlist = searchlist;
-    },
-    setPaginator(state, paginator) {
-      state.paginator = paginator;
-    },
+    // setSearchList(state, searchlist) {
+    //   state.searchlist = searchlist;
+    // },
+    // setFetchList(state, fetchlist) {
+    //   state.fetchlist = fetchlist;
+    // },
+    // setPaginator(state, paginator) {
+    //   state.paginator = paginator;
+    // },
   },
   actions: {
     // 로그인
@@ -76,7 +78,7 @@ export default new Vuex.Store({
     async SEARCH({ commit }, searchData, next) {
       const { data } = await searchSounds(searchData, next);
       commit("setSearchText", searchData);
-      commit("setSearchList", data.result);
+      // commit("setSearchList", data.result);
       return data;
     },
   },
