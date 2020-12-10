@@ -77,9 +77,11 @@ export default {
       const token = this.$store.state.token;
       try {
         const { data } = await createSounds(formData, token);
-        console.log("createData response =>", data);
         this.inntForm();
-        this.$emit("refresh");
+        // this.$emit("refresh");
+        // this.$router.push({ path: "/account", query: { title: this.title }});
+        this.$router.go(0);
+        return data;
       } catch (error) {
         console.log("err =>", error);
       }

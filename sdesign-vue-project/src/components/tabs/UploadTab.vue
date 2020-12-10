@@ -1,25 +1,24 @@
 <template>
   <div>
-    <UploadForm @refresh="" />
+    <UploadForm />
     <div class="form-upload-lists">
       <div class="bottom-title-section">
         <h2>Upload List ({{ totalCount }})</h2>
       </div>
-      <LoadingSpinner v-if="isLoading" />
-      <ul v-else>
+      <ul>
         <p>{{ logMessage }}</p>
         <SoundsListItem
           v-for="listItem in listItems"
           :key="listItem.index"
           :listItem="listItem"
-          @refresh=""
         />
       </ul>
       <infinite-loading
-        slot="append"
+        slot="spinner"
         spinner="waveDots"
         @infinite="infiniteHandler"
       >
+        <span slot="spinner"><LoadingSpinner /></span>
         <div slot="no-more">목록의 끝입니다 :)</div>
       </infinite-loading>
     </div>
@@ -29,8 +28,8 @@
 <script>
 import { fetchMySounds } from "@/api";
 import UploadForm from "@/components/account/UploadForm.vue";
-import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 
 export default {
   components: {
@@ -45,30 +44,48 @@ export default {
       isLoading: false,
       listItems: [],
       paginator: {},
+      // title: "",
     };
   },
+  // watch: {
+  //   "$route.query.title": {
+  //     async handler(value) {
+  //       // const token = this.$store.state.token;
+  //       // const { data } = await fetchMySounds(token, this.paginator.next);
+
+  //       this.title = value;
+  //       console.log(value);
+  //       // this.$router.go();
+  //     },
+  //     deep: true,
+  //     immediate: true,
+  //   },
+  // },
   methods: {
     // async fetchMyData() {
     //   const token = this.$store.state.token;
+    //   console.log("패치데이터가 리프레시로 실행");
     //   try {
-    //     this.isLoading = true;
+    //     //     this.isLoading = true;
     //     const { data } = await fetchMySounds(token, this.paginator.next);
-    //     this.totalCount = data.totalCount;
-    //     this.paginator = data.paginator;
-    //     // console.log("fetchMyData response =>", data);
-    //     if (data.result.length === 0) {
-    //       this.isLoading = false;
-    //       this.logMessage = "업로드된 사운드가 없습니다.";
-    //     } else {
-    //       for (let i = 0; i < data.result.length; i++) {
-    //         data.result[i].myItem = true;
-    //       }
-    //       this.isLoading = false;
-    //       this.listItems = data.result;
-    //       // this.paginator = data.paginator;
-    //     }
+    //     console.log("어웨이트 실행");
+    //     this.listItems = this.listItems.concat;
+    //     //     this.totalCount = data.totalCount;
+    //     //     this.paginator = data.paginator;
+    //     //     // console.log("fetchMyData response =>", data);
+    //     //     if (data.result.length === 0) {
+    //     //       this.isLoading = false;
+    //     //       this.logMessage = "업로드된 사운드가 없습니다.";
+    //     //     } else {
+    //     //       for (let i = 0; i < data.result.length; i++) {
+    //     //         data.result[i].myItem = true;
+    //     //       }
+    //     //       this.isLoading = false;
+    //     //       this.listItems = data.result;
+    //     //       // this.paginator = data.paginator;
+    //     //     }
     //   } catch (error) {
-    //     console.log("this ", error);
+    //     //     console.log("this ", error);
     //   }
     // },
     async infiniteHandler($state) {
@@ -77,7 +94,7 @@ export default {
         const { data } = await fetchMySounds(token, this.paginator.next);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
-        if (data.result.length === 0) {
+        if (this.totalCount === 0) {
           this.isLoading = false;
           this.logMessage = "업로드된 사운드가 없습니다.";
         }
@@ -113,8 +130,9 @@ export default {
     h2 {
       font-weight: 100;
       text-align: left;
-      max-width: 1170px;
-      max-width: 81%;
+      // max-width: 1170px;
+      // max-width: 81%;
+      max-width: 88%;
       margin: 0 auto;
     }
   }

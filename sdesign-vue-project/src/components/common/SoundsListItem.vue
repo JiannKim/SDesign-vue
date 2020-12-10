@@ -130,7 +130,7 @@ export default {
       const token = this.$store.state.token;
       try {
         await removeItem({ soundId: data }, token);
-        this.$emit("refresh");
+        this.$router.go(0);
       } catch (error) {
         console.log("err =>", error);
       }
