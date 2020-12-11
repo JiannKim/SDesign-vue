@@ -12,16 +12,18 @@ import {
   faSearch,
   faTimes,
   faHome,
-  faPlay,
-  faStepBackward,
-  faStepForward,
-  faVolumeUp,
-  faVolumeOff,
+  // faPlay,
+  // faStepBackward,
+  // faStepForward,
+  // faVolumeUp,
+  // faVolumeOff,
   faHeart,
   faDownload,
   faAngleDown,
   faCaretDown,
   faShareAltSquare,
+  faPlusCircle,
+  faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -37,16 +39,18 @@ library.add(
   faSearch,
   faTimes,
   faHome,
-  faPlay,
-  faStepBackward,
-  faStepForward,
-  faVolumeUp,
-  faVolumeOff,
+  // faPlay,
+  // faStepBackward,
+  // faStepForward,
+  // faVolumeUp,
+  // faVolumeOff,
   faHeart,
   faDownload,
   faAngleDown,
   faCaretDown,
-  faShareAltSquare
+  faShareAltSquare,
+  faPlusCircle,
+  faPen
 );
 
 // fontawesome icon 사용을 위한 전역 컴포넌트로 등록

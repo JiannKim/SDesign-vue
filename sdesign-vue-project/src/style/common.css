@@ -27,7 +27,8 @@ li {
   list-style: none;
   /* cursor: pointer; */
 }
-.button {
+.button,
+button {
   cursor: pointer;
 }
 .disabled {

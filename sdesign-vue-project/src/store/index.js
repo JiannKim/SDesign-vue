@@ -16,7 +16,7 @@ export default new Vuex.Store({
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
     searchtext: "",
-    // searchlist: {},
+    // selected: "",
     // fetchlist: {},
     // paginator: {},
   },
@@ -47,8 +47,8 @@ export default new Vuex.Store({
     setSearchText(state, searchtext) {
       state.searchtext = searchtext;
     },
-    // setSearchList(state, searchlist) {
-    //   state.searchlist = searchlist;
+    // setSelected(state, selected) {
+    //   state.selected = selected;
     // },
     // setFetchList(state, fetchlist) {
     //   state.fetchlist = fetchlist;
