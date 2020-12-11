@@ -39,30 +39,28 @@ function fetchSounds(next) {
 // 사운드 리스트 데이터 생성 api 요청
 function createSounds(formInfo, token) {
   let data = new FormData();
+  const config = { headers: { token, "Content-Type": "multipart/form-data" } };
   data.append("userFile", formInfo.userFile);
   data.append("soundName", formInfo.soundName);
   data.append("category", formInfo.category);
   data.append("tags", formInfo.tags);
-  return instance.post("/upload/file", data, {
-    headers: {
-      token,
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return instance.post("/upload/file", data, config);
 }
 // 데이터 삭제 api 요청
 function removeItem(removeInfo, token) {
-  return instance.post("/remove/my/sound", removeInfo, {
-    headers: {
-      token,
-    },
-  });
+  return instance.post("/remove/my/sound", removeInfo, { headers: { token } });
 }
 // 검색 api 요청
 function searchSounds(searchData, next) {
   const config = { params: { keyword: searchData, next } };
   return instance.get("/search/sound", config);
 }
+// 계정 이미지 수정 api 요청
+function updateProfile(token, userInfo) {
+  const config = { headers: { token, "Content-Type": "multipart/form-data" } };
+  return instance.put("/updata/profile", config, userInfo);
+}
+
 // download 버튼 활성화 시켜주는 api
 function downloadItem(url, label) {
   axios
@@ -87,4 +85,5 @@ export {
   createSounds,
   removeItem,
   searchSounds,
+  updateProfile,
 };
