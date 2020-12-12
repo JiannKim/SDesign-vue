@@ -58,7 +58,7 @@ export default {
 .account-modal {
   .vm--modal {
     max-width: 152px;
-    max-height: 150px;
+    max-height: 136px;
     left: 92% !important;
     top: 6% !important;
     // margin-right: 20px !important;

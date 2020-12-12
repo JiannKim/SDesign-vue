@@ -120,12 +120,12 @@ export default {
         font-size: 16px;
         height: 30px;
         margin-top: 4px;
-        border: 1px solid #e0e0e0;
+        border: 1px solid $primary;
         border-radius: 4px;
         outline: none;
       }
       input:focus {
-        box-shadow: 1px 1px 6px 0 #e0e0e0;
+        box-shadow: 1px 1px 6px 0 $primary;
       }
     }
     .file-uploader {

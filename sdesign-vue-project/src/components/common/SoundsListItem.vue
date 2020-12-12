@@ -1,11 +1,11 @@
 <template>
-  <li id="sound-list-items-wrapper" :class="{ isMore: !isClicked }">
+  <li id="sound-list-items-wrapper" :class="{ isMore: !clicked }">
     <div class="enabled-container">
       <!-- <div class="list-remove">
         <button
           class="list-remove-button"
-          :class="{ on: !isClicked }"
-          v-if="!isClicked"
+          :class="{ on: !clicked }"
+          v-if="!clicked"
         >
           <span></span>
         </button>
@@ -46,13 +46,13 @@
         </div>
         <span
           class="arrow"
-          :class="{ active: !isClicked }"
-          @click="clicked"
+          :class="{ active: !clicked }"
+          @click="isClicked"
         ></span>
       </div>
     </div>
     <transition name="detail-fade">
-      <div class="disabled-container" v-if="!isClicked">
+      <div class="disabled-container" v-if="!clicked">
         <div class="detail-parts-1">
           <div>
             <span>Category:</span>
@@ -120,7 +120,7 @@ export default {
     const isTag = this.listItem.tags.length > 0 ? "#" : "";
     return {
       isTag,
-      isClicked: true,
+      clicked: true,
       downloadItem,
     };
   },
@@ -135,8 +135,8 @@ export default {
         console.log("err =>", error);
       }
     },
-    clicked() {
-      this.isClicked = this.isClicked ? false : true;
+    isClicked() {
+      this.clicked = this.clicked ? false : true;
     },
     clipModal() {
       this.$modal.show("clip-modal");
@@ -311,11 +311,11 @@ export default {
   }
   // 더보기 화살표
   .arrow {
-    width: 20px;
+    width: 80px;
     height: 18px;
     position: relative;
     bottom: 0px;
-    right: 20px;
+    right: 0;
     &:before,
     &:after {
       position: absolute;
