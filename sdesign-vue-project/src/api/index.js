@@ -56,12 +56,12 @@ function searchSounds(searchData, next) {
   return instance.get("/search/sound", config);
 }
 // 계정 이미지 수정 api 요청
-function updateProfile(token, userInfo) {
+function updateProfile(userInfo, token) {
   let data = new FormData();
   const config = { headers: { token, "Content-Type": "multipart/form-data" } };
   data.append("userImg", userInfo.userImg);
   data.append("accountName", userInfo.accountName);
-  return instance.put("/updata/profile", data, config);
+  return instance.post("/update/profile", data, config);
 }
 
 // download 버튼 활성화 시켜주는 api

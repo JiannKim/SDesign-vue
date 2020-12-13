@@ -4,14 +4,19 @@
       <div class="user-profile-img">
         <div class="test">
           <img class="u-img" ref="userImg" :src="this.userimage" alt="" />
-          <input
+          <!-- <input
             type="file"
             accept="image/*"
             @change="onFileUpload"
             ref="submitInput"
-          />
+          /> -->
         </div>
-        <button class="u-img-submit button" @click="isSubmit">
+        <button
+          class="u-img-submit"
+          :disabled="clicked"
+          :class="{ disabled: clicked }"
+          @click="isAdd"
+        >
           <fa-icon icon="plus-circle" />
         </button>
       </div>
@@ -22,10 +27,17 @@
       </div>
       <div class="user-profile-edit">
         <template v-if="!clicked">
-          <form class="edit-form" @submit.prevent="">
-            <input type="text" v-model="nickname" />
+          <form class="edit-form" @submit.prevent="submitForm">
+            <input
+              class="img-form"
+              type="file"
+              accept="image/*"
+              @change="onFileUpload"
+              ref="submitInput"
+            />
+            <input type="text" v-model="nickname" class="edit-name" />
             <div class="btn-wrapper">
-              <button class="edit-save">저장</button>
+              <button class="edit-save" type="submit">저장</button>
               <button class="edit-cancel" @click="isClicked">취소</button>
             </div>
           </form>
@@ -45,6 +57,8 @@
 </template>
 
 <script>
+import { updateProfile } from "@/api";
+
 export default {
   data() {
     return {
@@ -55,20 +69,43 @@ export default {
     };
   },
   methods: {
-    isSubmit() {
+    async submitForm() {
+      let formData = {
+        userImg: this.userimage,
+        accountName: this.nickname,
+      };
+      const token = this.$store.state.token;
+      try {
+        const { data } = await updateProfile(formData, token);
+        console.log("업데이트프로필 실행");
+        console.log(data);
+      } catch (error) {
+        return error;
+      }
+    },
+    isAdd() {
       this.$refs.submitInput.click();
     },
+    // isFile() {
+    //   this.userimage = event.target.files[0];
+    // },
     onFileUpload(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      this.createImage(files[0]);
-    },
-    createImage(file) {
+      const files = e.target.files || e.dataTransfer.files;
+      this.userimage = files[0];
       const reader = new FileReader();
       reader.onload = (e) => {
         this.userimage = e.target.result;
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(files[0]);
+      // this.createImage(files[0]);
     },
+    // createImage(file) {
+    //   const reader = new FileReader();
+    //   reader.onload = (e) => {
+    //     this.userimage = e.target.result;
+    //   };
+    //   reader.readAsDataURL(file);
+    // },
     isClicked() {
       this.clicked = this.clicked ? false : true;
     },
@@ -98,8 +135,6 @@ export default {
   .test {
     width: 250px;
     height: 250px;
-    // max-width: 250px;
-    // max-height: 250px;
     border: none;
     border-radius: 30%;
     overflow: hidden;
@@ -109,16 +144,9 @@ export default {
     .u-img {
       width: 100%;
       height: auto;
-      // max-width: 450px;
-      // max-height: 120px;
-      // width: auto;
-      // height: auto;
       position: relative;
       top: 0;
       left: 0;
-    }
-    input {
-      display: none;
     }
   }
   .u-img-submit {
@@ -135,6 +163,10 @@ export default {
     border-radius: 50%;
     outline: none;
     cursor: pointer;
+  }
+  .disabled {
+    color: rgb(206, 206, 206);
+    // background-color: rgb(206, 206, 206);
   }
 }
 .user-profile-info {
@@ -176,7 +208,10 @@ export default {
     display: grid;
     text-align: left;
     margin-top: 9px;
-    input {
+    .img-form {
+      display: none;
+    }
+    .edit-name {
       padding: 5px;
       font-size: 16px;
       height: 30px;
