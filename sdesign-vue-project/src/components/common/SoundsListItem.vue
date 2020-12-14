@@ -70,7 +70,12 @@
         <div class="detail-parts-2">
           <span>Sound Designer</span>
           <div class="part-sound-designer">
-            <span class="designer-img"></span>
+            <span class="designer-img">
+              <img
+                :src="listItem.accountId.accountImg"
+                alt="user profile image"
+              />
+            </span>
             <p>
               {{ listItem.accountId.accountName }}
             </p>
@@ -393,6 +398,10 @@ export default {
         border-radius: 7px;
         border: 1px solid $primary;
         margin: 5px 10px 0 0;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
       }
     }
   }

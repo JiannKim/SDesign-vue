@@ -2,7 +2,9 @@
   <div class="user-info-box">
     <div class="user-info" @click="modalHide">
       Signed in as
-      <span> {{ $store.state.nickname }}</span>
+      <router-link to="/account" class="user-name-link">
+        <span>{{ $store.state.nickname }}</span>
+      </router-link>
     </div>
     <div @click="modalHide">
       <router-link to="/account">My page</router-link>
@@ -69,7 +71,13 @@ export default {
   }
   .user-info {
     font-size: 14px;
-    padding: 10px 0;
+    padding: 10px;
+  }
+  .user-name-link {
+    display: inline;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid;
   }
   a {
     color: $base-color;
