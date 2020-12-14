@@ -55,7 +55,7 @@ export default {
     },
   },
   created() {
-    this.selectedTab = this.tabs[2];
+    this.selectedTab = this.tabs[1];
   },
 };
 </script>
@@ -78,6 +78,7 @@ export default {
       font-size: 16px;
       position: relative;
       color: #777777;
+      cursor: pointer;
     }
     .active::after {
       content: "";
