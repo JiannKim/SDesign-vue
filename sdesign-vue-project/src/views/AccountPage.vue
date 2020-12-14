@@ -21,9 +21,7 @@
       <template v-else-if="selectedTab === tabs[2]">
         <p>subscrib 섹션</p>
       </template>
-      <template v-else>
-        <p>Favorites 섹션</p>
-      </template>
+      <FavoritesTab v-else />
     </div>
   </div>
 </template>
@@ -31,11 +29,13 @@
 <script>
 import UploadTab from "@/components/tabs/UploadTab.vue";
 import ProfileTab from "@/components/tabs/ProfileTab.vue";
+import FavoritesTab from "@/components/tabs/FavoritesTab.vue";
 
 export default {
   components: {
     UploadTab,
     ProfileTab,
+    FavoritesTab,
   },
   data() {
     const tabs = [
