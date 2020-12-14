@@ -62,7 +62,7 @@ export default {};
   box-shadow: $box-shadow;
   .product-title {
     letter-spacing: 1.5px;
-    color: #a1a1a1;
+    color: $link-txt;
     font-size: 12px;
     padding-bottom: 20px;
     display: flex;
