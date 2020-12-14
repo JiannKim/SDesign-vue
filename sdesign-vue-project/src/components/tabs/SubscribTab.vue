@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="subscrib-container">
     <div class="subscrib-wrapper">
       <div class="card-products">
         <span class="product-title">
@@ -15,9 +15,10 @@
       </div>
       <div class="cancel-products">
         <div class="cancel-content">
-          <p>Unsubscribe now?</p>
-          <span> Do you want to cancel your subscription?</span>
+          <p>Billing Information</p>
+          <span>Do you want to cancel your subscription?</span>
         </div>
+
         <button class="button unsubscribe-btn">Unsubscribe</button>
       </div>
     </div>
@@ -29,6 +30,9 @@ export default {};
 </script>
 
 <style scoped lang="scss">
+#subscrib-container {
+  background: #000;
+}
 .subscrib-wrapper {
   width: 57%;
   min-width: 370px;
@@ -95,22 +99,8 @@ button {
     weight: 600;
   }
 }
-// 구독취소 버튼
-.unsubscribe-btn {
-  color: #fff;
-  transition: none;
-  border: 1px solid #a1a1a1;
-  color: #a1a1a1;
-  outline: none;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.03);
-  }
-  &:active {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-}
 .cancel-products {
-  width: 550px;
+  width: 70%;
   min-width: 350px;
   padding: 20px 0;
   margin: 20px 0 40px 0;
@@ -128,7 +118,22 @@ button {
       font-size: 20px;
     }
     span {
+      padding-top: 10px;
       font-size: 16px;
+    }
+  }
+  // 구독취소 버튼
+  .unsubscribe-btn {
+    // transition: none;
+    border: 1px solid #a1a1a1;
+    color: #a1a1a1;
+    outline: none;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+      color: #fff;
+    }
+    &:active {
+      background-color: rgba(0, 0, 0, 0.08);
     }
   }
 }
