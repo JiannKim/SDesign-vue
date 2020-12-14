@@ -34,8 +34,7 @@
         </button>
       </div>
       <div class="user-profile-info">
-        <p class="u-email">User Email{{ this.useremail }}</p>
-        <!-- <p class="u-name">{{ this.$store.state.nickname }}</p> -->
+        <p class="u-email">{{ this.useremail }}</p>
         <p class="u-name">{{ this.nickname }}</p>
       </div>
       <div class="user-profile-edit">
@@ -94,7 +93,6 @@ export default {
         const { data } = await updateProfile(formData, this.token);
         this.$store.commit("setUserName", formData.accountName);
         this.$store.commit("setUserImg", formData.userImg);
-        // this.$forceUpdate();
         location.reload();
         return data;
       } catch (error) {
@@ -104,13 +102,10 @@ export default {
     async fetchUserInfo() {
       try {
         const { data } = await fetchProfile(this.token);
-        console.log(data);
         this.useremail = data.accountEmail;
         this.nickname = data.accountName;
         this.userimage = data.accountImg;
         this.imgPreview = data.accountImg;
-        console.log(this.nickname);
-        console.log(this.userimage);
       } catch (error) {
         return error;
       }
