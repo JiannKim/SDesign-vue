@@ -190,9 +190,10 @@ export default {};
         background: linear-gradient(to bottom, #8546faeb, #5000e4eb);
         transition: none;
         border: none;
-      }
-      .unlimited-btn:hover {
-        background: #5000e4eb;
+        outline: none;
+        &:hover {
+          background: #5000e4eb;
+        }
       }
     }
   }
