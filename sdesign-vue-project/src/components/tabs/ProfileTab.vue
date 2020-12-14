@@ -3,7 +3,7 @@
     <div class="user-profile">
       <div class="user-profile-img">
         <div class="test">
-          <img class="u-img" ref="userImg" :src="this.userimage" alt="" />
+          <img class="u-img" ref="userImg" :src="this.imgPreview" alt="" />
           <!-- <input
             type="file"
             accept="image/*"
@@ -22,8 +22,8 @@
       </div>
       <div class="user-profile-info">
         <p class="u-email">User Email{{ this.useremail }}</p>
-        <!-- <p class="u-name">{{ this.nickname }}</p> -->
         <p class="u-name">{{ this.$store.state.nickname }}</p>
+        <!-- <p class="u-name">{{ this.nickname }}</p> -->
       </div>
       <div class="user-profile-edit">
         <template v-if="!clicked">
@@ -65,6 +65,7 @@ export default {
       useremail: this.$store.state.useremail,
       nickname: this.$store.state.nickname,
       userimage: [],
+      imgPreview: [],
       clicked: true,
     };
   },
@@ -77,8 +78,10 @@ export default {
       const token = this.$store.state.token;
       try {
         const { data } = await updateProfile(formData, token);
-        console.log("업데이트프로필 실행");
-        console.log(data);
+        this.$store.commit("setUserName", formData.accountName);
+        this.$store.commit("setUserImg", formData.userImg);
+        this.$forceUpdate();
+        return data;
       } catch (error) {
         return error;
       }
@@ -86,26 +89,15 @@ export default {
     isAdd() {
       this.$refs.submitInput.click();
     },
-    // isFile() {
-    //   this.userimage = event.target.files[0];
-    // },
     onFileUpload(e) {
-      const files = e.target.files || e.dataTransfer.files;
+      const files = e.target.files;
       this.userimage = files[0];
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.userimage = e.target.result;
+        this.imgPreview = e.target.result;
       };
       reader.readAsDataURL(files[0]);
-      // this.createImage(files[0]);
     },
-    // createImage(file) {
-    //   const reader = new FileReader();
-    //   reader.onload = (e) => {
-    //     this.userimage = e.target.result;
-    //   };
-    //   reader.readAsDataURL(file);
-    // },
     isClicked() {
       this.clicked = this.clicked ? false : true;
     },
