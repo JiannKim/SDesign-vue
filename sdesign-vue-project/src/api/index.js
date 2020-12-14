@@ -63,6 +63,11 @@ function updateProfile(userInfo, token) {
   data.append("accountName", userInfo.accountName);
   return instance.post("/update/profile", data, config);
 }
+// 계정 조회 api 요청
+function fetchProfile(token) {
+  const config = { headers: { token } };
+  return instance.get("/get/profile/info", config);
+}
 
 // download 버튼 활성화 시켜주는 api
 function downloadItem(url, label) {
@@ -89,4 +94,5 @@ export {
   removeItem,
   searchSounds,
   updateProfile,
+  fetchProfile,
 };

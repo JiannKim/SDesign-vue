@@ -3,7 +3,20 @@
     <div class="user-profile">
       <div class="user-profile-img">
         <div class="test">
-          <img class="u-img" ref="userImg" :src="this.imgPreview" alt="" />
+          <img
+            class="u-img"
+            ref="userImg"
+            :src="this.imgPreview"
+            alt=""
+            v-if="!clicked"
+          />
+          <img
+            class="u-img"
+            ref="userImg"
+            :src="this.userimage"
+            alt=""
+            v-else
+          />
           <!-- <input
             type="file"
             accept="image/*"
@@ -22,8 +35,8 @@
       </div>
       <div class="user-profile-info">
         <p class="u-email">User Email{{ this.useremail }}</p>
-        <p class="u-name">{{ this.$store.state.nickname }}</p>
-        <!-- <p class="u-name">{{ this.nickname }}</p> -->
+        <!-- <p class="u-name">{{ this.$store.state.nickname }}</p> -->
+        <p class="u-name">{{ this.nickname }}</p>
       </div>
       <div class="user-profile-edit">
         <template v-if="!clicked">
@@ -57,11 +70,13 @@
 </template>
 
 <script>
-import { updateProfile } from "@/api";
+import { updateProfile, fetchProfile } from "@/api";
 
 export default {
   data() {
+    const token = this.$store.state.token;
     return {
+      token,
       useremail: this.$store.state.useremail,
       nickname: this.$store.state.nickname,
       userimage: [],
@@ -75,13 +90,27 @@ export default {
         userImg: this.userimage,
         accountName: this.nickname,
       };
-      const token = this.$store.state.token;
       try {
-        const { data } = await updateProfile(formData, token);
+        const { data } = await updateProfile(formData, this.token);
         this.$store.commit("setUserName", formData.accountName);
         this.$store.commit("setUserImg", formData.userImg);
-        this.$forceUpdate();
+        // this.$forceUpdate();
+        location.reload();
         return data;
+      } catch (error) {
+        return error;
+      }
+    },
+    async fetchUserInfo() {
+      try {
+        const { data } = await fetchProfile(this.token);
+        console.log(data);
+        this.useremail = data.accountEmail;
+        this.nickname = data.accountName;
+        this.userimage = data.accountImg;
+        this.imgPreview = data.accountImg;
+        console.log(this.nickname);
+        console.log(this.userimage);
       } catch (error) {
         return error;
       }
@@ -101,6 +130,9 @@ export default {
     isClicked() {
       this.clicked = this.clicked ? false : true;
     },
+  },
+  created() {
+    this.fetchUserInfo();
   },
 };
 </script>
