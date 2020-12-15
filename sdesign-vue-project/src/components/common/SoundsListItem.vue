@@ -397,7 +397,7 @@ export default {
         background-color: #fff;
         border-radius: 7px;
         border: 1px solid $primary;
-        margin: 5px 10px 0 0;
+        margin: 3px 10px 0 0;
         overflow: hidden;
         img {
           width: 100%;
