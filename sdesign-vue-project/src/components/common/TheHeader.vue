@@ -27,7 +27,7 @@
         <router-link to="/faq">FAQ</router-link>
       </li>
       <li class="header-menu-list">
-        <router-link to="/sounds" @click.native="update()">
+        <router-link to="/sounds" >
           Sounds
         </router-link>
       </li>
@@ -85,13 +85,11 @@ export default {
           path: "/search",
           query: { keyword: this.keywordItem },
         });
+        this.$forceUpdate();
         this.initKeyword();
       } catch (error) {
         console.log(error);
       }
-    },
-    update() {
-      this.$forceUpdate();
     },
     accountModalMounted() {
       this.$modal.show("account-modal");

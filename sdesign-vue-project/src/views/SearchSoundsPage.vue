@@ -5,13 +5,14 @@
       <div class="contents-player">
         <div class="form-upload-lists">
           <ul>
-            <p>{{ logMessage }}</p>
             <SoundsListItem
               v-for="listItem in listItems"
               :key="listItem.index"
               :listItem="listItem"
             />
           </ul>
+          <!-- <p class="log-msg">{{ logMessage }}</p>
+          <LoadingSpinner v-if="isLoading" /> -->
           <infinite-loading
             slot="append"
             spinner=""
@@ -20,7 +21,7 @@
             <span slot="spinner">
               <LoadingSpinner />
             </span>
-            <div slot="no-more">목록의 끝입니다 :)</div>
+            <div slot="no-more" class="log-msg">목록의 끝입니다 :)</div>
           </infinite-loading>
         </div>
       </div>
@@ -32,6 +33,7 @@
 import { searchSounds } from "@/api";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
+// import test from "lodash";
 
 export default {
   components: {
@@ -66,30 +68,33 @@ export default {
       keyword: "",
     };
   },
-  watch: {
-    "$store.state.searchtext": {
-      async handler(value) {
-        // const { data } = await searchSounds(value, this.paginator.next);
-        this.keyword = value;
-        // this.paginator = data.paginator;
-        // this.totalCount = data.totalCount;
-        // this.listItems = data.result;
-        // console.log("change value =>", value);
-        // this.infiniteHandler();
-        // if (data.totalCount > 0) {
-        //   // this.paginator = data.paginator;
-        //   this.logMessage = "";
-        // } else if (data.totalCount === 0) {
-        //   this.logMessage = "검색 결과가 없습니다.";
-        //   this.listItems = [];
-        // }
-
-        // this.infiniteHandler();
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
+  // watch: {
+  //   "$store.state.searchtext": {
+  //     handler(value) {
+  //       console.log("watch", value);
+  //       this.keyword = value;
+  //       console.log(value);
+  //     // const { data } = await searchSounds(value, this.paginator.next);
+  //     // this.paginator = data.paginator;
+  //     // this.totalCount = data.totalCount;
+  //     // this.listItems = data.result;
+  //     // this.listItems = this.listItems.concat(data.result);
+  //     // console.log("change value =>", value);
+  //     // this.infiniteHandler();
+  //     // if (data.totalCount > 0) {
+  //     //   this.paginator = data.paginator;
+  //     //   this.logMessage = "";
+  //     // } else if (data.totalCount === 0) {
+  //     //   this.logMessage = "검색 결과가 없습니다.";
+  //     //   this.listItems = [];
+  //     // }
+  //     // this.infiniteHandler();
+  //     // this.$router.go();
+  //     },
+  //     deep: true,
+  //     immediate: true,
+  //   },
+  // },
   // watch: {
   //   "$store.state.searchtext": {
   //     async handler(value) {
@@ -106,9 +111,51 @@ export default {
   //   },
   // },
   methods: {
+    // async submitSearch() {
+    //   try {
+    //     console.log(this.paginator);
+    //     const { data } = await searchSounds(this.keyword, this.paginator.next);
+    //     this.totalCount = data.totalCount;
+    //     this.paginator = data.paginator;
+    //     console.log(this.paginator);
+    //     console.log(data);
+    //     // this.listItems = data.result;
+    //     this.listItems = this.listItems.concat(data.result);
+    //     if (this.paginator.hasNext === false) {
+    //       this.isLoading = false;
+    //       this.logMessage = "목록의 끝입니다 :)";
+    //       if (this.totalCount === 0) {
+    //         this.logMessage = "사운드를 등록해주세요.";
+    //       }
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
+
+    // async debounceScroll() {
+    //   if (this.paginator.hasNext == true) {
+    //     const scrollHeight = Math.max(
+    //       document.documentElement.scrollHeight,
+    //       document.body.scrollHeight
+    //     );
+    //     const scrollTop = Math.max(
+    //       document.documentElement.scrollTop,
+    //       document.body.scrollTop
+    //     );
+    //     const clientHeight = document.documentElement.clientHeight;
+    //     if (scrollTop + clientHeight > scrollHeight - 500) {
+    //       console.log("스크롤 리서치");
+    //       await this.submitSearch();
+    //     }
+    //   }
+    // },
+
     async infiniteHandler($state) {
       try {
-        console.log("ddddd", this.keyword, this.paginator.next);
+        console.log("ddddd");
+        console.log(this.$store.state.searchtext);
+        this.keyword = this.$store.state.searchtext;
         const { data } = await searchSounds(this.keyword, this.paginator.next);
         if (data.result.length) {
           this.listItems = this.listItems.concat(data.result);
@@ -123,6 +170,13 @@ export default {
       }
     },
   },
+  created() {
+    this.infiniteHandler();
+  },
+  // created() {
+  //   this.submitSearch();
+  //   window.addEventListener("scroll", test.debounce(this.debounceScroll, 200));
+  // },
 };
 </script>
 
@@ -142,7 +196,7 @@ export default {
     ul {
       border-top: 1px solid $primary;
     }
-    .infinite-loading-container {
+    .log-msg {
       padding-top: 20px;
     }
   }
