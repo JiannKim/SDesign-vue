@@ -78,9 +78,7 @@ export default {
       try {
         const { data } = await createSounds(formData, token);
         this.inntForm();
-        // this.$emit("refresh");
-        // this.$router.push({ path: "/account", query: { title: this.title }});
-        this.$router.go(0);
+        this.$emit("refresh");
         return data;
       } catch (error) {
         console.log("err =>", error);

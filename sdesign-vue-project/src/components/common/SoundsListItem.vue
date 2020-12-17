@@ -21,7 +21,11 @@
         <div class="enabled-el">
           <div class="icons">
             <div class="sound-like icon">
-              <a href="javascript:;">
+              <a
+                href="javascript:;"
+                :class="{ isLike: checked }"
+                @click.prevent="submitFavorite"
+              >
                 <fa-icon icon="heart" />
               </a>
             </div>
@@ -118,7 +122,7 @@
 </template>
 
 <script>
-import { downloadItem, removeItem } from "@/api";
+import { downloadItem, removeItem, favoriteItem } from "@/api";
 
 export default {
   data() {
@@ -126,16 +130,28 @@ export default {
     return {
       isTag,
       clicked: true,
+      checked: "",
       downloadItem,
     };
   },
   methods: {
+    async submitFavorite() {
+      console.log("실행");
+      this.checked = this.checked ? false : true;
+      const data = this.listItem._id;
+      const token = this.$store.state.token;
+      const result = await favoriteItem({ soundId: data }, token);
+      console.log(result);
+      this.$forceUpdate();
+    },
     async submitRemove() {
+      this.clicked = true;
       const data = this.listItem._id;
       const token = this.$store.state.token;
       try {
         await removeItem({ soundId: data }, token);
-        this.$router.go(0);
+        this.$store.commit("setSoundId", data);
+        this.$emit("refresh");
       } catch (error) {
         console.log("err =>", error);
       }
@@ -257,31 +273,61 @@ export default {
       align-items: center;
       width: 125px;
       margin: 0 40px 0 20px;
-      .icon,
       a {
-        border-radius: 4px;
-        background-color: #e0e0e0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #fff;
+        border-radius: 4px;
+        border: none;
+      }
+      .icon {
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        background-color: #e0e0e0;
       }
       .sound-like {
         width: 36px;
         height: 28px;
+        a:hover {
+          transition: cubic-bezier(0, 0.5, 0.5, 1);
+          animation: heart 2s infinite;
+        }
+        @keyframes heart {
+          0% {
+            transform: scale(1);
+          }
+          40% {
+            transform: scale(1);
+          }
+          44% {
+            transform: scale(1.2);
+          }
+          50% {
+            transform: scale(1);
+          }
+          52% {
+            transform: scale(1.3);
+          }
+          58% {
+            transform: scale(1);
+          }
+        }
+      }
+      .isLike {
+        color: #fc4f4f;
       }
       .sound-download {
         width: 78px;
         height: 28px;
-        a {
-          width: 100%;
-          height: 100%;
-          span {
-            font-size: 14px;
-            margin-right: 7px;
-            text-transform: uppercase;
-            font-weight: bold;
-          }
+        span {
+          font-size: 14px;
+          margin-right: 7px;
+          text-transform: uppercase;
+          font-weight: bold;
         }
         a:hover {
           background-image: linear-gradient(

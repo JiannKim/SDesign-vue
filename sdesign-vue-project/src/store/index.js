@@ -16,7 +16,7 @@ export default new Vuex.Store({
     nickname: getUserFromCookie() || "",
     token: getAuthFromCookie() || "",
     searchtext: "",
-    // selected: "",
+    soundid: "",
     // fetchlist: {},
     // paginator: {},
   },
@@ -47,9 +47,9 @@ export default new Vuex.Store({
     setSearchText(state, searchtext) {
       state.searchtext = searchtext;
     },
-    // setSelected(state, selected) {
-    //   state.selected = selected;
-    // },
+    setSoundId(state, soundid) {
+      state.soundid = soundid;
+    },
     // setFetchList(state, fetchlist) {
     //   state.fetchlist = fetchlist;
     // },

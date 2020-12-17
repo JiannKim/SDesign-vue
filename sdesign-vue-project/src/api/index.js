@@ -48,7 +48,8 @@ function createSounds(formInfo, token) {
 }
 // 데이터 삭제 api 요청
 function removeItem(removeInfo, token) {
-  return instance.post("/remove/my/sound", removeInfo, { headers: { token } });
+  const config = { headers: { token } };
+  return instance.post("/remove/my/sound", removeInfo, config);
 }
 // 검색 api 요청
 function searchSounds(searchData, next) {
@@ -69,9 +70,9 @@ function fetchProfile(token) {
   return instance.get("/get/profile/info", config);
 }
 // 좋아요 api 요청
-function favoriteItem(token) {
+function favoriteItem(id, token) {
   const config = { headers: { token } };
-  return instance.post("/set/like", config);
+  return instance.post("/set/like", id, config);
 }
 
 // download 버튼 활성화 시켜주는 api
