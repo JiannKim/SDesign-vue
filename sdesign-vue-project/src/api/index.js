@@ -71,7 +71,7 @@ function fetchProfile(token) {
 // 좋아요 api 요청
 function favoriteItem(token) {
   const config = { headers: { token } };
-  return instance.post("/set/list", config);
+  return instance.post("/set/like", config);
 }
 
 // download 버튼 활성화 시켜주는 api
