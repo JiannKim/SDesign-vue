@@ -107,6 +107,7 @@
         >
           {{ tab.title }}
         </li>
+        <span class="mover"></span>
       </ul>
       <div v-if="selectedTab === tabs[0]">
         <!-- 최근 탭 -->
@@ -358,32 +359,51 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .tabs {
   display: flex;
   align-items: center;
   padding: 0;
   margin: 5px;
   width: 200px;
-}
-.tabs li {
-  list-style: none;
-  color: #7c7c7c;
-  height: 30px;
-  width: 50px;
-  margin: 1px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: width 260ms cubic-bezier(0.38, 0.38, 0.38, 0.38);
-}
-.tabs .active {
-  color: #313131;
-  height: 27px;
-  width: 60px;
-  border-bottom: 3px solid #313131;
-  transition-duration: 100ms;
-  transition-property: width;
-  transition: width 170ms cubic-bezier(0.38, 0.38, 0.38, 0.38);
+  overflow: hidden;
+  position: relative;
+  li {
+    list-style: none;
+    width: 33.333%;
+    height: 30px;
+    margin: 1px;
+    color: #7c7c7c;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 260ms cubic-bezier(0.38, 0.38, 0.38, 0.38);
+    &:first-child.active ~ .mover {
+      transform: translateX(0) scale(0.333);
+    }
+    &:nth-child(2).active ~ .mover {
+      transform: translateX(33.333%) scale(0.333);
+    }
+    &:nth-child(3).active ~ .mover {
+      transform: translateX(calc(33.333% * 2)) scale(0.333);
+    }
+  }
+  .active {
+    color: $base-color;
+  }
+  .mover {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    border-radius: 5px;
+    background: $base-color;
+    transform-origin: 0 0;
+    transition: transform 0.25s;
+  }
 }
 
 .main-center-contents {
