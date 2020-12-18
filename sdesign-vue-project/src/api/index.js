@@ -74,6 +74,11 @@ function favoriteItem(id, token) {
   const config = { headers: { token } };
   return instance.post("/set/like", id, config);
 }
+// 좋아요 리스트 조회 api 요청
+function fetchMyFavorite(token, next) {
+  const config = { headers: { token }, params: { next } };
+  return instance.get("/get/my/like/sounds", config);
+}
 
 // download 버튼 활성화 시켜주는 api
 function downloadItem(url, label) {
@@ -102,4 +107,5 @@ export {
   updateProfile,
   fetchProfile,
   favoriteItem,
+  fetchMyFavorite,
 };
