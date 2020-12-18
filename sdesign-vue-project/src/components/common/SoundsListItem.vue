@@ -141,9 +141,13 @@ export default {
       this.checked = this.checked ? false : true;
       const data = this.listItem._id;
       const token = this.$store.state.token;
-      const result = await favoriteItem({ soundId: data }, token);
-      this.isLiked();
-      this.$forceUpdate();
+      try {
+        await favoriteItem({ soundId: data }, token);
+        this.isLiked();
+        this.$emit("refresh");
+      } catch (error) {
+        return;
+      }
     },
     async submitRemove() {
       this.clicked = true;
@@ -296,27 +300,19 @@ export default {
       .sound-like {
         width: 36px;
         height: 28px;
+        color: #fff;
+        // transition-duration: 0.5s;
         a:hover {
-          transition: cubic-bezier(0, 0.5, 0.5, 1);
-          animation: heart 2s infinite;
+          animation: heart 1.5s infinite;
         }
         @keyframes heart {
-          0% {
-            transform: scale(1);
-          }
-          40% {
-            transform: scale(1);
-          }
-          44% {
+          25% {
             transform: scale(1.2);
           }
-          50% {
-            transform: scale(1);
+          30% {
+            transform: scale(1.1);
           }
-          52% {
-            transform: scale(1.3);
-          }
-          58% {
+          42% {
             transform: scale(1);
           }
         }
