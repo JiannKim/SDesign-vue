@@ -23,7 +23,7 @@
             <div class="sound-like icon">
               <a
                 href="javascript:;"
-                :class="{ isLike: checked }"
+                :class="{ isLiked: liked }"
                 @click.prevent="submitFavorite"
               >
                 <fa-icon icon="heart" />
@@ -132,16 +132,20 @@ export default {
       clicked: true,
       checked: "",
       downloadItem,
+      liked: this.listItem.isLiked,
     };
   },
   methods: {
     async submitFavorite() {
+      // this.$store.commit("setFavorite", this.liked);
       console.log("실행");
       this.checked = this.checked ? false : true;
       const data = this.listItem._id;
       const token = this.$store.state.token;
       const result = await favoriteItem({ soundId: data }, token);
-      console.log(result);
+      console.log(this.liked);
+      this.isLiked();
+      console.log(this.liked);
       this.$forceUpdate();
     },
     async submitRemove() {
@@ -155,6 +159,9 @@ export default {
       } catch (error) {
         console.log("err =>", error);
       }
+    },
+    isLiked() {
+      this.liked = this.liked ? false : true;
     },
     isClicked() {
       this.clicked = this.clicked ? false : true;
@@ -317,7 +324,7 @@ export default {
           }
         }
       }
-      .isLike {
+      .isLiked {
         color: #fc4f4f;
       }
       .sound-download {
