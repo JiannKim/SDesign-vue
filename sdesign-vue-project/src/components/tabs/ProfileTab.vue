@@ -131,6 +131,7 @@ export default {
   position: relative;
   max-width: 700px;
   margin: 0 auto;
+  padding-bottom: 30px;
   display: flex;
   flex-flow: column;
   align-items: center;
