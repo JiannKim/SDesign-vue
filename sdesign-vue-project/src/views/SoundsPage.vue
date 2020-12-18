@@ -66,7 +66,6 @@
       </div>
       <div class="contents-player">
         <div class="form-upload-lists">
-          <!-- <LoadingSpinner v-if="isLoading" /> -->
           <ul>
             <SoundsListItem
               v-for="listItem in listItems"
@@ -82,7 +81,8 @@
             <span slot="spinner">
               <LoadingSpinner />
             </span>
-            <div slot="no-more">목록의 끝입니다 :)</div>
+            <div slot="no-more" class="log-msg">{{ logMessage }}</div>
+            <div slot="no-results" class="log-msg">{{ logMessage }}</div>
           </infinite-loading>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default {
         { text: "C", value: "C" },
       ],
       totalCount: "",
-      // isLoading: false,
+      logMessage: "",
       listItems: [],
       paginator: {},
     };
@@ -130,12 +130,16 @@ export default {
     async infiniteHandler($state) {
       try {
         await setTimeout(async () => {
-          // this.isLoading = false
-          const { data } = await fetchSounds(this.paginator.next);
+          const token = this.$store.state.token;
+          const { data } = await fetchSounds(token, this.paginator.next);
+          if (data.totalCount === 0) {
+            this.logMessage = "등록된 사운드가 없네요 :)";
+          }
           if (data.result.length) {
             this.listItems = this.listItems.concat(data.result);
             this.paginator = data.paginator;
             this.totalCount = data.totalCount;
+            this.logMessage = "목록의 끝입니다 :)";
             $state.loaded();
           } else {
             $state.complete();
@@ -287,7 +291,7 @@ export default {
       border-top: 1px solid $primary;
       // margin-top: 44px;
     }
-    .infinite-loading-container {
+    .log-msg {
       padding-top: 20px;
     }
   }
