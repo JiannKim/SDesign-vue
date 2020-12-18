@@ -28,7 +28,7 @@
 <script>
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
-import fetchMySounds from "@/api";
+import { fetchMyFavorite } from "@/api";
 
 export default {
   components: {
@@ -47,7 +47,7 @@ export default {
     async infiniteHandler($state) {
       try {
         const token = this.$store.state.token;
-        const { data } = await fetchMySounds(token, this.paginator.next);
+        const { data } = await fetchMyFavorite(token, this.paginator.next);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
         if (this.totalCount === 0) {
@@ -55,8 +55,6 @@ export default {
           this.logMessage = "저장된 사운드가 없습니다.";
         }
         if (data.result.length) {
-          // this.isLoading = false;
-          // this.listItems = data.result;
           this.listItems = this.listItems.concat(data.result);
           this.paginator = data.paginator;
           $state.loaded();
