@@ -89,16 +89,15 @@ export default {
           accountPw: this.password,
         };
         const data = await this.$store.dispatch("LOGIN", userData);
-        
+
         // 비밀번호를 다르게 입력한 경우
         if (data == "5504") {
-          // console.log("바르게 입력하세요");
           this.loginMessage = `* 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
           this.initPass();
-          // this.errorClass = "isError";
         } else {
           // 로그인 했을 때 페이지 이동 => main
-          this.$router.push("/");
+          // this.$router.push("/");
+          this.$forceUpdate();
           // 모달 닫기
           this.modalHide();
         }
