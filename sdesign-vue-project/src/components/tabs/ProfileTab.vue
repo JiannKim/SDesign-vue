@@ -17,12 +17,6 @@
             alt=""
             v-else
           />
-          <!-- <input
-            type="file"
-            accept="image/*"
-            @change="onFileUpload"
-            ref="submitInput"
-          /> -->
         </div>
         <button
           class="u-img-submit"
@@ -92,8 +86,8 @@ export default {
       try {
         const { data } = await updateProfile(formData, this.token);
         this.$store.commit("setUserName", formData.accountName);
-        this.$store.commit("setUserImg", formData.userImg);
-        location.reload();
+        this.isClicked();
+        this.$forceUpdate();
         return data;
       } catch (error) {
         return error;
