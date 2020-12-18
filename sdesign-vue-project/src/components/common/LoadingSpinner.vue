@@ -23,14 +23,18 @@ export default {};
   border-radius: 50%;
   border: 1px solid #e0e0e0;
   animation: spin 1s linear infinite;
+  display: flex;
+  justify-content: center;
   position: relative;
+  top: 0;
+  left: 30px;
 }
 .spinner1::after {
   content: "";
   width: 8px;
   height: 8px;
   position: absolute;
-  top: -3px;
+  top: -5px;
   border-radius: 50%;
   background: linear-gradient(to bottom, #8546faeb, #5000e4eb);
 }
@@ -49,7 +53,7 @@ export default {};
   animation: spinn 1.2s linear infinite;
   position: relative;
   top: 0;
-  left: -31px;
+  left: -1px;
 }
 .spinner2::after {
   content: "";
@@ -75,7 +79,7 @@ export default {};
   animation: spinnn 2s linear infinite;
   position: relative;
   top: 0;
-  left: -61px;
+  left: -31px;
 }
 .spinner3::after {
   content: "";
