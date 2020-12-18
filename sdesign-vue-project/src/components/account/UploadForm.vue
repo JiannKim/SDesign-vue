@@ -12,6 +12,7 @@
       <div class="file-uploader">
         <label for="files" class="input-label">
           <input
+            style="display: none"
             type="file"
             id="files"
             accept="audio/*"
@@ -20,6 +21,7 @@
           />
           파일찾기
         </label>
+        <span>{{ this.soundFile }}</span>
       </div>
       <div class="file-select">
         <div class="select-option">
@@ -61,11 +63,14 @@ export default {
       category: "",
       uploadSound: "",
       order,
+      soundFile: "",
     };
   },
   methods: {
     isFile() {
-      this.uploadSound = event.target.files[0];
+      const files = event.target.files[0];
+      this.uploadSound = files;
+      this.soundFile = files.name;
     },
     async submitForm() {
       const formData = {
@@ -84,6 +89,15 @@ export default {
         console.log("err =>", error);
       }
     },
+    // onFileUpload(e) {
+    //   const files = e.target.files;
+    //   this.userimage = files[0];
+    //   const reader = new FileReader();
+    //   reader.onload = (e) => {
+    //     this.imgPreview = e.target.result;
+    //   };
+    //   reader.readAsDataURL(files[0]);
+    // },
     inntForm() {
       this.title = "";
       this.tags = "";
