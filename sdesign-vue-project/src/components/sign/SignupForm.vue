@@ -3,7 +3,9 @@
     <h1 class="form-title">회원 가입</h1>
     <form @submit.prevent="submitForm" class="form-box signup">
       <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedId }" for="useremail">email</label>
+        <label :class="{ isSelected: !selectedId }" for="useremail"
+          >email</label
+        >
         <input
           v-focus
           type="email"
@@ -15,9 +17,13 @@
         />
         <span class="underline"></span>
       </div>
-      <span class="warning" v-if="!isUserEmailValid && useremail">올바른 이메일 형식을 입력해 주세요</span>
+      <span class="warning" v-if="!isUserEmailValid && useremail"
+        >올바른 이메일 형식을 입력해 주세요</span
+      >
       <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedPass }" for="pass">password</label>
+        <label :class="{ isSelected: !selectedPass }" for="pass"
+          >password</label
+        >
         <input
           type="password"
           name="pass"
@@ -29,7 +35,9 @@
         <span class="underline"></span>
       </div>
       <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedName }" for="name">user name</label>
+        <label :class="{ isSelected: !selectedName }" for="name"
+          >user name</label
+        >
         <input
           type="text"
           name="name"
@@ -46,8 +54,12 @@
         type="submit"
         class="button form-button rectangles"
         :class="{ disabled: !isUserEmailValid || !password || !nickname }"
-      >가입</button>
-      <p class="modal-open" @click="loginMounted">Already have an account? click here</p>
+      >
+        가입
+      </button>
+      <p class="modal-open" @click="loginMounted">
+        Already have an account? click here
+      </p>
     </form>
     <button class="button close-button" @click="modalHide">
       <fa-icon :icon="['fas', 'times']" />
@@ -56,7 +68,7 @@
 </template>
 
 <script>
-import { registerUser } from "@/api";
+import { registerUser } from "@/api/auth";
 import { validateEmail } from "@/utils/validation";
 
 export default {

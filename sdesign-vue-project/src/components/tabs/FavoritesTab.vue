@@ -28,7 +28,7 @@
 <script>
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
-import { fetchMyFavorite } from "@/api";
+import { fetchMyFavorite } from "@/api/posts";
 
 export default {
   components: {

@@ -122,7 +122,8 @@
 </template>
 
 <script>
-import { downloadItem, removeItem, favoriteItem } from "@/api";
+import { downloadItem } from "@/api";
+import { removeItem, favoriteItem } from "@/api/posts";
 
 export default {
   data() {

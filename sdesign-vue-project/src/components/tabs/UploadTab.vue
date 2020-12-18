@@ -19,11 +19,11 @@
   </div>
 </template>
 <script>
-import { fetchMySounds } from "@/api";
+import { fetchMySounds } from "@/api/posts";
 import UploadForm from "@/components/account/UploadForm.vue";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
-import test from "lodash";
+import _ from "lodash";
 export default {
   components: {
     UploadForm,
@@ -99,7 +99,7 @@ export default {
   },
   created() {
     this.fetchMyData();
-    window.addEventListener("scroll", test.debounce(this.debounceScroll, 200));
+    window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
   },
 };
 </script>

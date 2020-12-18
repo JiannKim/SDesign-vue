@@ -8,7 +8,8 @@ import {
   saveSearchToCookie,
   getSearchFromCookie,
 } from "@/utils/cookies";
-import { loginUser, searchSounds } from "@/api";
+import { loginUser } from "@/api/auth";
+import { searchSounds } from "@/api/posts";
 
 Vue.use(Vuex);
 

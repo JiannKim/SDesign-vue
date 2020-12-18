@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { updateProfile, fetchProfile } from "@/api";
+import { updateProfile, fetchProfile } from "@/api/posts";
 
 export default {
   data() {
