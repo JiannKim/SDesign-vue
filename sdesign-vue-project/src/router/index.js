@@ -37,6 +37,28 @@ const router = new VueRouter({
       name: "account",
       component: () => import("@/views/AccountPage.vue"),
       meta: { auth: true },
+      children: [
+        {
+          path: "upload",
+          name: "upload",
+          component: () => import("@/components/tabs/UploadTab.vue"),
+        },
+        {
+          path: "profile",
+          name: "profile",
+          component: () => import("@/components/tabs/ProfileTab.vue"),
+        },
+        {
+          path: "subscrib",
+          name: "subscrib",
+          component: () => import("@/components/tabs/SubscribTab.vue"),
+        },
+        {
+          path: "favorites",
+          name: "favorites",
+          component: () => import("@/components/tabs/FavoritesTab.vue"),
+        },
+      ],
     },
     {
       path: "/search",
