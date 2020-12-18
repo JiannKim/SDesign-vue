@@ -9,6 +9,7 @@
           v-for="listItem in listItems"
           :key="listItem.index"
           :listItem="listItem"
+          @refresh="refresh"
         />
       </ul>
       <infinite-loading
@@ -61,8 +62,11 @@ export default {
           $state.complete();
         }
       } catch (error) {
-        return error;
+        return;
       }
+    },
+    refresh() {
+      location.reload();
     },
   },
 };
@@ -77,8 +81,6 @@ export default {
     h2 {
       font-weight: 100;
       text-align: left;
-      // max-width: 1170px;
-      // max-width: 81%;
       max-width: 88%;
       margin: 0 auto;
     }
@@ -86,7 +88,6 @@ export default {
   ul {
     max-width: 88.5%;
     margin: 0 auto;
-    // border-top: 1px solid $primary;
     margin-top: 44px;
   }
   .log-msg {
