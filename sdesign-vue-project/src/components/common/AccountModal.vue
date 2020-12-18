@@ -2,12 +2,12 @@
   <div class="user-info-box">
     <div class="user-info" @click="modalHide">
       Signed in as
-      <router-link to="/account" class="user-name-link">
+      <router-link to="/account/profile" class="user-name-link">
         <span>{{ $store.state.nickname }}</span>
       </router-link>
     </div>
     <div @click="modalHide">
-      <router-link to="/account">My page</router-link>
+      <router-link to="/account/profile">My page</router-link>
     </div>
     <!-- <a href="/account" @click="modalHide">My page</a> -->
     <a href="javascript:;" @click="logoutUser" class="logout-btn">
