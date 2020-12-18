@@ -1,12 +1,10 @@
 <template>
   <div>
-    <h1>페이버릿 탭 섹션 입니다. (개발중)</h1>
     <div class="form-upload-lists">
       <div class="bottom-title-section">
         <h2>Favorites List ({{ totalCount }})</h2>
       </div>
       <ul>
-        <p>{{ logMessage }}</p>
         <SoundsListItem
           v-for="listItem in listItems"
           :key="listItem.index"
@@ -19,7 +17,8 @@
         @infinite="infiniteHandler"
       >
         <span slot="spinner"><LoadingSpinner /></span>
-        <div slot="no-more">목록의 끝입니다 :)</div>
+        <div slot="no-more" class="log-msg">{{ logMessage }}</div>
+        <div slot="no-results" class="log-msg">{{ logMessage }}</div>
       </infinite-loading>
     </div>
   </div>
@@ -50,13 +49,13 @@ export default {
         const { data } = await fetchMyFavorite(token, this.paginator.next);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
-        if (this.totalCount === 0) {
-          this.isLoading = false;
-          this.logMessage = "저장된 사운드가 없습니다.";
+        if (data.totalCount === 0) {
+          this.logMessage = "좋아하는 사운드를 수집하세요 :)";
         }
         if (data.result.length) {
           this.listItems = this.listItems.concat(data.result);
           this.paginator = data.paginator;
+          this.logMessage = "목록의 끝입니다 :)";
           $state.loaded();
         } else {
           $state.complete();
@@ -71,7 +70,7 @@ export default {
 
 <style scoped lang="scss">
 .form-upload-lists {
-  margin: 103px 0 90px 0;
+  margin: 70px 0 90px 0;
   .bottom-title-section {
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 20px;
@@ -90,7 +89,7 @@ export default {
     // border-top: 1px solid $primary;
     margin-top: 44px;
   }
-  .infinite-loading-container {
+  .log-msg {
     padding-top: 20px;
   }
 }

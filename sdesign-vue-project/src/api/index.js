@@ -32,8 +32,8 @@ function fetchMySounds(token, next) {
   return instance.get("/get/my/soundList", config);
 }
 // 사운드 리스트 데이터 조회 api 요청 메서드
-function fetchSounds(next) {
-  const config = { params: { next } };
+function fetchSounds(token, next) {
+  const config = {headers: { token },  params: { next } };
   return instance.get("/get/soundList", config);
 }
 // 사운드 리스트 데이터 생성 api 요청

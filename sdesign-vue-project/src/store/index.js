@@ -19,8 +19,7 @@ export default new Vuex.Store({
     token: getAuthFromCookie() || "",
     searchtext: getSearchFromCookie() || "",
     soundid: "",
-    // fetchlist: {},
-    // paginator: {},
+    // like: "",
   },
   getters: {
     isLogin(state) {
@@ -52,11 +51,8 @@ export default new Vuex.Store({
     setSoundId(state, soundid) {
       state.soundid = soundid;
     },
-    // setFetchList(state, fetchlist) {
-    //   state.fetchlist = fetchlist;
-    // },
-    // setPaginator(state, paginator) {
-    //   state.paginator = paginator;
+    // setFavorite(state, like) {
+    //   state.like = like;
     // },
   },
   actions: {
@@ -70,18 +66,11 @@ export default new Vuex.Store({
       commit("setToken", data.token);
       return data;
     },
-    // 조회
-    // async FETCH({ commit }, next) {
-    //   const { data } = await fetchSounds(next);
-    //   commit("setFetchList", data);
-    //   commit("setPaginator", data.paginator);
-    // },
     // 검색
     async SEARCH({ commit }, searchData, next) {
       const { data } = await searchSounds(searchData, next);
       saveSearchToCookie(searchData);
       commit("setSearchText", searchData);
-      // commit("setSearchList", data.result);
       return data;
     },
   },
