@@ -138,14 +138,11 @@ export default {
   methods: {
     async submitFavorite() {
       // this.$store.commit("setFavorite", this.liked);
-      console.log("실행");
       this.checked = this.checked ? false : true;
       const data = this.listItem._id;
       const token = this.$store.state.token;
       const result = await favoriteItem({ soundId: data }, token);
-      console.log(this.liked);
       this.isLiked();
-      console.log(this.liked);
       this.$forceUpdate();
     },
     async submitRemove() {

@@ -2,7 +2,7 @@
   <div>
     <div class="user-profile">
       <div class="user-profile-img">
-        <div class="test">
+        <div class="img-view">
           <img
             class="u-img"
             ref="userImg"
@@ -143,9 +143,9 @@ export default {
   min-width: 200px;
   min-height: 250px;
   border-radius: 30%;
-  margin: 50px 0;
+  margin: 70px 0;
   box-shadow: $box-shadow;
-  .test {
+  .img-view {
     width: 250px;
     height: 250px;
     border: none;

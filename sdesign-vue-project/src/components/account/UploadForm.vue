@@ -1,6 +1,6 @@
 <template>
   <div class="contents-section">
-    <form class="upload form-content" @submit.prevent="submitForm">
+    <form class="form-content" @submit.prevent="submitForm">
       <div class="input-container">
         <label for="fname">제목</label>
         <input type="text" name="fname" id="fname" v-model="title" />
@@ -89,15 +89,6 @@ export default {
         console.log("err =>", error);
       }
     },
-    // onFileUpload(e) {
-    //   const files = e.target.files;
-    //   this.userimage = files[0];
-    //   const reader = new FileReader();
-    //   reader.onload = (e) => {
-    //     this.imgPreview = e.target.result;
-    //   };
-    //   reader.readAsDataURL(files[0]);
-    // },
     inntForm() {
       this.title = "";
       this.tags = "";
@@ -110,19 +101,14 @@ export default {
 
 <style scoped lang="scss">
 .contents-section {
-  .upload {
-    display: flex;
+  .form-content {
     max-width: 521px;
     margin: 0 auto;
     position: relative;
-    margin-top: 27px;
-    border: 1px solid #e0e0e0;
     border-radius: 4px;
-  }
-  .form-content {
     border: none;
     display: block;
-    margin-top: 28px;
+    margin-top: 70px;
     .input-container {
       display: grid;
       text-align: left;

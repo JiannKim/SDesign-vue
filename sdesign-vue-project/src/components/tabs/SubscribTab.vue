@@ -61,7 +61,7 @@ export default {};
   background-color: #fff;
   border-radius: 4px;
   padding: 24px 0;
-  margin: 50px 0;
+  margin: 70px 0;
   font-size: 34px;
   box-shadow: $box-shadow;
   .product-title {
