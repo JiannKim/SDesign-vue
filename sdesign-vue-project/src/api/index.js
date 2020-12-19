@@ -14,14 +14,14 @@ function createWithAuth(url) {
   return instance;
 }
 
-export const instance = create();
-export const posts = createWithAuth("posts");
+export const instance = create(process.env.VUE_APP_API_URL);
+export const posts = createWithAuth(process.env.VUE_APP_API_URL);
 
 // axios 초기화 함수
 // function createInstance() {
 //   const apiURL = axios.create({
 //     // - axios.create() => axios 내부적으로 제공하는 속성
-       // - baseURL => api 엔드포인트
+// - baseURL => api 엔드포인트
 //     // baseURL: "http://193.122.127.197:2500/api",
 
 //     // - 뷰에서 설정된 빌드 속성에 의해 env파일을 설정하여 쉽게 불러 올 수 있도록 해줌
