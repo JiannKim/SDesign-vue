@@ -1,12 +1,14 @@
 <template>
   <header id="app-header-wrapper">
-    <router-link to="/" class="app-header-logo-link">
-      <img
-        class="header-logo"
-        src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
-        alt="s-Design-Logo"
-      />
-    </router-link>
+    <div @click="isHide">
+      <router-link to="/" class="app-header-logo-link">
+        <img
+          class="header-logo"
+          src="https://i.ibb.co/d4yZmMC/s-Design-Pro-Logo-01.png"
+          alt="s-Design-Logo"
+        />
+      </router-link>
+    </div>
     <form @submit.prevent="submitSearch" class="app-header-search-box">
       <img
         class="header-search-icon"
@@ -52,7 +54,7 @@
     </ul>
     <!-- 태블릿 모드 -->
     <div id="header-wrapper">
-      <TheHeaderSidebarMenuTab />
+      <TheHeaderSidebarMenuTab ref="child" />
       <TheHeaderSearchTab />
     </div>
   </header>
@@ -105,6 +107,10 @@ export default {
     },
     initKeyword() {
       this.keywordItem = "";
+    },
+    // 자식 컴포의 사이드탭 닫기
+    isHide() {
+      this.$refs.child.isHide();
     },
   },
   computed: {
