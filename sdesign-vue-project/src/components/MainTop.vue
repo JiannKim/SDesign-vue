@@ -8,14 +8,22 @@
           매주 업데이트되는 280,000 개 이상의 음향효과 라이브러리를 무제한
           다운로드하세요.
         </p>
-        <button class="main-top-headline-button">음향효과 듣기</button>
+        <button class="main-top-headline-button" @click="isMore">
+          음향효과 듣기
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    isMore() {
+      this.$router.push("/sounds");
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
