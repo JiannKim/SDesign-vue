@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { fetchSounds } from "@/api";
+import { fetchSounds } from "@/api/posts";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
 
