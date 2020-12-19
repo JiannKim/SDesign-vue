@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { searchSounds } from "@/api";
+import { searchSounds } from "@/api/posts";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
 // import test from "lodash";
@@ -72,9 +72,16 @@ export default {
   methods: {
     async infiniteHandler($state) {
       try {
-        console.log(this.$store.state.searchtext);
+        const token = this.$store.state.token;
         this.keyword = this.$store.state.searchtext;
-        const { data } = await searchSounds(this.keyword, this.paginator.next);
+        const { data } = await searchSounds(
+          token,
+          this.keyword,
+          this.paginator.next
+        );
+        if (data.totalCount === 0) {
+          this.logMessage = "검색된 사운드가 없네요 :)";
+        }
         if (data.result.length) {
           this.listItems = this.listItems.concat(data.result);
           this.paginator = data.paginator;
@@ -82,7 +89,6 @@ export default {
           this.logMessage = "목록의 끝입니다 :)";
           $state.loaded();
         } else {
-          this.logMessage = "검색된 사운드가 없네요 :)";
           $state.complete();
         }
       } catch (error) {
