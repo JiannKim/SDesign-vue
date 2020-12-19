@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     async fetchMyData() {
-      const token = this.$store.state.token;
       try {
+        const token = this.$store.state.token;
         this.isLoading = true;
         const { data } = await fetchMySounds(token, this.paginator.next);
         this.totalCount = data.totalCount;
