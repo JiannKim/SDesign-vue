@@ -193,7 +193,7 @@ export default {
   }
 }
 
-// 폼 메뉴
+// 계정 메뉴
 .form-list {
   font-weight: 600;
   cursor: pointer;

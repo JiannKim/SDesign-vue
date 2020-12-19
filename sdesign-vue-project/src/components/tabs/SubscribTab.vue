@@ -137,4 +137,17 @@ button {
     }
   }
 }
+
+// 모바일
+@media (max-width: 440px) {
+  .card-products {
+    margin-bottom: 10px;
+  }
+  .cancel-products {
+    height: 120px;
+    min-width: 320px;
+    flex-flow: column;
+    align-items: baseline;
+  }
+}
 </style>
