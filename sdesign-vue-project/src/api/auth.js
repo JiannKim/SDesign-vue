@@ -2,12 +2,12 @@
 import { instance } from "@/api";
 
 // signup api 요청 메서드
-function registerUser(joinInfo) {
+const registerUser = (joinInfo) => {
   return instance.post("/create/account", joinInfo);
-}
+};
 // login api 요청 메서드
-function loginUser(loginInfo) {
+const loginUser = (loginInfo) => {
   return instance.post("/login", loginInfo);
-}
+};
 
 export { registerUser, loginUser };
