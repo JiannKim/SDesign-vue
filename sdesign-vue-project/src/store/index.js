@@ -68,10 +68,14 @@ export default new Vuex.Store({
       return data;
     },
     // 검색
-    async SEARCH({ commit }, searchData, next) {
-      const { data } = await searchSounds(searchData, next);
-      saveSearchToCookie(searchData);
-      commit("setSearchText", searchData);
+    async SEARCH({ commit }, config) {
+      const { data } = await searchSounds(
+        config.token,
+        config.keyword,
+        config.next
+      );
+      saveSearchToCookie(config.keyword);
+      commit("setSearchText", config.keyword);
       return data;
     },
   },

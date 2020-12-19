@@ -27,7 +27,7 @@
         <router-link to="/faq">FAQ</router-link>
       </li>
       <li class="header-menu-list">
-        <router-link to="/sounds" >
+        <router-link to="/sounds">
           Sounds
         </router-link>
       </li>
@@ -68,8 +68,7 @@ export default {
     return {
       userInfo: true,
       keywordItem: "",
-      preUrl: "",
-      pageIndex: 0,
+      paginator: "",
     };
   },
   components: {
@@ -80,7 +79,12 @@ export default {
   methods: {
     async submitSearch() {
       try {
-        await this.$store.dispatch("SEARCH", this.keywordItem);
+        const config = {
+          token: this.$store.state.token,
+          keyword: this.keywordItem,
+          next: this.paginator.next,
+        };
+        await this.$store.dispatch("SEARCH", config);
         this.$router.push({
           path: "/search",
           query: { keyword: this.keywordItem },
