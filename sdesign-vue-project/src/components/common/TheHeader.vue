@@ -66,7 +66,6 @@ import AccountModal from "@/components/common/AccountModal.vue";
 export default {
   data() {
     return {
-      userInfo: true,
       keywordItem: "",
       paginator: "",
     };

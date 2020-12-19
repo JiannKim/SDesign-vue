@@ -37,13 +37,18 @@ export default {
   data() {
     return {
       keywordItem: "",
+      paginator: "",
     };
   },
   methods: {
     async submitSearch() {
       try {
-        const data = await this.$store.dispatch("SEARCH", this.keywordItem);
-        console.log(data);
+        const config = {
+          token: this.$store.state.token,
+          keyword: this.keywordItem,
+          next: this.paginator.next,
+        };
+        await this.$store.dispatch("SEARCH", config);
         this.$router.push({
           path: "/search",
           query: { keyword: this.keywordItem },
@@ -51,7 +56,7 @@ export default {
         this.keywordItem = "";
         this.$modal.hide("search-modal");
       } catch (error) {
-        console.log(error);
+        return;
       }
     },
     searchModalMounted() {
