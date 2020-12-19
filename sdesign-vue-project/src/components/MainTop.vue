@@ -18,12 +18,10 @@
 export default {};
 </script>
 
-<style>
+<style scoped lang="scss">
 #main-top-wrapper {
   position: relative;
   top: 0;
-  /* width: 100%; */
-  /* height: 480px; */
 }
 
 .main-top-image {
@@ -58,33 +56,31 @@ export default {};
   display: flex;
   flex-flow: column;
   margin: 20px 40%;
-  /* border: 1px solid violet; */
-}
-.main-top-headline h1 {
-  text-align: left;
-  width: 350px;
-  font-family: Helvetica;
-  font-size: 52px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #fefefe;
-  text-align: left;
-}
-.main-top-headline p {
-  /* width: 554px; */
-  width: 151%;
-  max-width: 554px;
-  height: 36px;
-  margin: 30px 0;
-  font-family: Helvetica;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  color: #ffffff;
-  /* transition: width 0.5s cubic-bezier(0.8,0.2,0.1,1.6); */
+  h1 {
+    text-align: left;
+    width: 350px;
+    font-family: Helvetica;
+    font-size: 52px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #fefefe;
+    text-align: left;
+  }
+  p {
+    width: 151%;
+    max-width: 554px;
+    height: 36px;
+    margin: 30px 0;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+    /* transition: width 0.5s cubic-bezier(0.8,0.2,0.1,1.6); */
+  }
 }
 /* .main-top-headline button {
     all: unset;
@@ -133,25 +129,25 @@ export default {};
   -webkit-transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark-Remark- */
+// 반응형
 
 @media (max-width: 1600px) {
   .main-top-headline {
     min-width: 350px;
     margin: 20px auto;
-  }
-  .main-top-headline p {
-    width: 130%;
-    word-break: keep-all;
+    p {
+      width: 130%;
+      word-break: keep-all;
+    }
   }
 }
 @media (max-width: 1500px) {
   .main-top-headline {
     min-width: 330px;
     margin: 20px auto;
-  }
-  .main-top-headline p {
-    width: 400px;
+    p {
+      width: 400px;
+    }
   }
 }
 @media (max-width: 1250px) {
@@ -161,17 +157,17 @@ export default {};
 }
 /* 태블릿 */
 @media (max-width: 1020px) {
-  .main-top-headline-box {
-    background-color: rgba(0, 0, 0, 0);
-  }
   .main-top-image {
     background-image: url(../assets/1020px.png);
     width: 100%;
     background-attachment: scroll;
   }
-  .main-top-headline {
-    min-width: 210px;
-    margin: 0 auto;
+  .main-top-headline-box {
+    background-color: rgba(0, 0, 0, 0);
+    .main-top-headline {
+      min-width: 210px;
+      margin: 0 auto;
+    }
   }
 }
 @media (max-width: 750px) {
@@ -199,25 +195,25 @@ export default {};
     width: 100%;
     height: 289px;
     background-color: #101010;
-  }
-  .main-top-headline p {
-    margin-bottom: 27px;
-    width: 315px;
-  }
-  .main-top-headline {
-    top: 30px;
-    min-width: 335px;
-    padding: 0;
-    margin: 0 auto;
-  }
-  .main-top-headline h1 {
-    font-size: 40px;
-    width: 269px;
-    margin: 0;
-  }
-  .main-top-headline-button {
-    width: 335px;
-    height: 51px;
+    .main-top-headline {
+      top: 30px;
+      min-width: 335px;
+      padding: 0;
+      margin: 0 auto;
+      h1 {
+        font-size: 40px;
+        width: 269px;
+        margin: 0;
+      }
+      p {
+        margin-bottom: 27px;
+        width: 315px;
+      }
+      .main-top-headline-button {
+        width: 335px;
+        height: 51px;
+      }
+    }
   }
   /* #menu { padding-bottom: 31px; } */
 }
@@ -232,25 +228,25 @@ export default {};
     background-color: #101010;
     position: relative;
     width: 100%;
-    height: 279px;
-  }
-  .main-top-headline {
-    top: 0px;
-    min-width: 305px;
-    padding: 0;
-    margin: 0 auto;
-  }
-  .main-top-headline p {
-    width: 310px;
-  }
-  .main-top-headline h1 {
-    font-size: 40px;
-    width: 269px;
-    margin: 15px 0 4px 0;
-  }
-  .main-top-headline-button {
-    width: 305px;
-    height: 51px;
+    height: 290px;
+    .main-top-headline {
+      top: 0px;
+      min-width: 305px;
+      padding: 0;
+      margin: 0 auto;
+      h1 {
+        font-size: 40px;
+        width: 269px;
+        margin: 15px 0 4px 0;
+      }
+      p {
+        width: 310px;
+      }
+      .main-top-headline-button {
+        width: 305px;
+        height: 51px;
+      }
+    }
   }
 }
 /* 아이폰se 모바일 */
@@ -271,24 +267,24 @@ export default {};
     width: 100%;
     height: 267px;
     background-color: #101010;
-  }
-  .main-top-headline {
-    min-width: 270px;
-    padding: 0;
-    margin: 0 auto;
-  }
-  .main-top-headline h1 {
-    font-size: 33px;
-    width: 240px;
-    margin: 15px 0 4px 0;
-  }
-  .main-top-headline-button {
-    width: 270px;
-    height: 51px;
-  }
-  .main-top-headline p {
-    margin-bottom: 30px;
-    width: 100%;
+    .main-top-headline {
+      min-width: 270px;
+      padding: 0;
+      margin: 0 auto;
+      h1 {
+        font-size: 33px;
+        width: 240px;
+        margin: 15px 0 4px 0;
+      }
+      p {
+        margin-bottom: 30px;
+        width: 100%;
+      }
+      .main-top-headline-button {
+        width: 270px;
+        height: 51px;
+      }
+    }
   }
 }
 </style>
