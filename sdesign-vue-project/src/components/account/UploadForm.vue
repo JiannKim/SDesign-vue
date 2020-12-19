@@ -38,7 +38,14 @@
             </option>
           </select>
         </div>
-        <button type="submit" class="submit-button">등록하기</button>
+        <button
+          type="submit"
+          class="submit-button"
+          :disabled="!title || !category || !soundFile"
+          :class="{ disabled: !title || !category || !soundFile }"
+        >
+          등록하기
+        </button>
       </div>
     </form>
   </div>
@@ -188,18 +195,19 @@ export default {
           transition: none;
         }
       }
+
       .submit-button {
         all: unset;
         width: 103px;
         padding: 13px 0 10px 0;
-        border: solid 1px #e0e0e0;
         border-radius: 4px;
-        color: #e0e0e0;
         cursor: pointer;
-      }
-      .submit-button:hover {
         border: 1px solid;
         color: #313131;
+      }
+      .disabled {
+        border: solid 1px #e0e0e0;
+        color: #e0e0e0;
       }
     }
   }
