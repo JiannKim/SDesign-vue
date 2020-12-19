@@ -282,12 +282,10 @@ export default {
 // 사이드 탭 닫기
 .hideTab {
   position: fixed;
-  top: 6.6%;
-  // top: 0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.1);
   z-index: -1;
 }
 
@@ -298,9 +296,5 @@ export default {
   .sidebar-tab-menu {
     display: block !important;
   }
-}
-@media (max-width: 750px) {
-}
-@media (max-width: 599px) {
 }
 </style>
