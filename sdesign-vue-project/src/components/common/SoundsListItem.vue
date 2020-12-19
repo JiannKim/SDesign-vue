@@ -355,10 +355,12 @@ export default {
     }
     .sound-title {
       min-width: 25%;
-      text-overflow: ellipsis;
-      text-align: left;
-      line-height: 30px;
       padding-top: 2px;
+      text-align: left;
+      line-height: 25px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   // 더보기 화살표
@@ -522,16 +524,17 @@ export default {
       }
     }
     .sound-title {
-      margin-right: 20px;
+      width: 46%;
+      white-space: normal;
     }
   }
 }
-@media (max-width: 750px) {
+@media (max-width: 980px) {
   #sound-list-items-wrapper {
     height: 108px;
   }
   .enabled-container {
-    height: 105px;
+    height: 115px;
     display: flex;
     flex-flow: column;
     padding: 0 10px;
@@ -552,15 +555,28 @@ export default {
             }
           }
         }
+        .sound-title {
+          width: 50%;
+        }
       }
       .arrow {
         position: absolute;
         top: 20px;
+        width: 40px;
       }
+    }
+  }
+  .isMore {
+    height: 200px !important;
+    .sound-title {
+      white-space: normal !important;
     }
   }
 }
 // 모바일 반응형
 @media (max-width: 440px) {
+  // .sound-title {
+  // white-space: break-spaces !important;
+  // }
 }
 </style>
