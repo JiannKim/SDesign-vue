@@ -171,7 +171,7 @@ export default {
       margin-top: 20px;
       .select-option {
         position: relative;
-        width: 252px;
+        width: 50%;
         margin: 0 auto 0 0;
         .select-box {
           width: 100%;
@@ -210,6 +210,13 @@ export default {
         color: #e0e0e0;
       }
     }
+  }
+}
+
+// 모바일
+@media (max-width: 599px) {
+  .form-content {
+    width: 90%;
   }
 }
 </style>
