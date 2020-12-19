@@ -11,19 +11,8 @@
               :listItem="listItem"
             />
           </ul>
-          <!-- <p class="log-msg">{{ logMessage }}</p>
-          <LoadingSpinner v-if="isLoading" /> -->
-          <infinite-loading
-            slot="append"
-            spinner=""
-            @infinite="infiniteHandler"
-          >
-            <span slot="spinner">
-              <LoadingSpinner />
-            </span>
-            <div slot="no-more" class="log-msg">{{ logMessage }}</div>
-            <div slot="no-results" class="log-msg">{{ logMessage }}</div>
-          </infinite-loading>
+          <LoadingSpinner v-if="isLoading" />
+          <p class="log-msg">{{ logMessage }}</p>
         </div>
       </div>
     </div>
@@ -34,7 +23,7 @@
 import { searchSounds } from "@/api/posts";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import SoundsListItem from "@/components/common/SoundsListItem.vue";
-// import test from "lodash";
+import _ from "lodash";
 
 export default {
   components: {
@@ -69,9 +58,20 @@ export default {
       keyword: "",
     };
   },
+  watch: {
+    "$store.state.searchtext": {
+      handler(value) {
+        this.keyword = value;
+        this.listItems = [];
+        this.paginator = {};
+        this.fetchSearchData();
+      },
+    },
+  },
   methods: {
-    async infiniteHandler($state) {
+    async fetchSearchData() {
       try {
+        this.isLoading = true;
         const token = this.$store.state.token;
         this.keyword = this.$store.state.searchtext;
         const { data } = await searchSounds(
@@ -79,25 +79,41 @@ export default {
           this.keyword,
           this.paginator.next
         );
-        if (data.totalCount === 0) {
-          this.logMessage = "검색된 사운드가 없네요 :)";
-        }
-        if (data.result.length) {
-          this.listItems = this.listItems.concat(data.result);
-          this.paginator = data.paginator;
+        this.totalCount = data.totalCount;
+        this.paginator = data.paginator;
+        this.isLoading = false;
+        this.listItems = this.listItems.concat(data.result);
+        if (this.paginator.hasNext === false) {
           this.totalCount = data.totalCount;
           this.logMessage = "목록의 끝입니다 :)";
-          $state.loaded();
-        } else {
-          $state.complete();
+          if (data.totalCount === 0) {
+            this.logMessage = "검색된 사운드가 없네요 :)";
+          }
         }
-      } catch (error) {
-        return error;
+      } catch (e) {
+        return;
+      }
+    },
+    async debounceScroll() {
+      if (this.paginator.hasNext == true) {
+        const scrollHeight = Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        );
+        const scrollTop = Math.max(
+          document.documentElement.scrollTop,
+          document.body.scrollTop
+        );
+        const clientHeight = document.documentElement.clientHeight;
+        if (scrollTop + clientHeight > scrollHeight - 500) {
+          await this.fetchSearchData();
+        }
       }
     },
   },
   created() {
-    this.infiniteHandler();
+    this.fetchSearchData();
+    window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
   },
 };
 </script>
