@@ -35,7 +35,7 @@ export default {};
 }
 .subscrib-wrapper {
   width: 57%;
-  min-width: 370px;
+  min-width: 320px;
   max-width: 820px;
   margin: 0 auto;
   display: flex;
@@ -146,6 +146,18 @@ button {
   .cancel-products {
     height: 120px;
     min-width: 320px;
+    flex-flow: column;
+    align-items: baseline;
+  }
+}
+// se
+@media (max-width: 320px) {
+  .card-products {
+    min-width: 300px;
+  }
+  .cancel-products {
+    height: 120px;
+    min-width: 300px;
     flex-flow: column;
     align-items: baseline;
   }
