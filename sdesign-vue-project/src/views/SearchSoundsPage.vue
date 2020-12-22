@@ -145,6 +145,9 @@ export default {
     .form-upload-lists {
       margin: 0;
     }
+    .page-title {
+      padding-bottom: 50px;
+    }
   }
 }
 </style>
