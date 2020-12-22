@@ -261,7 +261,6 @@ export default {
 @media (max-width: 369px) {
   #main-top-wrapper {
     height: 470px;
-    top: 53px;
   }
 
   .main-top-image {
@@ -273,7 +272,7 @@ export default {
     display: block;
     position: relative;
     width: 100%;
-    height: 267px;
+    height: 275px;
     background-color: #101010;
     .main-top-headline {
       min-width: 270px;
