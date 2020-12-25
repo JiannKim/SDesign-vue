@@ -16,7 +16,7 @@
           </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/Gp7Rzb2/whoosh.png"
               alt="whoosh sound effects"
@@ -24,10 +24,10 @@
             <h3>
               <span>whoosh</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/C90RPzt/wind.png"
               alt="walla sound effects"
@@ -35,10 +35,10 @@
             <h3>
               <span>wind</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/4sQCBYB/footsteps.png"
               alt="walla sound effects"
@@ -46,10 +46,10 @@
             <h3>
               <span>footsteps</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/YDQs9Jj/cartoon.png"
               alt="walla sound effects"
@@ -57,10 +57,10 @@
             <h3>
               <span>cartoon</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/svHs7YT/drones.png"
               alt="walla sound effects"
@@ -68,10 +68,10 @@
             <h3>
               <span>drones</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container-wide">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/fn51Pbw/menu.png"
               alt="walla sound effects"
@@ -79,10 +79,10 @@
             <h3>
               <span>menus & interfaces</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container-wide">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/bbLxzNq/ambience.png"
               alt="walla sound effects"
@@ -90,7 +90,7 @@
             <h3>
               <span>ambience</span>
             </h3>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>
@@ -113,7 +113,7 @@
         <!-- 최근 탭 -->
         <div class="center-contents-categories latest">
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/8KBMxX2/theme-Park.png"
                 alt="walla sound effects"
@@ -121,10 +121,10 @@
               <h3>
                 <span>theme park</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/YD33HH5/GFX.png"
                 alt="whoosh sound effects"
@@ -132,10 +132,10 @@
               <h3>
                 <span>gfx animation</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/6RYyQWc/final-Round.png"
                 alt="walla sound effects"
@@ -143,10 +143,10 @@
               <h3>
                 <span>final round</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/zVDXFhL/quiet.png"
                 alt="walla sound effects"
@@ -154,7 +154,7 @@
               <h3>
                 <span>quiet streets</span>
               </h3>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@
         <!-- 지역 탭 -->
         <div class="center-contents-categories location">
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/s5VyDf8/seoul.png"
                 alt="walla sound effects"
@@ -170,10 +170,10 @@
               <h3>
                 <span>서 울</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/CH6yPL9/shanghai.png"
                 alt="whoosh sound effects"
@@ -181,10 +181,10 @@
               <h3>
                 <span>상 하 이</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/0sQ6w2r/london.png"
                 alt="walla sound effects"
@@ -192,10 +192,10 @@
               <h3>
                 <span>런 던</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="browse-container">
-            <a href="/">
+            <router-link to="/sounds">
               <img
                 src="https://i.ibb.co/qryWT7S/india.png"
                 alt="walla sound effects"
@@ -203,7 +203,7 @@
               <h3>
                 <span>인 도</span>
               </h3>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -211,60 +211,60 @@
         <!-- 태그 탭 -->
         <div class="center-contents-categories tags">
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>적막한</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>시원한</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>음악</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>신비로운</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>습지</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>소름끼치는</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>광활한</span>
               </h3>
-            </a>
+            </router-link>
           </div>
           <div class="tags-container">
-            <a href="/">
+            <router-link to="/sounds">
               <h3>
                 <span>기계음</span>
               </h3>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -274,7 +274,7 @@
       <h1>사운드 디자이너</h1>
       <div class="center-contents-categories">
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/cvvDS37/a.png"
               alt="walla sound effects"
@@ -282,34 +282,34 @@
             <h3>
               <span>aaa</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img src="https://i.ibb.co/HxvXQBx/b.png" alt="b image" />
             <h3>
               <span>bbb</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img src="https://i.ibb.co/DCJtb0G/c.png" alt="c image" />
             <h3>
               <span>ccc</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img src="https://i.ibb.co/WHp9S14/d.png" alt="d image" />
             <h3>
               <span>ddd</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/Fq0wcgK/e.png"
               alt="walla sound effects"
@@ -317,10 +317,10 @@
             <h3>
               <span>eee</span>
             </h3>
-          </a>
+          </router-link>
         </div>
         <div class="categories-container">
-          <a href="/">
+          <router-link to="/sounds">
             <img
               src="https://i.ibb.co/99QX7nb/f.png"
               alt="walla sound effects"
@@ -328,7 +328,7 @@
             <h3>
               <span>fff</span>
             </h3>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>
