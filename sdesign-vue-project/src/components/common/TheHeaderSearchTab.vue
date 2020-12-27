@@ -15,7 +15,7 @@
       <form id="search" @submit.prevent="submitSearch">
         <span>
           <img
-            class="search-icon"
+            class="input-icon"
             src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
             alt="serch-Icon"
           />
@@ -126,7 +126,7 @@ export default {
   }
   span {
     position: relative;
-    .search-icon {
+    .input-icon {
       position: absolute;
       top: 27%;
       left: 0;
@@ -148,6 +148,11 @@ export default {
     display: flex;
     justify-content: center;
     margin: 5px;
+  }
+  #search {
+    .input-icon {
+      margin: 5px;
+    }
   }
 }
 /* 모바일 */
