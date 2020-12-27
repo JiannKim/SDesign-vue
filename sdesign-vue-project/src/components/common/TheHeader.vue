@@ -145,7 +145,7 @@ export default {
     z-index: 1;
     /* header logo */
     .header-logo {
-      width: 100px;
+      width: 100%;
     }
   }
 }
@@ -267,7 +267,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 30px 0 30px;
     transition: margin 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
   }
   .app-header-logo-link {
@@ -287,6 +286,16 @@ export default {
 
 /* 모바일 */
 @media (max-width: 440px) {
+  #app-header-wrapper {
+    .app-header-logo-link {
+      margin: 0 auto !important;
+      width: 90px;
+      height: 43px;
+      header-logo {
+        width: 100%;
+      }
+    }
+  }
 }
 /* 아이폰se 모바일 */
 @media (max-width: 369px) {
