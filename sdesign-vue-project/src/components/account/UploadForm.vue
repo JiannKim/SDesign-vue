@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { createSounds } from "@/api";
+import { createSounds } from "@/api/posts";
 
 export default {
   data() {
