@@ -87,7 +87,7 @@
         </div>
         <div class="detail-parts-3">
           <span>Share</span>
-          <a id="isShare" ref="isShare" @click="clipModal()">
+          <a id="isShare" ref="isShare" @click="clipModalMounted()">
             <fa-icon icon="share-alt-square" />
           </a>
           <!-- clipboard modal section -->
@@ -116,6 +116,26 @@
             remove
           </button>
         </div>
+        <!-- <template v-if="alert"> -->
+        <modal name="remove-modal" class="remove-modal">
+          <div class="remove-wrapper">
+            <span class="remove-wording">
+              🚫 지금 삭제하면 되돌릴 수 없어요. 🚫<br />
+              그래도 삭제 하시겠어요?
+            </span>
+            <div class="remove-btn">
+              <div class="isRemove">
+                <button @click="isRemove">확인</button>
+                <!-- <input type="button" @click="isRemove" value="삭제" /> -->
+              </div>
+              <div class="isCancel">
+                <button @click="isModalHide">취소</button>
+                <!-- <input type="button" @click="isModalHide" value="취소" /> -->
+              </div>
+            </div>
+          </div>
+        </modal>
+        <!-- </template> -->
       </div>
     </transition>
   </li>
@@ -132,6 +152,7 @@ export default {
       isTag,
       clicked: true,
       checked: "",
+      // alert: "",
       downloadItem,
       liked: this.listItem.isLiked,
     };
@@ -151,7 +172,26 @@ export default {
       }
     },
     async submitRemove() {
+      this.alert = true;
+      this.removeModalMounted();
+      // if (this.alert !== true) {
+      // const data = this.listItem._id;
+      // const token = this.$store.state.token;
+      // try {
+      //   await removeItem({ soundId: data }, token);
+      //   this.$store.commit("setSoundId", data);
+      //   this.$emit("refresh");
+      //   this.clicked = true;
+      // } catch (error) {
+      //   console.log("err =>", error);
+      // }
+      // this.isRemove();
+      // }
+    },
+    async isRemove() {
+      this.isModalHide();
       this.clicked = true;
+      // this.alert = this.alert ? false : true;
       const data = this.listItem._id;
       const token = this.$store.state.token;
       try {
@@ -168,7 +208,10 @@ export default {
     isClicked() {
       this.clicked = this.clicked ? false : true;
     },
-    clipModal() {
+    removeModalMounted() {
+      this.$modal.show("remove-modal");
+    },
+    clipModalMounted() {
       this.$modal.show("clip-modal");
     },
     isCopied() {
@@ -177,6 +220,9 @@ export default {
       copyText.select();
       document.execCommand("copy");
       this.$modal.hide("clip-modal");
+    },
+    isModalHide() {
+      this.$modal.hide("remove-modal");
     },
   },
   props: {
@@ -205,6 +251,14 @@ export default {
     color: #a1a1a1;
     display: inline;
   }
+}
+button {
+  all: unset;
+  border-radius: 4px;
+  color: #fff;
+  width: 100%;
+  font-size: 12px;
+  cursor: pointer;
 }
 // sound list info
 .enabled-container {
@@ -467,16 +521,55 @@ export default {
     position: absolute;
     bottom: -20px;
     left: 0;
+    width: 48px;
     text-align: center;
     .list-remove-button {
-      all: unset;
-      width: 48px;
-      height: 15px;
-      cursor: pointer;
-      font-size: 12px;
+      padding: 3px;
       background-color: rgb(230, 0, 0);
-      border-radius: 4px;
-      color: #fff;
+      &:hover {
+        background-color: rgb(248, 30, 30);
+      }
+      &:active {
+        background-color: rgb(219, 1, 1);
+      }
+    }
+  }
+  .remove-wrapper {
+    margin: 45px;
+    text-align: center;
+    .remove-wording {
+      line-height: 20px;
+    }
+    .remove-btn {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      .isRemove,
+      .isCancel {
+        width: 43%;
+        border-radius: 3px;
+        background-color: $base-color;
+        margin: 3px;
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+        &:active {
+          background-color: rgba(0, 0, 0, 0.822);
+        }
+      }
+      .isCancel {
+        background-color: $dis-select;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.25);
+        }
+        &:active {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
     }
   }
 }

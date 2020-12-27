@@ -38,6 +38,19 @@ export default {
 #side-page {
   padding-top: 73px;
 }
+// remove alert
+.remove-modal {
+  input {
+    margin: 10px;
+  }
+  .vm--modal {
+    width: 25% !important;
+    min-width: 350px;
+    height: 190px !important;
+    margin: 0 auto;
+    left: 0 !important;
+  }
+}
 // theHeaderSearchTab
 .search-modal {
   &.vm--container {
