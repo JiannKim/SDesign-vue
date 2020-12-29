@@ -125,11 +125,11 @@
             </span>
             <p class="remove-title">Title : {{ this.listItem.soundName }}</p>
             <div class="remove-btn">
-              <div class="isRemove">
-                <button @click="submitRemove">확인</button>
-              </div>
               <div class="isCancel">
                 <button @click="isModalHide">취소</button>
+              </div>
+              <div class="isRemove">
+                <button @click="submitRemove">확인</button>
               </div>
             </div>
           </div>
@@ -170,7 +170,6 @@ export default {
     },
     async submitRemove() {
       this.isModalHide();
-      // this.clicked = true;
       const data = this.targetSound;
       const token = this.$store.state.token;
       try {
