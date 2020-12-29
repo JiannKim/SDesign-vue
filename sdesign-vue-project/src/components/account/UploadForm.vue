@@ -93,14 +93,14 @@ export default {
         this.$emit("refresh");
         return data;
       } catch (error) {
-        console.log("err =>", error);
+        return;
       }
     },
     inntForm() {
       this.title = "";
       this.tags = "";
       this.category = "";
-      this.$refs.soundFile.value = null;
+      this.soundFile = "";
     },
   },
 };
