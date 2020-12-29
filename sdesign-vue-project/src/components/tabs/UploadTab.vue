@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UploadForm @refresh="reloadUpdate" />
+    <UploadForm @refresh="isUpdate" />
     <div class="form-upload-lists">
       <div class="bottom-title-section">
         <h2>Upload List ({{ totalCount }})</h2>
@@ -10,10 +10,10 @@
           v-for="listItem in listItems"
           :key="listItem.index"
           :listItem="listItem"
-          @refresh="reloadRemove"
+          @refresh="isUpdate"
         />
       </ul>
-      <LoadingSpinner v-if="isLoading" />
+      <LoadingSpinner v-if="loading" />
       <p class="log-msg">{{ logMessage }}</p>
     </div>
   </div>
@@ -32,35 +32,41 @@ export default {
   },
   data() {
     return {
-      totalCount: "",
+      totalCount: 0,
       logMessage: "",
-      isLoading: false,
+      loading: false,
       listItems: [],
       paginator: {},
     };
+  },
+  watch: {
+    totalCount() {
+      this.fetchMyData();
+      window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
+    },
   },
   methods: {
     async fetchMyData() {
       try {
         const token = this.$store.state.token;
-        this.isLoading = true;
+        this.loading = true;
         const { data } = await fetchMySounds(token, this.paginator.next);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
         for (let i = 0; i < data.result.length; i++) {
           data.result[i].myItem = true;
         }
-        this.isLoading = false;
+        this.loading = false;
         this.listItems = this.listItems.concat(data.result);
         if (this.paginator.hasNext == false) {
-          this.isLoading = false;
+          this.loading = false;
           this.logMessage = "목록의 끝입니다 :)";
           if (this.totalCount === 0) {
             this.logMessage = "사운드를 등록해주세요.";
           }
         }
-      } catch (e) {
-        console.log(e);
+      } catch (err) {
+        return;
       }
     },
     async debounceScroll() {
@@ -79,22 +85,24 @@ export default {
         }
       }
     },
-    remove(index) {
-      this.$delete(this.listItems, index);
-    },
-    async reloadRemove() {
-      const soundid = this.$store.state.soundid;
-      let id;
-      for (let i = 0; i < this.listItems.length; i++) {
-        if (this.listItems[i]._id === soundid) {
-          id = i;
-          break;
-        }
-      }
-      this.remove(id);
-    },
-    reloadUpdate() {
-      this.$router.go();
+
+    // remove(index) {
+    //   this.$delete(this.listItems, index);
+    // },
+    // async reloadRemove() {
+    //   const soundid = this.$store.state.soundid;
+    //   let id;
+    //   for (let i = 0; i < this.listItems.length; i++) {
+    //     if (this.listItems[i]._id === soundid) {
+    //       id = i;
+    //       break;
+    //     }
+    //   }
+    //   this.remove(id);
+    // },
+    isUpdate() {
+      this.listItems = [];
+      this.totalCount = "";
     },
   },
   created() {

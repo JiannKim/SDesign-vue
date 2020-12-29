@@ -111,31 +111,29 @@
           <button
             class="list-remove-button"
             v-if="this.listItem.myItem === true"
-            @click="submitRemove"
+            @click="isRemove"
           >
             remove
           </button>
         </div>
-        <!-- <template v-if="alert"> -->
-        <modal name="remove-modal" class="remove-modal">
+        <!-- remove alert -->
+        <modal :name="this.targetSound" class="remove-modal">
           <div class="remove-wrapper">
             <span class="remove-wording">
               🚫 지금 삭제하면 되돌릴 수 없어요. 🚫<br />
               그래도 삭제 하시겠어요?
             </span>
+            <p class="remove-title">Title : {{ this.listItem.soundName }}</p>
             <div class="remove-btn">
               <div class="isRemove">
-                <button @click="isRemove">확인</button>
-                <!-- <input type="button" @click="isRemove" value="삭제" /> -->
+                <button @click="submitRemove">확인</button>
               </div>
               <div class="isCancel">
                 <button @click="isModalHide">취소</button>
-                <!-- <input type="button" @click="isModalHide" value="취소" /> -->
               </div>
             </div>
           </div>
         </modal>
-        <!-- </template> -->
       </div>
     </transition>
   </li>
@@ -152,55 +150,39 @@ export default {
       isTag,
       clicked: true,
       checked: "",
-      // alert: "",
       downloadItem,
       liked: this.listItem.isLiked,
+      targetSound: this.listItem._id,
     };
   },
   methods: {
     async submitFavorite() {
-      // this.$store.commit("setFavorite", this.liked);
       this.checked = this.checked ? false : true;
       const data = this.listItem._id;
       const token = this.$store.state.token;
       try {
         await favoriteItem({ soundId: data }, token);
         this.isLiked();
-        this.$emit("refresh");
+        this.$emit("reload");
       } catch (error) {
         return;
       }
     },
     async submitRemove() {
-      this.alert = true;
-      this.removeModalMounted();
-      // if (this.alert !== true) {
-      // const data = this.listItem._id;
-      // const token = this.$store.state.token;
-      // try {
-      //   await removeItem({ soundId: data }, token);
-      //   this.$store.commit("setSoundId", data);
-      //   this.$emit("refresh");
-      //   this.clicked = true;
-      // } catch (error) {
-      //   console.log("err =>", error);
-      // }
-      // this.isRemove();
-      // }
-    },
-    async isRemove() {
       this.isModalHide();
-      this.clicked = true;
-      // this.alert = this.alert ? false : true;
-      const data = this.listItem._id;
+      // this.clicked = true;
+      const data = this.targetSound;
       const token = this.$store.state.token;
       try {
         await removeItem({ soundId: data }, token);
         this.$store.commit("setSoundId", data);
         this.$emit("refresh");
       } catch (error) {
-        console.log("err =>", error);
+        return;
       }
+    },
+    isRemove() {
+      this.removeModalMounted();
     },
     isLiked() {
       this.liked = this.liked ? false : true;
@@ -209,7 +191,7 @@ export default {
       this.clicked = this.clicked ? false : true;
     },
     removeModalMounted() {
-      this.$modal.show("remove-modal");
+      this.$modal.show(this.targetSound);
     },
     clipModalMounted() {
       this.$modal.show("clip-modal");
@@ -222,7 +204,7 @@ export default {
       this.$modal.hide("clip-modal");
     },
     isModalHide() {
-      this.$modal.hide("remove-modal");
+      this.$modal.hide(this.targetSound);
     },
   },
   props: {
@@ -258,6 +240,7 @@ button {
   color: #fff;
   width: 100%;
   font-size: 12px;
+  padding: 5px 0;
   cursor: pointer;
 }
 // sound list info
@@ -537,8 +520,16 @@ button {
   .remove-wrapper {
     margin: 45px;
     text-align: center;
+    // p {
+    //   display: block;
+    // }
     .remove-wording {
       line-height: 20px;
+    }
+    .remove-title {
+      display: flex !important;
+      justify-content: center;
+      margin-top: 10px;
     }
     .remove-btn {
       width: 90%;
@@ -552,7 +543,6 @@ button {
         border-radius: 3px;
         background-color: $base-color;
         margin: 3px;
-        padding: 5px;
         cursor: pointer;
         &:hover {
           background-color: rgba(0, 0, 0, 0.7);
