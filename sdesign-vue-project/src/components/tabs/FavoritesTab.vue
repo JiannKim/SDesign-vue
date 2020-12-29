@@ -9,8 +9,9 @@
           v-for="listItem in listItems"
           :key="listItem.index"
           :listItem="listItem"
-          @refresh="refresh"
+          @reload="isReload"
         />
+        <LoadingSpinner v-if="loading" />
       </ul>
       <infinite-loading
         slot="spinner"
@@ -41,7 +42,13 @@ export default {
       totalCount: 0,
       listItems: [],
       paginator: {},
+      loading: false,
     };
+  },
+  watch: {
+    loading() {
+      this.infiniteHandler();
+    },
   },
   methods: {
     async infiniteHandler($state) {
@@ -54,6 +61,8 @@ export default {
           this.logMessage = "좋아하는 사운드를 수집하세요 :)";
         }
         if (data.result.length) {
+          this.loading = false;
+
           this.listItems = this.listItems.concat(data.result);
           this.paginator = data.paginator;
           this.logMessage = "목록의 끝입니다 :)";
@@ -65,8 +74,9 @@ export default {
         return;
       }
     },
-    refresh() {
-      location.reload();
+    isReload() {
+      this.listItems = [];
+      this.loading = true;
     },
   },
 };
