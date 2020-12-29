@@ -46,7 +46,7 @@ export default {
   .vm--modal {
     width: 25% !important;
     min-width: 350px;
-    height: 190px !important;
+    height: 200px !important;
     margin: 0 auto;
     left: 0 !important;
   }
