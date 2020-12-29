@@ -136,14 +136,12 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 2rem;
   z-index: 2;
   .app-header-logo-link {
     width: 100px;
     display: flex;
     margin: 0 30px 0 147px;
     z-index: 1;
-    /* header logo */
     .header-logo {
       width: 100%;
     }
