@@ -20,7 +20,6 @@ export default new Vuex.Store({
     token: getAuthFromCookie() || "",
     searchtext: getSearchFromCookie() || "",
     soundid: "",
-    // like: "",
   },
   getters: {
     isLogin(state) {
@@ -52,9 +51,6 @@ export default new Vuex.Store({
     setSoundId(state, soundid) {
       state.soundid = soundid;
     },
-    // setFavorite(state, like) {
-    //   state.like = like;
-    // },
   },
   actions: {
     // 로그인
