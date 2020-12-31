@@ -10,16 +10,10 @@
           <div class="tables-list">
             <p @click="tab.ques = !tab.ques">
               {{ tab.mainText }}
-              <fa-icon
-                icon="caret-down"
-                class="caret-icon"
-                :class="{ activeIcon: !tab.ques }"
-              />
+              <fa-icon icon="caret-down" class="caret-icon" :class="{ activeIcon: !tab.ques }" />
             </p>
             <transition name="list-fade">
-              <div v-if="!tab.ques" class="list-answer">
-                {{ tab.subText }}
-              </div>
+              <div v-if="!tab.ques" class="list-answer">{{ tab.subText }}</div>
             </transition>
           </div>
         </div>
@@ -100,7 +94,7 @@ export default {
 
 .top-section {
   h1 {
-    margin: 0 10px 50px;
+    margin: 0 15px 50px;
   }
 }
 .middle-section {
@@ -110,7 +104,6 @@ export default {
     max-width: 1170px;
     margin: auto;
     position: relative;
-    // padding-bottom: 30px;
     span {
       color: #828282;
       display: flex;
