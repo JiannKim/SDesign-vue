@@ -128,7 +128,7 @@ export default {
     position: relative;
     .input-icon {
       position: absolute;
-      top: 27%;
+      top: -30%;
       left: 0;
       padding-left: 7px;
       width: 16px;
