@@ -139,6 +139,7 @@ export default {
   z-index: 2;
   .app-header-logo-link {
     width: 100px;
+    height: 50px;
     display: flex;
     margin: 0 30px 0 147px;
     z-index: 1;
@@ -148,7 +149,6 @@ export default {
   }
 }
 .app-header-search-box {
-  // width: 830px;
   width: 100%;
   height: 43px;
   margin: 0 5%;
@@ -258,6 +258,14 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+    .app-header-logo-link {
+      margin: 0 auto !important;
+      width: 90px;
+      height: 43px;
+      header-logo {
+        width: 100%;
+      }
+    }
   }
   #header-wrapper {
     width: 100%;
@@ -266,9 +274,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     transition: margin 0.5s cubic-bezier(0.4, 0.2, 0.05, 2);
-  }
-  .app-header-logo-link {
-    margin: 0 auto !important;
   }
   .app-header-search-box {
     display: none;
@@ -284,16 +289,6 @@ export default {
 
 /* 모바일 */
 @media (max-width: 440px) {
-  #app-header-wrapper {
-    .app-header-logo-link {
-      margin: 0 auto !important;
-      width: 90px;
-      height: 43px;
-      header-logo {
-        width: 100%;
-      }
-    }
-  }
 }
 /* 아이폰se 모바일 */
 @media (max-width: 369px) {
@@ -302,14 +297,14 @@ export default {
     top: 0;
     left: 0;
   }
-  @-moz-document url-prefix() {
-    #app-header-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-    }
-  }
+  // @-moz-document url-prefix() {
+  //   #app-header-wrapper {
+  //     position: fixed;
+  //     top: 0;
+  //     left: 0;
+  //     display: flex;
+  //     justify-content: center;
+  //   }
+  // }
 }
 </style>
