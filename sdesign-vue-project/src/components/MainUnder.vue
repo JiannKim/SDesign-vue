@@ -61,7 +61,6 @@ export default {};
   position: relative;
   top: 32px;
   left: 0;
-  // margin: 0 0 80px 0;
   display: flex;
   flex-flow: column;
 }
@@ -166,7 +165,7 @@ export default {};
 }
 
 .contents-clients-logo {
-  width: 60%;
+  width: 50%;
   padding: 1% 2.5%;
 }
 /* 임시 고양이 이미지 */
@@ -198,6 +197,9 @@ export default {};
   }
   .under-section-bottom {
     height: 300px;
+  }
+  .contents-clients-logo {
+    width: 100%;
   }
 }
 @media (max-width: 750px) {
