@@ -45,7 +45,7 @@
     <a href="https://jamong-prj.xyz/main"><strong>Explore the project »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://jamong-prj.xyz/main">View Demo</a>
     ·
     <a href="https://github.com/JiannKim/SDesign-vue/issues">Report Bug</a>
     ·
@@ -71,9 +71,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+<!--     <li><a href="#usage">Usage</a></li> -->
 <!--     <li><a href="#roadmap">Roadmap</a></li> -->
-    <li><a href="#contributing">Contributing</a></li>
+<!--     <li><a href="#contributing">Contributing</a></li> -->
 <!--     <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
 <!--     <li><a href="#acknowledgements">Acknowledgements</a></li> -->
