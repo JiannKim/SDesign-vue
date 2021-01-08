@@ -87,7 +87,8 @@ export default {
         const { data } = await updateProfile(formData, this.token);
         this.$store.commit("setUserName", formData.accountName);
         this.isClicked();
-        this.$forceUpdate();
+        // this.$forceUpdate();
+        location.reload();
         return data;
       } catch (error) {
         return error;
@@ -156,8 +157,9 @@ export default {
     align-items: center;
     justify-content: center;
     .u-img {
-      width: 100%;
-      height: auto;
+      // width: 100%;
+      // height: auto;
+      height: 100%;
       position: relative;
       top: 0;
       left: 0;
