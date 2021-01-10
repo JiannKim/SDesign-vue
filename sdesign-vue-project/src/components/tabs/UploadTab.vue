@@ -42,12 +42,14 @@ export default {
   watch: {
     totalCount() {
       this.fetchMyData();
-      window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
+      console.log("watch");
+      // window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
     },
   },
   methods: {
     async fetchMyData() {
       try {
+        console.log("try");
         const token = this.$store.state.token;
         this.loading = true;
         const { data } = await fetchMySounds(token, this.paginator.next);
@@ -71,19 +73,31 @@ export default {
     },
     async debounceScroll() {
       if (this.paginator.hasNext == true) {
-        const scrollHeight = Math.max(
-          document.documentElement.scrollHeight,
-          document.body.scrollHeight
-        );
-        const scrollTop = Math.max(
-          document.documentElement.scrollTop,
-          document.body.scrollTop
-        );
-        const clientHeight = document.documentElement.clientHeight;
+        // 다음페이지가 있다면
+        // const scrollHeight = Math.max(
+        //   // 둘중 더 큰 보이지 않는 부분까지의 전체 높이 값
+        //   document.documentElement.scrollHeight, // html
+        //   document.body.scrollHeight //body
+        // );
+        const scrollHeight = document.body.scrollHeight; //body 보이지 않는 부분까지의 전체 높이 값
+        console.log(500-scrollHeight);
+        // const scrollTop =
+        // Math.max(
+        // 둘중 더 큰 스크롤바 위의 값
+        // document.documentElement.scrollTop,
+        // document.body.scrollTop
+        // );
+        const scrollTop = document.documentElement.scrollTop;
+        console.log(scrollTop);
+        const clientHeight = document.documentElement.clientHeight; // html 내부의 패딩이 포함된 눈에 보여지는 높이 값
+        console.log(clientHeight);
         if (scrollTop + clientHeight > scrollHeight - 500) {
+          // 500- 보이지 않는 부분까지의 전체 높이 값보다 스크롤된 상단 높이+ 보여지는 부분 높이가 크다면 // 여기서 scrollHeight !== clientHeight
           await this.fetchMyData();
         }
+        console.log(scrollTop + clientHeight);
       }
+      console.log(document.documentElement.scrollTop + document.documentElement.clientHeight);
     },
 
     // remove(index) {
@@ -107,7 +121,7 @@ export default {
   },
   created() {
     this.fetchMyData();
-    window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
+    window.addEventListener("scroll", _.debounce(this.debounceScroll, 200)); // 브라우저에 0.2초 동안 디바운스스크롤이벤트를 한번만 실행하는 스크롤을 감지하는 이벤트리스너를 추가.
   },
 };
 </script>
