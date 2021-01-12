@@ -1,69 +1,70 @@
 <template>
   <div id="form-wrapper">
-    <h1 class="form-title">회원 가입</h1>
-    <form @submit.prevent="submitForm" class="form-box signup">
-      <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedId }" for="useremail"
-          >email</label
-        >
-        <input
-          v-focus
-          type="email"
-          name="useremail"
-          id="useremail"
-          @focus="userId"
-          v-model="useremail"
-          placeholder="email"
-        />
-        <span class="underline"></span>
-      </div>
-      <span class="warning" v-if="!isUserEmailValid && useremail"
-        >올바른 이메일 형식을 입력해 주세요</span
-      >
-      <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedPass }" for="pass"
-          >password</label
-        >
-        <input
-          type="password"
-          name="pass"
-          id="pass"
-          @focus="userPass"
-          v-model="password"
-          placeholder="password"
-        />
-        <span class="underline"></span>
-      </div>
-      <div class="form-input rectangles">
-        <label :class="{ isSelected: !selectedName }" for="name"
-          >user name</label
-        >
-        <input
-          type="text"
-          name="name"
-          id="name"
-          @focus="userName"
-          v-model="nickname"
-          placeholder="user name"
-        />
-        <span class="underline"></span>
-      </div>
-      <p class="log-message">{{ signMessage }}</p>
-      <button
-        :disabled="!isUserEmailValid || !password || !nickname"
-        type="submit"
-        class="button form-button rectangles"
-        :class="{ disabled: !isUserEmailValid || !password || !nickname }"
-      >
-        가입
+    <template v-if="!this.send">
+      <h1 class="form-title">회원 가입</h1>
+      <form @submit.prevent="submitForm" class="form-box signup">
+        <div class="form-input rectangles">
+          <label :class="{ isSelected: !selectedId }" for="useremail">email</label>
+          <input
+            v-focus
+            type="email"
+            name="useremail"
+            id="useremail"
+            @focus="userId"
+            v-model="useremail"
+            placeholder="email"
+          />
+          <span class="underline"></span>
+        </div>
+        <span class="warning" v-if="!isUserEmailValid && useremail">올바른 이메일 형식을 입력해 주세요</span>
+        <div class="form-input rectangles">
+          <label :class="{ isSelected: !selectedPass }" for="pass">password</label>
+          <input
+            type="password"
+            name="pass"
+            id="pass"
+            @focus="userPass"
+            v-model="password"
+            placeholder="password"
+          />
+          <span class="underline"></span>
+        </div>
+        <div class="form-input rectangles">
+          <label :class="{ isSelected: !selectedName }" for="name">user name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            @focus="userName"
+            v-model="nickname"
+            placeholder="user name"
+          />
+          <span class="underline"></span>
+        </div>
+        <p class="log-message">{{ signMessage }}</p>
+        <button
+          :disabled="!isUserEmailValid || !password || !nickname"
+          type="submit"
+          class="button form-button rectangles"
+          :class="{ disabled: !isUserEmailValid || !password || !nickname }"
+        >가입</button>
+        <p class="modal-open" @click="loginMounted">Already have an account? click here</p>
+      </form>
+      <button class="button close-button" @click="modalHide">
+        <fa-icon :icon="['fas', 'times']" />
       </button>
-      <p class="modal-open" @click="loginMounted">
-        Already have an account? click here
-      </p>
-    </form>
-    <button class="button close-button" @click="modalHide">
-      <fa-icon :icon="['fas', 'times']" />
-    </button>
+    </template>
+    <template v-else>
+      <div class="form-box signup">
+        <p>가입하신 이메일 주소로 가입 인증 메일을 보내드렸습니다.</p>
+        <p>{{this.useremail}}</p>
+        <br />
+        <button class="button form-button rectangles" @click="loginMounted">Go to Login</button>
+      </div>
+      <button class="button close-button" @click="modalHide">
+        <fa-icon :icon="['fas', 'times']" />
+      </button>
+    </template>
   </div>
 </template>
 
@@ -81,6 +82,7 @@ export default {
       selectedId: true,
       selectedPass: true,
       selectedName: true,
+      send: false,
     };
   },
   computed: {
@@ -114,9 +116,9 @@ export default {
           // console.log("else data =>" + data);
           // this.signMessage = `* ${data.accountEmail} 로 가입 되셨습니다.
           // 해당 이메일로 인증 메일을 전송 하였으니 인증 후 사용해 주세요 :)`;
-
           // 가입 완료시 모달 끄기
-          this.modalHide();
+          // this.modalHide();
+          this.send = true;
         }
       } catch (error) {
         console.log("error");
