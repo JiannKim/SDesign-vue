@@ -15,11 +15,7 @@
         src="https://i.ibb.co/QDNng2N/search-Icon-03.png"
         alt="serch-Icon"
       />
-      <input
-        type="text"
-        placeholder="Search for sound effects"
-        v-model="keywordItem"
-      />
+      <input type="text" placeholder="Search for sound effects" v-model="keywordItem" />
     </form>
     <ul class="app-header-menu-lists">
       <li class="header-menu-list">
@@ -29,27 +25,25 @@
         <router-link to="/faq">FAQ</router-link>
       </li>
       <li class="header-menu-list">
-        <router-link to="/sounds">
-          Sounds
-        </router-link>
+        <router-link to="/sounds">Sounds</router-link>
       </li>
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
         <div class="login-user">
-          <div class="header-menu-list users-info" @click="accountModalMounted">
-            ME
+          <!-- <div class="header-menu-list users-info" @click="accountModalMounted"> -->
+          <div class="header-menu-list users-info" @click="clickMe">ME</div>
+          <div id="clickMe" ref="clickMe">
+            <span>Hi!</span>
           </div>
-          <modal name="account-modal" class="account-modal">
+          <!-- <modal name="account-modal" class="account-modal">
             <AccountModal />
-          </modal>
+          </modal>-->
         </div>
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
       <template v-else>
         <li @click="loginMounted" class="header-menu-list form-list">Login</li>
-        <li @click="signupMounted" class="header-menu-list form-list signup-li">
-          Sign Up
-        </li>
+        <li @click="signupMounted" class="header-menu-list form-list signup-li">Sign Up</li>
       </template>
     </ul>
     <!-- 태블릿 모드 -->
@@ -63,7 +57,7 @@
 <script>
 import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab.vue";
 import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
-import AccountModal from "@/components/common/AccountModal.vue";
+// import AccountModal from "@/components/common/AccountModal.vue";
 
 export default {
   data() {
@@ -75,7 +69,7 @@ export default {
   components: {
     TheHeaderSidebarMenuTab,
     TheHeaderSearchTab,
-    AccountModal,
+    // AccountModal,
   },
   methods: {
     async submitSearch() {
@@ -96,8 +90,15 @@ export default {
         console.log(error);
       }
     },
-    accountModalMounted() {
-      this.$modal.show("account-modal");
+    // accountModalMounted() {
+    //   this.$modal.show("account-modal");
+    // },
+    clickMe() {
+      if (this.$refs.clickMe.style.display === "none") {
+        this.$refs.clickMe.style.display = "block";
+      } else {
+        this.$refs.clickMe.style.display = "none";
+      }
     },
     loginMounted() {
       this.$modal.show("login-modal");
@@ -120,8 +121,43 @@ export default {
   },
 };
 </script>
-
 <style scoped lang="scss">
+#clickMe {
+  display: none;
+  width: 100px;
+  // border: 1px solid red;
+  height: 100px;
+  position: absolute;
+  top: 40px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  ::after,
+  ::before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  ::after {
+    // border-color: rgba(213, 213, 213, 0);
+    border-bottom-color: #fff;
+    border-width: 20px;
+    margin-left: -20px;
+  }
+  ::before {
+    // border-color: rgba(237, 237, 237, 0);
+    border-bottom-color: rgba(237, 237, 237, 0.509);
+    // box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+    border-width: 21px;
+    margin-left: -21px;
+  }
+}
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
   background-color: #fff;
