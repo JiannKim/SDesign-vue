@@ -1,15 +1,14 @@
 <template>
   <div class="user-info-box">
-    <div class="user-info" @click="modalHide">
+    <div class="user-info">
       Signed in as
-      <router-link to="/account/profile" class="user-name-link">
+      <router-link to="/account/profile" class="user-name-link" @click.native="meHide">
         <span>{{ $store.state.nickname }}</span>
       </router-link>
     </div>
-    <div @click="modalHide">
-      <router-link to="/account/profile">My page</router-link>
+    <div>
+      <router-link to="/account/profile" @click.native="meHide">My page</router-link>
     </div>
-    <!-- <a href="/account" @click="modalHide">My page</a> -->
     <a href="javascript:;" @click="logoutUser" class="logout-btn">
       <span>Logout</span>
     </a>
@@ -19,6 +18,9 @@
 <script>
 import { deleteCookie } from "@/utils/cookies";
 export default {
+  data() {
+    return {};
+  },
   methods: {
     // store에 있는 clearUserInfo함수를 가져와서 로그아웃 기능의 메서드를 만들어준다
     logoutUser() {
@@ -27,8 +29,8 @@ export default {
       deleteCookie("sd_user");
       this.$router.push("/");
     },
-    modalHide() {
-      this.$modal.hide("account-modal");
+    meHide() {
+      this.$emit("meHide");
     },
   },
 };
@@ -36,42 +38,46 @@ export default {
 
 <style lang="scss">
 .user-info-box {
+  width: 125px;
   position: absolute;
-  width: 150px;
-  height: auto;
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 7px;
-  span {
-    font-weight: 600;
-    cursor: pointer;
-  }
-  &.user-info-box::after,
-  &.user-info-box::before {
+  top: 40px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  ::after,
+  ::before {
+    position: absolute;
     bottom: 100%;
     left: 50%;
     border: solid transparent;
     content: "";
-    height: 0;
     width: 0;
-    position: absolute;
+    height: 0;
     pointer-events: none;
   }
-  &.user-info-box::after {
-    border-color: rgba(255, 255, 255, 0);
+  ::after {
     border-bottom-color: #fff;
     border-width: 9px;
-    margin-left: -9px;
+    margin-left: -10px;
+    width: 1px;
+    top: -17px;
   }
-  &.user-info-box::before {
-    border-color: rgba(224, 224, 224, 0);
-    border-bottom-color: #e0e0e0;
-    border-width: 10px;
+  ::before {
+    border-bottom-color: rgba(237, 237, 237, 0.3);
+    filter: blur(0.3px);
+    width: 1px;
+    top: -18px;
+    border-width: 9px;
     margin-left: -10px;
   }
   .user-info {
     font-size: 14px;
     padding: 10px;
+    span {
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
   .user-name-link {
     display: inline;

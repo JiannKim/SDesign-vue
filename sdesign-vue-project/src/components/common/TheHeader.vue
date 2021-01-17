@@ -30,14 +30,9 @@
       <!-- 1. 로그인이 되었을 때 -->
       <template v-if="isUserLogin">
         <div class="login-user">
-          <!-- <div class="header-menu-list users-info" @click="accountModalMounted"> -->
           <div class="header-menu-list users-info" @click="clickMe">ME</div>
-          <div id="clickMe" ref="clickMe">
-            <span>Hi!</span>
-          </div>
-          <!-- <modal name="account-modal" class="account-modal">
-            <AccountModal />
-          </modal>-->
+          <AccountModal v-if="clicked" ref="clickMe" @meHide="clickMe" />
+          <div :class="{clickme: clicked}" @click="clickMe"></div>
         </div>
       </template>
       <!-- 2. 로그아웃이 되었을 때 -->
@@ -57,19 +52,20 @@
 <script>
 import TheHeaderSidebarMenuTab from "@/components/common/TheHeaderSidebarMenuTab.vue";
 import TheHeaderSearchTab from "@/components/common/TheHeaderSearchTab.vue";
-// import AccountModal from "@/components/common/AccountModal.vue";
+import AccountModal from "@/components/common/AccountModal.vue";
 
 export default {
   data() {
     return {
       keywordItem: "",
       paginator: "",
+      clicked: false,
     };
   },
   components: {
     TheHeaderSidebarMenuTab,
     TheHeaderSearchTab,
-    // AccountModal,
+    AccountModal,
   },
   methods: {
     async submitSearch() {
@@ -94,11 +90,21 @@ export default {
     //   this.$modal.show("account-modal");
     // },
     clickMe() {
-      if (this.$refs.clickMe.style.display === "none") {
-        this.$refs.clickMe.style.display = "block";
-      } else {
-        this.$refs.clickMe.style.display = "none";
-      }
+      const clicked = this.clicked === false ? true : false;
+      this.clicked = clicked;
+      // let h = document.createElement("div");
+      // const clickme = h.classList.add("clickme");
+      // console.log(h.className);
+      // if (h.className === "clickme") {
+      //   console.log("aa");
+      //   h.onclick = clicked;
+      //   console.log("aaa");
+      // }
+      // if (this.$refs.clickMe.style.display === "none") {
+      //   this.$refs.clickMe.style.display = "block";
+      // } else {
+      //   this.$refs.clickMe.style.display = "none";
+      // }
     },
     loginMounted() {
       this.$modal.show("login-modal");
@@ -122,41 +128,15 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-#clickMe {
-  display: none;
-  width: 100px;
-  // border: 1px solid red;
-  height: 100px;
-  position: absolute;
-  top: 40px;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
-  z-index: 2;
-  ::after,
-  ::before {
-    bottom: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: "";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-  ::after {
-    // border-color: rgba(213, 213, 213, 0);
-    border-bottom-color: #fff;
-    border-width: 20px;
-    margin-left: -20px;
-  }
-  ::before {
-    // border-color: rgba(237, 237, 237, 0);
-    border-bottom-color: rgba(237, 237, 237, 0.509);
-    // box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
-    border-width: 21px;
-    margin-left: -21px;
-  }
+// 계정 말풍선 모달 닫기위한
+.clickme {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 1;
 }
 /* 헤더 박스 스타일 */
 #app-header-wrapper {
@@ -244,10 +224,10 @@ export default {
   position: relative;
   font-size: 16px;
   font-weight: 400;
-  .users-info,
-  span {
+  .users-info {
     font-weight: 600;
     cursor: pointer;
+    position: relative;
   }
 }
 
