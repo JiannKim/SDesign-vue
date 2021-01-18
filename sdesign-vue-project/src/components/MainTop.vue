@@ -67,7 +67,6 @@ export default {
   h1 {
     text-align: left;
     width: 350px;
-    font-family: Helvetica;
     font-size: 52px;
     font-weight: 600;
     font-stretch: normal;
@@ -82,7 +81,6 @@ export default {
     max-width: 554px;
     height: 36px;
     margin: 30px 0;
-    font-family: Helvetica;
     font-size: 16px;
     font-weight: bold;
     text-align: left;
