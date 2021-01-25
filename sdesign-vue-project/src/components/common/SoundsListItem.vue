@@ -9,7 +9,7 @@
         >
           <span></span>
         </button>
-      </div> -->
+      </div>-->
       <div class="sound-info">
         <div class="play-container">
           <vue-plyr id="plyr">
@@ -21,11 +21,7 @@
         <div class="enabled-el">
           <div class="icons">
             <div class="sound-like icon">
-              <a
-                href="javascript:;"
-                :class="{ isLiked: liked }"
-                @click.prevent="submitFavorite"
-              >
+              <a href="javascript:;" :class="{ isLiked: liked }" @click.prevent="submitFavorite">
                 <fa-icon icon="heart" />
               </a>
             </div>
@@ -43,16 +39,10 @@
           </div>
           <div class="sound-title">
             <span>Title:</span>
-            <p>
-              {{ listItem.soundName }}
-            </p>
+            <p>{{ listItem.soundName }}</p>
           </div>
         </div>
-        <span
-          class="arrow"
-          :class="{ active: !clicked }"
-          @click="isClicked"
-        ></span>
+        <span class="arrow" :class="{ active: !clicked }" @click="isClicked"></span>
       </div>
     </div>
     <transition name="detail-fade">
@@ -60,29 +50,20 @@
         <div class="detail-parts-1">
           <div>
             <span>Category:</span>
-            <p>
-              {{ listItem.category }}
-            </p>
+            <p>{{ listItem.category }}</p>
           </div>
           <div>
             <span>Tags:</span>
-            <p>
-              {{ isTag + listItem.tags.join(" #") }}
-            </p>
+            <p>{{ isTag + listItem.tags.join(" #") }}</p>
           </div>
         </div>
         <div class="detail-parts-2">
           <span>Sound Designer</span>
           <div class="part-sound-designer">
             <span class="designer-img">
-              <img
-                :src="listItem.accountId.accountImg"
-                alt="user profile image"
-              />
+              <img :src="listItem.accountId.accountImg" alt="user profile image" />
             </span>
-            <p>
-              {{ listItem.accountId.accountName }}
-            </p>
+            <p>{{ listItem.accountId.accountName }}</p>
           </div>
         </div>
         <div class="detail-parts-3">
@@ -94,14 +75,7 @@
           <template>
             <modal name="clip-modal" :width="390" :height="32">
               <div class="clipboard">
-                <textarea
-                  name=""
-                  id="copyPath"
-                  v-model="listItem.filePath"
-                  cols="35"
-                  rows="2"
-                >
-                </textarea>
+                <textarea name id="copyPath" v-model="listItem.filePath" cols="35" rows="2"></textarea>
                 <button @click="isCopied()">copy</button>
               </div>
             </modal>
@@ -112,16 +86,14 @@
             class="list-remove-button"
             v-if="this.listItem.myItem === true"
             @click="isRemove"
-          >
-            remove
-          </button>
+          >remove</button>
         </div>
         <!-- remove alert -->
         <modal :name="this.targetSound" class="remove-modal">
           <div class="remove-wrapper">
             <span class="remove-wording">
-              🚫 지금 삭제하면 되돌릴 수 없어요. 🚫<br />
-              그래도 삭제 하시겠어요?
+              🚫 지금 삭제하면 되돌릴 수 없어요. 🚫
+              <br />그래도 삭제 하시겠어요?
             </span>
             <p class="remove-title">Title : {{ this.listItem.soundName }}</p>
             <div class="remove-btn">
@@ -157,15 +129,19 @@ export default {
   },
   methods: {
     async submitFavorite() {
-      this.checked = this.checked ? false : true;
-      const data = this.listItem._id;
-      const token = this.$store.state.token;
-      try {
-        await favoriteItem({ soundId: data }, token);
-        this.isLiked();
-        this.$emit("reload");
-      } catch (error) {
-        return;
+      if (this.$store.state.token === "") {
+        this.$modal.show("login-modal");
+      } else {
+        this.checked = this.checked ? false : true;
+        const data = this.listItem._id;
+        const token = this.$store.state.token;
+        try {
+          await favoriteItem({ soundId: data }, token);
+          this.isLiked();
+          this.$emit("reload");
+        } catch (error) {
+          return;
+        }
       }
     },
     async submitRemove() {
