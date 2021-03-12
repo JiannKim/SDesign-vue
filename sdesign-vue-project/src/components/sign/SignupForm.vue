@@ -46,8 +46,8 @@
         <button
           :disabled="!isUserEmailValid || !password || !nickname"
           type="submit"
-          class="button form-button rectangles"
-          :class="{ disabled: !isUserEmailValid || !password || !nickname }"
+          class="button disabled rectangles"
+          :class="{ enabled: isUserEmailValid && password && nickname }"
         >가입</button>
         <p class="modal-open" @click="loginMounted">Already have an account? click here</p>
       </form>

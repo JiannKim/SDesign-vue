@@ -90,19 +90,15 @@ label {
   top: -20px !important;
 }
 
-.form-button {
-  all: unset;
-  background: rgb(161, 65, 240);
-  margin: 30px 0;
-  border-radius: 4px;
-  color: #fff;
-
-  position: relative;
-  font-weight: 400;
+.enabled {
+  background: rgb(161, 65, 240) !important;
 }
 .rectangles {
   width: 100%;
   height: 60px;
+}
+.enabled:hover {
+  background: rgb(172, 83, 245) !important;
 }
 .log-message {
   font-size: 14px;

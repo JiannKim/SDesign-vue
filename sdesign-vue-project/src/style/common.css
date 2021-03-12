@@ -35,6 +35,15 @@ button {
 }
 .disabled {
   background-color: rgb(206, 206, 206);
+  margin: 30px 0;
+  border-radius: 4px;
+  color: #fff;
+
+  border: none;
+  font-size: 18px;
+
+  position: relative;
+  font-weight: 400;
 }
 
 .page-title {

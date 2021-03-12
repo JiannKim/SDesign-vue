@@ -38,8 +38,8 @@
       <button
         :disabled="!isUserEmailValid || !password"
         type="submit"
-        class="button form-button rectangles"
-        :class="{ disabled: !isUserEmailValid || !password }"
+        class="button disabled rectangles"
+        :class="{ enabled: isUserEmailValid && password }"
       >
         로그인
       </button>
