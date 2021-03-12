@@ -29,6 +29,7 @@
           />
           <span class="underline"></span>
         </div>
+        <span class="warning">최소 6자 이상의 영문 + 숫자 조합</span>
         <div class="form-input rectangles">
           <label :class="{ isSelected: !selectedName }" for="name">user name</label>
           <input
@@ -107,11 +108,15 @@ export default {
         };
         const { data } = await registerUser(userData);
         console.log(data);
-        console.log("Signup response =>" + data.accountEmail);
-        if (data == "3588") {
-          console.log("중복된 아이디다!!");
+        if (data === 3588) {
+          // console.log("Duplicate ID");
+          this.initForm();
           this.signMessage = `* ${this.useremail} 은 이미 가입된 아이디 입니다.`;
-        } else {
+        } else if(data === 3333){
+          // console.log("Validation");
+          this.password = "";
+          this.signMessage = `* 패스워드는 최소 6자 이상의 영문 + 숫자 조합이여야 합니다.`;
+        }else {
           // 데이터에 이메일이 언디파인드로 나와서 아직 사용할 수 없음..
           // console.log("else data =>" + data);
           // this.signMessage = `* ${data.accountEmail} 로 가입 되셨습니다.
@@ -120,11 +125,12 @@ export default {
           // this.modalHide();
           this.send = true;
         }
-      } catch (error) {
-        console.log("error");
-      } finally {
-        this.initForm();
-      }
+      } catch (err) {
+        console.log(`instanceof error => ${err.name} : ${err.message}`);
+      } 
+      // finally {
+      //   this.initForm();
+      // }
     },
     initForm() {
       this.useremail = "";
