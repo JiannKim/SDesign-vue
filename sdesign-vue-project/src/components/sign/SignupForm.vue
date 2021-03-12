@@ -29,7 +29,7 @@
           />
           <span class="underline"></span>
         </div>
-        <span class="warning">최소 6자 이상의 영문 + 숫자 조합</span>
+        <span class="warning" v-if="!isUserPasswordValid && password">최소 6자 이상의 영문 + 숫자 조합</span>
         <div class="form-input rectangles">
           <label :class="{ isSelected: !selectedName }" for="name">user name</label>
           <input
@@ -71,7 +71,7 @@
 
 <script>
 import { registerUser } from "@/api/auth";
-import { validateEmail } from "@/utils/validation";
+import { validateEmail, validatePassword } from "@/utils/validation";
 
 export default {
   data() {
@@ -90,6 +90,9 @@ export default {
     isUserEmailValid() {
       return validateEmail(this.useremail);
     },
+    isUserPasswordValid() {
+      return validatePassword(this.password);
+    }
   },
   methods: {
     loginMounted() {
