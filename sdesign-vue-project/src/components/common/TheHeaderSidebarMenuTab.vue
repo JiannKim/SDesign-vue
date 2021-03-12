@@ -72,6 +72,8 @@
 </template>
 
 <script>
+import { deleteCookie } from "@/utils/cookies";
+
 export default {
   data() {
     return {
@@ -100,7 +102,10 @@ export default {
       this.$modal.hideAll();
     },
     logoutUser() {
-      return this.$store.commit("clearUserInfo");
+      this.$store.commit("clearUserInfo");
+      deleteCookie("sd_auth");
+      deleteCookie("sd_user");
+      this.$router.push("/");
     },
   },
 };
