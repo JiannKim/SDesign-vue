@@ -625,7 +625,7 @@ button {
     }
   }
   .isMore {
-    height: 200px !important;
+    height: 220px !important;
     .sound-title {
       white-space: normal !important;
     }
