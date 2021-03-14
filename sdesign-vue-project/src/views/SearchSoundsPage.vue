@@ -7,7 +7,7 @@
           <ul>
             <SoundsListItem
               v-for="listItem in listItems"
-              :key="listItem.index"
+              :key="listItem"
               :listItem="listItem"
             />
           </ul>
@@ -32,24 +32,24 @@ export default {
   },
   data() {
     return {
-      opOne: [
-        { text: "Most recent", value: "Most recent" },
-        { text: "A", value: "A" },
-        { text: "B", value: "B" },
-        { text: "C", value: "C" },
-      ],
-      opTwo: [
-        { text: "Any length", value: "Any length" },
-        { text: "A", value: "A" },
-        { text: "B", value: "B" },
-        { text: "C", value: "C" },
-      ],
-      opThree: [
-        { text: "All libraries", value: "All libraries" },
-        { text: "A", value: "A" },
-        { text: "B", value: "B" },
-        { text: "C", value: "C" },
-      ],
+      // opOne: [
+      //   { text: "Most recent", value: "Most recent" },
+      //   { text: "A", value: "A" },
+      //   { text: "B", value: "B" },
+      //   { text: "C", value: "C" },
+      // ],
+      // opTwo: [
+      //   { text: "Any length", value: "Any length" },
+      //   { text: "A", value: "A" },
+      //   { text: "B", value: "B" },
+      //   { text: "C", value: "C" },
+      // ],
+      // opThree: [
+      //   { text: "All libraries", value: "All libraries" },
+      //   { text: "A", value: "A" },
+      //   { text: "B", value: "B" },
+      //   { text: "C", value: "C" },
+      // ],
       totalCount: "",
       logMessage: "",
       isLoading: false,
@@ -95,7 +95,7 @@ export default {
       }
     },
     async debounceScroll() {
-      if (this.paginator.hasNext == true) {
+      if (this.paginator.hasNext === true) {
         const scrollHeight = Math.max(
           document.documentElement.scrollHeight,
           document.body.scrollHeight
@@ -135,7 +135,7 @@ export default {
       border-top: 1px solid $primary;
     }
     .log-msg {
-      padding-top: 20px;
+      padding: 20px 0;
     }
   }
 }
