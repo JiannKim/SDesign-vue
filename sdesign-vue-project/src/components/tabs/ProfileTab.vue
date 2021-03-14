@@ -182,7 +182,7 @@ export default {
   }
   .disabled {
     color: rgb(206, 206, 206);
-    // background-color: rgb(206, 206, 206);
+    margin: 0;
   }
 }
 .user-profile-info {
