@@ -6,13 +6,6 @@ const validateEmail = (email) => {
 
 const validatePassword = (password) => {
   const re = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,15}$/;
-  // let result = "";
-  // if (password.search(/\s/gi) != -1) {
-  //   console.log('==>', password, '<== 공백 없애라');
-  //   result = password.replace(/\s/gi, '');
-  //   // password.replace(/\s/gi, '');
-  //   console.log("result", result);
-  // }
   return re.test(String(password));
 }
 
