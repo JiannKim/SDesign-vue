@@ -55,11 +55,11 @@ export default {
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
         // 리무브 버튼 출력을 위해서 내 리스트에 myItem 속성 추가
-        for (let i = 0; i < data.fileList.length; i++) {
-          data.fileList[i].myItem = true;
+        for (let i = 0; i < data.result.length; i++) {
+          data.result[i].myItem = true;
         }
         this.loading = false;
-        this.listItems = this.listItems.concat(data.fileList);
+        this.listItems = this.listItems.concat(data.result);
         if (data.paginator.hasNext === false) {
           this.logMessage = "목록의 끝입니다 :)";
           if (this.totalCount === 0) {
