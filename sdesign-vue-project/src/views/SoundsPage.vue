@@ -82,7 +82,6 @@
               <LoadingSpinner />
             </span>
             <div slot="no-more" class="log-msg">{{ logMessage }}</div>
-            <div slot="no-results" class="log-msg">{{ logMessage }}</div>
           </infinite-loading>
         </div>
       </div>
@@ -132,15 +131,15 @@ export default {
         await setTimeout(async () => {
           const token = this.$store.state.token;
           const { data } = await fetchSounds(token, this.paginator.next);
-          if (data.totalCount === 0) {
-            this.logMessage = "등록된 사운드가 없네요 :)";
-          }
-          if (data.result.length) {
+          if (data.paginator.hasNext === true) {
             this.listItems = this.listItems.concat(data.result);
             this.paginator = data.paginator;
             this.totalCount = data.totalCount;
             this.logMessage = "목록의 끝입니다 :)";
             $state.loaded();
+            if (data.totalCount === 0) {
+              this.logMessage = "등록된 사운드가 없네요 :)";
+            }
           } else {
             $state.complete();
           }
@@ -292,7 +291,7 @@ export default {
       // margin-top: 44px;
     }
     .log-msg {
-      padding-top: 20px;
+      padding: 20px 0;
     }
   }
 }
