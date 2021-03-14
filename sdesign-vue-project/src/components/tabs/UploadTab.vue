@@ -42,26 +42,25 @@ export default {
   watch: {
     totalCount() {
       this.fetchMyData();
-      console.log("watch");
-      // window.addEventListener("scroll", _.debounce(this.debounceScroll, 200));
+      // console.log("watch");
     },
   },
   methods: {
     async fetchMyData() {
-      try {
-        console.log("try");
+      try { 
+        // console.log("try");
         const token = this.$store.state.token;
         this.loading = true;
         const { data } = await fetchMySounds(token, this.paginator.next);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
-        for (let i = 0; i < data.result.length; i++) {
-          data.result[i].myItem = true;
+        // 리무브 버튼 출력을 위해서 내 리스트에 myItem 속성 추가
+        for (let i = 0; i < data.fileList.length; i++) {
+          data.fileList[i].myItem = true;
         }
         this.loading = false;
-        this.listItems = this.listItems.concat(data.result);
-        if (this.paginator.hasNext == false) {
-          this.loading = false;
+        this.listItems = this.listItems.concat(data.fileList);
+        if (data.paginator.hasNext === false) {
           this.logMessage = "목록의 끝입니다 :)";
           if (this.totalCount === 0) {
             this.logMessage = "사운드를 등록해주세요.";
@@ -72,7 +71,7 @@ export default {
       }
     },
     async debounceScroll() {
-      if (this.paginator.hasNext == true) {
+      if (this.paginator.hasNext === true) {
         // 다음페이지가 있다면
         // const scrollHeight = Math.max(
         //   // 둘중 더 큰 보이지 않는 부분까지의 전체 높이 값
@@ -80,7 +79,8 @@ export default {
         //   document.body.scrollHeight //body
         // );
         const scrollHeight = document.body.scrollHeight; //body 보이지 않는 부분까지의 전체 높이 값
-        console.log(500-scrollHeight);
+        // console.log(500-scrollHeight);
+
         // const scrollTop =
         // Math.max(
         // 둘중 더 큰 스크롤바 위의 값
@@ -88,16 +88,16 @@ export default {
         // document.body.scrollTop
         // );
         const scrollTop = document.documentElement.scrollTop;
-        console.log(scrollTop);
+        // console.log(scrollTop);
         const clientHeight = document.documentElement.clientHeight; // html 내부의 패딩이 포함된 눈에 보여지는 높이 값
-        console.log(clientHeight);
+        // console.log(clientHeight);
         if (scrollTop + clientHeight > scrollHeight - 500) {
           // 500- 보이지 않는 부분까지의 전체 높이 값보다 스크롤된 상단 높이+ 보여지는 부분 높이가 크다면 // 여기서 scrollHeight !== clientHeight
           await this.fetchMyData();
         }
-        console.log(scrollTop + clientHeight);
+        // console.log(scrollTop + clientHeight);
       }
-      console.log(document.documentElement.scrollTop + document.documentElement.clientHeight);
+      // console.log(document.documentElement.scrollTop + document.documentElement.clientHeight);
     },
 
     // remove(index) {
