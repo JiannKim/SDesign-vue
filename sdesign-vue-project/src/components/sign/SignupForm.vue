@@ -60,7 +60,7 @@
         <p>가입하신 이메일 주소로 가입 인증 메일을 보내드렸습니다.</p>
         <p>{{this.useremail}}</p>
         <br />
-        <button class="button form-button rectangles" @click="loginMounted">Go to Login</button>
+        <button class="button enabled rectangles" @click="loginMounted">Go to Login</button>
       </div>
       <button class="button close-button" @click="modalHide">
         <fa-icon :icon="['fas', 'times']" />

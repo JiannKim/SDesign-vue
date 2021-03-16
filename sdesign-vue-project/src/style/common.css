@@ -33,7 +33,7 @@ li {
 button {
   cursor: pointer;
 }
-.disabled {
+.disabled, .enabled {
   background-color: rgb(206, 206, 206);
   margin: 30px 0;
   border-radius: 4px;
