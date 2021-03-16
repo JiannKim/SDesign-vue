@@ -91,7 +91,7 @@ export default {
         location.reload();
         return data;
       } catch (error) {
-        return error;
+        return ;
       }
     },
     async fetchUserInfo() {
@@ -102,7 +102,7 @@ export default {
         this.userimage = data.accountImg;
         this.imgPreview = data.accountImg;
       } catch (error) {
-        return error;
+        return ;
       }
     },
     isAdd() {
