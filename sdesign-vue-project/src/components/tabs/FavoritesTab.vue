@@ -42,6 +42,7 @@ export default {
       totalCount: 0,
       listItems: [],
       paginator: {},
+      limit: 0,
       loading: false,
     };
   },
@@ -54,15 +55,14 @@ export default {
     async infiniteHandler($state) {
       try {
         const token = this.$store.state.token;
-        const { data } = await fetchMyFavorite(token, this.paginator.next);
+        const { data } = await fetchMyFavorite(token, this.limit);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
         if (data.totalCount === 0) {
           this.logMessage = "좋아하는 사운드를 수집하세요 :)";
         }
-        if (data.result.length) {
-          this.loading = false;
-
+        if (this.limit !== null) {
+          this.limit = data.paginator.next;
           this.listItems = this.listItems.concat(data.result);
           this.paginator = data.paginator;
           this.logMessage = "목록의 끝입니다 :)";

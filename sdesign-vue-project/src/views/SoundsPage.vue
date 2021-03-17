@@ -124,6 +124,7 @@ export default {
       logMessage: "",
       listItems: [],
       paginator: {},
+      limit: 0,
     };
   },
   methods: {
@@ -131,12 +132,12 @@ export default {
       try {
         await setTimeout(async () => {
           const token = this.$store.state.token;
-          const { data } = await fetchSounds(token, this.paginator.next);
-          console.log(data);
+          const { data } = await fetchSounds(token, this.limit);
           if (data.totalCount === 0) {
             this.logMessage = "등록된 사운드가 없네요 :)";
           }
-          if (data.paginator.hasNext === true) {
+          if (this.limit !== null) {
+            this.limit = data.paginator.next;
             this.listItems = this.listItems.concat(data.result);
             this.paginator = data.paginator;
             this.totalCount = data.totalCount;
