@@ -42,7 +42,6 @@ export default {
       totalCount: 0,
       listItems: [],
       paginator: {},
-      limit: 0,
       loading: false,
     };
   },
