@@ -132,12 +132,16 @@ export default {
       if (this.$store.state.token === "") {
         this.$modal.show("login-modal");
       } else {
+        console.log("좋아요 테스트");
         this.checked = this.checked ? false : true;
         const data = this.listItem._id;
         const token = this.$store.state.token;
+        console.log(data);
         try {
+          console.log('조아요 리로드 테스트');
           await favoriteItem({ soundId: data }, token);
           this.isLiked();
+          console.log('좋아요',this.liked);
           this.$emit("reload");
         } catch (error) {
           return;
