@@ -7,7 +7,7 @@
           <ul>
             <SoundsListItem
               v-for="listItem in listItems"
-              :key="listItem"
+              :key="listItem.index"
               :listItem="listItem"
             />
           </ul>
@@ -32,24 +32,6 @@ export default {
   },
   data() {
     return {
-      // opOne: [
-      //   { text: "Most recent", value: "Most recent" },
-      //   { text: "A", value: "A" },
-      //   { text: "B", value: "B" },
-      //   { text: "C", value: "C" },
-      // ],
-      // opTwo: [
-      //   { text: "Any length", value: "Any length" },
-      //   { text: "A", value: "A" },
-      //   { text: "B", value: "B" },
-      //   { text: "C", value: "C" },
-      // ],
-      // opThree: [
-      //   { text: "All libraries", value: "All libraries" },
-      //   { text: "A", value: "A" },
-      //   { text: "B", value: "B" },
-      //   { text: "C", value: "C" },
-      // ],
       totalCount: "",
       logMessage: "",
       isLoading: false,
@@ -84,7 +66,6 @@ export default {
         this.isLoading = false;
         this.listItems = this.listItems.concat(data.result);
         if (this.paginator.hasNext === false) {
-          this.totalCount = data.totalCount;
           this.logMessage = "목록의 끝입니다 :)";
           if (data.totalCount === 0) {
             this.logMessage = "검색된 사운드가 없네요 :)";
