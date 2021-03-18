@@ -39,28 +39,30 @@ export default {
       paginator: {},
     };
   },
+ 
   watch: {
     totalCount() {
-      this.fetchMyData();
       // console.log("watch");
+      this.fetchMyData();
     },
   },
   methods: {
     async fetchMyData() {
-      try { 
+      try {
         // console.log("try");
         const token = this.$store.state.token;
         this.loading = true;
         const { data } = await fetchMySounds(token, this.paginator.next);
         this.totalCount = data.totalCount;
         this.paginator = data.paginator;
-        // 리무브 버튼 출력을 위해서 내 리스트에 myItem 속성 추가
+        // 리무브 버튼 생성
         for (let i = 0; i < data.result.length; i++) {
           data.result[i].myItem = true;
         }
         this.loading = false;
         this.listItems = this.listItems.concat(data.result);
-        if (data.paginator.hasNext === false) {
+        if (this.paginator.hasNext === false) {
+          this.loading = false;
           this.logMessage = "목록의 끝입니다 :)";
           if (this.totalCount === 0) {
             this.logMessage = "사운드를 등록해주세요.";
@@ -120,6 +122,7 @@ export default {
     },
   },
   created() {
+    console.log("created");
     this.fetchMyData();
     window.addEventListener("scroll", _.debounce(this.debounceScroll, 200)); // 브라우저에 0.2초 동안 디바운스스크롤이벤트를 한번만 실행하는 스크롤을 감지하는 이벤트리스너를 추가.
   },

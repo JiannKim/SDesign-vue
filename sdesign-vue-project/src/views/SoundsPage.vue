@@ -124,20 +124,19 @@ export default {
       logMessage: "",
       listItems: [],
       paginator: {},
-      limit: 0,
     };
   },
+ 
   methods: {
     async infiniteHandler($state) {
       try {
         await setTimeout(async () => {
           const token = this.$store.state.token;
-          const { data } = await fetchSounds(token, this.limit);
+          const { data } = await fetchSounds(token, this.paginator.next);
           if (data.totalCount === 0) {
             this.logMessage = "등록된 사운드가 없네요 :)";
           }
-          if (this.limit !== null) {
-            this.limit = data.paginator.next;
+          if (data.result.length) {
             this.listItems = this.listItems.concat(data.result);
             this.paginator = data.paginator;
             this.totalCount = data.totalCount;
@@ -147,8 +146,8 @@ export default {
             $state.complete();
           }
         }, 200);
-      } catch (error) {
-        return error;
+      } catch (err) {
+        return;
       }
     },
   },

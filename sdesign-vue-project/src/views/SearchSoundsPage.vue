@@ -71,7 +71,7 @@ export default {
             this.logMessage = "검색된 사운드가 없네요 :)";
           }
         }
-      } catch (e) {
+      } catch (err) {
         return;
       }
     },
