@@ -90,7 +90,7 @@ export default {
         };
         const data = await this.$store.dispatch("LOGIN", userData);
         // 비밀번호를 다르게 입력한 경우
-        if (data == "5504") {
+        if (data === 5504) {
           this.loginMessage = `* 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
           this.initPass();
         } else {
