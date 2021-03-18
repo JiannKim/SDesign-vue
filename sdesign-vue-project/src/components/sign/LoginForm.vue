@@ -90,11 +90,9 @@ export default {
         };
         const data = await this.$store.dispatch("LOGIN", userData);
         // 비밀번호를 다르게 입력한 경우
-        if (data === 9991) {
+        if (data == "5504") {
           this.loginMessage = `* 비밀번호가 맞지 않습니다. 다시 입력해 주세요!`;
           this.initPass();
-        } else if( data === 8883){
-          this.loginMessage = `* 미인증 이메일 입니다. 인증 후 사용해 주세요.`; 
         } else {
           // 로그인 했을 때 페이지 이동 => main
           // this.$router.push("/");
@@ -102,9 +100,9 @@ export default {
           // 모달 닫기
           this.modalHide();
         }
-      } catch (error) {
+      } catch (err) {
         // 에러 핸들링할 코드
-        console.log(error.response);
+        // console.log(err.response);
         this.loginMessage = `* 가입 정보가 없거나 미인증 이메일 입니다. 올바른 정보를 입력해 주세요!`;
         this.initForm();
       }
