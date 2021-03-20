@@ -122,7 +122,7 @@ export default {
     },
   },
   created() {
-    console.log("created");
+    // console.log("created");
     this.fetchMyData();
     window.addEventListener("scroll", _.debounce(this.debounceScroll, 200)); // 브라우저에 0.2초 동안 디바운스스크롤이벤트를 한번만 실행하는 스크롤을 감지하는 이벤트리스너를 추가.
   },
