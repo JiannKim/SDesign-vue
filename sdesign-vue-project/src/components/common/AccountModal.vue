@@ -9,7 +9,7 @@
     <div>
       <router-link to="/account/profile" @click.native="meHide">My page</router-link>
     </div>
-    <a href="javascript:;" @click="logoutUser" class="logout-btn">
+    <a @click="logoutUser" href="javascript:;" class="logout-btn">
       <span>Logout</span>
     </a>
   </div>
@@ -23,10 +23,10 @@ export default {
   },
   methods: {
     // store에 있는 clearUserInfo함수를 가져와서 로그아웃 기능의 메서드를 만들어준다
-    logoutUser() {
+    async logoutUser() {
       this.$store.commit("clearUserInfo"); // 토큰과 닉네임을 초기화 해주는 메서드를 가져와 로그아웃을 시킴
-      deleteCookie("sd_auth");
-      deleteCookie("sd_user");
+      await deleteCookie("sd_auth");
+      await deleteCookie("sd_user");
       this.$router.push("/");
     },
     meHide() {
