@@ -136,7 +136,7 @@ export default {
         const data = this.listItem._id;
         const token = this.$store.state.token;
         try {
-          await favoriteItem({ soundId: data }, token);
+          favoriteItem({ soundId: data }, token);
           this.isLiked();
           this.$emit("reload");
         } catch (err) {
